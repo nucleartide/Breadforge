@@ -3,6 +3,7 @@ using UnityEngine;
 /// <summary>
 /// TODO: Display this card.
 /// </summary>
+[CreateAssetMenu]
 public class CardStatistics : ScriptableObject
 {
     [SerializeField]

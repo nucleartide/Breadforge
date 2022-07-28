@@ -13,5 +13,6 @@ MonoBehaviour:
   m_Name: Charmander
   m_EditorClassIdentifier: 
   <Attack>k__BackingField: 1
-  <Health>k__BackingField: 2
+  Health: 0
   <SummonCost>k__BackingField: 0
+  <Name>k__BackingField: Charchar

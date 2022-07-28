@@ -38,6 +38,13 @@ public class CardStatistics : ScriptableObject
         set;
     }
 
+    [field: SerializeField]
+    public string Name
+    {
+        get;
+        set;
+    }
+
     // POST-MVP TODO:
     //
     // Bones – Conversely, there are cards that cost bones. You earn bones

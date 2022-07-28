@@ -1,28 +1,42 @@
 using UnityEngine;
 
-/// <summary>
-/// TODO: Display this card.
-/// </summary>
 [CreateAssetMenu]
 public class CardStatistics : ScriptableObject
 {
-    [SerializeField]
-    [Tooltip("Also known as ATK. Displayed on the lower-left of the card.")]
-    int attack;
+    /// <summary>
+    /// Also known as ATK. Displayed on the lower-left of the card
+    /// </summary>
+    [field: SerializeField]
+    public int Attack
+    {
+        get;
+        set;
+    }
 
+    /// <summary>
+    /// Also known as HP. Displayed on the lower-right of the card
+    /// </summary>
     [SerializeField]
-    [Tooltip("Also known as HP. Displayed on the lower-right of the card.")]
-    int health;
+    int Health;
 
     /// <summary>
     /// The current health of the card when in play.
     /// </summary>
-    int currentHealth;
+    public int CurrentHealth
+    {
+        get;
+        set;
+    }
 
     /// <summary>
     /// The upper-right portion of the card. Indicates the number of sacrifices needed to play the card.
     /// </summary>
-    int summonCost;
+    [field: SerializeField]
+    public int SummonCost
+    {
+	    get;
+        set;
+    }
 
     // POST-MVP TODO:
     //
@@ -33,21 +47,7 @@ public class CardStatistics : ScriptableObject
 
     void OnEnable()
     {
-        currentHealth = health;
+        CurrentHealth = Health;
     }
 }
 
-public class Card : MonoBehaviour
-{
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-}

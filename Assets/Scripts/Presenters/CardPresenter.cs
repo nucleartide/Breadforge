@@ -4,7 +4,9 @@ using TMPro;
 public class CardPresenter : MonoBehaviour
 {
     [SerializeField]
-    CardStatistics cardStatistics;
+    public CardStatistics cardStatistics;
+
+    public string id;
 
     [SerializeField]
     TMP_Text attackText;

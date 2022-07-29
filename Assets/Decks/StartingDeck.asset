@@ -12,4 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f66eff36c1a024bf6b36d5ca14c0babd, type: 3}
   m_Name: StartingDeck
   m_EditorClassIdentifier: 
-  <Cards>k__BackingField: []
+  <Cards>k__BackingField:
+  - card: {fileID: 11400000, guid: 3168c9ac8b9b3408589c12bb3712af06, type: 2}
+    count: 5

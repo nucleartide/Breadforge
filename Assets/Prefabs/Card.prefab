@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 230256541385615443}
   - component: {fileID: 8477763604147250499}
   m_Layer: 0
-  m_Name: back side
+  m_Name: Front Side
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -93,7 +93,7 @@ GameObject:
   - component: {fileID: 1070207584261037712}
   - component: {fileID: 8669213978685051776}
   m_Layer: 0
-  m_Name: front side
+  m_Name: Back Side
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -590,7 +590,7 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6925136993729426754}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0.005, y: 0.005, z: 0.005}
   m_Children:
@@ -600,7 +600,7 @@ RectTransform:
   - {fileID: 6925136995108108614}
   m_Father: {fileID: 6925136994155725394}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
@@ -678,7 +678,7 @@ GameObject:
   - component: {fileID: 6925136994155725394}
   - component: {fileID: 6925136994155725393}
   m_Layer: 0
-  m_Name: Card (requires event system)
+  m_Name: Card
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -691,8 +691,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6925136994155725398}
-  m_LocalRotation: {x: -0.7393887, y: -0, z: -0, w: 0.67327887}
-  m_LocalPosition: {x: 0, y: 0.0024890741, z: -0.0027334788}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 6925136993729426109}
@@ -700,7 +700,7 @@ Transform:
   - {fileID: 6161009466006947581}
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: -95.359, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &6925136994155725393
 MonoBehaviour:
   m_ObjectHideFlags: 0

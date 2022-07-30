@@ -1,8 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
-public class DeckPresenter : MonoBehaviour
+public class DeckPresenter : MonoBehaviour, IPointerDownHandler
 {
     public Deck Deck;
     public CardPresenter CardPrefab;
@@ -10,6 +11,18 @@ public class DeckPresenter : MonoBehaviour
 
     List<CardPresenter> cardList;
     readonly Quaternion FACE_DOWN = Quaternion.AngleAxis(90, Vector3.right);
+
+    public void OnPointerDown(PointerEventData eventData)
+    {
+        // [ ] when the deck is clicked,
+        Debug.Log("deck was clicked: " + eventData.pointerCurrentRaycast.gameObject.name);
+
+        // [ ] pop the top card from the deck, and
+        //
+
+        // [ ] add the top card to the hand
+        //
+    }
 
     // TODO: be able to click on the deck collider, and trigger a not-implemented action.
     void Start()

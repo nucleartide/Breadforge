@@ -9,7 +9,9 @@ public class DeckPresenter : MonoBehaviour
     public HandPresenter HandPresenter;
 
     List<CardPresenter> cardList;
+    readonly Quaternion FACE_DOWN = Quaternion.AngleAxis(90, Vector3.right);
 
+    // TODO: be able to click on the deck collider, and trigger a not-implemented action.
     void Start()
     {
         // [x] iterate over the deck
@@ -19,7 +21,11 @@ public class DeckPresenter : MonoBehaviour
             var currentCard = Deck.Cards[i];
             for (var j = 0; j < currentCard.count; j++)
             { 
-			    var card = Instantiate(CardPrefab, transform.position + new Vector3(0, cardList.Count*.1f, 0), Quaternion.AngleAxis(180, Vector3.up) * Quaternion.AngleAxis(90, Vector3.left));
+			    var card = Instantiate(
+				    CardPrefab,
+				    transform.position + new Vector3(0, .1f * cardList.Count, 0),
+                    FACE_DOWN
+			    );
                 card.cardStatistics = currentCard.card;
                 card.id = $"{i}{j}";
 			    cardList.Add(card);
@@ -36,7 +42,7 @@ public class DeckPresenter : MonoBehaviour
 
         for (var i = 0; i < cardList.Count; i++)
         { 
-			HandPresenter.cards.Add(cardList[i]);
+			// HandPresenter.cards.Add(cardList[i]);
 		}
     }
 

@@ -6,6 +6,7 @@ public class DeckPresenter : MonoBehaviour
 {
     public Deck Deck;
     public CardPresenter CardPrefab;
+    public HandPresenter HandPresenter;
 
     List<CardPresenter> cardList;
 
@@ -18,7 +19,7 @@ public class DeckPresenter : MonoBehaviour
             var currentCard = Deck.Cards[i];
             for (var j = 0; j < currentCard.count; j++)
             { 
-			    var card = Instantiate(CardPrefab, transform.position, Quaternion.identity);
+			    var card = Instantiate(CardPrefab, transform.position + new Vector3(0, cardList.Count*.1f, 0), Quaternion.AngleAxis(180, Vector3.up) * Quaternion.AngleAxis(90, Vector3.left));
                 card.cardStatistics = currentCard.card;
                 card.id = $"{i}{j}";
 			    cardList.Add(card);
@@ -31,6 +32,11 @@ public class DeckPresenter : MonoBehaviour
         for (var i = 0; i < cardList.Count; i++)
         {
             Debug.Log(cardList[i].id);
+		}
+
+        for (var i = 0; i < cardList.Count; i++)
+        { 
+			HandPresenter.cards.Add(cardList[i]);
 		}
     }
 

@@ -14,14 +14,15 @@ public class DeckPresenter : MonoBehaviour, IPointerDownHandler
 
     public void OnPointerDown(PointerEventData eventData)
     {
-        // [ ] when the deck is clicked,
+        // [x] when the deck is clicked,
         Debug.Log("deck was clicked: " + eventData.pointerCurrentRaycast.gameObject.name);
 
         // [ ] pop the top card from the deck, and
-        //
+        var lastCard = cardList[cardList.Count - 1];
+        cardList.RemoveAt(cardList.Count - 1);
 
         // [ ] add the top card to the hand
-        //
+        HandPresenter.cards.Add(lastCard);
     }
 
     // TODO: be able to click on the deck collider, and trigger a not-implemented action.
@@ -36,7 +37,7 @@ public class DeckPresenter : MonoBehaviour, IPointerDownHandler
             { 
 			    var card = Instantiate(
 				    CardPrefab,
-				    transform.position + new Vector3(0, .1f * cardList.Count, 0),
+				    transform.position, //  + new Vector3(0, .1f * cardList.Count, 0),
                     FACE_DOWN
 			    );
                 card.cardStatistics = currentCard.card;
@@ -47,15 +48,9 @@ public class DeckPresenter : MonoBehaviour, IPointerDownHandler
 
         // [ ] then shuffle the list
         Shuffle(cardList);
-
         for (var i = 0; i < cardList.Count; i++)
         {
-            Debug.Log(cardList[i].id);
-		}
-
-        for (var i = 0; i < cardList.Count; i++)
-        { 
-			// HandPresenter.cards.Add(cardList[i]);
+            cardList[i].transform.position = transform.position + new Vector3(0, .1f * i, 0);
 		}
     }
 

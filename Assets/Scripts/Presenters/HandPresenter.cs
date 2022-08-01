@@ -6,7 +6,7 @@ public class HandPresenter : MonoBehaviour
 {
     public List<CardPresenter> cards;
     public new Camera camera;
-    //public Transform radialPivot;
+    public Transform radialPivot;
 
     void Update()
     {
@@ -16,16 +16,16 @@ public class HandPresenter : MonoBehaviour
         // update the positions of the cards.
         for (var i = 0; i < cards.Count; i++)
         {
-			var start = new Vector3(0f, .2f, i * .01f /* small offset so cards don't overlap */);
-			var rotation = Quaternion.AngleAxis(20 * i - (cards.Count - 1) * 10f, Vector3.forward);
+			var start = new Vector3(0f, .5f, i * .01f /* small offset so cards don't overlap */);
+			var rotation = Quaternion.AngleAxis(10f * i - (cards.Count - 1) * 5f, Vector3.forward);
 			var rotatedStart = rotation * start;
-			var worldSpaceStart = transform.TransformPoint(rotatedStart);
+			var worldSpaceStart = radialPivot.transform.TransformPoint(rotatedStart);
 
             // var offset = new Vector3(.12f * i - (cards.Count - 1) * .06f, 0f, 0f);
             // currentCard.transform.position = transform.position + offset;
             var currentCard = cards[i];
             currentCard.transform.position = worldSpaceStart;
-            currentCard.transform.rotation = transform.rotation;
+            currentCard.transform.rotation =  Quaternion.AngleAxis(10f * i - (cards.Count - 1) * 5f, transform.forward) * transform.rotation;
         }
 
         //var yOffset = Mathf.Abs(radialPivot.localPosition.y);

@@ -5,16 +5,30 @@ using UnityEngine;
 public class HandPresenter : MonoBehaviour
 {
     public List<CardPresenter> cards;
+    public new Camera camera;
+    //public Transform radialPivot;
 
     void Update()
     {
+        transform.LookAt(camera.transform);
+
+
         // update the positions of the cards.
         for (var i = 0; i < cards.Count; i++)
         {
+			var start = new Vector3(0f, .2f, i * .01f /* small offset so cards don't overlap */);
+			var rotation = Quaternion.AngleAxis(20 * i - (cards.Count - 1) * 10f, Vector3.forward);
+			var rotatedStart = rotation * start;
+			var worldSpaceStart = transform.TransformPoint(rotatedStart);
+
+            // var offset = new Vector3(.12f * i - (cards.Count - 1) * .06f, 0f, 0f);
+            // currentCard.transform.position = transform.position + offset;
             var currentCard = cards[i];
-            var offset = new Vector3(1.2f * i, 0f, 0f);
-            currentCard.transform.position = transform.position + offset;
-		}
+            currentCard.transform.position = worldSpaceStart;
+            currentCard.transform.rotation = transform.rotation;
+        }
+
+        //var yOffset = Mathf.Abs(radialPivot.localPosition.y);
     }
 
     // [ ] render the hands' cards in front of the camera

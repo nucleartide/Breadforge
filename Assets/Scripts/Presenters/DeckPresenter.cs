@@ -8,6 +8,7 @@ public class DeckPresenter : MonoBehaviour, IPointerDownHandler
     public Deck Deck;
     public CardPresenter CardPrefab;
     public HandPresenter HandPresenter;
+    public new Camera camera;
 
     List<CardPresenter> cardList;
     readonly Quaternion FACE_DOWN = Quaternion.AngleAxis(90, Vector3.right);
@@ -35,11 +36,7 @@ public class DeckPresenter : MonoBehaviour, IPointerDownHandler
             var currentCard = Deck.Cards[i];
             for (var j = 0; j < currentCard.count; j++)
             { 
-			    var card = Instantiate(
-				    CardPrefab,
-				    transform.position, //  + new Vector3(0, .1f * cardList.Count, 0),
-                    FACE_DOWN
-			    );
+			    var card = Instantiate( CardPrefab);
                 card.cardStatistics = currentCard.card;
                 card.id = $"{i}{j}";
 			    cardList.Add(card);
@@ -51,6 +48,7 @@ public class DeckPresenter : MonoBehaviour, IPointerDownHandler
         for (var i = 0; i < cardList.Count; i++)
         {
             cardList[i].transform.position = transform.position + new Vector3(0, .01f * i, 0);
+            cardList[i].transform.rotation = FACE_DOWN;
 		}
     }
 

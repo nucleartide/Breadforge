@@ -50,7 +50,7 @@ public class DeckPresenter : MonoBehaviour, IPointerDownHandler
         Shuffle(cardList);
         for (var i = 0; i < cardList.Count; i++)
         {
-            cardList[i].transform.position = transform.position + new Vector3(0, .1f * i, 0);
+            cardList[i].transform.position = transform.position + new Vector3(0, .01f * i, 0);
 		}
     }
 

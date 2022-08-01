@@ -12,7 +12,8 @@ public class HandPresenter : MonoBehaviour
         for (var i = 0; i < cards.Count; i++)
         {
             var currentCard = cards[i];
-            currentCard.transform.position = transform.position + new Vector3(1.2f * (i - cards.Count/2), 0f, 0f);
+            var offset = new Vector3(1.2f * i, 0f, 0f);
+            currentCard.transform.position = transform.position + offset;
 		}
     }
 

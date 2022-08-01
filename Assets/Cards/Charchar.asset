@@ -9,9 +9,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f66eff36c1a024bf6b36d5ca14c0babd, type: 3}
-  m_Name: StartingDeck
+  m_Script: {fileID: 11500000, guid: a917ab4518da049e4b01e3b693ce3b6b, type: 3}
+  m_Name: Charchar
   m_EditorClassIdentifier: 
-  <Cards>k__BackingField:
-  - card: {fileID: 11400000, guid: 3168c9ac8b9b3408589c12bb3712af06, type: 2}
-    count: 5
+  <Attack>k__BackingField: 1
+  Health: 0
+  <SummonCost>k__BackingField: 0
+  <Name>k__BackingField: Charchar

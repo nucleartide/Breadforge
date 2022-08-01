@@ -1,7 +1,7 @@
 using UnityEngine;
 
 [CreateAssetMenu]
-public class CardStatistics : ScriptableObject
+public class Card : ScriptableObject
 {
     /// <summary>
     /// Also known as ATK. Displayed on the lower-left of the card
@@ -15,6 +15,8 @@ public class CardStatistics : ScriptableObject
 
     /// <summary>
     /// Also known as HP. Displayed on the lower-right of the card
+    ///
+    /// Note: you should use .CurrentHealth to access an in-play card's health.
     /// </summary>
     [SerializeField]
     int Health;
@@ -34,7 +36,7 @@ public class CardStatistics : ScriptableObject
     [field: SerializeField]
     public int SummonCost
     {
-	    get;
+        get;
         set;
     }
 
@@ -45,16 +47,8 @@ public class CardStatistics : ScriptableObject
         set;
     }
 
-    // POST-MVP TODO:
-    //
-    // Bones – Conversely, there are cards that cost bones. You earn bones
-    // whenever your cards get destroyed by an opponent. This mana/resource
-    // will be introduced as a mechanic after your first loss or “death”
-    // against Leshy.
-
     void OnEnable()
     {
         CurrentHealth = Health;
     }
 }
-

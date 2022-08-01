@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: Starter
   m_EditorClassIdentifier: 
   <Cards>k__BackingField:
-  - card: {fileID: 11400000, guid: 3168c9ac8b9b3408589c12bb3712af06, type: 2}
-    count: 5
+  - Card: {fileID: 11400000, guid: 3168c9ac8b9b3408589c12bb3712af06, type: 2}
+    Count: 5

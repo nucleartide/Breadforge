@@ -379,7 +379,7 @@ MonoBehaviour:
   Deck: {fileID: 11400000, guid: 9ba921921fd844a049692ca939a2cb4f, type: 2}
   CardPrefab: {fileID: 6925136994155725393, guid: 166c60ef1f8b34ef0804115af7450232, type: 3}
   HandPresenter: {fileID: 1654789746}
-  camera: {fileID: 963194227}
+  Camera: {fileID: 963194227}
 --- !u!4 &434946020
 Transform:
   m_ObjectHideFlags: 0
@@ -926,9 +926,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bd0af3209da8f40f3bd353626757e502, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cards: []
-  camera: {fileID: 963194227}
-  radialPivot: {fileID: 1993994141}
+  Cards: []
+  Camera: {fileID: 963194227}
+  RadialPivot: {fileID: 1993994141}
 --- !u!1 &1691614750
 GameObject:
   m_ObjectHideFlags: 0

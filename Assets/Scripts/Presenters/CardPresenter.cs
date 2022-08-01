@@ -3,10 +3,13 @@ using TMPro;
 
 public class CardPresenter : MonoBehaviour
 {
-    [SerializeField]
-    public CardStatistics cardStatistics;
+    public Card Card
+    {
+        private get;
+        set;
+    }
 
-    public string id;
+    public string Identifier = System.Guid.NewGuid().ToString();
 
     [SerializeField]
     TMP_Text attackText;
@@ -22,9 +25,9 @@ public class CardPresenter : MonoBehaviour
 
     void Start()
     {
-        attackText.text = "ATK: " + cardStatistics.Attack.ToString();
-        healthText.text = "HP: " + cardStatistics.CurrentHealth.ToString();
-        summonCostText.text = "COST: " + cardStatistics.SummonCost.ToString();
-        nameText.text = cardStatistics.Name;
+        attackText.text = "ATK: " + Card.Attack.ToString();
+        healthText.text = "HP: " + Card.CurrentHealth.ToString();
+        summonCostText.text = "COST: " + Card.SummonCost.ToString();
+        nameText.text = Card.Name;
     }
 }

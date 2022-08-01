@@ -1,4 +1,3 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
@@ -8,60 +7,57 @@ public class DeckPresenter : MonoBehaviour, IPointerDownHandler
     public Deck Deck;
     public CardPresenter CardPrefab;
     public HandPresenter HandPresenter;
-    public new Camera camera;
+    public Camera Camera;
 
-    List<CardPresenter> cardList;
+    List<CardPresenter> cards;
     readonly Quaternion FACE_DOWN = Quaternion.AngleAxis(90, Vector3.right);
 
     public void OnPointerDown(PointerEventData eventData)
     {
-        // [x] when the deck is clicked,
-        Debug.Log("deck was clicked: " + eventData.pointerCurrentRaycast.gameObject.name);
+        // Pop the top card from the deck.
+        var lastCard = cards[cards.Count - 1];
+        cards.RemoveAt(cards.Count - 1);
 
-        // [ ] pop the top card from the deck, and
-        var lastCard = cardList[cardList.Count - 1];
-        cardList.RemoveAt(cardList.Count - 1);
-
-        // [ ] add the top card to the hand
-        HandPresenter.cards.Add(lastCard);
+        // Add the top card to the hand.
+        HandPresenter.Cards.Add(lastCard);
     }
 
-    // TODO: be able to click on the deck collider, and trigger a not-implemented action.
+    static List<CardPresenter> InitializeCards(Deck deck, CardPresenter cardPrefab)
+    { 
+        var cards = new List<CardPresenter>();
+
+        for (var i = 0; i < deck.Cards.Count; i++)
+        {
+            var currentCard = deck.Cards[i];
+
+            for (var j = 0; j < currentCard.Count; j++)
+            {
+                var card = Instantiate(cardPrefab);
+                card.Card = currentCard.Card;
+                cards.Add(card);
+            }
+        }
+
+        Shuffle(cards);
+        return cards;
+    }
+
     void Start()
     {
-        // [x] iterate over the deck
-        cardList = new List<CardPresenter>();
-        for (var i = 0; i < Deck.Cards.Count; i++)
+        cards = InitializeCards(Deck, CardPrefab);
+        for (var i = 0; i < cards.Count; i++)
         {
-            var currentCard = Deck.Cards[i];
-            for (var j = 0; j < currentCard.count; j++)
-            { 
-			    var card = Instantiate( CardPrefab);
-                card.cardStatistics = currentCard.card;
-                card.id = $"{i}{j}";
-			    cardList.Add(card);
-		    }
-		}
-
-        // [ ] then shuffle the list
-        Shuffle(cardList);
-        for (var i = 0; i < cardList.Count; i++)
-        {
-            cardList[i].transform.position = transform.position + new Vector3(0, .01f * i, 0);
-            cardList[i].transform.rotation = FACE_DOWN;
-		}
+            // Position and orient the cards so that they appear as a deck of cards.
+            cards[i].transform.position = transform.position + new Vector3(0, .01f * i, 0);
+            cards[i].transform.rotation = FACE_DOWN;
+        }
     }
 
+    /// <summary>
+    /// Implements the Fisher-Yates shuffle algorithm.
+    /// </summary>
     public static void Shuffle<T>(List<T> cards)
     {
-        // Fisher-Yates shuffle:
-        /*
-                -- To shuffle an array a of n elements (indices 0..n-1):
-                for i from n−1 down to 1 do
-                     j ← random integer such that 0 ≤ j ≤ i
-                     exchange a[j] and a[i]
-                */
-
         for (var i = cards.Count - 1; i >= 1; i--)
         {
             // Compute index to swap places with.
@@ -73,18 +69,4 @@ public class DeckPresenter : MonoBehaviour, IPointerDownHandler
             cards[i] = temp;
         }
     }
-
-    /*
-    public CardStatistics Draw()
-    {
-        var lastCard = InPlayCards[InPlayCards.Count - 1];
-        InPlayCards.RemoveAt(InPlayCards.Count - 1);
-        return lastCard;
-    }
-
-    public void Shuffle()
-    {
-        throw new System.NotImplementedException();
-    }
-    */
 }

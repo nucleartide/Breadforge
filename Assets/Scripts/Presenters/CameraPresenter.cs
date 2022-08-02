@@ -25,14 +25,38 @@ public class CameraPresenter : MonoBehaviour
     [SerializeField]
     Pose observeHand;
 
+    [SerializeField]
+    new Transform camera;
+
+    [SerializeField]
+    Transform hand;
+
+    enum PoseState
+    {
+        ObserveHand = 0,
+        Neutral,
+        ObservePlayingField,
+    }
+
+    Pose currentPose;
+
+    void OnEnable()
+    {
+        currentPose = neutral;
+    }
+
     void Update()
     {
+        // [ ] update currentPose state
+        // [ ] actually update the pose
+
         if (Input.GetKeyDown(KeyCode.W))
         {
             Debug.Log("W was pressed");
+            camera.transform.position = currentPose.Camera.position;
+            camera.transform.rotation = currentPose.Camera.rotation;
         }
-
-        if (Input.GetKeyDown(KeyCode.S))
+        else if (Input.GetKeyDown(KeyCode.S))
         {
             Debug.Log("S was pressed");
         }

@@ -3,6 +3,7 @@ using TMPro;
 
 public class CardPresenter : MonoBehaviour
 {
+    [field: SerializeField]
     public Card Card
     {
         private get;
@@ -23,7 +24,7 @@ public class CardPresenter : MonoBehaviour
     [SerializeField]
     TMP_Text nameText;
 
-    void Start()
+    void Update()
     {
         attackText.text = "ATK: " + Card.Attack.ToString();
         healthText.text = "HP: " + Card.CurrentHealth.ToString();

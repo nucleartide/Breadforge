@@ -33,35 +33,38 @@ public class CameraPresenter : MonoBehaviour
 
     enum PoseState
     {
-        ObserveHand = 0,
+        ObserveHand,
         Neutral,
         ObservePlayingField,
     }
 
-    Pose currentPose;
+    PoseState currentPose = PoseState.Neutral;
 
-    void OnEnable()
+    Pose ToPose(PoseState poseState) => poseState switch
     {
-        currentPose = neutral;
-    }
+        PoseState.ObserveHand => observeHand,
+        PoseState.Neutral => neutral,
+        PoseState.ObservePlayingField => observePlayingField,
+        _ => throw new System.Exception($"PoseState {poseState} not covered."), // Not great, since it's not a compile-time check.
+    };
 
     void Update()
     {
-        // [ ] update currentPose state
-        // [ ] actually update the pose
-
+        // Update current pose.
+        var currentPoseInt = (int)currentPose;
         if (Input.GetKeyDown(KeyCode.W))
-        {
-            Debug.Log("W was pressed");
-            camera.transform.position = currentPose.Camera.position;
-            camera.transform.rotation = currentPose.Camera.rotation;
-        }
+            currentPoseInt = Mathf.Min((int)currentPose + 1, (int)PoseState.ObservePlayingField);
         else if (Input.GetKeyDown(KeyCode.S))
-        {
-            Debug.Log("S was pressed");
-        }
-    }
+            currentPoseInt = Mathf.Max((int)currentPose - 1, 0);
+        currentPose = (PoseState)currentPoseInt;
 
-    // [ ] set pose of relevant objects
-    // [ ] ease between the poses
+        // Update the pose depending on the PoseState.
+        var pose = ToPose(currentPose);
+        camera.transform.position = pose.Camera.position;
+        camera.transform.rotation = pose.Camera.rotation;
+        hand.transform.position = pose.Hand.position;
+        hand.transform.rotation = pose.Hand.rotation;
+
+        // [ ] ease between the poses
+    }
 }

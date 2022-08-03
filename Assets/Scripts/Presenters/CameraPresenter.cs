@@ -58,21 +58,26 @@ public class CameraPresenter : MonoBehaviour
             currentPoseInt = Mathf.Max((int)currentPose - 1, 0);
         currentPose = (PoseState)currentPoseInt;
 
+        // TODO.
         // Update the pose depending on the PoseState.
         var pose = ToPose(currentPose);
         // camera.transform.position = pose.Camera.position;
         camera.transform.rotation = pose.Camera.rotation;
-        hand.transform.position = pose.Hand.position;
+        // hand.transform.position = pose.Hand.position;
         hand.transform.rotation = pose.Hand.rotation;
 
-        // [ ] ease between the positions for the camera
+        // Ease between positions for the camera and hand.
         if (Vector3.Distance(camera.transform.position, pose.Camera.position) > 0.001f)
         {
 			var speed = 1f;
 			var step = speed * Time.deltaTime;
 			camera.transform.position = Vector3.MoveTowards(camera.transform.position, pose.Camera.position, step);
         }
-
-        // ease between the rotations
+        if (Vector3.Distance(hand.transform.position, pose.Hand.position) > 0.001f)
+        {
+			var speed = 1f;
+			var step = speed * Time.deltaTime;
+			hand.transform.position = Vector3.MoveTowards(hand.transform.position, pose.Hand.position, step);
+        }
     }
 }

@@ -60,11 +60,19 @@ public class CameraPresenter : MonoBehaviour
 
         // Update the pose depending on the PoseState.
         var pose = ToPose(currentPose);
-        camera.transform.position = pose.Camera.position;
+        // camera.transform.position = pose.Camera.position;
         camera.transform.rotation = pose.Camera.rotation;
         hand.transform.position = pose.Hand.position;
         hand.transform.rotation = pose.Hand.rotation;
 
-        // [ ] ease between the poses
+        // [ ] ease between the positions for the camera
+        if (Vector3.Distance(camera.transform.position, pose.Camera.position) > 0.001f)
+        {
+			var speed = 1f;
+			var step = speed * Time.deltaTime;
+			camera.transform.position = Vector3.MoveTowards(camera.transform.position, pose.Camera.position, step);
+        }
+
+        // ease between the rotations
     }
 }

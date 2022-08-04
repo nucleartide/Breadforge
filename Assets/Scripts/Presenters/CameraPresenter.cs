@@ -69,13 +69,13 @@ public class CameraPresenter : MonoBehaviour
         // Ease between positions for the camera and hand.
         if (Vector3.Distance(camera.transform.position, pose.Camera.position) > 0.001f)
         {
-			var speed = 1f;
+			var speed = 2f;
 			var step = speed * Time.deltaTime;
 			camera.transform.position = Vector3.MoveTowards(camera.transform.position, pose.Camera.position, step);
         }
         if (Vector3.Distance(hand.transform.position, pose.Hand.position) > 0.001f)
         {
-			var speed = 1f;
+			var speed = 2f;
 			var step = speed * Time.deltaTime;
 			hand.transform.position = Vector3.MoveTowards(hand.transform.position, pose.Hand.position, step);
         }
@@ -87,7 +87,7 @@ public class CameraPresenter : MonoBehaviour
             camera.transform.rotation = Quaternion.RotateTowards(camera.transform.rotation, pose.Camera.rotation, step);
 		}
         {
-            var degrees = 90;
+            var degrees = 180;
             var step = degrees * Time.deltaTime; // max 30 degrees per second
             hand.transform.rotation = Quaternion.RotateTowards(hand.transform.rotation, pose.Hand.rotation, step);
 		}

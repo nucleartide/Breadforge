@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class CameraPresenter : MonoBehaviour
+public class GameViewPresenter : MonoBehaviour
 {
     [System.Serializable]
     public class Pose
@@ -58,13 +58,8 @@ public class CameraPresenter : MonoBehaviour
             currentPoseInt = Mathf.Max((int)currentPose - 1, 0);
         currentPose = (PoseState)currentPoseInt;
 
-        // TODO.
         // Update the pose depending on the PoseState.
         var pose = ToPose(currentPose);
-        // camera.transform.position = pose.Camera.position;
-        // camera.transform.rotation = pose.Camera.rotation;
-        // hand.transform.position = pose.Hand.position;
-        // hand.transform.rotation = pose.Hand.rotation;
 
         // Ease between positions for the camera and hand.
         if (Vector3.Distance(camera.transform.position, pose.Camera.position) > 0.001f)

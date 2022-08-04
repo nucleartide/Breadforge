@@ -14,8 +14,6 @@ public class HandPresenter : MonoBehaviour
 
     void Update()
     {
-        transform.LookAt(Camera.transform);
-
         for (var i = 0; i < Cards.Count; i++)
         {
             // Grab card reference.

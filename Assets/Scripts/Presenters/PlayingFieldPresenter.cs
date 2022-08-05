@@ -33,7 +33,8 @@ public class PlayingFieldPresenter : MonoBehaviour
     void Update()
     {
         // TODO: need to position the cards centered on the table,
-        // hint: take into account the padding and widths of cards
+        // hint: take into account the widths of cards, and desired padding,
+        // and use those numbers to lay out the cards in a way that you want
 
         var offset = new Vector3(playingField.OpponentRow.Length * .5f * (.15f + .1f), 0f, 0f);
 

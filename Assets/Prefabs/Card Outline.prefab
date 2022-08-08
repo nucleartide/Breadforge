@@ -676,7 +676,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6925136994155725394}
-  - component: {fileID: 6925136994155725393}
   m_Layer: 0
   m_Name: Card Outline
   m_TagString: Untagged
@@ -701,24 +700,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &6925136994155725393
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6925136994155725398}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 29e518e56e9bf447d8e49e921f204a02, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  <Card>k__BackingField: {fileID: 0}
-  Identifier: e0164d38-caee-4940-8fc1-240aefcd2fa5
-  attackText: {fileID: 6925136993576257411}
-  healthText: {fileID: 6925136993312479287}
-  summonCostText: {fileID: 6925136995108108609}
-  nameText: {fileID: 6925136993683754251}
 --- !u!1 &6925136995108108615
 GameObject:
   m_ObjectHideFlags: 0

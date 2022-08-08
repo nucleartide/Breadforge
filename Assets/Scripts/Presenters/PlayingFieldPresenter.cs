@@ -25,8 +25,8 @@ public class PlayingFieldPresenter : MonoBehaviour
         for (var i = 0; i < 4; i++)
         {
             playingField.OpponentRow[i] = cardFactory.Build(testCard);
-			playingField.PlayerRow[i] = cardFactory.Build(testCard);
-		}
+            playingField.PlayerRow[i] = cardFactory.Build(testCard);
+        }
     }
 
     // update the positions of the cards in the playing Field
@@ -36,27 +36,42 @@ public class PlayingFieldPresenter : MonoBehaviour
         // hint: take into account the widths of cards, and desired padding,
         // and use those numbers to lay out the cards in a way that you want
 
-        var offset = new Vector3(playingField.OpponentRow.Length * .5f * (.15f + .1f), 0f, 0f);
+        // Gutter: .02
+
+        var CARD_WIDTH = .1f;
+        var CARD_HEIGHT = .2f;
+        var GUTTER = .04f;
+        var CENTER_X = (CARD_WIDTH + GUTTER) * .5f;
 
         for (var i = 0; i < playingField.OpponentRow.Length; i++)
         {
-            var card = playingField.OpponentRow[i];
-            if (card != null)
-            { 
-			    card.transform.position = transform.position + new Vector3(i * .15f, 0f, -.13f) - offset;
-                card.transform.rotation = Orientation.FACE_UP;
-		    }
-		}
+            {
+                var card = playingField.OpponentRow[i];
+                if (card != null)
+                {
+                    // could be 2, could be 2.5
+                    var HALF_CARDS = playingField.OpponentRow.Length * .5f;
+                    var INITIAL_X = CENTER_X - (HALF_CARDS * CARD_WIDTH + GUTTER * Mathf.Floor(HALF_CARDS));
+                    var FINAL_X = INITIAL_X + (CARD_WIDTH + GUTTER) * i;
+                    var z = (GUTTER + CARD_HEIGHT) * .5f;
+                    card.transform.position = transform.position + new Vector3(FINAL_X, 0f, z);
+                    card.transform.rotation = Orientation.FACE_UP;
+                }
+            }
 
-        for (var i = 0; i < playingField.PlayerRow.Length; i++)
-        { 
-            var card = playingField.PlayerRow[i];
-            if (card != null)
-            { 
-			    card.transform.position = transform.position + new Vector3(i * .15f, 0f, .13f) - offset;
-                card.transform.rotation = Orientation.FACE_UP;
-		    }
-		}
+            {
+                var card = playingField.PlayerRow[i];
+                if (card != null)
+                {
+                    var HALF_CARDS = playingField.OpponentRow.Length * .5f;
+                    var INITIAL_X = CENTER_X - (HALF_CARDS * CARD_WIDTH + GUTTER * Mathf.Floor(HALF_CARDS));
+                    var FINAL_X = INITIAL_X + (CARD_WIDTH + GUTTER) * i;
+                    var z = (GUTTER + CARD_HEIGHT) * .5f * -1f;
+                    card.transform.position = transform.position + new Vector3(FINAL_X, 0f, z);
+                    card.transform.rotation = Quaternion.AngleAxis(180f, Vector3.up) * Orientation.FACE_UP;
+                }
+            }
+        }
     }
 
     // [ ] need a play action on the handpresenter, which moves cards from handpresenter to playingfieldpresenter

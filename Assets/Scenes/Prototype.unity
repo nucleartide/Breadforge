@@ -1347,6 +1347,7 @@ MonoBehaviour:
   playingField: {fileID: 11400000, guid: 5309e365e11b040a5ad44cb77fe72442, type: 2}
   cardFactory: {fileID: 1561958627}
   testCard: {fileID: 11400000, guid: 3168c9ac8b9b3408589c12bb3712af06, type: 2}
+  cardOutline: {fileID: 6925136994155725394, guid: 6d43d7eb4b28d4b5b893e86128a7972b, type: 3}
 --- !u!1 &1501600621
 GameObject:
   m_ObjectHideFlags: 0

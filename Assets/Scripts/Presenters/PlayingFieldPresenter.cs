@@ -14,18 +14,28 @@ public class PlayingFieldPresenter : MonoBehaviour
     [NotNull]
     Card testCard;
 
+    [SerializeField]
+    [NotNull]
+    Transform cardOutline;
+
+    Transform[] opponentRowCardOutlines = new Transform[4];
+    Transform[] playerRowCardOutlines = new Transform[4];
+
     void Start()
     {
         // Instantiate 2 cards, and place them in random locations in the opponent row and player row
-        var card1 = cardFactory.Build(testCard);
-        var card2 = cardFactory.Build(testCard);
-        Debug.Log("instantiated 2 cards");
+        // var card1 = cardFactory.Build(testCard);
+        // var card2 = cardFactory.Build(testCard);
+        // Debug.Log("instantiated 2 cards");
 
         // place card 1 in a random location in opponent row
         for (var i = 0; i < 4; i++)
         {
             playingField.OpponentRow[i] = cardFactory.Build(testCard);
             playingField.PlayerRow[i] = cardFactory.Build(testCard);
+
+            opponentRowCardOutlines[i] = Instantiate(cardOutline);
+            playerRowCardOutlines[i] = Instantiate(cardOutline);
         }
     }
 
@@ -46,7 +56,8 @@ public class PlayingFieldPresenter : MonoBehaviour
         for (var i = 0; i < playingField.OpponentRow.Length; i++)
         {
             {
-                var card = playingField.OpponentRow[i];
+                // var card = playingField.OpponentRow[i];
+                var card = opponentRowCardOutlines[i];
                 if (card != null)
                 {
                     // could be 2, could be 2.5
@@ -60,7 +71,8 @@ public class PlayingFieldPresenter : MonoBehaviour
             }
 
             {
-                var card = playingField.PlayerRow[i];
+                // var card = playingField.PlayerRow[i];
+                var card = playerRowCardOutlines[i];
                 if (card != null)
                 {
                     var HALF_CARDS = playingField.OpponentRow.Length * .5f;

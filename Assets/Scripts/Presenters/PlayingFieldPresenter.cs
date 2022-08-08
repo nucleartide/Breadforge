@@ -74,6 +74,6 @@ public class PlayingFieldPresenter : MonoBehaviour
         }
     }
 
+    // [ ] draw card outlines instead of cards
     // [ ] need a play action on the handpresenter, which moves cards from handpresenter to playingfieldpresenter
-    // [ ] draw card outlines
 }

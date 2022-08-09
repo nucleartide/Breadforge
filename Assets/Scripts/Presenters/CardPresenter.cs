@@ -2,7 +2,7 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using TMPro;
 
-public class CardPresenter : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
+public class CardPresenter : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IPointerClickHandler
 {
     [field: SerializeField]
     public Card Card
@@ -30,6 +30,8 @@ public class CardPresenter : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
     [NotNull]
     GameObject glow;
 
+    public GameViewPresenter GameViewPresenter;
+
     void Update()
     {
         attackText.text = "ATK: " + Card.Attack.ToString();
@@ -46,5 +48,20 @@ public class CardPresenter : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
     public void OnPointerExit(PointerEventData eventData)
     {
         glow.SetActive(false);
+    }
+
+    public void OnPointerClick(PointerEventData eventData)
+    {
+        PlayCard();
+    }
+
+    void PlayCard()
+    {
+        if (GameViewPresenter == null)
+        { 
+            throw new System.Exception("it's not working");
+		}
+        GameViewPresenter.CurrentPose = GameViewPresenter.PoseState.ObservePlayingField;
+        // [ ] maintain that this card was clicked (store in a piece of state)
     }
 }

@@ -6,19 +6,24 @@ using UnityEngine;
 public class CardFactory : MonoBehaviour
 {
     [SerializeField]
+    [NotNull]
     CardPresenter cardPrefab;
 
-    public CardPresenter Build(Card card)
-    {
-        var cardPresenter = Instantiate(cardPrefab);
-        cardPresenter.Card = card;
-        return cardPresenter;
-    }
+    [SerializeField]
+    [NotNull]
+    GameViewPresenter gameViewPresenter;
 
+    public CardPresenter Build(Card card) => Build(card, Vector3.zero, Quaternion.identity);
     public CardPresenter Build(Card card, Vector3 position, Quaternion rotation)
     {
         var cardPresenter = Instantiate(cardPrefab, position, rotation);
         cardPresenter.Card = card;
+        if (gameViewPresenter == null)
+        {
+            throw new System.Exception("it's not working");
+		}
+        cardPresenter.GameViewPresenter = gameViewPresenter;
+        Debug.Log(cardPresenter.GameViewPresenter);
         return cardPresenter;
     }
 }

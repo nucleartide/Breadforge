@@ -9,6 +9,10 @@ public class DeckPresenter : MonoBehaviour, IPointerDownHandler
     public HandPresenter HandPresenter;
     public Camera Camera;
 
+    [SerializeField]
+    [NotNull]
+    CardFactory cardFactory;
+
     List<CardPresenter> cards;
     readonly Quaternion FACE_DOWN = Quaternion.AngleAxis(90, Vector3.right);
 
@@ -22,7 +26,7 @@ public class DeckPresenter : MonoBehaviour, IPointerDownHandler
         HandPresenter.Cards.Add(lastCard);
     }
 
-    static List<CardPresenter> InitializeCards(Deck deck, CardPresenter cardPrefab)
+    List<CardPresenter> InitializeCards(Deck deck, CardPresenter cardPrefab)
     { 
         var cards = new List<CardPresenter>();
 
@@ -32,8 +36,7 @@ public class DeckPresenter : MonoBehaviour, IPointerDownHandler
 
             for (var j = 0; j < currentCard.Count; j++)
             {
-                var card = Instantiate(cardPrefab);
-                card.Card = currentCard.Card;
+                var card = cardFactory.Build(currentCard.Card);
                 cards.Add(card);
             }
         }

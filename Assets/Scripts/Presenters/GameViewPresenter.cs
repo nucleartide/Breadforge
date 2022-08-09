@@ -31,7 +31,7 @@ public class GameViewPresenter : MonoBehaviour
     [SerializeField]
     Transform hand;
 
-    enum PoseState
+    public enum PoseState
     {
         ObserveHand,
         Neutral,
@@ -39,6 +39,12 @@ public class GameViewPresenter : MonoBehaviour
     }
 
     PoseState currentPose = PoseState.Neutral;
+
+    public PoseState CurrentPose
+    {
+        get { return currentPose; }
+        set { currentPose = value; }
+    }
 
     Pose ToPose(PoseState poseState) => poseState switch
     {

@@ -32,6 +32,10 @@ public class CardPresenter : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
 
     public GameViewPresenter GameViewPresenter;
 
+    [SerializeField]
+    [NotNull]
+    CurrentlySelectedCard currentlySelectedCard;
+
     void Update()
     {
         attackText.text = "ATK: " + Card.Attack.ToString();
@@ -57,11 +61,13 @@ public class CardPresenter : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
 
     void PlayCard()
     {
-        if (GameViewPresenter == null)
-        { 
-            throw new System.Exception("it's not working");
-		}
+        // Zoom into the playing field.
         GameViewPresenter.CurrentPose = GameViewPresenter.PoseState.ObservePlayingField;
-        // [ ] maintain that this card was clicked (store in a piece of state)
+
+        // Maintain the currently selected card.
+        currentlySelectedCard.Card = this;
+        Debug.Log("set the currently selected card.");
+
+        // TODO: need to update the cardfactory and pass in the CurrentlySelectedCard state for CardPresenter
     }
 }

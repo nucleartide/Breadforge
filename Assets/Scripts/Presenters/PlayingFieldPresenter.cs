@@ -88,15 +88,16 @@ public class PlayingFieldPresenter : MonoBehaviour
 
     // [x] draw card outlines instead of cards
     // [x] sacrifices are not needed at this point in the game
-    // [ ] need a play action on the handpresenter, which moves cards from handpresenter to playingfieldpresenter
-    //     [ ] detect clicks on individual cards
-    //     [ ] when a card is clicked,
-    //     [ ]   switch to the playing field only view
+    // [x] need a play action on the handpresenter, which moves cards from handpresenter to playingfieldpresenter
+    //     [x] detect clicks on individual cards
+    //     [x] when a card is clicked,
+    //     [x]   switch to the playing field only view
+    // [x] juice: when hovering over a card, the card should animate in a zoomed-in fashion
+    // [x] need a play action on the handpresenter, which moves cards from handpresenter to playingfieldpresenter
+
     // [ ] when the player is in a place card mode,
-    //     [ ] allow the player to hover over a playing field position
+    //     [ ] highlight card positions when player hovers over
     //     [ ] clicking on an empty spot will play the card at that point
-    //     [ ] allow the player to cancel out of place card mode (review game playthrough)
-    // out of scope:
-    // [ ] juice: when hovering over a card, the card should animate in a zoomed-in fashion
-    // [ ] need a play action on the handpresenter, which moves cards from handpresenter to playingfieldpresenter
+    //     [ ] clicking an empty spot will clear the currently selected card, remove from hand, and set on the playing field
+    //     [ ] allow the player to cancel out of place card mode - it seems you just press S
 }

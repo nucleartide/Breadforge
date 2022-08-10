@@ -21,6 +21,9 @@ public class PlayingFieldPresenter : MonoBehaviour
     Transform[] opponentRowCardOutlines = new Transform[4];
     Transform[] playerRowCardOutlines = new Transform[4];
 
+    [SerializeField]
+    CurrentlySelectedCard currentlySelectedCard;
+
     void Start()
     {
         // Instantiate 2 cards, and place them in random locations in the opponent row and player row
@@ -84,6 +87,23 @@ public class PlayingFieldPresenter : MonoBehaviour
                 }
             }
         }
+
+        HandleCardPlacements();
+    }
+
+    bool CanPlaceCard
+    { 
+        get
+        {
+            return currentlySelectedCard.Card != null;
+		}
+    }
+
+    void HandleCardPlacements()
+    {
+        throw new System.NotImplementedException("not implemented");
+        if (!CanPlaceCard)
+            return;
     }
 
     // [x] draw card outlines instead of cards
@@ -95,8 +115,8 @@ public class PlayingFieldPresenter : MonoBehaviour
     // [x] juice: when hovering over a card, the card should animate in a zoomed-in fashion
     // [x] need a play action on the handpresenter, which moves cards from handpresenter to playingfieldpresenter
 
-    // [ ] when the player is in a place card mode,
-    //     [ ] highlight card positions when player hovers over
+    // [x] when the player CanPlaceCard,
+    //     [ ] highlight card positions when player hovers over - need a CardOutlinePresenter
     //     [ ] clicking on an empty spot will play the card at that point
     //     [ ] clicking an empty spot will clear the currently selected card, remove from hand, and set on the playing field
     //     [ ] allow the player to cancel out of place card mode - it seems you just press S

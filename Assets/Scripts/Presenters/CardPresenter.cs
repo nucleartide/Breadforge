@@ -32,9 +32,12 @@ public class CardPresenter : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
 
     public GameViewPresenter GameViewPresenter;
 
-    [SerializeField]
-    [NotNull]
-    CurrentlySelectedCard currentlySelectedCard;
+    [field: SerializeField]
+    public CurrentlySelectedCard CurrentlySelectedCard
+    {
+        private get;
+        set;
+    }
 
     void Update()
     {
@@ -65,9 +68,7 @@ public class CardPresenter : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
         GameViewPresenter.CurrentPose = GameViewPresenter.PoseState.ObservePlayingField;
 
         // Maintain the currently selected card.
-        currentlySelectedCard.Card = this;
-        Debug.Log("set the currently selected card.");
-
-        // TODO: need to update the cardfactory and pass in the CurrentlySelectedCard state for CardPresenter
+        CurrentlySelectedCard.Card = this;
+        Debug.Log($"Set currently selected card to {CurrentlySelectedCard.Card.Card.Name}");
     }
 }

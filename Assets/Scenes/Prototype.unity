@@ -1442,6 +1442,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cardPrefab: {fileID: 6925136994155725393, guid: 166c60ef1f8b34ef0804115af7450232, type: 3}
   gameViewPresenter: {fileID: 963194230}
+  currentlySelectedCard: {fileID: 11400000, guid: 5df46fdeada0b4ff1bb02db5a3d417fe, type: 2}
 --- !u!1 &1654789744
 GameObject:
   m_ObjectHideFlags: 0

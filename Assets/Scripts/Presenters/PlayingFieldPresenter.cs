@@ -25,6 +25,10 @@ public class PlayingFieldPresenter : MonoBehaviour
     [NotNull]
     CurrentlySelectedCard currentlySelectedCard;
 
+    [SerializeField]
+    [NotNull]
+    HandPresenter handPresenter;
+
     void Start()
     {
         // Instantiate 2 cards, and place them in random locations in the opponent row and player row
@@ -41,9 +45,13 @@ public class PlayingFieldPresenter : MonoBehaviour
             opponentRowCardOutlines[i] = Instantiate(cardOutline);
             opponentRowCardOutlines[i].CurrentlySelectedCard = currentlySelectedCard;
             opponentRowCardOutlines[i].cardOutlineType = CardOutlinePresenter.CardOutlineType.Enemy;
+            opponentRowCardOutlines[i].handPresenter = handPresenter;
+            opponentRowCardOutlines[i].playingFieldPresenter = this;
             playerRowCardOutlines[i] = Instantiate(cardOutline);
             playerRowCardOutlines[i].CurrentlySelectedCard = currentlySelectedCard;
             playerRowCardOutlines[i].cardOutlineType = CardOutlinePresenter.CardOutlineType.Player;
+            playerRowCardOutlines[i].handPresenter = handPresenter;
+            playerRowCardOutlines[i].playingFieldPresenter = this;
         }
     }
 
@@ -121,8 +129,8 @@ public class PlayingFieldPresenter : MonoBehaviour
     // [x] need a play action on the handpresenter, which moves cards from handpresenter to playingfieldpresenter
 
     // [x] when the player CanPlaceCard,
-    //     [ ] highlight card positions when player hovers over - need a CardOutlinePresenter
-    //     [ ] clicking on an empty spot will play the card at that point
+    //     [x] highlight card positions when player hovers over - need a CardOutlinePresenter
+    //     [x] clicking on an empty spot will play the card at that point
     //     [ ] clicking an empty spot will clear the currently selected card, remove from hand, and set on the playing field
     //     [ ] allow the player to cancel out of place card mode - it seems you just press S
 }

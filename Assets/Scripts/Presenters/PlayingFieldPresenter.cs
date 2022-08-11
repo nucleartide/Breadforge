@@ -40,8 +40,10 @@ public class PlayingFieldPresenter : MonoBehaviour
 
             opponentRowCardOutlines[i] = Instantiate(cardOutline);
             opponentRowCardOutlines[i].CurrentlySelectedCard = currentlySelectedCard;
+            opponentRowCardOutlines[i].cardOutlineType = CardOutlinePresenter.CardOutlineType.Enemy;
             playerRowCardOutlines[i] = Instantiate(cardOutline);
             playerRowCardOutlines[i].CurrentlySelectedCard = currentlySelectedCard;
+            playerRowCardOutlines[i].cardOutlineType = CardOutlinePresenter.CardOutlineType.Player;
         }
     }
 

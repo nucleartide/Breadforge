@@ -15,15 +15,27 @@ public class CardOutlinePresenter : MonoBehaviour, IPointerEnterHandler, IPointe
         set;
 	}
 
+    public enum CardOutlineType
+    { 
+        Player,
+        Enemy,
+    }
+
+    public CardOutlineType cardOutlineType
+    {
+        get;
+        set;
+    }
+
     public void OnPointerEnter(PointerEventData eventData)
     {
-        if (CurrentlySelectedCard.Card != null)
+        if (CurrentlySelectedCard.Card != null && cardOutlineType == CardOutlineType.Player)
 			glow.SetActive(true);
     }
 
     public void OnPointerExit(PointerEventData eventData)
     {
-        if (CurrentlySelectedCard.Card != null)
+        if (CurrentlySelectedCard.Card != null && cardOutlineType == CardOutlineType.Player)
 			glow.SetActive(false);
     }
 }

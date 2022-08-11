@@ -22,6 +22,7 @@ public class PlayingFieldPresenter : MonoBehaviour
     Transform[] playerRowCardOutlines = new Transform[4];
 
     [SerializeField]
+    [NotNull]
     CurrentlySelectedCard currentlySelectedCard;
 
     void Start()
@@ -101,7 +102,7 @@ public class PlayingFieldPresenter : MonoBehaviour
 
     void HandleCardPlacements()
     {
-        throw new System.NotImplementedException("not implemented");
+        // throw new System.NotImplementedException("not implemented");
         if (!CanPlaceCard)
             return;
     }

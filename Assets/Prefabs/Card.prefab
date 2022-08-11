@@ -92,6 +92,7 @@ GameObject:
   - component: {fileID: 6370447559237365822}
   - component: {fileID: 230256541385615443}
   - component: {fileID: 8477763604147250499}
+  - component: {fileID: 1235772800466409189}
   m_Layer: 0
   m_Name: Front Side
   m_TagString: Untagged
@@ -162,6 +163,20 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!64 &1235772800466409189
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3643123047094521813}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 10210, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!1 &4568572114049349910
 GameObject:
   m_ObjectHideFlags: 0
@@ -802,6 +817,8 @@ MonoBehaviour:
   summonCostText: {fileID: 6925136995108108609}
   nameText: {fileID: 6925136993683754251}
   glow: {fileID: 2623761050690127023}
+  GameViewPresenter: {fileID: 0}
+  <CurrentlySelectedCard>k__BackingField: {fileID: 0}
 --- !u!1 &6925136995108108615
 GameObject:
   m_ObjectHideFlags: 0

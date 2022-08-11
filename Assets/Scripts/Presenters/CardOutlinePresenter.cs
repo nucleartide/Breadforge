@@ -8,13 +8,22 @@ public class CardOutlinePresenter : MonoBehaviour, IPointerEnterHandler, IPointe
     [Tooltip("When enabled, makes it appear as if the card outline has a glow.")]
     GameObject glow;
 
+    [field: SerializeField]
+    public CurrentlySelectedCard CurrentlySelectedCard
+    {
+        get;
+        set;
+	}
+
     public void OnPointerEnter(PointerEventData eventData)
     {
-        glow.SetActive(true);
+        if (CurrentlySelectedCard.Card != null)
+			glow.SetActive(true);
     }
 
     public void OnPointerExit(PointerEventData eventData)
     {
-        glow.SetActive(false);
+        if (CurrentlySelectedCard.Card != null)
+			glow.SetActive(false);
     }
 }

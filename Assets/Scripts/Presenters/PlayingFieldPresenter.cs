@@ -16,10 +16,10 @@ public class PlayingFieldPresenter : MonoBehaviour
 
     [SerializeField]
     [NotNull]
-    Transform cardOutline;
+    CardOutlinePresenter cardOutline;
 
-    Transform[] opponentRowCardOutlines = new Transform[4];
-    Transform[] playerRowCardOutlines = new Transform[4];
+    CardOutlinePresenter[] opponentRowCardOutlines = new CardOutlinePresenter[4];
+    CardOutlinePresenter[] playerRowCardOutlines = new CardOutlinePresenter[4];
 
     [SerializeField]
     [NotNull]
@@ -39,7 +39,9 @@ public class PlayingFieldPresenter : MonoBehaviour
             // playingField.PlayerRow[i] = cardFactory.Build(testCard);
 
             opponentRowCardOutlines[i] = Instantiate(cardOutline);
+            opponentRowCardOutlines[i].CurrentlySelectedCard = currentlySelectedCard;
             playerRowCardOutlines[i] = Instantiate(cardOutline);
+            playerRowCardOutlines[i].CurrentlySelectedCard = currentlySelectedCard;
         }
     }
 

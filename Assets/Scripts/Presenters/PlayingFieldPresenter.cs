@@ -55,16 +55,16 @@ public class PlayingFieldPresenter : MonoBehaviour
 
             opponentRowCardOutlines[i] = Instantiate(cardOutline);
             opponentRowCardOutlines[i].CurrentlySelectedCard = currentlySelectedCard;
-            opponentRowCardOutlines[i].cardOutlineType = CardOutlinePresenter.CardOutlineType.Enemy;
-            opponentRowCardOutlines[i].handPresenter = handPresenter;
-            opponentRowCardOutlines[i].playingFieldPresenter = this;
-            opponentRowCardOutlines[i].gameViewPresenter = gameViewPresenter;
+            opponentRowCardOutlines[i].PlayingSide = CardOutlinePresenter.PlayingSide.Enemy;
+            opponentRowCardOutlines[i].HandPresenter = handPresenter;
+            opponentRowCardOutlines[i].PlayingFieldPresenter = this;
+            opponentRowCardOutlines[i].GameViewPresenter = gameViewPresenter;
             playerRowCardOutlines[i] = Instantiate(cardOutline);
             playerRowCardOutlines[i].CurrentlySelectedCard = currentlySelectedCard;
-            playerRowCardOutlines[i].cardOutlineType = CardOutlinePresenter.CardOutlineType.Player;
-            playerRowCardOutlines[i].handPresenter = handPresenter;
-            playerRowCardOutlines[i].playingFieldPresenter = this;
-            playerRowCardOutlines[i].gameViewPresenter = gameViewPresenter;
+            playerRowCardOutlines[i].PlayingSide = CardOutlinePresenter.PlayingSide.Player;
+            playerRowCardOutlines[i].HandPresenter = handPresenter;
+            playerRowCardOutlines[i].PlayingFieldPresenter = this;
+            playerRowCardOutlines[i].GameViewPresenter = gameViewPresenter;
         }
     }
 

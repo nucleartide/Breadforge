@@ -15,31 +15,31 @@ public class CardOutlinePresenter : MonoBehaviour, IPointerEnterHandler, IPointe
         set;
 	}
 
-    public enum CardOutlineType
+    public enum PlayerSide
     { 
         Player,
         Enemy,
     }
 
-    public CardOutlineType cardOutlineType
+    public PlayerSide PlayingSide
     {
         get;
         set;
     }
 
-    public HandPresenter handPresenter
+    public HandPresenter HandPresenter
     {
         get;
         set;
     }    
 
-    public PlayingFieldPresenter playingFieldPresenter
+    public PlayingFieldPresenter PlayingFieldPresenter
     {
         get;
         set;
     }
 
-    public GameViewPresenter gameViewPresenter
+    public GameViewPresenter GameViewPresenter
     {
         get;
         set;
@@ -47,13 +47,13 @@ public class CardOutlinePresenter : MonoBehaviour, IPointerEnterHandler, IPointe
 
     public void OnPointerEnter(PointerEventData eventData)
     {
-        if (CurrentlySelectedCard.Card != null && cardOutlineType == CardOutlineType.Player)
+        if (CurrentlySelectedCard.Card != null && PlayingSide == PlayerSide.Player)
 			glow.SetActive(true);
     }
 
     public void OnPointerExit(PointerEventData eventData)
     {
-        if (CurrentlySelectedCard.Card != null && cardOutlineType == CardOutlineType.Player)
+        if (CurrentlySelectedCard.Card != null && PlayingSide == PlayerSide.Player)
 			glow.SetActive(false);
     }
 
@@ -72,18 +72,18 @@ public class CardOutlinePresenter : MonoBehaviour, IPointerEnterHandler, IPointe
         // [x] pass in hand dependency
 
         // remove from hand,
-        var wasRemoved = handPresenter.Cards.Remove(card);
+        var wasRemoved = HandPresenter.Cards.Remove(card);
         if (!wasRemoved)
             Debug.Log("card wasn't removed, something is wrong");
         else
             Debug.Log("card was removed");
 
         // pass in playing field dependency
-        if (playingFieldPresenter == null)
+        if (PlayingFieldPresenter == null)
             throw new System.Exception("playing field is null");
 
         // and set on the playing field
-        playingFieldPresenter.SetCard(this, card);
+        PlayingFieldPresenter.SetCard(this, card);
 
         // the playing field should update the positions
         // ...
@@ -92,6 +92,6 @@ public class CardOutlinePresenter : MonoBehaviour, IPointerEnterHandler, IPointe
         glow.SetActive(false);
 
         // finally, switch back the game view
-        gameViewPresenter.CurrentPose = GameViewPresenter.PoseState.Neutral;
+        GameViewPresenter.CurrentPose = GameViewPresenter.PoseState.Neutral;
     }
 }

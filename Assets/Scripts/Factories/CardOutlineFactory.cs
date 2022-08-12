@@ -1,18 +1,36 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class CardOutlineFactory : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    [SerializeField]
+    [NotNull]
+    CardOutlinePresenter cardOutlinePrefab;
 
-    // Update is called once per frame
-    void Update()
+    [SerializeField]
+    [NotNull]
+    PlayingFieldPresenter playingFieldPresenter;
+
+    [SerializeField]
+    [NotNull]
+    CurrentlySelectedCard currentlySelectedCard;
+
+    [SerializeField]
+    [NotNull]
+    HandPresenter handPresenter;
+
+    [SerializeField]
+    [NotNull]
+    GameViewPresenter gameViewPresenter;
+
+    public CardOutlinePresenter Build() => Build(Vector3.zero, Quaternion.identity);
+    public CardOutlinePresenter Build(Vector3 position, Quaternion rotation)
     {
-        
+        var o = Instantiate(cardOutlinePrefab, position, rotation);
+        o.PlayingSide = CardOutlinePresenter.PlayerSide.Player;
+        o.CurrentlySelectedCard = currentlySelectedCard;
+        o.PlayingFieldPresenter = playingFieldPresenter;
+        o.HandPresenter = handPresenter;
+        o.GameViewPresenter = gameViewPresenter;
+        return o;
     }
 }

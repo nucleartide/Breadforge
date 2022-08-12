@@ -39,6 +39,12 @@ public class CardOutlinePresenter : MonoBehaviour, IPointerEnterHandler, IPointe
         set;
     }
 
+    public GameViewPresenter gameViewPresenter
+    {
+        get;
+        set;
+    }
+
     public void OnPointerEnter(PointerEventData eventData)
     {
         if (CurrentlySelectedCard.Card != null && cardOutlineType == CardOutlineType.Player)
@@ -76,10 +82,16 @@ public class CardOutlinePresenter : MonoBehaviour, IPointerEnterHandler, IPointe
         if (playingFieldPresenter == null)
             throw new System.Exception("playing field is null");
 
-	    // and set on the playing field
-        // ...
+        // and set on the playing field
+        playingFieldPresenter.SetCard(this, card);
 
         // the playing field should update the positions
         // ...
+
+        // also, unset the glow
+        glow.SetActive(false);
+
+        // finally, switch back the game view
+        gameViewPresenter.CurrentPose = GameViewPresenter.PoseState.Neutral;
     }
 }

@@ -39,6 +39,12 @@ public class CardPresenter : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
         set;
     }
 
+    public PlayingFieldPresenter PlayingFieldPresenter
+    {
+        get;
+        set;
+    }
+
     void Update()
     {
         attackText.text = "ATK: " + Card.Attack.ToString();
@@ -49,7 +55,8 @@ public class CardPresenter : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
 
     public void OnPointerEnter(PointerEventData eventData)
     {
-        glow.SetActive(true);
+        if (!PlayingFieldPresenter.IsPlayingCardOnField(this))
+			glow.SetActive(true);
     }
 
     public void OnPointerExit(PointerEventData eventData)

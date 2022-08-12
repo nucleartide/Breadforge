@@ -17,6 +17,10 @@ public class CardFactory : MonoBehaviour
     [NotNull]
     CurrentlySelectedCard currentlySelectedCard;
 
+    [SerializeField]
+    [NotNull]
+    PlayingFieldPresenter playingFieldPresenter;
+
     public CardPresenter Build(Card card) => Build(card, Vector3.zero, Quaternion.identity);
     public CardPresenter Build(Card card, Vector3 position, Quaternion rotation)
     {
@@ -24,6 +28,7 @@ public class CardFactory : MonoBehaviour
         cardPresenter.Card = card;
         cardPresenter.GameViewPresenter = gameViewPresenter;
         cardPresenter.CurrentlySelectedCard = currentlySelectedCard;
+        cardPresenter.PlayingFieldPresenter = playingFieldPresenter;
         return cardPresenter;
     }
 }

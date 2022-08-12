@@ -1,4 +1,5 @@
 using UnityEngine;
+using System.Collections.Generic;
 
 public class PlayingFieldPresenter : MonoBehaviour
 {
@@ -20,6 +21,12 @@ public class PlayingFieldPresenter : MonoBehaviour
 
     CardOutlinePresenter[] opponentRowCardOutlines = new CardOutlinePresenter[4];
     CardOutlinePresenter[] playerRowCardOutlines = new CardOutlinePresenter[4];
+    public CardPresenter[] playedCards = new CardPresenter[4];
+
+    public bool IsPlayingCardOnField(CardPresenter cardPresenter)
+    {
+        return (new List<CardPresenter>(playedCards)).Contains(cardPresenter);
+    }
 
     [SerializeField]
     [NotNull]
@@ -28,6 +35,10 @@ public class PlayingFieldPresenter : MonoBehaviour
     [SerializeField]
     [NotNull]
     HandPresenter handPresenter;
+
+    [SerializeField]
+    [NotNull]
+    GameViewPresenter gameViewPresenter;
 
     void Start()
     {
@@ -47,12 +58,32 @@ public class PlayingFieldPresenter : MonoBehaviour
             opponentRowCardOutlines[i].cardOutlineType = CardOutlinePresenter.CardOutlineType.Enemy;
             opponentRowCardOutlines[i].handPresenter = handPresenter;
             opponentRowCardOutlines[i].playingFieldPresenter = this;
+            opponentRowCardOutlines[i].gameViewPresenter = gameViewPresenter;
             playerRowCardOutlines[i] = Instantiate(cardOutline);
             playerRowCardOutlines[i].CurrentlySelectedCard = currentlySelectedCard;
             playerRowCardOutlines[i].cardOutlineType = CardOutlinePresenter.CardOutlineType.Player;
             playerRowCardOutlines[i].handPresenter = handPresenter;
             playerRowCardOutlines[i].playingFieldPresenter = this;
+            playerRowCardOutlines[i].gameViewPresenter = gameViewPresenter;
         }
+    }
+
+    /// <summary>
+    /// Set a cardPresenter to the position of the cardOutlinePresenter.
+    /// </summary>
+    public void SetCard(CardOutlinePresenter cardOutlinePresenter, CardPresenter cardPresenter)
+    {
+        // find the index of the cardoutlinepresenter
+        var outlines = new List<CardOutlinePresenter>(playerRowCardOutlines);
+        var index = outlines.FindIndex(thing => thing == cardOutlinePresenter);
+        if (index == -1)
+            throw new System.Exception("Card outline presenter was not found, this shouldn't happen");
+
+        // set cardpresenter at the right index of the internal row of cardpresenters
+        playedCards[index] = cardPresenter;
+
+        // update position - done
+        // ...
     }
 
     // update the positions of the cards in the playing Field
@@ -99,17 +130,33 @@ public class PlayingFieldPresenter : MonoBehaviour
                     card.transform.rotation = Quaternion.AngleAxis(180f, Vector3.up) * Orientation.FACE_UP;
                 }
             }
+
+            {
+                // var card = playingField.OpponentRow[i];
+                var card = playedCards[i];
+                if (card != null)
+                {
+                    // could be 2, could be 2.5
+                    var HALF_CARDS = playingField.OpponentRow.Length * .5f;
+                    var INITIAL_X = CENTER_X - (HALF_CARDS * CARD_WIDTH + GUTTER * Mathf.Floor(HALF_CARDS));
+                    var FINAL_X = INITIAL_X + (CARD_WIDTH + GUTTER) * i;
+                    var z = (GUTTER + CARD_HEIGHT) * .5f * -1f;
+                    card.transform.position = transform.position + new Vector3(FINAL_X, .01f, z);
+                    // card.transform.rotation = Orientation.FACE_UP;
+                    card.transform.rotation = Quaternion.AngleAxis(180f, Vector3.up) * Orientation.FACE_UP;
+                }
+            }
         }
 
         HandleCardPlacements();
     }
 
     bool CanPlaceCard
-    { 
+    {
         get
         {
             return currentlySelectedCard.Card != null;
-		}
+        }
     }
 
     void HandleCardPlacements()

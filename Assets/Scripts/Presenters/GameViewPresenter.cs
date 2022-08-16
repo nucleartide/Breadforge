@@ -38,12 +38,12 @@ public class GameViewPresenter : MonoBehaviour
         ObservePlayingField,
     }
 
-    PoseState currentPose = PoseState.Neutral;
+    PoseState _currentPose = PoseState.Neutral;
 
     public PoseState CurrentPose
     {
-        get { return currentPose; }
-        set { currentPose = value; }
+        get { return _currentPose; }
+        set { _currentPose = value; }
     }
 
     Pose ToPose(PoseState poseState) => poseState switch
@@ -57,15 +57,15 @@ public class GameViewPresenter : MonoBehaviour
     void Update()
     {
         // Update current pose.
-        var currentPoseInt = (int)currentPose;
+        var currentPoseInt = (int)_currentPose;
         if (Input.GetKeyDown(KeyCode.W))
-            currentPoseInt = Mathf.Min((int)currentPose + 1, (int)PoseState.ObservePlayingField);
+            currentPoseInt = Mathf.Min((int)_currentPose + 1, (int)PoseState.ObservePlayingField);
         else if (Input.GetKeyDown(KeyCode.S))
-            currentPoseInt = Mathf.Max((int)currentPose - 1, 0);
-        currentPose = (PoseState)currentPoseInt;
+            currentPoseInt = Mathf.Max((int)_currentPose - 1, 0);
+        _currentPose = (PoseState)currentPoseInt;
 
         // Update the pose depending on the PoseState.
-        var pose = ToPose(currentPose);
+        var pose = ToPose(_currentPose);
 
         // Ease between positions for the camera and hand.
         if (Vector3.Distance(camera.transform.position, pose.Camera.position) > 0.001f)

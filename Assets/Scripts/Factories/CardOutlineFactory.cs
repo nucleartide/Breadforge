@@ -26,8 +26,8 @@ public class CardOutlineFactory : MonoBehaviour
     public CardOutlinePresenter Build(Vector3 position, Quaternion rotation)
     {
         var o = Instantiate(cardOutlinePrefab, position, rotation);
-        o.PlayingSide = CardOutlinePresenter.PlayerSide.Player;
-        o.CurrentlySelectedCard = currentlySelectedCard;
+        o.PlayerSide = CardOutlinePresenter.Side.Player;
+        o.SelectedCard = currentlySelectedCard;
         o.PlayingFieldPresenter = playingFieldPresenter;
         o.HandPresenter = handPresenter;
         o.GameViewPresenter = gameViewPresenter;

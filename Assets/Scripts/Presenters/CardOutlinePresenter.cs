@@ -9,19 +9,19 @@ public class CardOutlinePresenter : MonoBehaviour, IPointerEnterHandler, IPointe
     GameObject glow;
 
     [field: SerializeField]
-    public CurrentlySelectedCard CurrentlySelectedCard
+    public CurrentlySelectedCard SelectedCard
     {
         get;
         set;
-	}
+    }
 
-    public enum PlayerSide
-    { 
+    public enum Side
+    {
         Player,
         Enemy,
     }
 
-    public PlayerSide PlayingSide
+    public Side PlayerSide
     {
         get;
         set;
@@ -31,7 +31,7 @@ public class CardOutlinePresenter : MonoBehaviour, IPointerEnterHandler, IPointe
     {
         get;
         set;
-    }    
+    }
 
     public PlayingFieldPresenter PlayingFieldPresenter
     {
@@ -45,53 +45,51 @@ public class CardOutlinePresenter : MonoBehaviour, IPointerEnterHandler, IPointe
         set;
     }
 
+    /// <summary>
+    /// Provide some feedback when hovering over the card.
+    /// </summary>
     public void OnPointerEnter(PointerEventData eventData)
     {
-        if (CurrentlySelectedCard.Card != null && PlayingSide == PlayerSide.Player)
-			glow.SetActive(true);
+        if (SelectedCard.IsPresent && PlayerSide == Side.Player)
+            glow.SetActive(true);
     }
 
+    /// <summary>
+    /// Provide some feedback when hovering over the card.
+    /// </summary>
     public void OnPointerExit(PointerEventData eventData)
     {
-        if (CurrentlySelectedCard.Card != null && PlayingSide == PlayerSide.Player)
-			glow.SetActive(false);
+        if (SelectedCard.IsPresent && PlayerSide == Side.Player)
+            glow.SetActive(false);
     }
 
     public void OnPointerClick(PointerEventData eventData)
     {
-        Debug.Log("on pointer click");
-
-	    // [ ] clicking an empty spot will clear the currently selected card,
-        var card = CurrentlySelectedCard.Card;
+        // Grab a reference to the card.
+        var card = SelectedCard.Card;
         if (card == null)
         {
-            Debug.Log("no card is selected. returning");
-		}
-        CurrentlySelectedCard.Card = null;
+            Debug.Log("There is no selected card to place. Returning...");
+            return;
+        }
 
-        // [x] pass in hand dependency
+        // Clear the selected card.
+        SelectedCard.Clear();
 
-        // remove from hand,
-        var wasRemoved = HandPresenter.Cards.Remove(card);
+        // Remove the card from the player's hand.
+        var wasRemoved = HandPresenter.Remove(card);
         if (!wasRemoved)
-            Debug.Log("card wasn't removed, something is wrong");
+            Debug.Log("Card wasn't removed, something is wrong.");
         else
-            Debug.Log("card was removed");
+            Debug.Log("Card was removed.");
 
-        // pass in playing field dependency
-        if (PlayingFieldPresenter == null)
-            throw new System.Exception("playing field is null");
+        // Set the card on the playing field.
+        PlayingFieldPresenter.SetCard(card, this);
 
-        // and set on the playing field
-        PlayingFieldPresenter.SetCard(this, card);
-
-        // the playing field should update the positions
-        // ...
-
-        // also, unset the glow
+        // Unset the glow.
         glow.SetActive(false);
 
-        // finally, switch back the game view
+        // Finally, switch back to the neutral game view.
         GameViewPresenter.CurrentPose = GameViewPresenter.PoseState.Neutral;
     }
 }

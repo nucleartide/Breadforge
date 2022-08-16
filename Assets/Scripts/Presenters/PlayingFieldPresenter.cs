@@ -54,14 +54,14 @@ public class PlayingFieldPresenter : MonoBehaviour
             // playingField.PlayerRow[i] = cardFactory.Build(testCard);
 
             opponentRowCardOutlines[i] = Instantiate(cardOutline);
-            opponentRowCardOutlines[i].CurrentlySelectedCard = currentlySelectedCard;
-            opponentRowCardOutlines[i].PlayingSide = CardOutlinePresenter.PlayingSide.Enemy;
+            opponentRowCardOutlines[i].SelectedCard = currentlySelectedCard;
+            opponentRowCardOutlines[i].PlayerSide = CardOutlinePresenter.PlayerSide.Enemy;
             opponentRowCardOutlines[i].HandPresenter = handPresenter;
             opponentRowCardOutlines[i].PlayingFieldPresenter = this;
             opponentRowCardOutlines[i].GameViewPresenter = gameViewPresenter;
             playerRowCardOutlines[i] = Instantiate(cardOutline);
-            playerRowCardOutlines[i].CurrentlySelectedCard = currentlySelectedCard;
-            playerRowCardOutlines[i].PlayingSide = CardOutlinePresenter.PlayingSide.Player;
+            playerRowCardOutlines[i].SelectedCard = currentlySelectedCard;
+            playerRowCardOutlines[i].PlayerSide = CardOutlinePresenter.PlayerSide.Player;
             playerRowCardOutlines[i].HandPresenter = handPresenter;
             playerRowCardOutlines[i].PlayingFieldPresenter = this;
             playerRowCardOutlines[i].GameViewPresenter = gameViewPresenter;
@@ -71,7 +71,7 @@ public class PlayingFieldPresenter : MonoBehaviour
     /// <summary>
     /// Set a cardPresenter to the position of the cardOutlinePresenter.
     /// </summary>
-    public void SetCard(CardOutlinePresenter cardOutlinePresenter, CardPresenter cardPresenter)
+    public void SetCard(CardPresenter cardPresenter, CardOutlinePresenter cardOutlinePresenter)
     {
         // find the index of the cardoutlinepresenter
         var outlines = new List<CardOutlinePresenter>(playerRowCardOutlines);
@@ -81,9 +81,6 @@ public class PlayingFieldPresenter : MonoBehaviour
 
         // set cardpresenter at the right index of the internal row of cardpresenters
         playedCards[index] = cardPresenter;
-
-        // update position - done
-        // ...
     }
 
     // update the positions of the cards in the playing Field

@@ -17,6 +17,9 @@ public class Deck : ScriptableObject
 
     /// <summary>
     /// Cards that are in the deck.
+    ///
+    /// Does not hold the actual CardPresenters, rather holds the counts of CardPresenters
+    /// prior to starting the game.
     /// </summary>
     [field: SerializeField]
     public List<CardInDeck> Cards

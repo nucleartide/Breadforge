@@ -4,17 +4,23 @@ using UnityEngine.EventSystems;
 
 public class DeckPresenter : MonoBehaviour, IPointerDownHandler
 {
-    public Deck Deck;
-    public CardPresenter CardPrefab;
-    public HandPresenter HandPresenter;
-    public Camera Camera;
+    [SerializeField]
+    [NotNull]
+    Deck deck;
+
+    [SerializeField]
+    [NotNull]
+    CardPresenter cardPrefab;
+
+    [SerializeField]
+    [NotNull]
+    HandPresenter handPresenter;
 
     [SerializeField]
     [NotNull]
     CardFactory cardFactory;
 
-    List<CardPresenter> cards;
-    readonly Quaternion FACE_DOWN = Quaternion.AngleAxis(90, Vector3.right);
+    readonly List<CardPresenter> cards = new List<CardPresenter>();
 
     public void OnPointerDown(PointerEventData eventData)
     {
@@ -23,17 +29,14 @@ public class DeckPresenter : MonoBehaviour, IPointerDownHandler
         cards.RemoveAt(cards.Count - 1);
 
         // Add the top card to the hand.
-        HandPresenter.Cards.Add(lastCard);
+        handPresenter.Add(lastCard);
     }
 
-    List<CardPresenter> InitializeCards(Deck deck, CardPresenter cardPrefab)
-    { 
-        var cards = new List<CardPresenter>();
-
+    void InitializeCards(Deck deck, CardPresenter cardPrefab)
+    {
         for (var i = 0; i < deck.Cards.Count; i++)
         {
             var currentCard = deck.Cards[i];
-
             for (var j = 0; j < currentCard.Count; j++)
             {
                 var card = cardFactory.Build(currentCard.Card);
@@ -42,17 +45,21 @@ public class DeckPresenter : MonoBehaviour, IPointerDownHandler
         }
 
         Shuffle(cards);
-        return cards;
     }
 
     void Start()
     {
-        cards = InitializeCards(Deck, CardPrefab);
+        InitializeCards(deck, cardPrefab);
+        PositionCards();
+    }
+
+    void PositionCards()
+    {
         for (var i = 0; i < cards.Count; i++)
         {
             // Position and orient the cards so that they appear as a deck of cards.
             cards[i].transform.position = transform.position + new Vector3(0, .01f * i, 0);
-            cards[i].transform.rotation = FACE_DOWN;
+            cards[i].transform.rotation = Orientation.FACE_DOWN;
         }
     }
 
@@ -64,7 +71,7 @@ public class DeckPresenter : MonoBehaviour, IPointerDownHandler
         for (var i = cards.Count - 1; i >= 1; i--)
         {
             // Compute index to swap places with.
-            var j = UnityEngine.Random.Range(0, i + 1);
+            var j = Random.Range(0, i + 1);
 
             // Swap places.
             var temp = cards[j];

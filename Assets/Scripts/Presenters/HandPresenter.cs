@@ -41,4 +41,9 @@ public class HandPresenter : MonoBehaviour
     {
         return cards.Contains(card);
     }
+
+    public void Add(CardPresenter card)
+    {
+        cards.Add(card);
+    }
 }

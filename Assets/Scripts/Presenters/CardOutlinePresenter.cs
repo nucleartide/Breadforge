@@ -63,6 +63,9 @@ public class CardOutlinePresenter : MonoBehaviour, IPointerEnterHandler, IPointe
             glow.SetActive(false);
     }
 
+    /// <summary>
+    /// Handle clicks on a card outline on the playing field.
+    /// </summary>
     public void OnPointerClick(PointerEventData eventData)
     {
         // Grab a reference to the card.

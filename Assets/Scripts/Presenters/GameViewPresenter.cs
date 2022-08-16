@@ -26,9 +26,11 @@ public class GameViewPresenter : MonoBehaviour
     Pose observeHand;
 
     [SerializeField]
+    [NotNull]
     new Transform camera;
 
     [SerializeField]
+    [NotNull]
     Transform hand;
 
     public enum PoseState
@@ -38,36 +40,38 @@ public class GameViewPresenter : MonoBehaviour
         ObservePlayingField,
     }
 
-    PoseState _currentPose = PoseState.Neutral;
+    /// <summary>
+    /// Initial value of CurrentPose.
+    ///
+    /// Everywhere else, you should use the CurrentPose property.
+    /// </summary>
+    PoseState _currentPoseState = PoseState.Neutral;
 
-    public PoseState CurrentPose
+    public PoseState CurrentPoseState
     {
-        get { return _currentPose; }
-        set { _currentPose = value; }
+        get { return _currentPoseState; }
+        set { _currentPoseState = value; }
     }
 
-    Pose ToPose(PoseState poseState) => poseState switch
+    public Pose CurrentPose
     {
-        PoseState.ObserveHand => observeHand,
-        PoseState.Neutral => neutral,
-        PoseState.ObservePlayingField => observePlayingField,
-        _ => throw new System.Exception($"PoseState {poseState} not covered."), // Not great, since it's not a compile-time check.
-    };
+        get
+        {
+            return CurrentPoseState switch
+            {
+                PoseState.ObserveHand => observeHand,
+                PoseState.Neutral => neutral,
+                PoseState.ObservePlayingField => observePlayingField,
+                _ => throw new System.Exception($"PoseState {CurrentPoseState} not covered."), // Sadly not a compile-time check, ah well.
+            };
+        }
+    }
 
-    void Update()
+    /// <summary>
+    /// Ease between positions for the camera and hand.
+    /// </summary>
+    void MoveTowards(Pose pose)
     {
-        // Update current pose.
-        var currentPoseInt = (int)_currentPose;
-        if (Input.GetKeyDown(KeyCode.W))
-            currentPoseInt = Mathf.Min((int)_currentPose + 1, (int)PoseState.ObservePlayingField);
-        else if (Input.GetKeyDown(KeyCode.S))
-            currentPoseInt = Mathf.Max((int)_currentPose - 1, 0);
-        _currentPose = (PoseState)currentPoseInt;
-
-        // Update the pose depending on the PoseState.
-        var pose = ToPose(_currentPose);
-
-        // Ease between positions for the camera and hand.
         if (Vector3.Distance(camera.transform.position, pose.Camera.position) > 0.001f)
         {
             var speed = 2f;
@@ -80,17 +84,38 @@ public class GameViewPresenter : MonoBehaviour
             var step = speed * Time.deltaTime;
             hand.transform.position = Vector3.MoveTowards(hand.transform.position, pose.Hand.position, step);
         }
+    }
 
-        // Ease between rotations for the camera and hand.
+    /// <summary>
+    /// Ease between rotations for the camera and hand.
+    /// </summary>
+    void RotateTowards(Pose pose)
+    {
         {
-            var degrees = 90;
-            var step = degrees * Time.deltaTime; // max 30 degrees per second
+            var maxDegreesPerSecond = 90;
+            var step = maxDegreesPerSecond * Time.deltaTime;
             camera.transform.rotation = Quaternion.RotateTowards(camera.transform.rotation, pose.Camera.rotation, step);
         }
         {
-            var degrees = 180;
-            var step = degrees * Time.deltaTime; // max 30 degrees per second
+            var maxDegreesPerSecond = 180;
+            var step = maxDegreesPerSecond * Time.deltaTime;
             hand.transform.rotation = Quaternion.RotateTowards(hand.transform.rotation, pose.Hand.rotation, step);
         }
+    }
+
+    void HandleCurrentPoseChanged()
+    {
+        var currentPoseInt = (int)CurrentPoseState;
+        if (Input.GetKeyDown(KeyCode.W)) currentPoseInt++;
+        else if (Input.GetKeyDown(KeyCode.S)) currentPoseInt--;
+        currentPoseInt = Mathf.Clamp(currentPoseInt, 0, (int)PoseState.ObservePlayingField);
+        CurrentPoseState = (PoseState)currentPoseInt;
+    }
+
+    void Update()
+    {
+        HandleCurrentPoseChanged();
+        MoveTowards(CurrentPose);
+        RotateTowards(CurrentPose);
     }
 }

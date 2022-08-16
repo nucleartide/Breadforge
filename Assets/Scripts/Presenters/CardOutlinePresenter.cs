@@ -93,6 +93,6 @@ public class CardOutlinePresenter : MonoBehaviour, IPointerEnterHandler, IPointe
         glow.SetActive(false);
 
         // Finally, switch back to the neutral game view.
-        GameViewPresenter.CurrentPose = GameViewPresenter.PoseState.Neutral;
+        GameViewPresenter.PoseState = GameViewPresenter.PoseState.Neutral;
     }
 }

@@ -91,7 +91,7 @@ public class CardPresenter : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
     void PlayCard()
     {
         // Zoom into the playing field.
-        GameViewPresenter.CurrentPose = GameViewPresenter.PoseState.ObservePlayingField;
+        GameViewPresenter.PoseState = GameViewPresenter.PoseState.ObservePlayingField;
 
         // Maintain the currently selected card.
         CurrentlySelectedCard.Card = this;

@@ -41,9 +41,9 @@ public class GameViewPresenter : MonoBehaviour
     }
 
     /// <summary>
-    /// Initial value of CurrentPose.
+    /// Initial value of CurrentPoseState.
     ///
-    /// Everywhere else, you should use the CurrentPose property.
+    /// Everywhere else, you should use CurrentPoseState instead of this backing property.
     /// </summary>
     PoseState _currentPoseState = PoseState.Neutral;
 

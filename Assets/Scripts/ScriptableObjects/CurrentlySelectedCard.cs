@@ -10,19 +10,27 @@ public class CurrentlySelectedCard : ScriptableObject
     public CardPresenter Card
     {
         get;
-        private set;
+        set;
     }
 
     public bool IsPresent
-    { 
+    {
         get
         {
             return Card != null;
-		}
+        }
     }
 
     public void Clear()
-    { 
+    {
         Card = null;
+    }
+
+    public string Name
+    {
+        get
+        {
+            return Card.Model.Name;
+        }
     }
 }

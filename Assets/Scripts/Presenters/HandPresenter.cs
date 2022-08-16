@@ -36,4 +36,9 @@ public class HandPresenter : MonoBehaviour
     {
         return cards.Remove(card);
     }
+
+    public bool Contains(CardPresenter card)
+    {
+        return cards.Contains(card);
+    }
 }

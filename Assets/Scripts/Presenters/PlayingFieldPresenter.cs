@@ -23,7 +23,7 @@ public class PlayingFieldPresenter : MonoBehaviour
     CardOutlinePresenter[] playerRowCardOutlines = new CardOutlinePresenter[4];
     public CardPresenter[] playedCards = new CardPresenter[4];
 
-    public bool IsPlayingCardOnField(CardPresenter cardPresenter)
+    public bool IsInPlay(CardPresenter cardPresenter)
     {
         return (new List<CardPresenter>(playedCards)).Contains(cardPresenter);
     }

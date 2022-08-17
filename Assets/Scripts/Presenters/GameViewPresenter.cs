@@ -26,42 +26,60 @@ public class GameViewPresenter : MonoBehaviour
     Pose observeHand;
 
     [SerializeField]
+    [NotNull]
     new Transform camera;
 
     [SerializeField]
+    [NotNull]
     Transform hand;
 
-    enum PoseState
+    public enum PoseState
     {
         ObserveHand,
         Neutral,
         ObservePlayingField,
     }
 
-    PoseState currentPose = PoseState.Neutral;
+    /// <summary>
+    /// Initial value of CurrentPoseState.
+    ///
+    /// Everywhere else, you should use CurrentPoseState instead of this backing property.
+    /// </summary>
+    PoseState _currentPoseState = PoseState.Neutral;
 
-    Pose ToPose(PoseState poseState) => poseState switch
+    public PoseState CurrentPoseState
     {
-        PoseState.ObserveHand => observeHand,
-        PoseState.Neutral => neutral,
-        PoseState.ObservePlayingField => observePlayingField,
-        _ => throw new System.Exception($"PoseState {poseState} not covered."), // Not great, since it's not a compile-time check.
-    };
+        get { return _currentPoseState; }
+        set { _currentPoseState = value; }
+    }
 
-    void Update()
+    public Pose CurrentPose
     {
-        // Update current pose.
-        var currentPoseInt = (int)currentPose;
-        if (Input.GetKeyDown(KeyCode.W))
-            currentPoseInt = Mathf.Min((int)currentPose + 1, (int)PoseState.ObservePlayingField);
-        else if (Input.GetKeyDown(KeyCode.S))
-            currentPoseInt = Mathf.Max((int)currentPose - 1, 0);
-        currentPose = (PoseState)currentPoseInt;
+        get
+        {
+            return CurrentPoseState switch
+            {
+                PoseState.ObserveHand => observeHand,
+                PoseState.Neutral => neutral,
+                PoseState.ObservePlayingField => observePlayingField,
+                _ => throw new System.Exception($"PoseState {CurrentPoseState} not covered."), // Sadly not a compile-time check, ah well.
+            };
+        }
+    }
 
-        // Update the pose depending on the PoseState.
-        var pose = ToPose(currentPose);
+    void InitializeTransforms(Pose pose)
+    {
+        hand.transform.position = pose.Hand.position;
+        hand.transform.rotation = pose.Hand.rotation;
+        camera.transform.position = pose.Camera.position;
+        camera.transform.rotation = pose.Camera.rotation;
+    }
 
-        // Ease between positions for the camera and hand.
+    /// <summary>
+    /// Ease between positions for the camera and hand.
+    /// </summary>
+    void MoveTowards(Pose pose)
+    {
         if (Vector3.Distance(camera.transform.position, pose.Camera.position) > 0.001f)
         {
             var speed = 2f;
@@ -74,17 +92,43 @@ public class GameViewPresenter : MonoBehaviour
             var step = speed * Time.deltaTime;
             hand.transform.position = Vector3.MoveTowards(hand.transform.position, pose.Hand.position, step);
         }
+    }
 
-        // Ease between rotations for the camera and hand.
+    /// <summary>
+    /// Ease between rotations for the camera and hand.
+    /// </summary>
+    void RotateTowards(Pose pose)
+    {
         {
-            var degrees = 90;
-            var step = degrees * Time.deltaTime; // max 30 degrees per second
+            var maxDegreesPerSecond = 90;
+            var step = maxDegreesPerSecond * Time.deltaTime;
             camera.transform.rotation = Quaternion.RotateTowards(camera.transform.rotation, pose.Camera.rotation, step);
         }
         {
-            var degrees = 180;
-            var step = degrees * Time.deltaTime; // max 30 degrees per second
+            var maxDegreesPerSecond = 180;
+            var step = maxDegreesPerSecond * Time.deltaTime;
             hand.transform.rotation = Quaternion.RotateTowards(hand.transform.rotation, pose.Hand.rotation, step);
         }
+    }
+
+    void HandleCurrentPoseChanged()
+    {
+        var currentPoseInt = (int)CurrentPoseState;
+        if (Input.GetKeyDown(KeyCode.W)) currentPoseInt++;
+        else if (Input.GetKeyDown(KeyCode.S)) currentPoseInt--;
+        currentPoseInt = Mathf.Clamp(currentPoseInt, 0, (int)PoseState.ObservePlayingField);
+        CurrentPoseState = (PoseState)currentPoseInt;
+    }
+
+    void Start()
+    {
+        InitializeTransforms(CurrentPose);
+    }
+
+    void Update()
+    {
+        HandleCurrentPoseChanged();
+        MoveTowards(CurrentPose);
+        RotateTowards(CurrentPose);
     }
 }

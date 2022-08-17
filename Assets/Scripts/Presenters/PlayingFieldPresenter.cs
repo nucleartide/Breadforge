@@ -69,7 +69,7 @@ public class PlayingFieldPresenter : MonoBehaviour
     }
 
     void UpdatePositionsAndRotations()
-    { 
+    {
         var CARD_WIDTH = .1f;
         var CARD_HEIGHT = .2f;
         var GUTTER = .04f;

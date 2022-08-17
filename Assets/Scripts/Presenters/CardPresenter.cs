@@ -74,7 +74,7 @@ public class CardPresenter : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
     public void OnPointerEnter(PointerEventData eventData)
     {
         // Highlight the card only if it's in the player's hand.
-        if (!HandPresenter.Contains(this))
+        if (HandPresenter.Contains(this))
             glow.SetActive(true);
     }
 
@@ -91,7 +91,7 @@ public class CardPresenter : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
     void PlayCard()
     {
         // Zoom into the playing field.
-        GameViewPresenter.PoseState = GameViewPresenter.PoseState.ObservePlayingField;
+        GameViewPresenter.CurrentPoseState = GameViewPresenter.PoseState.ObservePlayingField;
 
         // Maintain the currently selected card.
         CurrentlySelectedCard.Card = this;

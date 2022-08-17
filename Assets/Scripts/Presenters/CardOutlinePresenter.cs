@@ -33,6 +33,12 @@ public class CardOutlinePresenter : MonoBehaviour, IPointerEnterHandler, IPointe
         set;
     }
 
+    public PlayingFieldSide PlayingFieldSide
+    {
+        get;
+        set;
+    }
+
     /// <summary>
     /// Provide some feedback when hovering over the card.
     /// </summary>

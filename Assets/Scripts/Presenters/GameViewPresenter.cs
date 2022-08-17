@@ -67,6 +67,14 @@ public class GameViewPresenter : MonoBehaviour
         }
     }
 
+    void InitializeTransforms(Pose pose)
+    {
+        hand.transform.position = pose.Hand.position;
+        hand.transform.rotation = pose.Hand.rotation;
+        camera.transform.position = pose.Camera.position;
+        camera.transform.rotation = pose.Camera.rotation;
+    }
+
     /// <summary>
     /// Ease between positions for the camera and hand.
     /// </summary>
@@ -110,6 +118,11 @@ public class GameViewPresenter : MonoBehaviour
         else if (Input.GetKeyDown(KeyCode.S)) currentPoseInt--;
         currentPoseInt = Mathf.Clamp(currentPoseInt, 0, (int)PoseState.ObservePlayingField);
         CurrentPoseState = (PoseState)currentPoseInt;
+    }
+
+    void Start()
+    {
+        InitializeTransforms(CurrentPose);
     }
 
     void Update()

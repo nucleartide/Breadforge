@@ -15,18 +15,6 @@ public class CardOutlinePresenter : MonoBehaviour, IPointerEnterHandler, IPointe
         set;
     }
 
-    public enum Side
-    {
-        Player,
-        Enemy,
-    }
-
-    public Side PlayerSide
-    {
-        get;
-        set;
-    }
-
     public HandPresenter HandPresenter
     {
         get;
@@ -50,7 +38,7 @@ public class CardOutlinePresenter : MonoBehaviour, IPointerEnterHandler, IPointe
     /// </summary>
     public void OnPointerEnter(PointerEventData eventData)
     {
-        if (SelectedCard.IsPresent && PlayerSide == Side.Player)
+        if (SelectedCard.IsPresent && PlayingFieldSide == PlayingFieldSide.Player)
             glow.SetActive(true);
     }
 
@@ -59,7 +47,7 @@ public class CardOutlinePresenter : MonoBehaviour, IPointerEnterHandler, IPointe
     /// </summary>
     public void OnPointerExit(PointerEventData eventData)
     {
-        if (SelectedCard.IsPresent && PlayerSide == Side.Player)
+        if (SelectedCard.IsPresent && PlayingFieldSide == PlayingFieldSide.Player)
             glow.SetActive(false);
     }
 
@@ -93,6 +81,6 @@ public class CardOutlinePresenter : MonoBehaviour, IPointerEnterHandler, IPointe
         glow.SetActive(false);
 
         // Finally, switch back to the neutral game view.
-        GameViewPresenter.PoseState = GameViewPresenter.PoseState.Neutral;
+        GameViewPresenter.CurrentPoseState = GameViewPresenter.PoseState.Neutral;
     }
 }

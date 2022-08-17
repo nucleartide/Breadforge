@@ -22,11 +22,11 @@ public class CardOutlineFactory : MonoBehaviour
     [NotNull]
     GameViewPresenter gameViewPresenter;
 
-    public CardOutlinePresenter Build() => Build(Vector3.zero, Quaternion.identity);
-    public CardOutlinePresenter Build(Vector3 position, Quaternion rotation)
+    public CardOutlinePresenter Build(PlayingFieldSide playingFieldSide) => Build(playingFieldSide, Vector3.zero, Quaternion.identity);
+    public CardOutlinePresenter Build(PlayingFieldSide playingFieldSide, Vector3 position, Quaternion rotation)
     {
         var o = Instantiate(cardOutlinePrefab, position, rotation);
-        o.PlayerSide = CardOutlinePresenter.Side.Player;
+        o.PlayingFieldSide = playingFieldSide;
         o.SelectedCard = currentlySelectedCard;
         o.PlayingFieldPresenter = playingFieldPresenter;
         o.HandPresenter = handPresenter;

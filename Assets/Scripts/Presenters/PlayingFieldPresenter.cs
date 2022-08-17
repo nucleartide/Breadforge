@@ -120,8 +120,9 @@ public class PlayingFieldPresenter : MonoBehaviour
 
     void Update()
     {
+        if (Input.GetKeyDown(KeyCode.S))
+            currentlySelectedCard.Clear();
+
         UpdatePositionsAndRotations();
     }
-
-    //     [ ] allow the player to cancel out of place card mode - it seems you just press S
 }

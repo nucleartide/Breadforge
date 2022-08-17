@@ -2,25 +2,27 @@
 
 > Describe the motivation for this pull request: why are you making this change, and what result are you looking to achieve?
 
-## What does this pull request do?
+## Checklist
 
-> Describe what the pull request does as a series of bullet points. Also include the GitHub issue that gets closed if this pull request successfully makes it to the `main` branch.
+> Run through the development checklist to ensure that your code is high-quality.
+
+* [ ] Implement a first pass at the user story, so that all functionality is complete (but not quality-assured)
+* [ ] Once functionally complete, start to clean your work up
+    * [ ] Ensure that any changed scenes have scene hierarchies that still makes sense
+    * [ ] Ensure that your project structure still makes sense
+    * [ ] Ensure that any source code changes have been reviewed, and that stray logic has been cleaned up
+    * [ ] Ensure changed files are formatted with `Control`-`I`
 
 ## Testing
 
 > If this pull request implements a user story, include a screen recording as an end-to-end demo of the new functionality.
 
-## Checklist
+## What does this pull request do?
 
-> Run through the development checklist to ensure that your code is high-quality.
-
-* [ ] Ensure that any changed scenes have scene hierarchies that still makes sense
-* [ ] Ensure that your project structure still makes sense
-* [ ] Ensure that any source code changes have been reviewed, and that stray logic has been cleaned up
+> Include the GitHub issue that gets closed if this pull request successfully makes it to the `main` branch. Then describe what the pull request does as a series of bullet points.
+>
+> If needed, explain your code's structure with [Mermaid diagrams](https://docs.github.com/en/get-started/writing-on-github/working-with-advanced-formatting/creating-diagrams).
 
 ## Thought Exercises
 
-> Reflect on the work that was done, and the work that remains to be done, and ask yourself questions. For example:
->
-> 1. Why don't we stuff everything into MonoBehaviours? That is, why do we distinguish between ScriptableObjects and Presenters?
-> 2. What is the core game loop of a deckbuilder? What is the immediate next thing that brings us closer to that core game loop?
+> Reflect on the work that was done, and the work that remains to be done. Ask yourself questions about what could have gone better, and what to work on next.

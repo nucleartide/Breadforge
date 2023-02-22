@@ -10,10 +10,8 @@ public class PlayerController : MonoBehaviour
     [Serializable]
     struct Configuration
     {
-        /// <summary>
-        /// In units per second.
-        /// </summary>
-        public float PlayerSpeed;
+        public float PlayerWalkSpeed;
+        public float PlayerRunSpeed;
 
         /// <summary>
         /// Scaling factor for jump height.
@@ -45,6 +43,11 @@ public class PlayerController : MonoBehaviour
         public bool Jump;
 
         /// <summary>
+        /// Whether player is running.
+        /// </summary>
+        public bool Run;
+
+        /// <summary>
         /// Time elapsed since last frame.
         /// </summary>
         public float DeltaTime;
@@ -55,11 +58,11 @@ public class PlayerController : MonoBehaviour
         public bool IsGrounded;
     }
 
-
     [SerializeField]
     Configuration configuration = new()
     {
-        PlayerSpeed = 2.0f,
+        PlayerWalkSpeed = 2.0f,
+        PlayerRunSpeed = 4.0f,
         JumpHeight = 1.0f,
         GravityValue = 9.81f,
         RotationSpeed = 3.0f,
@@ -69,7 +72,19 @@ public class PlayerController : MonoBehaviour
     [NotNull]
     CharacterController characterController;
 
-    float verticalVelocity;
+    CurrentInput currentInput;
+    float verticalSpeed;
+
+    public float HorizontalSpeed
+    {
+        get;
+        private set;
+    }
+
+    /// <summary>
+    /// Used to compute currentSpeed. Do not use otherwise.
+    /// </summary>
+    float horizontalSpeedDampingValue;
 
     static CurrentInput GetCurrentInput(CharacterController controller)
     {
@@ -78,6 +93,7 @@ public class PlayerController : MonoBehaviour
         {
             Move = Vector3.ClampMagnitude(input, 1f),
             Jump = Input.GetButtonDown("Jump"),
+            Run = Input.GetKey(KeyCode.LeftShift),
             DeltaTime = Time.smoothDeltaTime,
             IsGrounded = controller.isGrounded,
         };
@@ -105,40 +121,43 @@ public class PlayerController : MonoBehaviour
         return verticalVelocity;
     }
 
-    public enum PlayerMovementState
-    {
-        Idle = 0,
-        Walking = 1,
-        Running = 2,
-    }
-
-    public PlayerMovementState MovementState
+    private float TargetSpeed
     {
         get
         {
-            var isWalking = GetCurrentInput(characterController).Move != Vector3.zero;
-            var isRunning = Input.GetKey(KeyCode.LeftShift);
+            var isIdle = currentInput.Move == Vector3.zero;
+            if (isIdle)
+                return 0f;
 
-            if (isWalking && !isRunning)
-                return PlayerMovementState.Walking;
-            else if (isWalking && isRunning)
-                return PlayerMovementState.Running;
-            else
-                return PlayerMovementState.Idle;
+            if (currentInput.Run)
+                return configuration.PlayerRunSpeed;
+
+            return configuration.PlayerWalkSpeed;
         }
     }
 
-    void Update()
+    private void Update()
     {
-        var currentInput = GetCurrentInput(characterController);
-        verticalVelocity = UpdateVerticalVelocity(verticalVelocity, currentInput, configuration);
+        currentInput = GetCurrentInput(characterController);
+        verticalSpeed = UpdateVerticalVelocity(verticalSpeed, currentInput, configuration);
+        HorizontalSpeed =  Mathf.SmoothDamp(HorizontalSpeed, TargetSpeed, ref horizontalSpeedDampingValue, .3f);
+
+        FaceMovementDirection();
+        Move();
+    }
+
+    private void Move()
+    {
+        characterController.Move(currentInput.DeltaTime * HorizontalSpeed * currentInput.Move);
+        characterController.Move(currentInput.DeltaTime * new Vector3(0f, verticalSpeed, 0f));
+    }
+
+    private void FaceMovementDirection()
+    {
         if (currentInput.Move != Vector3.zero)
         {
             float singleStep = configuration.RotationSpeed * Time.smoothDeltaTime;
-            // Vector3.Slerp is probably equivalent here.
-            transform.forward = Vector3.RotateTowards(transform.forward, currentInput.Move.normalized, singleStep, 0f);
+            transform.forward = Vector3.RotateTowards(transform.forward, currentInput.Move.normalized, singleStep, 0f); // Vector3.Slerp is probably equivalent here.
         }
-        characterController.Move(currentInput.DeltaTime * configuration.PlayerSpeed * currentInput.Move);
-        characterController.Move(currentInput.DeltaTime * new Vector3(0f, verticalVelocity, 0f));
     }
 }

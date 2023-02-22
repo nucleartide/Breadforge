@@ -11,16 +11,16 @@ public class PlayerAnimator : MonoBehaviour
     [NotNull]
     private PlayerController playerController;
 
-    private const string MOVEMENT_STATE = "MovementState";
-    private int movementStateHash = -1;
+    private const string ANIMATOR_MOVEMENT_SPEED = "MovementSpeed";
+    private int movementSpeedHash = -1;
 
     private void Start()
     {
-        movementStateHash = Animator.StringToHash(MOVEMENT_STATE);
+        movementSpeedHash = Animator.StringToHash(ANIMATOR_MOVEMENT_SPEED);
     }
 
     private void Update()
     {
-        animator.SetInteger(movementStateHash, (int)playerController.MovementState);
+        animator.SetFloat(movementSpeedHash, playerController.HorizontalSpeed);
     }
 }

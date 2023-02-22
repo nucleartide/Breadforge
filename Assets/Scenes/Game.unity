@@ -170,7 +170,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   configuration:
-    PlayerSpeed: 5
+    PlayerWalkSpeed: 5
+    PlayerRunSpeed: 10
     JumpHeight: 1
     GravityValue: 9.81
     RotationSpeed: 10

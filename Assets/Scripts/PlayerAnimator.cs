@@ -21,6 +21,6 @@ public class PlayerAnimator : MonoBehaviour
 
     private void Update()
     {
-        // animator.SetInteger(movementSpeedHash, (int)playerController.MovementState);
+        animator.SetFloat(movementSpeedHash, (int)playerController.HorizontalSpeed);
     }
 }

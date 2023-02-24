@@ -37,6 +37,8 @@ public class PlayerController : MonoBehaviour
         /// </summary>
         public Vector3 Move;
 
+        public Vector3 Rotation;
+
         /// <summary>
         /// Whether player is jumping.
         /// </summary>
@@ -88,10 +90,12 @@ public class PlayerController : MonoBehaviour
 
     static CurrentInput GetCurrentInput(CharacterController controller)
     {
-        var input = new Vector3(Input.GetAxis("Horizontal"), 0f, Input.GetAxis("Vertical"));
+        // var input = new Vector3(Input.GetAxis("Horizontal"), 0f, Input.GetAxis("Vertical"));
+        var input = new Vector3(0f, 0f, Input.GetAxis("Vertical"));
         return new CurrentInput
         {
             Move = Vector3.ClampMagnitude(input, 1f),
+            Rotation = new Vector3(Input.GetAxis("Horizontal"), 0f, 0f),
             Jump = Input.GetButtonDown("Jump"),
             Run = Input.GetKey(KeyCode.LeftShift),
             DeltaTime = Time.smoothDeltaTime,
@@ -148,16 +152,20 @@ public class PlayerController : MonoBehaviour
 
     private void Move()
     {
-        characterController.Move(currentInput.DeltaTime * HorizontalSpeed * currentInput.Move);
+        if (currentInput.Move.z > 0f)
+            characterController.Move(currentInput.DeltaTime * HorizontalSpeed * transform.forward);
         characterController.Move(currentInput.DeltaTime * new Vector3(0f, verticalSpeed, 0f));
     }
 
     private void FaceMovementDirection()
     {
+
+            transform.rotation *= Quaternion.AngleAxis(currentInput.Rotation.x * configuration.RotationSpeed * Time.smoothDeltaTime, Vector3.up);
         if (currentInput.Move != Vector3.zero)
         {
             float singleStep = configuration.RotationSpeed * Time.smoothDeltaTime;
-            transform.forward = Vector3.RotateTowards(transform.forward, currentInput.Move.normalized, singleStep, 0f); // Vector3.Slerp is probably equivalent here.
+            
+            // transform.forward = Vector3.RotateTowards(transform.forward, transform.TransformDirection(currentInput.Move.normalized), singleStep, 0f);
         }
     }
 }

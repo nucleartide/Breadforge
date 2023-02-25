@@ -169,11 +169,7 @@ public class PlayerController : MonoBehaviour
             float singleStep = configuration.RotationSpeed * Time.smoothDeltaTime;
             var yRotation = Quaternion.Euler(0f, lookTarget.eulerAngles.y, 0f);
             var rotatedDirection = yRotation * currentInput.Move;
-
-            // transform.rotation = Quaternion.RotateTowards(transform.rotation, Quaternion.Euler(0f, lookTarget.rotation.eulerAngles.y, 0f), singleStep);
-            transform.forward = Vector3.RotateTowards(transform.forward, rotatedDirection, singleStep, 0f);
+            transform.forward = Vector3.RotateTowards(transform.forward, rotatedDirection.normalized, singleStep, 0f);
         }
-
-        // [ ] lock mouse cursor
     }
 }

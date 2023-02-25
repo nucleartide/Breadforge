@@ -72,6 +72,10 @@ public class PlayerController : MonoBehaviour
     [NotNull]
     CharacterController characterController;
 
+    [SerializeField]
+    [NotNull]
+    Transform playerShoulderTarget;
+
     CurrentInput currentInput;
     float verticalSpeed;
 
@@ -140,24 +144,26 @@ public class PlayerController : MonoBehaviour
     {
         currentInput = GetCurrentInput(characterController);
         verticalSpeed = UpdateVerticalVelocity(verticalSpeed, currentInput, configuration);
-        HorizontalSpeed =  Mathf.SmoothDamp(HorizontalSpeed, TargetSpeed, ref horizontalSpeedDampingValue, .3f);
+        HorizontalSpeed = Mathf.SmoothDamp(HorizontalSpeed, TargetSpeed, ref horizontalSpeedDampingValue, .3f);
 
-        FaceMovementDirection();
-        Move();
+        var yRotation = Quaternion.Euler(0f, playerShoulderTarget.eulerAngles.y, 0f);
+        var movementDirection = yRotation * currentInput.Move;
+        FaceMovementDirection(movementDirection);
+        Move(movementDirection);
     }
 
-    private void Move()
+    private void Move(Vector3 movementDirection)
     {
-        characterController.Move(currentInput.DeltaTime * HorizontalSpeed * currentInput.Move);
+        characterController.Move(currentInput.DeltaTime * HorizontalSpeed * movementDirection);
         characterController.Move(currentInput.DeltaTime * new Vector3(0f, verticalSpeed, 0f));
     }
 
-    private void FaceMovementDirection()
+    private void FaceMovementDirection(Vector3 movementDirection)
     {
         if (currentInput.Move != Vector3.zero)
         {
             float singleStep = configuration.RotationSpeed * Time.smoothDeltaTime;
-            transform.forward = Vector3.RotateTowards(transform.forward, currentInput.Move.normalized, singleStep, 0f); // Vector3.Slerp is probably equivalent here.
+            transform.forward = Vector3.RotateTowards(transform.forward, movementDirection.normalized, singleStep, 0f);
         }
     }
 }

@@ -21,6 +21,7 @@ public static class MathHelpers
         Assert.IsTrue(min < max);
 #endif
 
+        // Note that the % operator in C# is a reminder, not a modulus. It won't work as you expect with negative numbers.
         if (value < 0f) value += 360f;
         if (min < 0f) min += 360f;
         if (max < 0f) max += 360f;

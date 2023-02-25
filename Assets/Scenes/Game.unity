@@ -211,7 +211,7 @@ MonoBehaviour:
     GravityValue: 9.81
     RotationSpeed: 30
   characterController: {fileID: 366215645}
-  lookTarget: {fileID: 996116154}
+  playerShoulderTarget: {fileID: 996116154}
 --- !u!143 &366215645
 CharacterController:
   m_ObjectHideFlags: 0

@@ -617,7 +617,7 @@ GameObject:
   - component: {fileID: 996116155}
   - component: {fileID: 996116156}
   m_Layer: 0
-  m_Name: Follow Target
+  m_Name: Player Shoulder Target
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -791,7 +791,7 @@ GameObject:
   - component: {fileID: 1149604753}
   - component: {fileID: 1149604752}
   m_Layer: 0
-  m_Name: Mouse Handler
+  m_Name: Lock Cursor
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

@@ -74,6 +74,10 @@ public class PlayerController : MonoBehaviour
     [NotNull]
     CharacterController characterController;
 
+    [SerializeField]
+    [NotNull]
+    Transform lookTarget;
+
     CurrentInput currentInput;
     float verticalSpeed;
 
@@ -90,12 +94,10 @@ public class PlayerController : MonoBehaviour
 
     static CurrentInput GetCurrentInput(CharacterController controller)
     {
-        // var input = new Vector3(Input.GetAxis("Horizontal"), 0f, Input.GetAxis("Vertical"));
-        var input = new Vector3(0f, 0f, Input.GetAxis("Vertical"));
+        var input = new Vector3(Input.GetAxis("Horizontal"), 0f, Input.GetAxis("Vertical"));
         return new CurrentInput
         {
             Move = Vector3.ClampMagnitude(input, 1f),
-            Rotation = new Vector3(Input.GetAxis("Horizontal"), 0f, 0f),
             Jump = Input.GetButtonDown("Jump"),
             Run = Input.GetKey(KeyCode.LeftShift),
             DeltaTime = Time.smoothDeltaTime,
@@ -144,7 +146,7 @@ public class PlayerController : MonoBehaviour
     {
         currentInput = GetCurrentInput(characterController);
         verticalSpeed = UpdateVerticalVelocity(verticalSpeed, currentInput, configuration);
-        HorizontalSpeed =  Mathf.SmoothDamp(HorizontalSpeed, TargetSpeed, ref horizontalSpeedDampingValue, .3f);
+        HorizontalSpeed = Mathf.SmoothDamp(HorizontalSpeed, TargetSpeed, ref horizontalSpeedDampingValue, .3f);
 
         FaceMovementDirection();
         Move();
@@ -152,20 +154,26 @@ public class PlayerController : MonoBehaviour
 
     private void Move()
     {
-        if (currentInput.Move.z > 0f)
-            characterController.Move(currentInput.DeltaTime * HorizontalSpeed * transform.forward);
+        // take currentInput.Move
+        // rotate by the y rotatino of lookTarget
+        var yRotation = Quaternion.Euler(0f, lookTarget.eulerAngles.y, 0f);
+        var rotatedDirection = yRotation * currentInput.Move;
+        characterController.Move(currentInput.DeltaTime * HorizontalSpeed * rotatedDirection);
         characterController.Move(currentInput.DeltaTime * new Vector3(0f, verticalSpeed, 0f));
     }
 
     private void FaceMovementDirection()
     {
-
-            transform.rotation *= Quaternion.AngleAxis(currentInput.Rotation.x * configuration.RotationSpeed * Time.smoothDeltaTime, Vector3.up);
         if (currentInput.Move != Vector3.zero)
         {
             float singleStep = configuration.RotationSpeed * Time.smoothDeltaTime;
-            
-            // transform.forward = Vector3.RotateTowards(transform.forward, transform.TransformDirection(currentInput.Move.normalized), singleStep, 0f);
+            var yRotation = Quaternion.Euler(0f, lookTarget.eulerAngles.y, 0f);
+            var rotatedDirection = yRotation * currentInput.Move;
+
+            // transform.rotation = Quaternion.RotateTowards(transform.rotation, Quaternion.Euler(0f, lookTarget.rotation.eulerAngles.y, 0f), singleStep);
+            transform.forward = Vector3.RotateTowards(transform.forward, rotatedDirection, singleStep, 0f);
         }
+
+        // [ ] lock mouse cursor
     }
 }

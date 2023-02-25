@@ -37,8 +37,6 @@ public class PlayerController : MonoBehaviour
         /// </summary>
         public Vector3 Move;
 
-        public Vector3 Rotation;
-
         /// <summary>
         /// Whether player is jumping.
         /// </summary>
@@ -76,7 +74,7 @@ public class PlayerController : MonoBehaviour
 
     [SerializeField]
     [NotNull]
-    Transform lookTarget;
+    Transform playerShoulderTarget;
 
     CurrentInput currentInput;
     float verticalSpeed;
@@ -148,28 +146,24 @@ public class PlayerController : MonoBehaviour
         verticalSpeed = UpdateVerticalVelocity(verticalSpeed, currentInput, configuration);
         HorizontalSpeed = Mathf.SmoothDamp(HorizontalSpeed, TargetSpeed, ref horizontalSpeedDampingValue, .3f);
 
-        FaceMovementDirection();
-        Move();
+        var yRotation = Quaternion.Euler(0f, playerShoulderTarget.eulerAngles.y, 0f);
+        var movementDirection = yRotation * currentInput.Move;
+        FaceMovementDirection(movementDirection);
+        Move(movementDirection);
     }
 
-    private void Move()
+    private void Move(Vector3 movementDirection)
     {
-        // take currentInput.Move
-        // rotate by the y rotatino of lookTarget
-        var yRotation = Quaternion.Euler(0f, lookTarget.eulerAngles.y, 0f);
-        var rotatedDirection = yRotation * currentInput.Move;
-        characterController.Move(currentInput.DeltaTime * HorizontalSpeed * rotatedDirection);
+        characterController.Move(currentInput.DeltaTime * HorizontalSpeed * movementDirection);
         characterController.Move(currentInput.DeltaTime * new Vector3(0f, verticalSpeed, 0f));
     }
 
-    private void FaceMovementDirection()
+    private void FaceMovementDirection(Vector3 movementDirection)
     {
         if (currentInput.Move != Vector3.zero)
         {
             float singleStep = configuration.RotationSpeed * Time.smoothDeltaTime;
-            var yRotation = Quaternion.Euler(0f, lookTarget.eulerAngles.y, 0f);
-            var rotatedDirection = yRotation * currentInput.Move;
-            transform.forward = Vector3.RotateTowards(transform.forward, rotatedDirection.normalized, singleStep, 0f);
+            transform.forward = Vector3.RotateTowards(transform.forward, movementDirection.normalized, singleStep, 0f);
         }
     }
 }

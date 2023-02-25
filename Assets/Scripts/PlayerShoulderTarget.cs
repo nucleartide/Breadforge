@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerShoulderTarget : MonoBehaviour
@@ -7,31 +5,24 @@ public class PlayerShoulderTarget : MonoBehaviour
     [SerializeField]
     float rotationSpeed = 180f;
 
-    // Start is called before the first frame update
-    void Start()
-    {
+    [SerializeField]
+    float minXAngle = -20f;
 
-    }
+    [SerializeField]
+    float maxXAngle = 40f;
 
-    // Update is called once per frame
     void Update()
     {
-        // horizontal rotation
+        // Apply horizontal rotation.
         var horizontalInput = Input.GetAxis("Mouse X");
         transform.rotation *= Quaternion.AngleAxis(horizontalInput * rotationSpeed * Time.smoothDeltaTime, Vector3.up);
 
-        // vertical rotation
+        // Apply vertical rotation.
         var verticalInput = Input.GetAxis("Mouse Y");
         transform.rotation *= Quaternion.AngleAxis(-1f * verticalInput * rotationSpeed * Time.smoothDeltaTime, Vector3.right);
 
-        var angles = transform.localEulerAngles;
-        angles.z = 0f; // get rid of dutching if any was introduced.
-
-        var x = transform.localEulerAngles.x;
-        if (x > 180f && x < 340f)
-            x = 340f;
-        else if (x < 180f && x > 40f)
-            x = 40f;
-        transform.localEulerAngles = new Vector3(x, angles.y, 0f);
+        // Constrain rotations about the x and y axes.
+        var x = MathHelpers.RotationClamp(transform.localEulerAngles.x, minXAngle, maxXAngle);
+        transform.localEulerAngles = new Vector3(x, transform.localEulerAngles.y, 0f);
     }
 }

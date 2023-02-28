@@ -11,14 +11,20 @@ public class PlayerShoulderTarget : MonoBehaviour
     [SerializeField]
     float maxXAngle = 40f;
 
+    [SerializeField]
+    [NotNull]
+    GameInput gameInput;
+
     void Update()
     {
+        var lookAround = gameInput.GetLookAround();
+
         // Apply horizontal rotation.
-        var horizontalInput = Input.GetAxis("Mouse X");
+        var horizontalInput = lookAround.x;
         transform.rotation *= Quaternion.AngleAxis(horizontalInput * rotationSpeed * Time.smoothDeltaTime, Vector3.up);
 
         // Apply vertical rotation.
-        var verticalInput = Input.GetAxis("Mouse Y");
+        var verticalInput = lookAround.y;
         transform.rotation *= Quaternion.AngleAxis(-1f * verticalInput * rotationSpeed * Time.smoothDeltaTime, Vector3.right);
 
         // Constrain rotations about the x and y axes.

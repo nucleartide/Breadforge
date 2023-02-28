@@ -71,6 +71,10 @@ public class PlayerController : MonoBehaviour
     [NotNull]
     Transform playerShoulderTarget;
 
+    [SerializeField]
+    [NotNull]
+    GameInput gameInput;
+
     CurrentInput currentInput;
     float verticalSpeed;
 
@@ -85,13 +89,14 @@ public class PlayerController : MonoBehaviour
     /// </summary>
     float horizontalSpeedDampingValue;
 
-    static CurrentInput GetCurrentInput(CharacterController controller)
+    static CurrentInput GetCurrentInput(CharacterController controller, GameInput gameInput)
     {
-        var input = new Vector3(Input.GetAxis("Horizontal"), 0f, Input.GetAxis("Vertical"));
+        var movement = gameInput.GetMovementNormalized();
+        var input = new Vector3(movement.x, 0f, movement.y);
         return new CurrentInput
         {
             Move = Vector3.ClampMagnitude(input, 1f),
-            Run = Input.GetKey(KeyCode.LeftShift),
+            Run = gameInput.GetRun(),
             DeltaTime = Time.smoothDeltaTime,
             IsGrounded = controller.isGrounded,
         };
@@ -130,7 +135,7 @@ public class PlayerController : MonoBehaviour
 
     private void Update()
     {
-        currentInput = GetCurrentInput(characterController);
+        currentInput = GetCurrentInput(characterController, gameInput);
         verticalSpeed = UpdateVerticalVelocity(verticalSpeed, currentInput, configuration);
         HorizontalSpeed = Mathf.SmoothDamp(HorizontalSpeed, TargetSpeed, ref horizontalSpeedDampingValue, .3f);
 

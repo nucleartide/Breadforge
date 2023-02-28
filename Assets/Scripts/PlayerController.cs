@@ -38,11 +38,6 @@ public class PlayerController : MonoBehaviour
         public Vector3 Move;
 
         /// <summary>
-        /// Whether player is jumping.
-        /// </summary>
-        public bool Jump;
-
-        /// <summary>
         /// Whether player is running.
         /// </summary>
         public bool Run;
@@ -96,7 +91,6 @@ public class PlayerController : MonoBehaviour
         return new CurrentInput
         {
             Move = Vector3.ClampMagnitude(input, 1f),
-            Jump = Input.GetButtonDown("Jump"),
             Run = Input.GetKey(KeyCode.LeftShift),
             DeltaTime = Time.smoothDeltaTime,
             IsGrounded = controller.isGrounded,
@@ -114,12 +108,6 @@ public class PlayerController : MonoBehaviour
             // Then zero out y-component of velocity.
             // Must be slightly negative so that CharacterController's .isGrounded computation returns true.
             verticalVelocity = -.5f;
-        }
-
-        if (currentInput.IsGrounded && currentInput.Jump)
-        {
-            // Then impart upward momentum.
-            verticalVelocity += Mathf.Sqrt(config.JumpHeight * 3.0f * config.GravityValue);
         }
 
         return verticalVelocity;

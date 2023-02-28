@@ -14,7 +14,9 @@
 
 ## How it works
 
-> Explain the reasoning behind your implementation, what you learned, and any lessons that might be useful to others.
+> Explain what you did, how you did it, and why you did it. Also: what you learned, and any lessons that might be useful to others.
+>
+> Ideally, this could be a blog post paragraph all on its own.
 
 ...
 

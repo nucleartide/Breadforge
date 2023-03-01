@@ -14,9 +14,7 @@
 
 ## How it works
 
-> Explain what you did, how you did it, and why you did it. Also: what you learned, and any lessons that might be useful to others.
->
-> Ideally, this could be a blog post paragraph all on its own.
+> Explain what you did, how you did it, and why you did it. Also any lessons that might be useful to others.
 
 ...
 

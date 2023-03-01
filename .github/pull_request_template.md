@@ -1,4 +1,4 @@
-## Ticket
+## JIRA Ticket
 
 > Sorry folks, this is internal to my Notion workspace!
 
@@ -14,9 +14,9 @@
 
 ## How it works
 
-> Explain what you did, how you did it, and why you did it. Also: what you learned, and any lessons that might be useful to others.
+> Explain what you did, how you did it, and why you did it. Also any lessons that might be useful to others.
 >
-> Ideally, this could be a blog post paragraph all on its own.
+> (Note to self: it's easiest to do a stream-of-consciousness writeup of what you did.)
 
 ...
 

@@ -38,11 +38,6 @@ public class PlayerController : MonoBehaviour
         public Vector3 Move;
 
         /// <summary>
-        /// Whether player is jumping.
-        /// </summary>
-        public bool Jump;
-
-        /// <summary>
         /// Whether player is running.
         /// </summary>
         public bool Run;
@@ -76,6 +71,10 @@ public class PlayerController : MonoBehaviour
     [NotNull]
     Transform playerShoulderTarget;
 
+    [SerializeField]
+    [NotNull]
+    GameInput gameInput;
+
     CurrentInput currentInput;
     float verticalSpeed;
 
@@ -90,14 +89,14 @@ public class PlayerController : MonoBehaviour
     /// </summary>
     float horizontalSpeedDampingValue;
 
-    static CurrentInput GetCurrentInput(CharacterController controller)
+    static CurrentInput GetCurrentInput(CharacterController controller, GameInput gameInput)
     {
-        var input = new Vector3(Input.GetAxis("Horizontal"), 0f, Input.GetAxis("Vertical"));
+        var movement = gameInput.GetMovementNormalized();
+        var input = new Vector3(movement.x, 0f, movement.y);
         return new CurrentInput
         {
             Move = Vector3.ClampMagnitude(input, 1f),
-            Jump = Input.GetButtonDown("Jump"),
-            Run = Input.GetKey(KeyCode.LeftShift),
+            Run = gameInput.GetRun(),
             DeltaTime = Time.smoothDeltaTime,
             IsGrounded = controller.isGrounded,
         };
@@ -114,12 +113,6 @@ public class PlayerController : MonoBehaviour
             // Then zero out y-component of velocity.
             // Must be slightly negative so that CharacterController's .isGrounded computation returns true.
             verticalVelocity = -.5f;
-        }
-
-        if (currentInput.IsGrounded && currentInput.Jump)
-        {
-            // Then impart upward momentum.
-            verticalVelocity += Mathf.Sqrt(config.JumpHeight * 3.0f * config.GravityValue);
         }
 
         return verticalVelocity;
@@ -142,7 +135,7 @@ public class PlayerController : MonoBehaviour
 
     private void Update()
     {
-        currentInput = GetCurrentInput(characterController);
+        currentInput = GetCurrentInput(characterController, gameInput);
         verticalSpeed = UpdateVerticalVelocity(verticalSpeed, currentInput, configuration);
         HorizontalSpeed = Mathf.SmoothDamp(HorizontalSpeed, TargetSpeed, ref horizontalSpeedDampingValue, .3f);
 

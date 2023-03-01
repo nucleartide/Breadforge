@@ -67,3 +67,6 @@ Assets/Plugins/polyperfect/
 
 # Local user settings.
 UserSettings/
+
+# Test builds.
+test_build*

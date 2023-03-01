@@ -1,15 +1,31 @@
 using UnityEngine;
+using System;
+using UnityEngine.InputSystem;
 
 public class GameInput : MonoBehaviour
 {
     private PlayerInputActions playerInputActions;
 
+    public event EventHandler<float> OnPauseAction;
+
     private void Awake()
     {
+        // Enable the "Player" action map and attach listeners.
         playerInputActions = new PlayerInputActions();
-
-        // Enable the "Player" action map.
         playerInputActions.Player.Enable();
+        playerInputActions.Player.Pause.performed += Pause_performed;
+    }
+
+    private void OnDestroy()
+    {
+        // Detach listeners and dispose of held-onto state.
+        playerInputActions.Player.Pause.performed -= Pause_performed;
+        playerInputActions.Dispose();
+    }
+
+    private void Pause_performed(InputAction.CallbackContext context)
+    {
+        OnPauseAction?.Invoke(this, Time.time);
     }
 
     public Vector3 GetMovement()

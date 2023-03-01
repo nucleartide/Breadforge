@@ -1,4 +1,3 @@
-using System;
 using UnityEngine;
 
 public class GameInput : MonoBehaviour
@@ -13,9 +12,10 @@ public class GameInput : MonoBehaviour
         playerInputActions.Player.Enable();
     }
 
-    public Vector2 GetMovementNormalized()
+    public Vector2 GetMovement()
     {
-        return playerInputActions.Player.Move.ReadValue<Vector2>().normalized;
+        var movement = playerInputActions.Player.Move.ReadValue<Vector2>();
+        return Vector2.ClampMagnitude(movement, 1f);
     }
 
     public Vector2 GetLookAround()

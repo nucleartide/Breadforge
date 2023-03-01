@@ -1,4 +1,4 @@
-## Ticket
+## JIRA Ticket
 
 > Sorry folks, this is internal to my Notion workspace!
 

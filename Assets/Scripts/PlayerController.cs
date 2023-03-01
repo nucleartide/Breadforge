@@ -26,25 +26,6 @@ public class PlayerController : MonoBehaviour
         public float RotationSpeed;
     }
 
-    [Serializable]
-    struct CurrentInput
-    {
-        /// <summary>
-        /// Current movement direction.
-        /// </summary>
-        public Vector3 Move;
-
-        /// <summary>
-        /// Whether player is running.
-        /// </summary>
-        public bool Run;
-
-        /// <summary>
-        /// Time elapsed since last frame.
-        /// </summary>
-        public float DeltaTime;
-    }
-
     [SerializeField]
     Configuration configuration = new()
     {
@@ -63,10 +44,6 @@ public class PlayerController : MonoBehaviour
     [NotNull]
     GameInput gameInput;
 
-    CurrentInput currentInput;
-
-    float verticalSpeed;
-
     public float HorizontalSpeed
     {
         get;
@@ -78,26 +55,15 @@ public class PlayerController : MonoBehaviour
     /// </summary>
     float horizontalSpeedDampingValue;
 
-    static CurrentInput GetCurrentInput(GameInput gameInput)
-    {
-        var move = gameInput.GetMovement();
-        return new CurrentInput
-        {
-            Move = new Vector3(move.x, 0f, move.y),
-            Run = gameInput.GetRun(),
-            DeltaTime = Time.smoothDeltaTime,
-        };
-    }
-
     private float TargetSpeed
     {
         get
         {
-            var isIdle = currentInput.Move == Vector3.zero;
+            var isIdle = gameInput.GetMovement() == Vector3.zero;
             if (isIdle)
                 return 0f;
 
-            if (currentInput.Run)
+            if (gameInput.GetRun())
                 return configuration.PlayerRunSpeed;
 
             return configuration.PlayerWalkSpeed;
@@ -106,23 +72,22 @@ public class PlayerController : MonoBehaviour
 
     private void Update()
     {
-        currentInput = GetCurrentInput(gameInput);
         HorizontalSpeed = Mathf.SmoothDamp(HorizontalSpeed, TargetSpeed, ref horizontalSpeedDampingValue, .3f);
 
         var yRotation = Quaternion.Euler(0f, playerShoulderTarget.eulerAngles.y, 0f);
-        var movementDirection = yRotation * currentInput.Move;
+        var movementDirection = yRotation * gameInput.GetMovement();
         FaceMovementDirection(movementDirection);
         Move(movementDirection);
     }
 
     private void Move(Vector3 movementDirection)
     {
-        transform.position += currentInput.DeltaTime * HorizontalSpeed * movementDirection;
+        transform.position += Time.smoothDeltaTime * HorizontalSpeed * movementDirection;
     }
 
     private void FaceMovementDirection(Vector3 movementDirection)
     {
-        if (currentInput.Move != Vector3.zero)
+        if (gameInput.GetMovement() != Vector3.zero)
         {
             float singleStep = configuration.RotationSpeed * Time.smoothDeltaTime;
             transform.forward = Vector3.RotateTowards(transform.forward, movementDirection.normalized, singleStep, 0f);

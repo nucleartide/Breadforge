@@ -12,10 +12,10 @@ public class GameInput : MonoBehaviour
         playerInputActions.Player.Enable();
     }
 
-    public Vector2 GetMovement()
+    public Vector3 GetMovement()
     {
-        var movement = playerInputActions.Player.Move.ReadValue<Vector2>();
-        return Vector2.ClampMagnitude(movement, 1f);
+        var move = playerInputActions.Player.Move.ReadValue<Vector2>();
+        return Vector3.ClampMagnitude(new Vector3(move.x, 0f, move.y), 1f);
     }
 
     public Vector2 GetLookAround()

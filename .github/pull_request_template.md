@@ -15,6 +15,8 @@
 ## How it works
 
 > Explain what you did, how you did it, and why you did it. Also any lessons that might be useful to others.
+>
+> (Note to self: it's easiest to do a stream-of-consciousness writeup of what you did.)
 
 ...
 

@@ -52,7 +52,6 @@ public class TileUI : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, 
         tileEventManager.ReleaseTile(tileQuantity);
     }
 
-
     void Start()
     {
         var pos = transform.position;

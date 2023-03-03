@@ -13,7 +13,7 @@ public class PlayerShoulderTarget : MonoBehaviour
 
     [SerializeField]
     [NotNull]
-    GameInput gameInput;
+    InputManager gameInput;
 
     void Update()
     {

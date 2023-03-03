@@ -1,10 +1,8 @@
 using UnityEngine;
-using UnityEngine.Assertions;
-using System.Collections.Generic;
-using System.Linq;
 
 public class GridManager : MonoBehaviour
 {
+#if false
     [System.Serializable]
     public struct Wave
     {
@@ -286,4 +284,5 @@ foreach (var biome in matchingBiomes)
         Debug.Log($"minHeight: {minHeight}");
         Debug.Log($"maxHeight: {maxHeight}");
     }
+#endif
 }

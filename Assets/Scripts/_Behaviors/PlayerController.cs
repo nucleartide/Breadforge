@@ -42,7 +42,7 @@ public class PlayerController : MonoBehaviour
 
     [SerializeField]
     [NotNull]
-    GameInput gameInput;
+    InputManager gameInput;
 
     public float HorizontalSpeed
     {

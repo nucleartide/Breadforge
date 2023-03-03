@@ -2,7 +2,7 @@ using UnityEngine;
 using System;
 using UnityEngine.InputSystem;
 
-public class GameInput : MonoBehaviour
+public class InputManager : MonoBehaviour
 {
     private PlayerInputActions playerInputActions;
 

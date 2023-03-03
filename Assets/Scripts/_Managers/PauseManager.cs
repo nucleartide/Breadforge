@@ -4,7 +4,7 @@ public class PauseManager : MonoBehaviour
 {
     [SerializeField]
     [NotNull]
-    GameInput gameInput;
+    InputManager gameInput;
 
     private bool isPaused = false;
 

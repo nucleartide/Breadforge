@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class TrackTarget : MonoBehaviour
+public class Tracker : MonoBehaviour
 {
     [SerializeField]
     [NotNull]

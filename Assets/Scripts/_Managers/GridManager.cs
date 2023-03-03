@@ -1,22 +1,10 @@
 using UnityEngine;
+using System;
+using System.Collections.Generic;
 
 public class GridManager : MonoBehaviour
 {
 #if false
-    [System.Serializable]
-    public struct Wave
-    {
-        public float Seed;
-        public float Frequency;
-        public float Amplitude;
-    }
-
-    [System.Serializable]
-    public struct NoiseMapConfig
-    {
-        public List<Wave> Waves;
-    }
-
     public enum GridMode
     {
         DebugHeightMap,
@@ -29,39 +17,7 @@ public class GridManager : MonoBehaviour
     TileUI tileUIPrefab;
 
     [SerializeField]
-    int gridWidth = 100;
-
-    [SerializeField]
-    int gridHeight = 100;
-
-    [SerializeField]
     GridMode gridMode = GridMode.InstantiateTiles;
-
-    [SerializeField]
-    Biome coalBiome;
-    [SerializeField]
-    Biome copperOreBiome;
-    [SerializeField]
-    Biome groundBiome;
-    [SerializeField]
-    Biome ironOreBiome;
-    [SerializeField]
-    Biome stoneBiome;
-    [SerializeField]
-    Biome sugarCaneBiome;
-    [SerializeField]
-    Biome waterPackBiome;
-    [SerializeField]
-    Biome wheatBiome;
-
-    [SerializeField]
-    NoiseMapConfig heightMapConfig;
-
-    [SerializeField]
-    NoiseMapConfig moistureMapConfig;
-
-    [SerializeField]
-    NoiseMapConfig heatMapConfig;
 
     float[,] heightMap;
     float[,] moistureMap;
@@ -102,39 +58,6 @@ public class GridManager : MonoBehaviour
 
     [SerializeField]
     GameObject genericCube;
-
-    /// <summary>
-    /// TODO: This causes some jank at the beginning of the scene. Should I optimize?
-    /// </summary>
-    /// <param name="width">Width of the generated map.</param>
-    /// <param name="height">Height of the generated map.</param>
-    /// <param name="scale">How zoomed-in the map will be. Pass in a default value of 1.0 for no zooming.</param>
-    /// <param name="stackOfWaves">The stack of waves to combine into one.</param>
-    /// <param name="offset">The offset used when sampling from Perlin noise.</param>
-    public static float[,] GenerateNoiseMap(int width, int height, float scale, List<Wave> stackOfWaves, Vector2 offset)
-    {
-        var noiseMap = new float[height, width];
-
-        for (var y = 0; y < height; y++)
-        {
-            for (var x = 0; x < width; x++)
-            {
-                var sampleX = x * scale + offset.x;
-                var sampleY = y * scale + offset.y;
-                var normalization = 0.0f; // Needed to normalize to [0,1] after summing the stack of noise values.
-
-                foreach (var wave in stackOfWaves)
-                {
-                    noiseMap[x, y] += wave.Amplitude * Mathf.PerlinNoise(sampleX * wave.Frequency + wave.Seed, sampleY * wave.Frequency + wave.Seed);
-                    normalization += wave.Amplitude;
-                }
-
-                noiseMap[x, y] /= normalization;
-            }
-        }
-
-        return noiseMap;
-    }
 
     public static Biome ClosestBiome(List<Biome> biomePresets, float[,] heightMap, float[,] moistureMap, float[,] heatMap, int x, int y)
     {
@@ -183,11 +106,6 @@ foreach (var biome in matchingBiomes)
 
     void Start()
     {
-        heightMap = GenerateNoiseMap(gridWidth, gridHeight, 1.0f, heightMapConfig.Waves, Vector2.zero);
-        moistureMap = GenerateNoiseMap(gridWidth, gridHeight, 1.0f, moistureMapConfig.Waves, Vector2.zero);
-        heatMap = GenerateNoiseMap(gridWidth, gridHeight, 1.0f, heatMapConfig.Waves, Vector2.zero);
-
-        // TODO: write debuggers for each map. that'll make it easier to get the resource allocation i want.
 
         var biomePresets = new List<Biome>()
         {
@@ -285,4 +203,102 @@ foreach (var biome in matchingBiomes)
         Debug.Log($"maxHeight: {maxHeight}");
     }
 #endif
+
+    [Serializable]
+    private struct Wave
+    {
+        public float Seed;
+        public float Frequency;
+        public float Amplitude;
+    }
+
+    [Serializable]
+    private struct NoiseMapConfig
+    {
+        public List<Wave> Waves;
+    }
+
+    [SerializeField]
+    private int gridWidth = 100;
+
+    [SerializeField]
+    private int gridHeight = 100;
+
+    [SerializeField]
+    private NoiseMapConfig heightMapConfig;
+
+    [SerializeField]
+    private NoiseMapConfig moistureMapConfig;
+
+    [SerializeField]
+    private NoiseMapConfig heatMapConfig;
+
+    [SerializeField]
+    Biome coalBiome;
+
+    [SerializeField]
+    Biome copperOreBiome;
+
+    [SerializeField]
+    Biome groundBiome;
+
+    [SerializeField]
+    Biome woodBiome;
+
+    [SerializeField]
+    Biome ironOreBiome;
+
+    [SerializeField]
+    Biome stoneBiome;
+
+    [SerializeField]
+    Biome sugarCaneBiome;
+
+    [SerializeField]
+    Biome waterBiome;
+
+    [SerializeField]
+    Biome wheatBiome;
+
+    private float[,] heightMap;
+    private float[,] moistureMap;
+    private float[,] heatMap;
+
+    /// <param name="width">Width of the generated map.</param>
+    /// <param name="height">Height of the generated map.</param>
+    /// <param name="stackOfWaves">The stack of waves to combine into one.</param>
+    /// <param name="scale">How zoomed-in the map will be. Pass in a value of 1.0 for no zooming.</param>
+    /// <param name="offset">The offset used when sampling from Perlin noise. Pass in a value of Vector2.zero for no offset.</param>
+    private static float[,] GenerateNoiseMap(int width, int height, List<Wave> stackOfWaves, float scale, Vector2 offset)
+    {
+        var noiseMap = new float[height, width];
+
+        for (var y = 0; y < height; y++)
+        {
+            for (var x = 0; x < width; x++)
+            {
+                var sampleX = x * scale + offset.x;
+                var sampleY = y * scale + offset.y;
+                var normalization = 0.0f; // Needed to normalize to [0,1] after summing the stack of noise values.
+
+                foreach (var wave in stackOfWaves)
+                {
+                    noiseMap[x, y] += wave.Amplitude * Mathf.PerlinNoise(sampleX * wave.Frequency + wave.Seed, sampleY * wave.Frequency + wave.Seed);
+                    normalization += wave.Amplitude;
+                }
+
+                noiseMap[x, y] /= normalization;
+            }
+        }
+
+        return noiseMap;
+    }
+
+    void Start()
+    {
+        heightMap = GenerateNoiseMap(gridWidth, gridHeight, heightMapConfig.Waves, 1f, Vector2.zero);
+        moistureMap = GenerateNoiseMap(gridWidth, gridHeight, moistureMapConfig.Waves, 1f, Vector2.zero);
+        heatMap = GenerateNoiseMap(gridWidth, gridHeight, heatMapConfig.Waves, 1f, Vector2.zero);
+        Debug.Log("Maps have been generated.");
+    }
 }

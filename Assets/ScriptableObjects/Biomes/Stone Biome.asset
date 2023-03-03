@@ -9,6 +9,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fa71499cae97841e7a3065136f330b14, type: 3}
-  m_Name: Tile Event Manager
+  m_Script: {fileID: 11500000, guid: 3e90f14e536e3444dbb33ad9c57c6126, type: 3}
+  m_Name: Stone Biome
   m_EditorClassIdentifier: 
+  <MinHeight>k__BackingField: 0
+  <MinMoisture>k__BackingField: 0
+  <MinHeat>k__BackingField: 0

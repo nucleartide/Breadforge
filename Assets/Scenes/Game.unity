@@ -458,6 +458,38 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fe5067af979e64cf6b3230ea00b2b266, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gridWidth: 100
+  gridHeight: 100
+  heightMapConfig:
+    Waves:
+    - Seed: 56
+      Frequency: 0.05
+      Amplitude: 1
+    - Seed: 199.36
+      Frequency: 0.1
+      Amplitude: 0.5
+  moistureMapConfig:
+    Waves:
+    - Seed: 621
+      Frequency: 0.03
+      Amplitude: 1
+  heatMapConfig:
+    Waves:
+    - Seed: 318.6
+      Frequency: 0.04
+      Amplitude: 1
+    - Seed: 329.7
+      Frequency: 0.02
+      Amplitude: 0.5
+  coalBiome: {fileID: 11400000, guid: 1f23ed08a396d46469855ff5835ac95c, type: 2}
+  copperOreBiome: {fileID: 11400000, guid: b98c9a9000a014701a2c13f086adec26, type: 2}
+  groundBiome: {fileID: 11400000, guid: e4225e5d1b01c4388b00d88422341a5e, type: 2}
+  woodBiome: {fileID: 11400000, guid: 60d5356e414094516abe1cd2af21896c, type: 2}
+  ironOreBiome: {fileID: 11400000, guid: 24acb9502a6e649d7a0f35a39254c9a4, type: 2}
+  stoneBiome: {fileID: 11400000, guid: 0e6e2df80e19c4c35a26b1276e4afac6, type: 2}
+  sugarCaneBiome: {fileID: 11400000, guid: 258714568d28141da9edeb332f613f4d, type: 2}
+  waterBiome: {fileID: 11400000, guid: a802b95a9aca24771b9beb5fafb9e064, type: 2}
+  wheatBiome: {fileID: 11400000, guid: 2e6508d6f7c94417e96c2bb5b44c763f, type: 2}
 --- !u!1001 &696239006
 PrefabInstance:
   m_ObjectHideFlags: 0

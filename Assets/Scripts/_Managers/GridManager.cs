@@ -213,9 +213,11 @@ foreach (var biome in matchingBiomes)
     }
 
     [Serializable]
-    private struct NoiseMapConfig
+    private class World
     {
-        public List<Wave> Waves;
+        public List<Wave> Height;
+        public List<Wave> Moisture;
+        public List<Wave> Heat;
     }
 
     [SerializeField]
@@ -225,13 +227,7 @@ foreach (var biome in matchingBiomes)
     private int gridHeight = 100;
 
     [SerializeField]
-    private NoiseMapConfig heightMapConfig;
-
-    [SerializeField]
-    private NoiseMapConfig moistureMapConfig;
-
-    [SerializeField]
-    private NoiseMapConfig heatMapConfig;
+    private World world;
 
     [SerializeField]
     Biome coalBiome;
@@ -296,9 +292,9 @@ foreach (var biome in matchingBiomes)
 
     void Start()
     {
-        heightMap = GenerateNoiseMap(gridWidth, gridHeight, heightMapConfig.Waves, 1f, Vector2.zero);
-        moistureMap = GenerateNoiseMap(gridWidth, gridHeight, moistureMapConfig.Waves, 1f, Vector2.zero);
-        heatMap = GenerateNoiseMap(gridWidth, gridHeight, heatMapConfig.Waves, 1f, Vector2.zero);
+        heightMap = GenerateNoiseMap(gridWidth, gridHeight, world.Height, 1f, Vector2.zero);
+        moistureMap = GenerateNoiseMap(gridWidth, gridHeight, world.Moisture, 1f, Vector2.zero);
+        heatMap = GenerateNoiseMap(gridWidth, gridHeight, world.Heat, 1f, Vector2.zero);
         Debug.Log("Maps have been generated.");
     }
 }

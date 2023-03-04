@@ -218,7 +218,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &366215642
 Transform:
   m_ObjectHideFlags: 0
@@ -460,21 +460,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gridWidth: 100
   gridHeight: 100
-  heightMapConfig:
-    Waves:
+  world:
+    Height:
     - Seed: 56
       Frequency: 0.05
       Amplitude: 1
     - Seed: 199.36
       Frequency: 0.1
       Amplitude: 0.5
-  moistureMapConfig:
-    Waves:
+    Moisture:
     - Seed: 621
       Frequency: 0.03
       Amplitude: 1
-  heatMapConfig:
-    Waves:
+    Heat:
     - Seed: 318.6
       Frequency: 0.04
       Amplitude: 1
@@ -838,7 +836,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &996116154
 Transform:
   m_ObjectHideFlags: 0

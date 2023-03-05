@@ -458,9 +458,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fe5067af979e64cf6b3230ea00b2b266, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gridWidth: 100
-  gridHeight: 100
-  world:
+  worldConfig:
     Height:
     - Seed: 56
       Frequency: 0.05
@@ -479,6 +477,9 @@ MonoBehaviour:
     - Seed: 329.7
       Frequency: 0.02
       Amplitude: 0.5
+    GridWidth: 100
+    GridHeight: 100
+    WorldInstantiateMode: 1
   coalBiome: {fileID: 11400000, guid: 1f23ed08a396d46469855ff5835ac95c, type: 2}
   copperOreBiome: {fileID: 11400000, guid: b98c9a9000a014701a2c13f086adec26, type: 2}
   groundBiome: {fileID: 11400000, guid: e4225e5d1b01c4388b00d88422341a5e, type: 2}
@@ -488,6 +489,8 @@ MonoBehaviour:
   sugarCaneBiome: {fileID: 11400000, guid: 258714568d28141da9edeb332f613f4d, type: 2}
   waterBiome: {fileID: 11400000, guid: a802b95a9aca24771b9beb5fafb9e064, type: 2}
   wheatBiome: {fileID: 11400000, guid: 2e6508d6f7c94417e96c2bb5b44c763f, type: 2}
+  cubePrefab: {fileID: 5872477195587567721, guid: 2e1e93f18e3d743999523fe9c601db91,
+    type: 3}
 --- !u!1001 &696239006
 PrefabInstance:
   m_ObjectHideFlags: 0

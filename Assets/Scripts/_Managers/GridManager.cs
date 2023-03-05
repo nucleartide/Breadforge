@@ -394,10 +394,6 @@ foreach (var biome in matchingBiomes)
         }
     }
 
-    private void Start()
-    {
-        world = GenerateWorldMap(worldConfig);
-
 #if false
         for (int y = 0; y < gridHeight; y++)
         {
@@ -437,9 +433,6 @@ foreach (var biome in matchingBiomes)
         }
 #endif
 
-        Debug.Log("Maps have been generated.");
-    }
-
     private void DestroyWorld(World world)
     {
         if (world.DebugObjects != null)
@@ -453,19 +446,12 @@ foreach (var biome in matchingBiomes)
         }
     }
 
-    private void Update()
+    public void RegenerateTerrain()
     {
-        throw Exception("create a re-generate button. this will make it easier to design maps.");
         if (world != null)
-        {
-            var currentMode = world.WorldConfig.WorldInstantiateMode;
-            if (previousWorldInstantiateMode != currentMode)
-            {
-                DestroyWorld(world);
-                InstantiateWorldMap(world);
-            }
-
-            previousWorldInstantiateMode = world.WorldConfig.WorldInstantiateMode;
-        }
+            DestroyWorld(world);
+        world = GenerateWorldMap(worldConfig);
+        InstantiateWorldMap(world);
+        Debug.Log("Maps have been re-generated.");
     }
 }

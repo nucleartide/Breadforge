@@ -491,6 +491,7 @@ MonoBehaviour:
   wheatBiome: {fileID: 11400000, guid: 2e6508d6f7c94417e96c2bb5b44c763f, type: 2}
   cubePrefab: {fileID: 5872477195587567721, guid: 2e1e93f18e3d743999523fe9c601db91,
     type: 3}
+  materialManager: {fileID: 11400000, guid: 91a32bb37741d41aea2a9eb944f759f8, type: 2}
 --- !u!1001 &696239006
 PrefabInstance:
   m_ObjectHideFlags: 0

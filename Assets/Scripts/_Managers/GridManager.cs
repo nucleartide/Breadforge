@@ -1,65 +1,11 @@
 using UnityEngine;
 using System;
 using System.Collections.Generic;
+using UnityEngine.Assertions;
 
 public class GridManager : MonoBehaviour
 {
-#if false
-    public enum GridMode
-    {
-        DebugHeightMap,
-        DebugMoistureMap,
-        DebugHeatMap,
-        InstantiateTiles,
-    }
-
-    [SerializeField]
-    TileUI tileUIPrefab;
-
-    [SerializeField]
-    GridMode gridMode = GridMode.InstantiateTiles;
-
-    float[,] heightMap;
-    float[,] moistureMap;
-    float[,] heatMap;
-    List<TileUI> grid = new List<TileUI>();
-
-    [SerializeField]
-    [NotNull]
-    TileEventManager tileEventManager;
-
-    [SerializeField]
-    [NotNull]
-    Tile coal;
-
-    [SerializeField]
-    [NotNull]
-    Tile stone;
-
-    [SerializeField]
-    [NotNull]
-    Tile ironOre;
-
-    [SerializeField]
-    [NotNull]
-    Tile copperOre;
-
-    [SerializeField]
-    [NotNull]
-    Tile wheat;
-
-    [SerializeField]
-    [NotNull]
-    Tile sugarCane;
-
-    [SerializeField]
-    [NotNull]
-    Tile waterPack;
-
-    [SerializeField]
-    GameObject genericCube;
-
-    public static Biome ClosestBiome(List<Biome> biomePresets, float[,] heightMap, float[,] moistureMap, float[,] heatMap, int x, int y)
+    private static Biome ClosestBiome(List<Biome> biomePresets, float[,] heightMap, float[,] moistureMap, float[,] heatMap, int x, int y)
     {
         float height = heightMap[y, x];
         float moisture = moistureMap[y, x];
@@ -67,14 +13,8 @@ public class GridManager : MonoBehaviour
 
         // Find all the matching biomes.
         var matchingBiomes = biomePresets.FindAll(biome => biome.MatchCondition(height, moisture, heat));
-if (matchingBiomes.Count == 0)
-{
-return null;
-}
-
-foreach (var biome in matchingBiomes)
-{
-}
+        if (matchingBiomes.Count == 0)
+            return null;
 
         // For each matching biome, find the difference value.
         var matchingBiomesWithDifference = matchingBiomes.ConvertAll(biome =>
@@ -82,18 +22,13 @@ foreach (var biome in matchingBiomes)
             return (biome, (height - biome.MinHeight) + (moisture - biome.MinMoisture) + (heat - biome.MinHeat));
         });
 
-        // Find the biome with the minimum difference value. It seems this version of LINQ has no MinBy.
+        // Find the biome with the minimum difference value. (It seems this version of LINQ has no MinBy.)
         var minValue = 1000f;
         Biome minBiome = null;
-        foreach (var thing in matchingBiomesWithDifference)
-        {
-        }
         foreach (var (biome, difference) in matchingBiomesWithDifference)
         {
-            Debug.Log("difference " + difference);
             if (difference < minValue)
             {
-                Assert.IsNotNull(biome);
                 minValue = difference;
                 minBiome = biome;
             }
@@ -103,106 +38,6 @@ foreach (var biome in matchingBiomes)
         Assert.IsNotNull(minBiome);
         return minBiome;
     }
-
-    void Start()
-    {
-
-        var biomePresets = new List<Biome>()
-        {
-            waterPackBiome,
-            groundBiome,
-            stoneBiome,
-            coalBiome,
-            ironOreBiome,
-            copperOreBiome,
-            wheatBiome,
-            sugarCaneBiome,
-        };
-
-        var minHeight = float.MaxValue;
-        var maxHeight = float.MinValue;
-
-        for (int y = 0; y < gridHeight; y++)
-        {
-            for (int x = 0; x < gridWidth; x++)
-            {
-                if (gridMode == GridMode.InstantiateTiles)
-                {
-                    // Instantiate tile based on closest biome.
-                    var biome = ClosestBiome(biomePresets, heightMap, moistureMap, heatMap, x, y);
-                    if (biome == groundBiome || biome == null)
-                        continue;
-                    // TODO: change closest biome algorithm. I want to have pockets of resources.
-
-                    var tileUI = Instantiate(tileUIPrefab);
-                    var position = new Vector3(x - gridWidth / 2, .01f, y - gridHeight / 2);
-                    var tileQuantity = ScriptableObject.CreateInstance<TileQuantity>();
-                    if (biome == coalBiome)
-                        tileQuantity.Initialize(20, coal);
-                    else if (biome == copperOreBiome)
-                        tileQuantity.Initialize(20, copperOre);
-                    else if (biome == ironOreBiome)
-                        tileQuantity.Initialize(20, ironOre);
-                    else if (biome == stoneBiome)
-                        tileQuantity.Initialize(20, stone);
-                    else if (biome == sugarCaneBiome)
-                        tileQuantity.Initialize(20, sugarCane);
-                    else if (biome == waterPackBiome)
-                        tileQuantity.Initialize(20, waterPack);
-                    else if (biome == wheatBiome)
-                        tileQuantity.Initialize(20, wheat);
-                    else
-                        throw new System.Exception("Unimplemented");
-                    tileUI.Initialize(tileQuantity, position, tileEventManager);
-                    grid.Add(tileUI);
-                }
-                else if (gridMode == GridMode.DebugHeightMap)
-                {
-                    var cube = Instantiate(genericCube);
-                    var debugUI = cube.GetComponent<DebugUI>();
-                    var position = new Vector3(x - gridWidth / 2, .01f, y - gridHeight / 2);
-                    var scale = heightMap[y, x];
-                    debugUI.SetText($"scale: {scale}", new Color32((byte)(scale * 255), (byte)(scale * 255), (byte)(scale * 255), 255));
-                    cube.transform.position = position;
-                    cube.transform.localScale = new Vector3(1f, scale * 20 /* Recall that the pivot is at the cube center, so scaling will extend downward as well. */, 1f);
-
-                    if (scale < minHeight) minHeight = scale;
-                    if (scale > maxHeight) maxHeight = scale;
-                }
-                else if (gridMode == GridMode.DebugMoistureMap)
-                {
-                    var cube = Instantiate(genericCube);
-                    var debugUI = cube.GetComponent<DebugUI>();
-                    var position = new Vector3(x - gridWidth / 2, .01f, y - gridHeight / 2);
-                    var scale = moistureMap[y, x];
-                    debugUI.SetText($"scale: {scale}", new Color32((byte)(scale * 255), (byte)(scale * 255), (byte)(scale * 255), 255));
-                    cube.transform.position = position;
-                    cube.transform.localScale = new Vector3(1f, scale * 20 /* Recall that the pivot is at the cube center, so scaling will extend downward as well. */, 1f);
-
-                    if (scale < minHeight) minHeight = scale;
-                    if (scale > maxHeight) maxHeight = scale;
-                }
-                else if (gridMode == GridMode.DebugHeatMap)
-                {
-                    var cube = Instantiate(genericCube);
-                    var debugUI = cube.GetComponent<DebugUI>();
-                    var position = new Vector3(x - gridWidth / 2, .01f, y - gridHeight / 2);
-                    var scale = heatMap[y, x];
-                    debugUI.SetText($"scale: {scale}", new Color32((byte)(scale * 255), (byte)(scale * 255), (byte)(scale * 255), 255));
-                    cube.transform.position = position;
-                    cube.transform.localScale = new Vector3(1f, scale * 20 /* Recall that the pivot is at the cube center, so scaling will extend downward as well. */, 1f);
-
-                    if (scale < minHeight) minHeight = scale;
-                    if (scale > maxHeight) maxHeight = scale;
-                }
-
-            }
-        }
-
-        Debug.Log($"minHeight: {minHeight}");
-        Debug.Log($"maxHeight: {maxHeight}");
-    }
-#endif
 
     [Serializable]
     private struct Wave
@@ -312,6 +147,10 @@ foreach (var biome in matchingBiomes)
     [NotNull]
     private Transform cubePrefab;
 
+    [SerializeField]
+    [NotNull]
+    private MaterialManager materialManager;
+
     private World world;
     private WorldInstantiateMode previousWorldInstantiateMode;
 
@@ -361,9 +200,6 @@ foreach (var biome in matchingBiomes)
 
     private void InstantiateWorldMap(World world)
     {
-        if (world.WorldConfig.WorldInstantiateMode == WorldInstantiateMode.None)
-            return;
-
         var gridHeight = world.HeatMap.GetLength(0);
         var gridWidth = world.HeatMap.GetLength(1);
         world.DebugObjects = new List<Transform>();
@@ -376,62 +212,67 @@ foreach (var biome in matchingBiomes)
                 var cube = Instantiate(cubePrefab);
                 world.DebugObjects.Add(cube);
 
+                // Set world instantiate mode.
+                if (world.WorldConfig.WorldInstantiateMode == WorldInstantiateMode.None)
+                {
+                    // List of biomes.
+                    var biomes = new List<Biome>
+                    {
+                        coalBiome,
+                        copperOreBiome,
+                        groundBiome,
+                        woodBiome,
+                        ironOreBiome,
+                        stoneBiome,
+                        sugarCaneBiome,
+                        waterBiome,
+                        wheatBiome,
+                    };
+
+                    // First, determine the closest biome.
+                    var biome = ClosestBiome(biomes, world.HeightMap, world.MoistureMap, world.HeatMap, x, y);
+
+                    // Then given the biome, set the material of the cube.
+                    var map = new Dictionary<Biome, Material>
+                    {
+                        {coalBiome, materialManager.Coal},
+                        {copperOreBiome, materialManager.CopperOre},
+                        // {groundBiome, materialManager.Groun},
+                        {woodBiome, materialManager.Wood},
+                        {ironOreBiome, materialManager.IronOre},
+                        {stoneBiome, materialManager.Stone},
+                        {sugarCaneBiome, materialManager.SugarCane},
+                        {waterBiome, materialManager.Water},
+                        {wheatBiome, materialManager.Wheat},
+                    };
+
+                    // Set the material if not null.
+                    if (biome != null && map.ContainsKey(biome))
+                        cube.GetComponentInChildren<MeshRenderer>().material = map[biome];
+
+throw new System.Exception("jason: tweak the params tomorrow so you get good-looking tiles.");
+                }
+
                 // Set position.
                 var position = new Vector3(x - gridWidth / 2, 0f, y - gridHeight / 2);
                 cube.transform.position = position;
 
-                // Set scale.
-                float scale = 0f;
-                if (world.WorldConfig.WorldInstantiateMode == WorldInstantiateMode.Height)
-                    scale = world.HeightMap[y, x];
-                else if (world.WorldConfig.WorldInstantiateMode == WorldInstantiateMode.Heat)
-                    scale = world.HeatMap[y, x];
-                else if (world.WorldConfig.WorldInstantiateMode == WorldInstantiateMode.Moisture)
-                    scale = world.MoistureMap[y, x];
-                scale = Mathf.Clamp01(scale);
-                cube.transform.localScale = new Vector3(1f, scale * 20 /* Recall that the pivot is at the cube center, so scaling will extend downward as well. */, 1f);
-            }
-        }
-    }
-
-#if false
-        for (int y = 0; y < gridHeight; y++)
-        {
-            for (int x = 0; x < gridWidth; x++)
-            {
-                if (gridMode == GridMode.InstantiateTiles)
+                // Set scale if not instantiating actual tiles.
+                if (world.WorldConfig.WorldInstantiateMode != WorldInstantiateMode.None)
                 {
-                    // Instantiate tile based on closest biome.
-                    var biome = ClosestBiome(biomePresets, heightMap, moistureMap, heatMap, x, y);
-                    if (biome == groundBiome || biome == null)
-                        continue;
-                    // TODO: change closest biome algorithm. I want to have pockets of resources.
-
-                    var tileUI = Instantiate(tileUIPrefab);
-                    var position = new Vector3(x - gridWidth / 2, .01f, y - gridHeight / 2);
-                    var tileQuantity = ScriptableObject.CreateInstance<TileQuantity>();
-                    if (biome == coalBiome)
-                        tileQuantity.Initialize(20, coal);
-                    else if (biome == copperOreBiome)
-                        tileQuantity.Initialize(20, copperOre);
-                    else if (biome == ironOreBiome)
-                        tileQuantity.Initialize(20, ironOre);
-                    else if (biome == stoneBiome)
-                        tileQuantity.Initialize(20, stone);
-                    else if (biome == sugarCaneBiome)
-                        tileQuantity.Initialize(20, sugarCane);
-                    else if (biome == waterPackBiome)
-                        tileQuantity.Initialize(20, waterPack);
-                    else if (biome == wheatBiome)
-                        tileQuantity.Initialize(20, wheat);
-                    else
-                        throw new System.Exception("Unimplemented");
-                    tileUI.Initialize(tileQuantity, position, tileEventManager);
-                    grid.Add(tileUI);
+                    float scale = 0f;
+                    if (world.WorldConfig.WorldInstantiateMode == WorldInstantiateMode.Height)
+                        scale = world.HeightMap[y, x];
+                    else if (world.WorldConfig.WorldInstantiateMode == WorldInstantiateMode.Heat)
+                        scale = world.HeatMap[y, x];
+                    else if (world.WorldConfig.WorldInstantiateMode == WorldInstantiateMode.Moisture)
+                        scale = world.MoistureMap[y, x];
+                    scale = Mathf.Clamp01(scale);
+                    cube.transform.localScale = new Vector3(1f, scale * 20 /* Recall that the pivot is at the cube center, so scaling will extend downward as well. */, 1f);
                 }
             }
         }
-#endif
+    }
 
     private void DestroyWorld(World world)
     {

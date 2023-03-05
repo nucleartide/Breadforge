@@ -10,8 +10,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 50c692d3080864441bfd1a5616950096, type: 3}
-  m_Name: Water Pack
+  m_Name: Wood
   m_EditorClassIdentifier: 
-  <Label>k__BackingField: Water Pack
-  <Hover>k__BackingField: {r: 0.4292453, g: 0.6847576, b: 1, a: 1}
-  <Idle>k__BackingField: {r: 0.10849059, g: 0.5112889, b: 1, a: 1}
+  <Label>k__BackingField: Wood
+  <Hover>k__BackingField: {r: 0.5943396, g: 0.44895872, b: 0.25511748, a: 1}
+  <Idle>k__BackingField: {r: 0.4245283, g: 0.28687003, b: 0.09812211, a: 1}

@@ -8,6 +8,27 @@
 (link to Notion block here)
 ```
 
+## Development checklist
+
+> Consider Ryan Hipple's 3 engineering values:
+> 
+> * Modular
+>     * Systems not dependent on each other
+>     * Scenes are clean slates
+>     * Prefabs work on their own
+>     * Components (in Unity)
+> * Editable
+>     * Focus on data
+>     * Change the game without code
+>     * Emergent design
+>     * Change at runtime
+> * Debuggable
+>     * Test in isolation (modularity)
+>     * Debug views and features
+>     * Never fix a bug you do not understand
+> 
+> In what ways do I need to modify this pull request to align with Ryan's 3 values?
+
 ## Changelog
 
 > Provide a bulleted list of changes that were made in this pull request.

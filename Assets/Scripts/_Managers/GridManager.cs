@@ -12,7 +12,7 @@ public class GridManager : MonoBehaviour
         float heat = heatMap[y, x];
 
         // Find all the matching biomes.
-        var matchingBiomes = biomePresets.FindAll(biome => biome.MatchCondition(biomes, height, moisture, heat));
+        var matchingBiomes = biomePresets.FindAll(biome => biome.Match(biomes, height, moisture, heat));
         if (matchingBiomes.Count == 0)
             return null;
 

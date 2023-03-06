@@ -1,14 +1,14 @@
 using UnityEngine;
 
 [System.Serializable]
-public class Biome
+public struct Biome
 {
     [Tooltip("Ranges from 0 to 1.")]
     [field: SerializeField]
     public float MinHeight
     {
         get;
-        set;
+        private set;
     }
 
     [Tooltip("Ranges from 0 to 1.")]
@@ -16,7 +16,7 @@ public class Biome
     public float MinMoisture
     {
         get;
-        set;
+        private set;
     }
 
     [Tooltip("Ranges from 0 to 1.")]
@@ -24,11 +24,19 @@ public class Biome
     public float MinHeat
     {
         get;
-        set;
+        private set;
     }
 
-    public bool MatchCondition(Biomes biomeManager, float height, float moisture, float heat)
+    /// <summary>
+    /// Evaluate whether a set of (height, moisture, heat) values matches this biome.
+    /// </summary>
+    public bool Match(Biomes biomeManager, float height, float moisture, float heat)
     {
+        // given a biome, and a set of (height, moisture, heat) values,
+        // check whether there is a match.
+        // Match(biome, height, moisture, heat)
+        throw new System.Exception("jason: move this into Biomes/BiomeManager");
+
         var normalizedMinHeight = MinHeight * (biomeManager.HeightMax - biomeManager.HeightMin) + biomeManager.HeightMin;
         var normalizedMinMoisture = MinMoisture * (biomeManager.MoistureMax - biomeManager.MoistureMin) + biomeManager.MoistureMin;
         var normalizedMinHeat = MinHeat * (biomeManager.HeatMax - biomeManager.HeatMin) + biomeManager.HeatMin;

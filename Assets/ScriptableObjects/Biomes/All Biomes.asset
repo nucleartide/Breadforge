@@ -20,37 +20,37 @@ MonoBehaviour:
   MoistureMax: 0.8379853
   waterBiome:
     <MinHeight>k__BackingField: 0
-    <MinMoisture>k__BackingField: 0.75
-    <MinHeat>k__BackingField: 0.5
+    <MinMoisture>k__BackingField: 0
+    <MinHeat>k__BackingField: 0
   groundBiome:
-    <MinHeight>k__BackingField: 0.5
-    <MinMoisture>k__BackingField: 0.5
-    <MinHeat>k__BackingField: 0.5
+    <MinHeight>k__BackingField: 0.3
+    <MinMoisture>k__BackingField: 0.4
+    <MinHeat>k__BackingField: 0.2
   stoneBiome:
-    <MinHeight>k__BackingField: 0.75
-    <MinMoisture>k__BackingField: 0.1
-    <MinHeat>k__BackingField: 0.1
+    <MinHeight>k__BackingField: 0.3
+    <MinMoisture>k__BackingField: 0.3
+    <MinHeat>k__BackingField: 0
   coalBiome:
-    <MinHeight>k__BackingField: 0.75
-    <MinMoisture>k__BackingField: 0.25
-    <MinHeat>k__BackingField: 0.75
+    <MinHeight>k__BackingField: 0.3
+    <MinMoisture>k__BackingField: 0.2
+    <MinHeat>k__BackingField: 0
   copperOreBiome:
-    <MinHeight>k__BackingField: 0
+    <MinHeight>k__BackingField: 0.3
     <MinMoisture>k__BackingField: 0
     <MinHeat>k__BackingField: 0
   ironOreBiome:
-    <MinHeight>k__BackingField: 0
-    <MinMoisture>k__BackingField: 0
+    <MinHeight>k__BackingField: 0.3
+    <MinMoisture>k__BackingField: 0.1
     <MinHeat>k__BackingField: 0
   woodBiome:
-    <MinHeight>k__BackingField: 0
-    <MinMoisture>k__BackingField: 0
-    <MinHeat>k__BackingField: 0
+    <MinHeight>k__BackingField: 0.3
+    <MinMoisture>k__BackingField: 0.4
+    <MinHeat>k__BackingField: 0.9
   sugarCaneBiome:
-    <MinHeight>k__BackingField: 0
-    <MinMoisture>k__BackingField: 0
+    <MinHeight>k__BackingField: 0.3
+    <MinMoisture>k__BackingField: 0.4
     <MinHeat>k__BackingField: 0
   wheatBiome:
-    <MinHeight>k__BackingField: 0
-    <MinMoisture>k__BackingField: 0
-    <MinHeat>k__BackingField: 0
+    <MinHeight>k__BackingField: 0.3
+    <MinMoisture>k__BackingField: 0.4
+    <MinHeat>k__BackingField: 0.1

@@ -217,14 +217,15 @@ public class GridManager : MonoBehaviour
                     {
                         biomeManager.groundBiome,
                         biomeManager.waterBiome,
+
                         biomeManager.stoneBiome,
                         biomeManager.coalBiome,
+                        biomeManager.copperOreBiome,
+                        biomeManager.ironOreBiome,
 
-                        // biomeManager.copperOreBiome,
-                        // biomeManager.woodBiome,
-                        // biomeManager.ironOreBiome,
-                        // biomeManager.sugarCaneBiome,
-                        // biomeManager.wheatBiome,
+                        biomeManager.woodBiome,
+                        biomeManager.sugarCaneBiome,
+                        biomeManager.wheatBiome,
                     };
 
                     // First, determine the closest biome.

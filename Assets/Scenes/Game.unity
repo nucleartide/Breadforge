@@ -479,16 +479,8 @@ MonoBehaviour:
       Amplitude: 0.5
     GridWidth: 100
     GridHeight: 100
-    WorldInstantiateMode: 1
-  coalBiome: {fileID: 11400000, guid: 1f23ed08a396d46469855ff5835ac95c, type: 2}
-  copperOreBiome: {fileID: 11400000, guid: b98c9a9000a014701a2c13f086adec26, type: 2}
-  groundBiome: {fileID: 11400000, guid: e4225e5d1b01c4388b00d88422341a5e, type: 2}
-  woodBiome: {fileID: 11400000, guid: 60d5356e414094516abe1cd2af21896c, type: 2}
-  ironOreBiome: {fileID: 11400000, guid: 24acb9502a6e649d7a0f35a39254c9a4, type: 2}
-  stoneBiome: {fileID: 11400000, guid: 0e6e2df80e19c4c35a26b1276e4afac6, type: 2}
-  sugarCaneBiome: {fileID: 11400000, guid: 258714568d28141da9edeb332f613f4d, type: 2}
-  waterBiome: {fileID: 11400000, guid: a802b95a9aca24771b9beb5fafb9e064, type: 2}
-  wheatBiome: {fileID: 11400000, guid: 2e6508d6f7c94417e96c2bb5b44c763f, type: 2}
+    WorldInstantiateMode: 0
+  biomeManager: {fileID: 11400000, guid: 6596f3b0efd134f49a5a6c2738ce21b9, type: 2}
   cubePrefab: {fileID: 5872477195587567721, guid: 2e1e93f18e3d743999523fe9c601db91,
     type: 3}
   materialManager: {fileID: 11400000, guid: 91a32bb37741d41aea2a9eb944f759f8, type: 2}

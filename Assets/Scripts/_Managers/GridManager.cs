@@ -5,21 +5,24 @@ using UnityEngine.Assertions;
 
 public class GridManager : MonoBehaviour
 {
-    private static Biome ClosestBiome(List<Biome> biomePresets, float[,] heightMap, float[,] moistureMap, float[,] heatMap, int x, int y)
+    private static Biome ClosestBiome(Biomes biomes, List<Biome> biomePresets, float[,] heightMap, float[,] moistureMap, float[,] heatMap, int x, int y)
     {
         float height = heightMap[y, x];
         float moisture = moistureMap[y, x];
         float heat = heatMap[y, x];
 
         // Find all the matching biomes.
-        var matchingBiomes = biomePresets.FindAll(biome => biome.MatchCondition(height, moisture, heat));
+        var matchingBiomes = biomePresets.FindAll(biome => biome.MatchCondition(biomes, height, moisture, heat));
         if (matchingBiomes.Count == 0)
             return null;
 
         // For each matching biome, find the difference value.
         var matchingBiomesWithDifference = matchingBiomes.ConvertAll(biome =>
         {
-            return (biome, (height - biome.MinHeight) + (moisture - biome.MinMoisture) + (heat - biome.MinHeat));
+            var normalizedMinHeight = biome.MinHeight * (biomes.HeightMax - biomes.HeightMin) + biomes.HeightMin;
+            var normalizedMinMoisture = biome.MinMoisture * (biomes.MoistureMax - biomes.MoistureMin) + biomes.MoistureMin;
+            var normalizedMinHeat = biome.MinHeat * (biomes.HeatMax - biomes.HeatMin) + biomes.HeatMin;
+            return (biome, (height - normalizedMinHeight) + (moisture - normalizedMinMoisture) + (heat - normalizedMinHeat));
         });
 
         // Find the biome with the minimum difference value. (It seems this version of LINQ has no MinBy.)
@@ -106,9 +109,9 @@ public class GridManager : MonoBehaviour
     [Serializable]
     private class World
     {
-        public float[,] HeightMap;
-        public float[,] MoistureMap;
-        public float[,] HeatMap;
+        public NoiseMap HeightMap;
+        public NoiseMap MoistureMap;
+        public NoiseMap HeatMap;
         public WorldConfig WorldConfig;
         public List<Transform> DebugObjects;
     }
@@ -117,31 +120,8 @@ public class GridManager : MonoBehaviour
     private WorldConfig worldConfig = new WorldConfig();
 
     [SerializeField]
-    private Biome coalBiome;
-
-    [SerializeField]
-    private Biome copperOreBiome;
-
-    [SerializeField]
-    private Biome groundBiome;
-
-    [SerializeField]
-    private Biome woodBiome;
-
-    [SerializeField]
-    private Biome ironOreBiome;
-
-    [SerializeField]
-    private Biome stoneBiome;
-
-    [SerializeField]
-    private Biome sugarCaneBiome;
-
-    [SerializeField]
-    private Biome waterBiome;
-
-    [SerializeField]
-    private Biome wheatBiome;
+    [NotNull]
+    private Biomes biomeManager;
 
     [SerializeField]
     [NotNull]
@@ -152,16 +132,24 @@ public class GridManager : MonoBehaviour
     private MaterialManager materialManager;
 
     private World world;
-    private WorldInstantiateMode previousWorldInstantiateMode;
+
+    private class NoiseMap
+    {
+        public float[,] Map;
+        public float MinValue;
+        public float MaxValue;
+    }
 
     /// <param name="width">Width of the generated map.</param>
     /// <param name="height">Height of the generated map.</param>
     /// <param name="stackOfWaves">The stack of waves to combine into one.</param>
     /// <param name="scale">How zoomed-in the map will be. Pass in a value of 1.0 for no zooming.</param>
     /// <param name="offset">The offset used when sampling from Perlin noise. Pass in a value of Vector2.zero for no offset.</param>
-    private static float[,] GenerateNoiseMap(int width, int height, List<Wave> stackOfWaves, float scale, Vector2 offset)
+    private static NoiseMap GenerateNoiseMap(int width, int height, List<Wave> stackOfWaves, float scale, Vector2 offset)
     {
         var noiseMap = new float[height, width];
+        var minValue = float.MaxValue;
+        var maxValue = float.MinValue;
 
         for (var y = 0; y < height; y++)
         {
@@ -173,15 +161,24 @@ public class GridManager : MonoBehaviour
 
                 foreach (var wave in stackOfWaves)
                 {
-                    noiseMap[x, y] += wave.Amplitude * Mathf.PerlinNoise(sampleX * wave.Frequency + wave.Seed, sampleY * wave.Frequency + wave.Seed);
+                    noiseMap[y, x] += wave.Amplitude * Mathf.Clamp01(Mathf.PerlinNoise(sampleX * wave.Frequency + wave.Seed, sampleY * wave.Frequency + wave.Seed));
                     normalization += wave.Amplitude;
                 }
 
-                noiseMap[x, y] /= normalization;
+                noiseMap[y, x] /= normalization;
+                if (noiseMap[y, x] < minValue)
+                    minValue = noiseMap[y, x];
+                if (noiseMap[y, x] > maxValue)
+                    maxValue = noiseMap[y, x];
             }
         }
 
-        return noiseMap;
+        return new NoiseMap
+        {
+            Map = noiseMap,
+            MinValue = minValue,
+            MaxValue = maxValue,
+        };
     }
 
     private static World GenerateWorldMap(WorldConfig worldConfig)
@@ -200,8 +197,8 @@ public class GridManager : MonoBehaviour
 
     private void InstantiateWorldMap(World world)
     {
-        var gridHeight = world.HeatMap.GetLength(0);
-        var gridWidth = world.HeatMap.GetLength(1);
+        var gridHeight = world.HeatMap.Map.GetLength(0);
+        var gridWidth = world.HeatMap.Map.GetLength(1);
         world.DebugObjects = new List<Transform>();
 
         for (var y = 0; y < gridHeight; y++)
@@ -218,39 +215,40 @@ public class GridManager : MonoBehaviour
                     // List of biomes.
                     var biomes = new List<Biome>
                     {
-                        coalBiome,
-                        copperOreBiome,
-                        groundBiome,
-                        woodBiome,
-                        ironOreBiome,
-                        stoneBiome,
-                        sugarCaneBiome,
-                        waterBiome,
-                        wheatBiome,
+                        biomeManager.groundBiome,
+                        biomeManager.waterBiome,
+                        biomeManager.stoneBiome,
+                        biomeManager.coalBiome,
+
+                        // biomeManager.copperOreBiome,
+                        // biomeManager.woodBiome,
+                        // biomeManager.ironOreBiome,
+                        // biomeManager.sugarCaneBiome,
+                        // biomeManager.wheatBiome,
                     };
 
                     // First, determine the closest biome.
-                    var biome = ClosestBiome(biomes, world.HeightMap, world.MoistureMap, world.HeatMap, x, y);
+                    var biome = ClosestBiome(biomeManager, biomes, world.HeightMap.Map, world.MoistureMap.Map, world.HeatMap.Map, x, y);
 
                     // Then given the biome, set the material of the cube.
                     var map = new Dictionary<Biome, Material>
                     {
-                        {coalBiome, materialManager.Coal},
-                        {copperOreBiome, materialManager.CopperOre},
-                        // {groundBiome, materialManager.Groun},
-                        {woodBiome, materialManager.Wood},
-                        {ironOreBiome, materialManager.IronOre},
-                        {stoneBiome, materialManager.Stone},
-                        {sugarCaneBiome, materialManager.SugarCane},
-                        {waterBiome, materialManager.Water},
-                        {wheatBiome, materialManager.Wheat},
+                        {biomeManager.waterBiome, materialManager.Water},
+                        {biomeManager.coalBiome, materialManager.Coal},
+                        {biomeManager.copperOreBiome, materialManager.CopperOre},
+                        // {groundBiome, materialManager.},
+                        {biomeManager.woodBiome, materialManager.Wood},
+                        {biomeManager.ironOreBiome, materialManager.IronOre},
+                        {biomeManager.stoneBiome, materialManager.Stone},
+                        {biomeManager.sugarCaneBiome, materialManager.SugarCane},
+                        {biomeManager.wheatBiome, materialManager.Wheat},
                     };
 
                     // Set the material if not null.
                     if (biome != null && map.ContainsKey(biome))
                         cube.GetComponentInChildren<MeshRenderer>().material = map[biome];
-
-throw new System.Exception("jason: tweak the params tomorrow so you get good-looking tiles.");
+                    else
+                        Debug.Log("not setting material");
                 }
 
                 // Set position.
@@ -262,11 +260,11 @@ throw new System.Exception("jason: tweak the params tomorrow so you get good-loo
                 {
                     float scale = 0f;
                     if (world.WorldConfig.WorldInstantiateMode == WorldInstantiateMode.Height)
-                        scale = world.HeightMap[y, x];
+                        scale = world.HeightMap.Map[y, x];
                     else if (world.WorldConfig.WorldInstantiateMode == WorldInstantiateMode.Heat)
-                        scale = world.HeatMap[y, x];
+                        scale = world.HeatMap.Map[y, x];
                     else if (world.WorldConfig.WorldInstantiateMode == WorldInstantiateMode.Moisture)
-                        scale = world.MoistureMap[y, x];
+                        scale = world.MoistureMap.Map[y, x];
                     scale = Mathf.Clamp01(scale);
                     cube.transform.localScale = new Vector3(1f, scale * 20 /* Recall that the pivot is at the cube center, so scaling will extend downward as well. */, 1f);
                 }
@@ -294,5 +292,14 @@ throw new System.Exception("jason: tweak the params tomorrow so you get good-loo
         world = GenerateWorldMap(worldConfig);
         InstantiateWorldMap(world);
         Debug.Log("Maps have been re-generated.");
+
+            Debug.Log($"Height Min value: {world.HeightMap.MinValue}");
+            Debug.Log($"Height Max value: {world.HeightMap.MaxValue}");
+
+            Debug.Log($"Heat Min value: {world.HeatMap.MinValue}");
+            Debug.Log($"Heat Max value: {world.HeatMap.MaxValue}");
+
+            Debug.Log($"Moisture Min value: {world.MoistureMap.MinValue}");
+            Debug.Log($"Moisture Max value: {world.MoistureMap.MaxValue}");
     }
 }

@@ -19,8 +19,11 @@ public class InputManager : MonoBehaviour
     private void OnDestroy()
     {
         // Detach listeners and dispose of held-onto state.
-        playerInputActions.Player.Pause.performed -= Pause_performed;
-        playerInputActions.Dispose();
+        if (playerInputActions != null)
+        {
+            playerInputActions.Player.Pause.performed -= Pause_performed;
+            playerInputActions.Dispose();
+        }
     }
 
     private void Pause_performed(InputAction.CallbackContext context)

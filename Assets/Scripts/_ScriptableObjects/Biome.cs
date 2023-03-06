@@ -1,7 +1,7 @@
 using UnityEngine;
 
-[CreateAssetMenu]
-public class Biome : ScriptableObject
+[System.Serializable]
+public class Biome
 {
     [Tooltip("Ranges from 0 to 1.")]
     [field: SerializeField]
@@ -27,8 +27,12 @@ public class Biome : ScriptableObject
         set;
     }
 
-    public bool MatchCondition(float height, float moisture, float heat)
+    public bool MatchCondition(Biomes biomeManager, float height, float moisture, float heat)
     {
-        return height > MinHeight && moisture > MinMoisture && heat > MinHeat;
+        var normalizedMinHeight = MinHeight * (biomeManager.HeightMax - biomeManager.HeightMin) + biomeManager.HeightMin;
+        var normalizedMinMoisture = MinMoisture * (biomeManager.MoistureMax - biomeManager.MoistureMin) + biomeManager.MoistureMin;
+        var normalizedMinHeat = MinHeat * (biomeManager.HeatMax - biomeManager.HeatMin) + biomeManager.HeatMin;
+
+        return height >= normalizedMinHeight && moisture >= normalizedMinMoisture && heat >= normalizedMinHeat;
     }
 }

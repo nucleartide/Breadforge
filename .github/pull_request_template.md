@@ -1,5 +1,3 @@
-* consider operating values (see Ryan Hipple's modular, debuggable, etc talk)
-
 ## JIRA Ticket
 
 > Sorry folks, this is internal to my Notion workspace!

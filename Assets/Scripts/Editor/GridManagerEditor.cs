@@ -1,7 +1,7 @@
 using UnityEditor;
 using UnityEngine;
 
-[CustomEditor(typeof(GridManager))]
+[CustomEditor(typeof(Grid))]
 public class GridManagerEditor : Editor
 {
     // https://learn.unity.com/tutorial/editor-scripting#5c7f8528edbc2a002053b5f8
@@ -9,7 +9,7 @@ public class GridManagerEditor : Editor
     {
         DrawDefaultInspector();
 
-        var gridManager = target as GridManager;
+        var gridManager = target as Grid;
         if (GUILayout.Button("Regenerate Terrain"))
         {
             if (!Application.isPlaying)

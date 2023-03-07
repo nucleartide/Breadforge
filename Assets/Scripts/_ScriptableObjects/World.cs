@@ -1,8 +1,18 @@
 using UnityEngine;
+using System.Collections.Generic;
+using System;
 
 [CreateAssetMenu]
 public class World : ScriptableObject
 {
+    [Serializable]
+    public struct Wave
+    {
+        public float Seed;
+        public float Frequency;
+        public float Amplitude;
+    }
+
     [System.Serializable]
     public struct Biome
     {
@@ -16,14 +26,59 @@ public class World : ScriptableObject
         public float MinHeat;
     }
 
-    [Header("Land and Water")]
+    [Header("Grid Dimensions")]
     [SerializeField]
-    private Biome waterBiome;
+    private int GridWidth = 100;
 
+    [SerializeField]
+    private int GridHeight = 100;
+
+    [Header("Noise Maps")]
+    public List<Wave> HeightMapConfig = new List<Wave>
+    {
+        new Wave {
+            Seed = 56f,
+            Frequency = .05f,
+            Amplitude = 1f,
+        },
+        new Wave {
+            Seed = 199.36f,
+            Frequency = .1f,
+            Amplitude = .5f,
+        },
+    };
+
+    public List<Wave> MoistureMapConfig = new List<Wave>
+    {
+        new Wave {
+            Seed = 621f,
+            Frequency = .03f,
+            Amplitude = 1f,
+        },
+    };
+
+    public List<Wave> HeatMap = new List<Wave>
+    {
+        new Wave {
+            Seed = 318.6f,
+            Frequency = .04f,
+            Amplitude = 1f,
+        },
+        new Wave {
+            Seed = 329.7f,
+            Frequency = .02f,
+            Amplitude = .5f,
+        },
+    };
+
+    [Header("Biomes: Land and Water")]
     [SerializeField]
     private Biome landBiome;
 
-    [Header("Bedrock")]
+    [SerializeField]
+    private Biome waterBiome;
+
+    [Header("Biomes: Bedrock")]
     [SerializeField]
     private Biome stoneBiome;
 
@@ -36,7 +91,7 @@ public class World : ScriptableObject
     [SerializeField]
     private Biome ironOreBiome;
 
-    [Header("Vegetation")]
+    [Header("Biomes: Vegetation")]
     [SerializeField]
     private Biome woodBiome;
 
@@ -45,49 +100,4 @@ public class World : ScriptableObject
 
     [SerializeField]
     private Biome wheatBiome;
-
-    /// <summary>
-    /// The height, heat, and moisture values are between [0,1], so
-    /// a value of -1 is a safe value for indicating uninitialization.
-    /// </summary>
-    private const float UNINITIALIZED = -1f;
-    private float heightMin = UNINITIALIZED;
-    private float heightMax = UNINITIALIZED;
-    private float heatMin = UNINITIALIZED;
-    private float heatMax = UNINITIALIZED;
-    private float moistureMin = UNINITIALIZED;
-    private float moistureMax = UNINITIALIZED;
-
-    public void Initialize(float heightMin, float heightMax, float heatMin, float heatMax, float moistureMin, float moistureMax)
-    {
-        this.heightMin = heightMin;
-        this.heightMax = heightMax;
-        this.heatMin = heatMin;
-        this.heatMax = heatMax;
-        this.moistureMin = moistureMin;
-        this.moistureMax = moistureMax;
-    }
-
-    public struct Query
-    {
-        public float Height;
-        public float Moisture;
-        public float Heat;
-    }
-
-    /// <summary>
-    /// Evaluate whether a set of (Height, Moisture, Heat) values satisfies a biome.
-    /// </summary>
-    public bool Satisfies(Query query, Biome biome)
-    {
-#if UNITY_EDITOR
-        if (heightMin == UNINITIALIZED)
-            throw new System.Exception("BiomeManager is uninitialized. Did you forget to call `.Initialize()`?");
-#endif
-
-        var normalizedMinHeight = heightMin + biome.MinHeight * (heightMax - heightMin);
-        var normalizedMinMoisture = moistureMin + biome.MinMoisture * (moistureMax - moistureMin);
-        var normalizedMinHeat = heatMin + biome.MinHeat * (heatMax - heatMin);
-        return query.Height >= normalizedMinHeight && query.Moisture >= normalizedMinMoisture && query.Heat >= normalizedMinHeat;
-    }
 }

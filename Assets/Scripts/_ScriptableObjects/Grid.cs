@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using UnityEngine.Assertions;
 
 [CreateAssetMenu]
-public class GridManager : ScriptableObject
+public class Grid : ScriptableObject
 {
     #if false
     private static Biome ClosestBiome(BiomeManager biomes, List<Biome> biomePresets, float[,] heightMap, float[,] moistureMap, float[,] heatMap, int x, int y)
@@ -42,104 +42,6 @@ public class GridManager : ScriptableObject
         // Sanity check and return.
         Assert.IsNotNull(minBiome);
         return minBiome;
-    }
-
-    [Serializable]
-    private struct Wave
-    {
-        public float Seed;
-        public float Frequency;
-        public float Amplitude;
-    }
-
-    [Serializable]
-    private class WorldConfig
-    {
-        public List<Wave> Height = new List<Wave>
-        {
-            new Wave {
-                Seed = 56f,
-                Frequency = .05f,
-                Amplitude = 1f,
-            },
-            new Wave {
-                Seed = 199.36f,
-                Frequency = .1f,
-                Amplitude = .5f,
-            },
-        };
-
-        public List<Wave> Moisture = new List<Wave>
-        {
-            new Wave {
-                Seed = 621f,
-                Frequency = .03f,
-                Amplitude = 1f,
-            },
-        };
-
-        public List<Wave> Heat = new List<Wave>
-        {
-            new Wave {
-                Seed = 318.6f,
-                Frequency = .04f,
-                Amplitude = 1f,
-            },
-            new Wave {
-                Seed = 329.7f,
-                Frequency = .02f,
-                Amplitude = .5f,
-            },
-        };
-
-        public int GridWidth = 100;
-
-        public int GridHeight = 100;
-
-        public WorldInstantiateMode WorldInstantiateMode = WorldInstantiateMode.Height;
-    }
-
-    [Serializable]
-    public enum WorldInstantiateMode
-    {
-        None,
-        Height,
-        Moisture,
-        Heat,
-    }
-
-    [Serializable]
-    private class World
-    {
-        public NoiseMap HeightMap;
-        public NoiseMap MoistureMap;
-        public NoiseMap HeatMap;
-        public WorldConfig WorldConfig;
-        public List<Transform> DebugObjects;
-    }
-
-    [SerializeField]
-    private WorldConfig worldConfig = new WorldConfig();
-
-    [SerializeField]
-    [NotNull]
-    private BiomeManager biomeManager;
-
-    [SerializeField]
-    [NotNull]
-    private Transform cubePrefab;
-
-    [SerializeField]
-    [NotNull]
-    private MaterialManager materialManager;
-
-    private World world;
-
-    private class NoiseMap
-    {
-        public float[,] Map;
-        public float MinValue;
-        public float MaxValue;
     }
 
     /// <param name="width">Width of the generated map.</param>

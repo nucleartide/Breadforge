@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class CursorManager : MonoBehaviour
 {
-    void Start()
+    void Awake()
     {
         Cursor.lockState = CursorLockMode.Confined;
     }

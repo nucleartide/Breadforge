@@ -1,9 +1,7 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 [CreateAssetMenu]
-public class MaterialManager : ScriptableObject
+public class ResourceMaterials : ScriptableObject
 {
     public Material Coal;
     public Material CopperOre;

@@ -8,7 +8,7 @@ public class PauseManager : MonoBehaviour
 
     private bool isPaused = false;
 
-    private void Start()
+    private void Awake()
     {
         gameInput.OnPauseAction += GameInput_OnPauseAction;
     }

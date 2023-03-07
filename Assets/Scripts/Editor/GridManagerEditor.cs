@@ -15,7 +15,8 @@ public class GridManagerEditor : Editor
             if (!Application.isPlaying)
                 Debug.LogError("Application must be playing to regenerate terrain.");
             else
-                gridManager.RegenerateTerrain();
+                Debug.Log("blah");
+                // gridManager.RegenerateTerrain();
         }
     }
 }

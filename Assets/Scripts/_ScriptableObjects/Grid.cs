@@ -3,8 +3,10 @@ using System;
 using System.Collections.Generic;
 using UnityEngine.Assertions;
 
-public class GridManager : MonoBehaviour
+[CreateAssetMenu]
+public class GridManager : ScriptableObject
 {
+    #if false
     private static Biome ClosestBiome(BiomeManager biomes, List<Biome> biomePresets, float[,] heightMap, float[,] moistureMap, float[,] heatMap, int x, int y)
     {
         float height = heightMap[y, x];
@@ -303,4 +305,5 @@ public class GridManager : MonoBehaviour
             Debug.Log($"Moisture Min value: {world.MoistureMap.MinValue}");
             Debug.Log($"Moisture Max value: {world.MoistureMap.MaxValue}");
     }
+#endif
 }

@@ -10,7 +10,6 @@ public class InputManager : MonoBehaviour
 
     private void Awake()
     {
-        // Enable the "Player" action map and attach listeners.
         playerInputActions = new PlayerInputActions();
         playerInputActions.Player.Enable();
         playerInputActions.Player.Pause.performed += Pause_performed;
@@ -18,12 +17,9 @@ public class InputManager : MonoBehaviour
 
     private void OnDestroy()
     {
-        // Detach listeners and dispose of held-onto state.
-        if (playerInputActions != null)
-        {
-            playerInputActions.Player.Pause.performed -= Pause_performed;
-            playerInputActions.Dispose();
-        }
+        playerInputActions.Player.Pause.performed -= Pause_performed;
+        playerInputActions.Dispose();
+        playerInputActions = null;
     }
 
     private void Pause_performed(InputAction.CallbackContext context)

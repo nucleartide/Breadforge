@@ -1,8 +1,21 @@
 using UnityEngine;
 
 [CreateAssetMenu]
-public class BiomeManager : ScriptableObject
+public class World : ScriptableObject
 {
+    [System.Serializable]
+    public struct Biome
+    {
+        [Tooltip("Ranges from 0 to 1.")]
+        public float MinHeight;
+
+        [Tooltip("Ranges from 0 to 1.")]
+        public float MinMoisture;
+
+        [Tooltip("Ranges from 0 to 1.")]
+        public float MinHeat;
+    }
+
     [Header("Land and Water")]
     [SerializeField]
     private Biome waterBiome;

@@ -1,37 +1,14 @@
 using UnityEngine;
 using System.Collections.Generic;
-using System;
 
 [CreateAssetMenu]
-public class World : ScriptableObject
+public class WorldConfig : ScriptableObject
 {
-    [Serializable]
-    public struct Wave
-    {
-        public float Seed;
-        public float Frequency;
-        public float Amplitude;
-    }
-
-    [System.Serializable]
-    public struct Biome
-    {
-        [Tooltip("Ranges from 0 to 1.")]
-        public float MinHeight;
-
-        [Tooltip("Ranges from 0 to 1.")]
-        public float MinMoisture;
-
-        [Tooltip("Ranges from 0 to 1.")]
-        public float MinHeat;
-    }
-
     [Header("Grid Dimensions")]
-    [SerializeField]
-    private int GridWidth = 100;
+    public int GridWidth = 100;
 
     [SerializeField]
-    private int GridHeight = 100;
+    public int GridHeight = 100;
 
     [Header("Noise Maps")]
     public List<Wave> HeightMapConfig = new List<Wave>
@@ -100,4 +77,28 @@ public class World : ScriptableObject
 
     [SerializeField]
     private Biome wheatBiome;
+
+    private List<Biome> AllBiomes
+    {
+        get
+        {
+            return new List<Biome>
+            {
+                landBiome,
+                waterBiome,
+                stoneBiome,
+                coalBiome,
+                copperOreBiome,
+                ironOreBiome,
+                woodBiome,
+                sugarCaneBiome,
+                wheatBiome,
+            };
+        }
+    }
+
+    public List<Biome> FindMatchingBiomes(Query query)
+    {
+        return AllBiomes.FindAll(biome => query.Satisfies(biome));
+    }
 }

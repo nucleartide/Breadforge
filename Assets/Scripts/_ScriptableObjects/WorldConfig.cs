@@ -10,6 +10,9 @@ public class WorldConfig : ScriptableObject
     [SerializeField]
     public int GridHeight = 100;
 
+    [SerializeField]
+    private MaterialManager materialManager;
+
     [Header("Noise Maps")]
     public List<Wave> HeightMapConfig = new List<Wave>
     {
@@ -78,7 +81,7 @@ public class WorldConfig : ScriptableObject
     [SerializeField]
     private Biome wheatBiome;
 
-    private List<Biome> AllBiomes
+    public List<Biome> AllBiomes
     {
         get
         {
@@ -95,6 +98,29 @@ public class WorldConfig : ScriptableObject
                 wheatBiome,
             };
         }
+    }
+
+    /// <summary>
+    /// Given a biome, fetch the biome's corresponding material.
+    /// </summary>
+    public Material GetMaterial(Biome biome)
+    {
+        var map = new Dictionary<Biome, Material>
+        {
+            {waterBiome, materialManager.Water},
+            {coalBiome, materialManager.Coal},
+            {copperOreBiome, materialManager.CopperOre},
+            {woodBiome, materialManager.Wood},
+            {ironOreBiome, materialManager.IronOre},
+            {stoneBiome, materialManager.Stone},
+            {sugarCaneBiome, materialManager.SugarCane},
+            {wheatBiome, materialManager.Wheat},
+        };
+
+        if (map.ContainsKey(biome))
+            return map[biome];
+
+        return null;
     }
 
     public List<Biome> FindMatchingBiomes(Query query)

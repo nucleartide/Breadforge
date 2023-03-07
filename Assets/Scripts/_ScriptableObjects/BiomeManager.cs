@@ -67,6 +67,9 @@ public class BiomeManager : ScriptableObject
     /// </summary>
     public bool Satisfies(Query query, Biome biome)
     {
+        if (heightMin == UNINITIALIZED)
+            throw new System.Exception("BiomeManager is uninitialized. Did you forget to call `.Initialize()`?");
+
         var normalizedMinHeight = heightMin + biome.MinHeight * (heightMax - heightMin);
         var normalizedMinMoisture = moistureMin + biome.MinMoisture * (moistureMax - moistureMin);
         var normalizedMinHeat = heatMin + biome.MinHeat * (heatMax - heatMin);

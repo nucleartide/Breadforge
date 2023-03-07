@@ -5,7 +5,7 @@ using UnityEngine.Assertions;
 
 public class GridManager : MonoBehaviour
 {
-    private static Biome ClosestBiome(Biomes biomes, List<Biome> biomePresets, float[,] heightMap, float[,] moistureMap, float[,] heatMap, int x, int y)
+    private static Biome ClosestBiome(BiomeManager biomes, List<Biome> biomePresets, float[,] heightMap, float[,] moistureMap, float[,] heatMap, int x, int y)
     {
         float height = heightMap[y, x];
         float moisture = moistureMap[y, x];
@@ -121,7 +121,7 @@ public class GridManager : MonoBehaviour
 
     [SerializeField]
     [NotNull]
-    private Biomes biomeManager;
+    private BiomeManager biomeManager;
 
     [SerializeField]
     [NotNull]
@@ -215,7 +215,7 @@ public class GridManager : MonoBehaviour
                     // List of biomes.
                     var biomes = new List<Biome>
                     {
-                        biomeManager.groundBiome,
+                        biomeManager.landBiome,
                         biomeManager.waterBiome,
 
                         biomeManager.stoneBiome,

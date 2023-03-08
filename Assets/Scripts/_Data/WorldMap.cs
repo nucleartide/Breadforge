@@ -45,13 +45,7 @@ public class WorldMap
         float heat = GetHeat(x, y);
 
         // Construct query.
-        var query = new Query
-        {
-            Height = height,
-            Moisture = moisture,
-            Heat = heat,
-            worldMap = this,
-        };
+        var query = new Query(this, height, moisture, heat);
 
         // Execute query to determine closest biome.
         var matchingBiomes = worldConfig.FindMatchingBiomes(query);

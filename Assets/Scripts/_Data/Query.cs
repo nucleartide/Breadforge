@@ -1,33 +1,51 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-
 public class Query
 {
-    public float Height;
-    public float Moisture;
-    public float Heat;
-    public WorldMap worldMap;
+    private WorldMap worldMap;
+    private float height;
+    private float moisture;
+    private float heat;
 
-    /// <summary>
-    /// Evaluate whether a query satisfies a biome within a particular worldmap.
-    /// </summary>
-    public bool Satisfies(Biome biome)
+    private float GetNormalizedMinHeight(Biome biome) =>
+        worldMap.HeightMap.MinValue + biome.MinHeight * (worldMap.HeightMap.MaxValue - worldMap.HeightMap.MinValue);
+
+    private float GetNormalizedMinMoisture(Biome biome) =>
+        worldMap.MoistureMap.MinValue + biome.MinMoisture * (worldMap.MoistureMap.MaxValue - worldMap.MoistureMap.MinValue);
+
+    private float GetNormalizedMinHeat(Biome biome) =>
+        worldMap.HeatMap.MinValue + biome.MinHeat * (worldMap.HeatMap.MaxValue - worldMap.HeatMap.MinValue);
+
+    public Query(WorldMap worldMap, float height, float moisture, float heat)
     {
-        var normalizedMinHeight = worldMap.HeightMap.MinValue + biome.MinHeight * (worldMap.HeightMap.MaxValue - worldMap.HeightMap.MinValue);
-        var normalizedMinMoisture = worldMap.MoistureMap.MinValue + biome.MinMoisture * (worldMap.MoistureMap.MaxValue - worldMap.MoistureMap.MinValue);
-        var normalizedMinHeat = worldMap.HeatMap.MinValue + biome.MinHeat * (worldMap.HeatMap.MaxValue - worldMap.HeatMap.MinValue);
-        return Height >= normalizedMinHeight && Moisture >= normalizedMinMoisture && Heat >= normalizedMinHeat;
+        this.worldMap = worldMap;
+        this.height = height;
+        this.moisture = moisture;
+        this.heat = heat;
     }
 
     /// <summary>
-    /// Evaluate whether a query satisfies a biome within a particular worldmap.
+    /// Evaluate whether a query satisfies a biome.
+    /// </summary>
+    public bool Satisfies(Biome biome)
+    {
+        var normalizedMinHeight = GetNormalizedMinHeight(biome);
+        var normalizedMinMoisture = GetNormalizedMinMoisture(biome);
+        var normalizedMinHeat = GetNormalizedMinHeat(biome);
+        return height >= normalizedMinHeight && moisture >= normalizedMinMoisture && heat >= normalizedMinHeat;
+    }
+
+    /// <summary>
+    /// Compute the difference value for a given biome.
     /// </summary>
     public float Difference(Biome biome)
     {
-        var normalizedMinHeight = worldMap.HeightMap.MinValue + biome.MinHeight * (worldMap.HeightMap.MaxValue - worldMap.HeightMap.MinValue);
-        var normalizedMinMoisture = worldMap.MoistureMap.MinValue + biome.MinMoisture * (worldMap.MoistureMap.MaxValue - worldMap.MoistureMap.MinValue);
-        var normalizedMinHeat = worldMap.HeatMap.MinValue + biome.MinHeat * (worldMap.HeatMap.MaxValue - worldMap.HeatMap.MinValue);
-        return (Height - normalizedMinHeight) + (Moisture - normalizedMinMoisture) + (Heat - normalizedMinHeat);
+#if UNITY_EDITOR
+        if (!Satisfies(biome))
+            throw new System.Exception("Biome must satisfy query in order to compute difference.");
+#endif
+
+        var normalizedMinHeight = GetNormalizedMinHeight(biome);
+        var normalizedMinMoisture = GetNormalizedMinMoisture(biome);
+        var normalizedMinHeat = GetNormalizedMinHeat(biome);
+        return (height - normalizedMinHeight) + (moisture - normalizedMinMoisture) + (heat - normalizedMinHeat);
     }
 }

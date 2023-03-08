@@ -1,5 +1,8 @@
 using UnityEngine;
 
+/// <summary>
+/// Note: this should be a class so we can perform null checks.
+/// </summary>
 [System.Serializable]
 public class Biome
 {

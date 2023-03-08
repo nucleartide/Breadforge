@@ -1,24 +1,24 @@
-using System.Collections;
 using System.Collections.Generic;
-using UnityEngine;
 
 public static class ListHelpers
 {
     /// <summary>
-    /// Function that takes in a list of stuff and a comparator function, and
+    /// Function that takes in a list of things and a comparator function, and
     /// returns the minimum value in the list as determined by the comparator function.
+    ///
+    /// Use this because C# in Unity 2021 doesn't have LINQ's MinBy function. :(
     /// </summary>
-    public static T MinBy<T>(List<T> stuff, System.Func<T, T, bool> comparator)
+    public static T MinBy<T>(List<T> things, System.Func<T, T, bool> comparator)
     {
-        if (stuff.Count == 0)
+        if (things.Count == 0)
             return default(T);
 
-        var minT = stuff[0];
-        for (var i = 1; i < stuff.Count; i++)
+        var minT = things[0];
+        for (var i = 1; i < things.Count; i++)
         {
-            var elem = stuff[i];
-            if (comparator(elem, minT))
-                minT = elem;
+            var element = things[i];
+            if (comparator(element, minT))
+                minT = element;
         }
 
         return minT;

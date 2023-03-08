@@ -1,7 +1,7 @@
 using UnityEngine;
 
 [CreateAssetMenu]
-public class ResourceMaterials : ScriptableObject
+public class ResourceMaterialManager : ScriptableObject
 {
     public Material Coal;
     public Material CopperOre;

@@ -12,7 +12,7 @@ public class WorldConfig : ScriptableObject
 
     [SerializeField]
     [NotNull]
-    private ResourceMaterials materialManager;
+    private ResourceMaterialManager materialManager;
 
     [Header("Noise Maps")]
     public List<Wave> HeightMapConfig = new List<Wave>

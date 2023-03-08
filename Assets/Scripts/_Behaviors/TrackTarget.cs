@@ -1,6 +1,9 @@
 using UnityEngine;
 
-public class Tracker : MonoBehaviour
+/// <summary>
+/// Track the position of a target GameObject, with an optional offset.
+/// </summary>
+public class TrackTarget : MonoBehaviour
 {
     [SerializeField]
     [NotNull]

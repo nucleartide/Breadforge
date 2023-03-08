@@ -1109,7 +1109,7 @@ GameObject:
   - component: {fileID: 2122262585}
   - component: {fileID: 2122262586}
   m_Layer: 0
-  m_Name: Grid Manager
+  m_Name: World Manager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1143,6 +1143,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   worldConfig: {fileID: 11400000, guid: 6596f3b0efd134f49a5a6c2738ce21b9, type: 2}
-  worldDisplayMode: 0
   tilePrefab: {fileID: 5872477195587567733, guid: 2e1e93f18e3d743999523fe9c601db91,
     type: 3}
+  worldDisplayMode: 0

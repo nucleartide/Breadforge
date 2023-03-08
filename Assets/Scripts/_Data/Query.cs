@@ -6,13 +6,13 @@ public class Query
     private float heat;
 
     private float GetNormalizedMinHeight(Biome biome) =>
-        worldMap.HeightMap.MinValue + biome.MinHeight * (worldMap.HeightMap.MaxValue - worldMap.HeightMap.MinValue);
+        worldMap.MinHeight + biome.MinHeight * (worldMap.MaxHeight - worldMap.MinHeight);
 
     private float GetNormalizedMinMoisture(Biome biome) =>
-        worldMap.MoistureMap.MinValue + biome.MinMoisture * (worldMap.MoistureMap.MaxValue - worldMap.MoistureMap.MinValue);
+        worldMap.MinMoisture + biome.MinMoisture * (worldMap.MaxMoisture - worldMap.MinMoisture);
 
     private float GetNormalizedMinHeat(Biome biome) =>
-        worldMap.HeatMap.MinValue + biome.MinHeat * (worldMap.HeatMap.MaxValue - worldMap.HeatMap.MinValue);
+        worldMap.MinHeat + biome.MinHeat * (worldMap.MaxHeat - worldMap.MinHeat);
 
     public Query(WorldMap worldMap, float height, float moisture, float heat)
     {

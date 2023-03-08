@@ -6,36 +6,55 @@ using UnityEngine.Assertions;
 [System.Serializable]
 public class WorldMap
 {
-    public NoiseMap HeightMap;
-    public NoiseMap MoistureMap;
-    public NoiseMap HeatMap;
     private WorldConfiguration worldConfig;
+    private NoiseMap heightMap;
+    private NoiseMap moistureMap;
+    private NoiseMap heatMap;
+
+    private float GetHeight(int x, int y) => heightMap.Map[y, x];
+    private float GetMoisture(int x, int y) => moistureMap.Map[y, x];
+    private float GetHeat(int x, int y) => heatMap.Map[y, x];
+
+    public float MinHeight
+    {
+        get => heightMap.MinValue;
+    }
+
+    public float MaxHeight
+    {
+        get => heightMap.MaxValue;
+    }
+
+    public float MinMoisture
+    {
+        get => moistureMap.MinValue;
+    }
+
+    public float MaxMoisture
+    {
+        get => moistureMap.MaxValue;
+    }
+
+    public float MinHeat
+    {
+        get => heatMap.MinValue;
+    }
+
+    public float MaxHeat
+    {
+        get => heatMap.MaxValue;
+    }
 
     public WorldMap(WorldConfiguration worldConfig)
     {
-        this.HeightMap = Noise.GenerateMap(worldConfig.GridWidth, worldConfig.GridHeight, worldConfig.HeightMapConfig, 1f, Vector2.zero);
-        this.MoistureMap = Noise.GenerateMap(worldConfig.GridWidth, worldConfig.GridHeight, worldConfig.MoistureMapConfig, 1f, Vector2.zero);
-        this.HeatMap = Noise.GenerateMap(worldConfig.GridWidth, worldConfig.GridHeight, worldConfig.HeatMapConfig, 1f, Vector2.zero);
         this.worldConfig = worldConfig;
-    }
-
-    private float GetHeight(int x, int y)
-    {
-        return HeightMap.Map[y, x];
-    }
-
-    private float GetMoisture(int x, int y)
-    {
-        return MoistureMap.Map[y, x];
-    }
-
-    private float GetHeat(int x, int y)
-    {
-        return HeatMap.Map[y, x];
+        this.heightMap = Noise.GenerateMap(worldConfig.GridWidth, worldConfig.GridHeight, worldConfig.HeightMapConfig, 1f, Vector2.zero);
+        this.moistureMap = Noise.GenerateMap(worldConfig.GridWidth, worldConfig.GridHeight, worldConfig.MoistureMapConfig, 1f, Vector2.zero);
+        this.heatMap = Noise.GenerateMap(worldConfig.GridWidth, worldConfig.GridHeight, worldConfig.HeatMapConfig, 1f, Vector2.zero);
     }
 
     /// <summary>
-    /// Find the closest biome given a world configuration and a set of (x, y) coordinates.
+    /// Find the closest biome given a set of (x, y) coordinates.
     /// </summary>
     public Biome ClosestBiome(int x, int y)
     {
@@ -49,11 +68,17 @@ public class WorldMap
 
         // Execute query to determine closest biome.
         var matchingBiomes = worldConfig.FindMatchingBiomes(query);
-        var matchingBiomesWithDifference = matchingBiomes.ConvertAll(biome => (biome, query.Difference(biome)));
-        var closestBiome = ListHelpers.MinBy(matchingBiomesWithDifference, (a, b) => a.Item2 < b.Item2).biome;
+        var matchingBiomesWithDifference = matchingBiomes.ConvertAll(biome =>
+        {
+            var difference = query.Difference(biome);
+            return (biome, difference);
+        });
+        var closestBiome = ListHelpers.MinBy(matchingBiomesWithDifference, (a, b) => a.difference < b.difference).biome;
 
         // Sanity check and return.
-        Assert.IsNotNull(closestBiome, "There should always be at least one matching biome, please review the logic here.");
+#if UNITY_EDITOR
+        Assert.IsNotNull(closestBiome, "There should always be at least one matching biome. Please review the logic here.");
+#endif
         return closestBiome;
     }
 
@@ -72,7 +97,7 @@ public class WorldMap
             // Then given the biome, set the material of the cube.
             var material = worldConfig.GetMaterial(biome);
             if (material != null)
-                cube.GetComponentInChildren<MeshRenderer>().material = material; // shared material?
+                cube.GetComponentInChildren<MeshRenderer>().material = material;
         }
 
         // Set the cube's scale if instantiating debug tiles.

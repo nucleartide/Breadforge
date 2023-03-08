@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a984d975bc3114348ac3e99b16f08afd, type: 3}
-  m_Name: Material Manager
+  m_Name: Resource Materials
   m_EditorClassIdentifier: 
   Coal: {fileID: 2100000, guid: a279021269cc946c0a857e5455b26334, type: 2}
   CopperOre: {fileID: 2100000, guid: 8476232608efb41448e6985fb7e33f90, type: 2}

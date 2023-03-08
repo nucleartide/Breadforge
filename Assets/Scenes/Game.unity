@@ -1142,6 +1142,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 47ccb23bbd6104f0ebe01ba8d01a7808, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  world: {fileID: 11400000, guid: 6596f3b0efd134f49a5a6c2738ce21b9, type: 2}
-  cubePrefab: {fileID: 5872477195587567721, guid: 2e1e93f18e3d743999523fe9c601db91,
+  worldConfig: {fileID: 11400000, guid: 6596f3b0efd134f49a5a6c2738ce21b9, type: 2}
+  worldDisplayMode: 0
+  tilePrefab: {fileID: 5872477195587567733, guid: 2e1e93f18e3d743999523fe9c601db91,
     type: 3}

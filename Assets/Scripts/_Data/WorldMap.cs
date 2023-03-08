@@ -63,58 +63,36 @@ public class WorldMap
         return closestBiome;
     }
 
-    private GameObject InstantiateTile()
+    public void InitializeTile(GameObject cube, WorldDisplayMode worldDisplayMode, int x, int y)
     {
-        return null;
-#if false
-                // Create.
-                var cube = Instantiate(cubePrefab);
+        // Set the cube's position.
+        var position = new Vector3(x - worldConfig.GridWidth / 2, 0f, y - worldConfig.GridHeight / 2);
+        cube.transform.position = position;
 
-                // Set the cube's material if instantiating for-real tiles.
-                if (world.WorldConfig.WorldInstantiateMode == WorldInstantiateMode.None)
-                {
-                    // First, determine the closest biome.
-                    var biome = ClosestBiome(biomeManager, biomes, world.HeightMap.Map, world.MoistureMap.Map, world.HeatMap.Map, x, y);
-
-                    // Then given the biome, set the material of the cube.
-                    var material = worldConfig.GetMaterial(biome);
-                    if (material != null)
-                        cube.GetComponentInChildren<MeshRenderer>().material = material; // shared material?
-                }
-
-                // Set the cube's position.
-                var position = new Vector3(x - gridWidth / 2, 0f, y - gridHeight / 2);
-                cube.transform.position = position;
-
-                // Set the cube's scale if instantiating debug tiles.
-                if (world.WorldConfig.WorldInstantiateMode != WorldInstantiateMode.None)
-                {
-                    float scale = 0f;
-                    if (world.WorldConfig.WorldInstantiateMode == WorldInstantiateMode.Height)
-                        scale = world.HeightMap.Map[y, x];
-                    else if (world.WorldConfig.WorldInstantiateMode == WorldInstantiateMode.Heat)
-                        scale = world.HeatMap.Map[y, x];
-                    else if (world.WorldConfig.WorldInstantiateMode == WorldInstantiateMode.Moisture)
-                        scale = world.MoistureMap.Map[y, x];
-                    scale = Mathf.Clamp01(scale);
-                    cube.transform.localScale = new Vector3(1f, scale * 20 /* Recall that the pivot is at the cube center, so scaling will extend downward as well. */, 1f);
-                }
-#endif
-    }
-
-    public void Instantiate(GameObject tilePrefab, WorldInstantiateMode worldInstantiateMode)
-    {
-        var gridHeight = worldConfig.GridHeight;
-        var gridWidth = worldConfig.GridWidth;
-
-        for (var y = 0; y < gridHeight; y++)
+        // Set the cube's material if instantiating for-real tiles.
+        if (worldDisplayMode == WorldDisplayMode.ActualTiles)
         {
-            for (var x = 0; x < gridWidth; x++)
-            {
-                // TODO: finish this up
-            }
+            // First, determine the closest biome.
+            var biome = ClosestBiome(x, y);
+
+            // Then given the biome, set the material of the cube.
+            var material = worldConfig.GetMaterial(biome);
+            if (material != null)
+                cube.GetComponentInChildren<MeshRenderer>().material = material; // shared material?
         }
 
-        // TODO: Return list of instantiated objects so that they may be destroyed when game is in-play.
+        // Set the cube's scale if instantiating debug tiles.
+        if (worldDisplayMode != WorldDisplayMode.ActualTiles)
+        {
+            float scale = 0f;
+            if (worldDisplayMode == WorldDisplayMode.HeightMap)
+                scale = GetHeight(x, y);
+            else if (worldDisplayMode == WorldDisplayMode.HeatMap)
+                scale = GetHeat(x, y);
+            else if (worldDisplayMode == WorldDisplayMode.MoistureMap)
+                scale = GetMoisture(x, y);
+            scale = Mathf.Clamp01(scale);
+            cube.transform.localScale = new Vector3(1f, scale * 20 /* Recall that the pivot is at the cube center, so scaling will extend downward as well. */, 1f);
+        }
     }
 }

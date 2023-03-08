@@ -3,10 +3,10 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [System.Serializable]
-public enum WorldInstantiateMode
+public enum WorldDisplayMode
 {
-    None,
-    Height,
-    Moisture,
-    Heat,
+    ActualTiles,
+    HeightMap,
+    MoistureMap,
+    HeatMap,
 }

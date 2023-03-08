@@ -11,7 +11,8 @@ public class WorldConfig : ScriptableObject
     public int GridHeight = 100;
 
     [SerializeField]
-    private MaterialManager materialManager;
+    [NotNull]
+    private ResourceMaterials materialManager;
 
     [Header("Noise Maps")]
     public List<Wave> HeightMapConfig = new List<Wave>

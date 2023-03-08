@@ -34,38 +34,38 @@ MonoBehaviour:
     Frequency: 0.02
     Amplitude: 0.5
   landBiome:
-    MinHeight: 0
-    MinMoisture: 0
-    MinHeat: 0
+    MinHeight: 0.3
+    MinMoisture: 0.4
+    MinHeat: 0.2
   waterBiome:
     MinHeight: 0
     MinMoisture: 0
     MinHeat: 0
   stoneBiome:
-    MinHeight: 0
-    MinMoisture: 0
+    MinHeight: 0.3
+    MinMoisture: 0.3
     MinHeat: 0
   coalBiome:
-    MinHeight: 0
-    MinMoisture: 0
+    MinHeight: 0.3
+    MinMoisture: 0.2
     MinHeat: 0
   copperOreBiome:
-    MinHeight: 0
+    MinHeight: 0.3
     MinMoisture: 0
     MinHeat: 0
   ironOreBiome:
-    MinHeight: 0
-    MinMoisture: 0
+    MinHeight: 0.3
+    MinMoisture: 0.1
     MinHeat: 0
   woodBiome:
-    MinHeight: 0
-    MinMoisture: 0
-    MinHeat: 0
+    MinHeight: 0.3
+    MinMoisture: 0.4
+    MinHeat: 0.9
   sugarCaneBiome:
-    MinHeight: 0
-    MinMoisture: 0
+    MinHeight: 0.3
+    MinMoisture: 0.4
     MinHeat: 0
   wheatBiome:
-    MinHeight: 0
-    MinMoisture: 0
-    MinHeat: 0
+    MinHeight: 0.3
+    MinMoisture: 0.4
+    MinHeat: 0.1

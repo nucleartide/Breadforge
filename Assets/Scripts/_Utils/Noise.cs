@@ -1,4 +1,3 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -30,6 +29,7 @@ public static class Noise
                 }
 
                 noiseMap[y, x] /= normalization;
+
                 if (noiseMap[y, x] < minValue)
                     minValue = noiseMap[y, x];
                 if (noiseMap[y, x] > maxValue)

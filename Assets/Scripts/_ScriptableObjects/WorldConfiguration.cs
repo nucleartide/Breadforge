@@ -55,41 +55,32 @@ public class WorldConfiguration : ScriptableObject
 
     [Header("Biomes: Land and Water")]
     [SerializeField]
-    [NotNull]
     private Biome landBiome;
 
     [SerializeField]
-    [NotNull]
     private Biome waterBiome;
 
     [Header("Biomes: Bedrock")]
     [SerializeField]
-    [NotNull]
     private Biome stoneBiome;
 
     [SerializeField]
-    [NotNull]
     private Biome coalBiome;
 
     [SerializeField]
-    [NotNull]
     private Biome copperOreBiome;
 
     [SerializeField]
-    [NotNull]
     private Biome ironOreBiome;
 
     [Header("Biomes: Vegetation")]
     [SerializeField]
-    [NotNull]
     private Biome woodBiome;
 
     [SerializeField]
-    [NotNull]
     private Biome sugarCaneBiome;
 
     [SerializeField]
-    [NotNull]
     private Biome wheatBiome;
 
     public List<Biome> AllBiomes

@@ -16,37 +16,37 @@ public class WorldConfiguration : ScriptableObject
     private ResourceMaterialManager materialManager;
 
     [Header("Noise Maps")]
-    public List<Wave> HeightMapConfig = new List<Wave>
+    public List<NoiseWave> HeightMapConfig = new List<NoiseWave>
     {
-        new Wave {
+        new NoiseWave {
             Seed = 56f,
             Frequency = .05f,
             Amplitude = 1f,
         },
-        new Wave {
+        new NoiseWave {
             Seed = 199.36f,
             Frequency = .1f,
             Amplitude = .5f,
         },
     };
 
-    public List<Wave> MoistureMapConfig = new List<Wave>
+    public List<NoiseWave> MoistureMapConfig = new List<NoiseWave>
     {
-        new Wave {
+        new NoiseWave {
             Seed = 621f,
             Frequency = .03f,
             Amplitude = 1f,
         },
     };
 
-    public List<Wave> HeatMapConfig = new List<Wave>
+    public List<NoiseWave> HeatMapConfig = new List<NoiseWave>
     {
-        new Wave {
+        new NoiseWave {
             Seed = 318.6f,
             Frequency = .04f,
             Amplitude = 1f,
         },
-        new Wave {
+        new NoiseWave {
             Seed = 329.7f,
             Frequency = .02f,
             Amplitude = .5f,

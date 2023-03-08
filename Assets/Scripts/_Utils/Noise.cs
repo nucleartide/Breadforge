@@ -9,7 +9,7 @@ public static class Noise
     /// <param name="stackOfWaves">The stack of waves to combine into one.</param>
     /// <param name="scale">How zoomed-in the map will be. Pass in a value of 1.0 for no zooming.</param>
     /// <param name="offset">The offset used when sampling from Perlin noise. Pass in a value of Vector2.zero for no offset.</param>
-    public static NoiseMap GenerateMap(int width, int height, List<Wave> stackOfWaves, float scale, Vector2 offset)
+    public static NoiseMap GenerateMap(int width, int height, List<NoiseWave> stackOfWaves, float scale, Vector2 offset)
     {
         var noiseMap = new float[height, width];
         var minValue = float.MaxValue;

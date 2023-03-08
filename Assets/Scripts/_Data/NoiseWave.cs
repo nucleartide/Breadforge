@@ -1,9 +1,5 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-
 [System.Serializable]
-public struct Wave
+public struct NoiseWave
 {
     public float Seed;
     public float Frequency;

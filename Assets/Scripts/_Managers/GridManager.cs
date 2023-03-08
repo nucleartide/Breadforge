@@ -7,7 +7,7 @@ public class GridManager : MonoBehaviour
 {
     [SerializeField]
     [NotNull]
-    private WorldConfig worldConfig;
+    private WorldConfiguration worldConfig;
 
     [SerializeField]
     private WorldDisplayMode worldDisplayMode;

@@ -9,13 +9,13 @@ public class WorldMap
     public NoiseMap HeightMap;
     public NoiseMap MoistureMap;
     public NoiseMap HeatMap;
-    private WorldConfig worldConfig;
+    private WorldConfiguration worldConfig;
 
-    public WorldMap(WorldConfig worldConfig)
+    public WorldMap(WorldConfiguration worldConfig)
     {
         this.HeightMap = Noise.GenerateMap(worldConfig.GridWidth, worldConfig.GridHeight, worldConfig.HeightMapConfig, 1f, Vector2.zero);
         this.MoistureMap = Noise.GenerateMap(worldConfig.GridWidth, worldConfig.GridHeight, worldConfig.MoistureMapConfig, 1f, Vector2.zero);
-        this.HeatMap = Noise.GenerateMap(worldConfig.GridWidth, worldConfig.GridHeight, worldConfig.HeatMap, 1f, Vector2.zero);
+        this.HeatMap = Noise.GenerateMap(worldConfig.GridWidth, worldConfig.GridHeight, worldConfig.HeatMapConfig, 1f, Vector2.zero);
         this.worldConfig = worldConfig;
     }
 

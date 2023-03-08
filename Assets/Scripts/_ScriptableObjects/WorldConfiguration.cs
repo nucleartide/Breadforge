@@ -2,7 +2,7 @@ using UnityEngine;
 using System.Collections.Generic;
 
 [CreateAssetMenu]
-public class WorldConfig : ScriptableObject
+public class WorldConfiguration : ScriptableObject
 {
     [Header("Grid Dimensions")]
     public int GridWidth = 100;
@@ -10,6 +10,7 @@ public class WorldConfig : ScriptableObject
     [SerializeField]
     public int GridHeight = 100;
 
+    [Header("Materials")]
     [SerializeField]
     [NotNull]
     private ResourceMaterialManager materialManager;
@@ -38,7 +39,7 @@ public class WorldConfig : ScriptableObject
         },
     };
 
-    public List<Wave> HeatMap = new List<Wave>
+    public List<Wave> HeatMapConfig = new List<Wave>
     {
         new Wave {
             Seed = 318.6f,
@@ -54,32 +55,41 @@ public class WorldConfig : ScriptableObject
 
     [Header("Biomes: Land and Water")]
     [SerializeField]
+    [NotNull]
     private Biome landBiome;
 
     [SerializeField]
+    [NotNull]
     private Biome waterBiome;
 
     [Header("Biomes: Bedrock")]
     [SerializeField]
+    [NotNull]
     private Biome stoneBiome;
 
     [SerializeField]
+    [NotNull]
     private Biome coalBiome;
 
     [SerializeField]
+    [NotNull]
     private Biome copperOreBiome;
 
     [SerializeField]
+    [NotNull]
     private Biome ironOreBiome;
 
     [Header("Biomes: Vegetation")]
     [SerializeField]
+    [NotNull]
     private Biome woodBiome;
 
     [SerializeField]
+    [NotNull]
     private Biome sugarCaneBiome;
 
     [SerializeField]
+    [NotNull]
     private Biome wheatBiome;
 
     public List<Biome> AllBiomes
@@ -88,15 +98,42 @@ public class WorldConfig : ScriptableObject
         {
             return new List<Biome>
             {
+                // land and water
                 landBiome,
                 waterBiome,
+
+                // bedrock
                 stoneBiome,
                 coalBiome,
                 copperOreBiome,
                 ironOreBiome,
+
+                // vegetation
                 woodBiome,
                 sugarCaneBiome,
                 wheatBiome,
+            };
+        }
+    }
+
+    private static Dictionary<Biome, Material> materialLookupSingleton;
+    private Dictionary<Biome, Material> materialLookup
+    {
+        get
+        {
+            if (materialLookupSingleton != null)
+                return materialLookupSingleton;
+
+            return new Dictionary<Biome, Material>
+            {
+                {waterBiome, materialManager.Water},
+                {coalBiome, materialManager.Coal},
+                {copperOreBiome, materialManager.CopperOre},
+                {woodBiome, materialManager.Wood},
+                {ironOreBiome, materialManager.IronOre},
+                {stoneBiome, materialManager.Stone},
+                {sugarCaneBiome, materialManager.SugarCane},
+                {wheatBiome, materialManager.Wheat},
             };
         }
     }
@@ -106,22 +143,10 @@ public class WorldConfig : ScriptableObject
     /// </summary>
     public Material GetMaterial(Biome biome)
     {
-        var map = new Dictionary<Biome, Material>
-        {
-            {waterBiome, materialManager.Water},
-            {coalBiome, materialManager.Coal},
-            {copperOreBiome, materialManager.CopperOre},
-            {woodBiome, materialManager.Wood},
-            {ironOreBiome, materialManager.IronOre},
-            {stoneBiome, materialManager.Stone},
-            {sugarCaneBiome, materialManager.SugarCane},
-            {wheatBiome, materialManager.Wheat},
-        };
+        if (!materialLookup.ContainsKey(biome))
+            return null;
 
-        if (map.ContainsKey(biome))
-            return map[biome];
-
-        return null;
+        return materialLookup[biome];
     }
 
     public List<Biome> FindMatchingBiomes(Query query)

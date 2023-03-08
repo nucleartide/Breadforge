@@ -8,7 +8,9 @@
 
 ## Development checklist
 
-> Consider Ryan Hipple's 3 engineering values:
+> First, review your `Files changed` in GitHub and clean up your code.
+>
+> Then, consider Ryan Hipple's 3 engineering values:
 > 
 > * Modular
 >     * Systems not dependent on each other

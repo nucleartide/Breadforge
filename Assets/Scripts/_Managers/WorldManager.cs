@@ -10,11 +10,11 @@ public class WorldManager : MonoBehaviour
     private WorldConfiguration worldConfig;
 
     [SerializeField]
-    private WorldDisplayMode worldDisplayMode;
-
-    [SerializeField]
     [NotNull]
     private GameObject tilePrefab;
+
+    [SerializeField]
+    private WorldDisplayMode worldDisplayMode;
 
     private WorldMap worldMap;
 
@@ -39,7 +39,7 @@ public class WorldManager : MonoBehaviour
         return tiles;
     }
 
-    public void RegenerateTiles()
+    public void RegenerateResources()
     {
         // Destroy if an existing set of tiles exists.
         if (tiles != null)
@@ -55,6 +55,6 @@ public class WorldManager : MonoBehaviour
 
     private void Start()
     {
-        RegenerateTiles();
+        RegenerateResources();
     }
 }

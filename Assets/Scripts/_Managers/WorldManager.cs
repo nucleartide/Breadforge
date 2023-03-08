@@ -31,7 +31,7 @@ public class WorldManager : MonoBehaviour
             for (var x = 0; x < gridWidth; x++)
             {
                 var tile = Instantiate(tilePrefab);
-                worldMap.InitializeTile(tile, worldDisplayMode, x, y);
+                worldMap.InitializeTile(tile, x, y, worldDisplayMode);
                 tiles.Add(tile);
             }
         }

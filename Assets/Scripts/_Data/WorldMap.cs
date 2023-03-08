@@ -80,11 +80,11 @@ public class WorldMap
         return closestBiome;
     }
 
-    public void InitializeTile(GameObject cube, WorldDisplayMode worldDisplayMode, int x, int y)
+    public void InitializeTile(GameObject tilePrefab, int x, int y, WorldDisplayMode worldDisplayMode = WorldDisplayMode.ActualTiles)
     {
         // Set the cube's position.
         var position = new Vector3(x - worldConfig.GridWidth / 2, 0f, y - worldConfig.GridHeight / 2);
-        cube.transform.position = position;
+        tilePrefab.transform.position = position;
 
         // Set the cube's material if instantiating for-real tiles.
         if (worldDisplayMode == WorldDisplayMode.ActualTiles)
@@ -95,7 +95,7 @@ public class WorldMap
             // Then given the biome, set the material of the cube.
             var material = worldConfig.GetMaterial(biome);
             if (material != null)
-                cube.GetComponentInChildren<MeshRenderer>().material = material;
+                tilePrefab.GetComponentInChildren<MeshRenderer>().material = material;
         }
 
         // Set the cube's scale if instantiating debug tiles.
@@ -109,7 +109,7 @@ public class WorldMap
             else if (worldDisplayMode == WorldDisplayMode.MoistureMap)
                 scale = GetMoisture(x, y);
             scale = Mathf.Clamp01(scale);
-            cube.transform.localScale = new Vector3(1f, scale * 20 /* Recall that the pivot is at the cube center, so scaling will extend downward as well. */, 1f);
+            tilePrefab.transform.localScale = new Vector3(1f, scale * 20 /* Recall that the pivot is at the cube center, so scaling will extend downward as well. */, 1f);
         }
     }
 }

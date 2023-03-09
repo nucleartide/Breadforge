@@ -43,6 +43,13 @@ This particular Game Codebase Tour walks you through how to create a factory bui
 
 To step through all the pull requests created up until this point, please see below:
 
+1. Implement basic character animation (#25) 
+2. Implement Cinemachine third-person camera (#26) 
+3. Refactor game input to use Unity's new Input System package (#27) 
+4. Refactor to get rid of CharacterController (#28) 
+5. Add Pause button as a reference point for C# events usage (#29) https://github.com/nucleartide/Baguettorio/pull/29
+6. Populate game world with procedurally-generated resources (#30) 
+
 ---
 
 > [jasont.co](https://jasont.co/)

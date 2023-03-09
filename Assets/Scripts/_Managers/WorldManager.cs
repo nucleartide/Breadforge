@@ -10,10 +10,6 @@ public class WorldManager : MonoBehaviour
     private WorldConfiguration worldConfig;
 
     [SerializeField]
-    [NotNull]
-    private GameObject tilePrefab;
-
-    [SerializeField]
     private WorldDisplayMode worldDisplayMode;
 
     private WorldMap worldMap;
@@ -30,8 +26,7 @@ public class WorldManager : MonoBehaviour
         {
             for (var x = 0; x < gridWidth; x++)
             {
-                var tile = Instantiate(tilePrefab);
-                worldMap.InitializeTile(tile, x, y, worldDisplayMode);
+                var tile = worldMap.InstantiateTile(x, y, worldDisplayMode);
                 tiles.Add(tile);
             }
         }

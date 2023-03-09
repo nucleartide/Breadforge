@@ -14,7 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   GridWidth: 100
   GridHeight: 100
-  materialManager: {fileID: 11400000, guid: 91a32bb37741d41aea2a9eb944f759f8, type: 2}
+  TilePrefab: {fileID: 5872477195587567733, guid: 2e1e93f18e3d743999523fe9c601db91,
+    type: 3}
+  tileMaterials: {fileID: 11400000, guid: 91a32bb37741d41aea2a9eb944f759f8, type: 2}
   HeightMapConfig:
   - Seed: 56
     Frequency: 0.05
@@ -26,7 +28,7 @@ MonoBehaviour:
   - Seed: 621
     Frequency: 0.03
     Amplitude: 1
-  HeatMap:
+  HeatMapConfig:
   - Seed: 318.6
     Frequency: 0.04
     Amplitude: 1

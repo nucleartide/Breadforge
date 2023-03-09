@@ -80,25 +80,28 @@ public class WorldMap
         return closestBiome;
     }
 
-    public void InitializeTile(GameObject tilePrefab, int x, int y, WorldDisplayMode worldDisplayMode = WorldDisplayMode.ActualTiles)
+    public GameObject InstantiateTile(int x, int y, WorldDisplayMode worldDisplayMode = WorldDisplayMode.ActualTiles)
     {
-        // Set the cube's position.
-        var position = new Vector3(x - worldConfig.GridWidth / 2, 0f, y - worldConfig.GridHeight / 2);
-        tilePrefab.transform.position = position;
+        // Instantiate a tile.
+        var tile = Object.Instantiate(worldConfig.TilePrefab);
 
-        // Set the cube's material if instantiating for-real tiles.
+        // Set the tile's position.
+        var position = new Vector3(x - worldConfig.GridWidth / 2, 0f, y - worldConfig.GridHeight / 2);
+        tile.transform.position = position;
+
+        // Set the tile's material if instantiating for-real tiles.
         if (worldDisplayMode == WorldDisplayMode.ActualTiles)
         {
             // First, determine the closest biome.
             var biome = ClosestBiome(x, y);
 
-            // Then given the biome, set the material of the cube.
+            // Then given the biome, set the material of the tile.
             var material = worldConfig.GetMaterial(biome);
             if (material != null)
-                tilePrefab.GetComponentInChildren<MeshRenderer>().material = material;
+                tile.GetComponentInChildren<MeshRenderer>().material = material;
         }
 
-        // Set the cube's scale if instantiating debug tiles.
+        // Set the tile's scale if instantiating debug tiles.
         if (worldDisplayMode != WorldDisplayMode.ActualTiles)
         {
             float scale = 0f;
@@ -109,7 +112,10 @@ public class WorldMap
             else if (worldDisplayMode == WorldDisplayMode.MoistureMap)
                 scale = GetMoisture(x, y);
             scale = Mathf.Clamp01(scale);
-            tilePrefab.transform.localScale = new Vector3(1f, scale * 20 /* Recall that the pivot is at the cube center, so scaling will extend downward as well. */, 1f);
+            tile.transform.localScale = new Vector3(1f, scale * 20 /* Recall that the pivot is at the cube center, so scaling will extend downward as well. */, 1f);
         }
+
+        // Return instantiated tile.
+        return tile;
     }
 }

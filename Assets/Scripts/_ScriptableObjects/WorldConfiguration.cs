@@ -10,10 +10,14 @@ public class WorldConfiguration : ScriptableObject
     [SerializeField]
     public int GridHeight = 100;
 
-    [Header("Materials")]
+    [Header("Tile Prefab")]
     [SerializeField]
     [NotNull]
-    private ResourceMaterialManager materialManager;
+    public GameObject TilePrefab;
+
+    [SerializeField]
+    [NotNull]
+    private TileMaterials tileMaterials;
 
     [Header("Noise Maps")]
     public List<NoiseWave> HeightMapConfig = new List<NoiseWave>
@@ -117,14 +121,14 @@ public class WorldConfiguration : ScriptableObject
 
             return new Dictionary<Biome, Material>
             {
-                {waterBiome, materialManager.Water},
-                {coalBiome, materialManager.Coal},
-                {copperOreBiome, materialManager.CopperOre},
-                {woodBiome, materialManager.Wood},
-                {ironOreBiome, materialManager.IronOre},
-                {stoneBiome, materialManager.Stone},
-                {sugarCaneBiome, materialManager.SugarCane},
-                {wheatBiome, materialManager.Wheat},
+                {waterBiome, tileMaterials.Water},
+                {coalBiome, tileMaterials.Coal},
+                {copperOreBiome, tileMaterials.CopperOre},
+                {woodBiome, tileMaterials.Wood},
+                {ironOreBiome, tileMaterials.IronOre},
+                {stoneBiome, tileMaterials.Stone},
+                {sugarCaneBiome, tileMaterials.SugarCane},
+                {wheatBiome, tileMaterials.Wheat},
             };
         }
     }

@@ -44,7 +44,7 @@ This particular Game Codebase Tour walks you through how to create a factory bui
 To step through all the pull requests created up until this point, please see below:
 
 Feature | Pull Request
----
+--- | ---
 Implement basic character animation | https://github.com/nucleartide/Baguettorio/pull/25
 Implement Cinemachine third-person camera | https://github.com/nucleartide/Baguettorio/pull/26
 Refactor game input to use Unity's new Input System package | https://github.com/nucleartide/Baguettorio/pull/27

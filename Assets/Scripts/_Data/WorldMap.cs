@@ -82,23 +82,42 @@ public class WorldMap
 
     public GameObject InstantiateTile(int x, int y, WorldDisplayMode worldDisplayMode = WorldDisplayMode.ActualTiles)
     {
-        // Instantiate a tile.
-        var tile = Object.Instantiate(worldConfig.TilePrefab);
+        // First, determine the closest biome.
+        var biome = ClosestBiome(x, y);
 
-        // Set the tile's position.
-        var position = new Vector3(x - worldConfig.GridWidth / 2, 0f, y - worldConfig.GridHeight / 2);
-        tile.transform.position = position;
-
-        // Set the tile's material if instantiating for-real tiles.
-        if (worldDisplayMode == WorldDisplayMode.ActualTiles)
+        // Then given the biome, instantiate the appropriate tile.
+        GameObject tile = null;
+        if (biome == worldConfig.CopperOreBiome)
         {
-            // First, determine the closest biome.
-            var biome = ClosestBiome(x, y);
+            tile = Object.Instantiate(worldConfig.CopperOrePrefab);
+        }
+        else
+        {
+            // Instantiate a tile.
+            tile = Object.Instantiate(worldConfig.PlaceholderPrefab);
 
             // Then given the biome, set the material of the tile.
             var material = worldConfig.GetMaterial(biome);
             if (material != null)
                 tile.GetComponentInChildren<MeshRenderer>().material = material;
+        }
+
+        // Set the tile's position.
+        Vector3 position;
+        if (biome == worldConfig.CopperOreBiome)
+        {
+            position = new Vector3(x - worldConfig.GridWidth / 2, 0f, y - worldConfig.GridHeight / 2);
+        }
+        else
+        {
+            position = new Vector3(x - worldConfig.GridWidth / 2, -.5f, y - worldConfig.GridHeight / 2);
+        }
+        tile.transform.position = position;
+
+        // For non-placeholder tiles, give them a random rotation.
+        if (biome == worldConfig.CopperOreBiome)
+        {
+            tile.transform.GetChild(0).rotation = Quaternion.AngleAxis(Random.Range(0f, 360f), Vector3.up);
         }
 
         // Set the tile's scale if instantiating debug tiles.

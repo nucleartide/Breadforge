@@ -1,7 +1,7 @@
 using UnityEngine;
 
 [CreateAssetMenu]
-public class TileMaterials : ScriptableObject
+public class PlaceholderMaterials : ScriptableObject
 {
     public Material Coal;
     public Material CopperOre;

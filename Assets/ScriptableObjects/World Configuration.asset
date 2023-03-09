@@ -33,6 +33,8 @@ MonoBehaviour:
   - {fileID: 7281515383505052903, guid: 248d7ce9484de455ba0b376287df044b, type: 3}
   - {fileID: 340451446263308728, guid: 0f540b92bfed7448aa1dea2007a312a6, type: 3}
   - {fileID: 4196072408209369410, guid: 2b271c543f01b4c44b6d35295b8160b6, type: 3}
+  <AluminumPrefab>k__BackingField: {fileID: 4795040601957831555, guid: 85eabd8745b724afa82fd2d48bb493da,
+    type: 3}
   HeightMapConfig:
   - Seed: 56
     Frequency: 0.05

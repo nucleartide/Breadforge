@@ -59,6 +59,14 @@ public class WorldConfiguration : ScriptableObject
         private set;
     }
 
+    [field: SerializeField]
+    [field: NotNull]
+    public GameObject AluminumPrefab
+    {
+        get;
+        private set;
+    }
+
     [Header("Noise Maps")]
     public List<NoiseWave> HeightMapConfig = new List<NoiseWave>
     {

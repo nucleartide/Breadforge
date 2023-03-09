@@ -3,45 +3,16 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
-    [Serializable]
-    struct Configuration
-    {
-        public float PlayerWalkSpeed;
-
-        public float PlayerRunSpeed;
-
-        /// <summary>
-        /// Scaling factor for jump height.
-        /// </summary>
-        public float JumpHeight;
-
-        /// <summary>
-        /// In units per second squared.
-        /// </summary>
-        public float GravityValue;
-
-        /// <summary>
-        /// In radians per second.
-        /// </summary>
-        public float RotationSpeed;
-    }
-
     [SerializeField]
-    Configuration configuration = new()
-    {
-        PlayerWalkSpeed = 2.0f,
-        PlayerRunSpeed = 4.0f,
-        JumpHeight = 1.0f,
-        GravityValue = 9.81f,
-        RotationSpeed = 3.0f,
-    };
+    [NotNull]
+    PlayerConfiguration playerConfiguration;
 
     [SerializeField]
     [NotNull]
     Transform playerShoulderTarget;
 
     [SerializeField]
-    [NotNull]
+    [NotNull(IgnorePrefab = true)]
     InputManager gameInput;
 
     public float HorizontalSpeed
@@ -64,9 +35,9 @@ public class PlayerController : MonoBehaviour
                 return 0f;
 
             if (gameInput.GetRun())
-                return configuration.PlayerRunSpeed;
+                return playerConfiguration.PlayerRunSpeed;
 
-            return configuration.PlayerWalkSpeed;
+            return playerConfiguration.PlayerWalkSpeed;
         }
     }
 
@@ -89,7 +60,7 @@ public class PlayerController : MonoBehaviour
     {
         if (gameInput.GetMovement() != Vector3.zero)
         {
-            float singleStep = configuration.RotationSpeed * Time.smoothDeltaTime;
+            float singleStep = playerConfiguration.RotationSpeed * Time.smoothDeltaTime;
             transform.forward = Vector3.RotateTowards(transform.forward, movementDirection.normalized, singleStep, 0f);
         }
     }

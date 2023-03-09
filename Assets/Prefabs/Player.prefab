@@ -198,12 +198,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c6725f4f77a694989809b800ab743ff4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  configuration:
-    PlayerWalkSpeed: 5
-    PlayerRunSpeed: 10
-    JumpHeight: 1
-    GravityValue: 9.81
-    RotationSpeed: 15
+  playerConfiguration: {fileID: 11400000, guid: 0e29962fbc3e34aaea3620693e304758,
+    type: 2}
   playerShoulderTarget: {fileID: 7448607528557946679}
   gameInput: {fileID: 0}
 --- !u!1 &7448607528243255392
@@ -405,9 +401,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ebf4c16901a954de88981102e53d45e3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rotationSpeed: 180
-  minXAngle: -20
-  maxXAngle: 40
+  config: {fileID: 11400000, guid: b8d6d6ebfe2a64e5985d630037247cc4, type: 2}
   gameInput: {fileID: 0}
 --- !u!1 &7448607528602640803
 GameObject:

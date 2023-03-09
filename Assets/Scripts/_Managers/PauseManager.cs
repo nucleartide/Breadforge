@@ -1,0 +1,31 @@
+using UnityEngine;
+
+public class PauseManager : MonoBehaviour
+{
+    [SerializeField]
+    [NotNull(IgnorePrefab = true)]
+    InputManager gameInput;
+
+    private bool isPaused = false;
+
+    private void Awake()
+    {
+        gameInput.OnPauseAction += GameInput_OnPauseAction;
+    }
+
+    private void OnDestroy()
+    {
+        gameInput.OnPauseAction -= GameInput_OnPauseAction;
+    }
+
+    private void GameInput_OnPauseAction(object sender, float timeOfPause)
+    {
+        TogglePause();
+        Debug.Log(isPaused ? "Game is paused." : "Game is active.");
+    }
+
+    private void TogglePause()
+    {
+        isPaused = !isPaused;
+    }
+}

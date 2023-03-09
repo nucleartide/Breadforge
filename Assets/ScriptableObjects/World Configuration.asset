@@ -1,0 +1,73 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6210209ff49ad455c931ff2e0d6fa996, type: 3}
+  m_Name: World Configuration
+  m_EditorClassIdentifier: 
+  GridWidth: 100
+  GridHeight: 100
+  TilePrefab: {fileID: 5872477195587567733, guid: 2e1e93f18e3d743999523fe9c601db91,
+    type: 3}
+  tileMaterials: {fileID: 11400000, guid: 91a32bb37741d41aea2a9eb944f759f8, type: 2}
+  HeightMapConfig:
+  - Seed: 56
+    Frequency: 0.05
+    Amplitude: 1
+  - Seed: 199.36
+    Frequency: 0.1
+    Amplitude: 0.5
+  MoistureMapConfig:
+  - Seed: 621
+    Frequency: 0.03
+    Amplitude: 1
+  HeatMapConfig:
+  - Seed: 318.6
+    Frequency: 0.04
+    Amplitude: 1
+  - Seed: 329.7
+    Frequency: 0.02
+    Amplitude: 0.5
+  landBiome:
+    MinHeight: 0.3
+    MinMoisture: 0.4
+    MinHeat: 0.2
+  waterBiome:
+    MinHeight: 0
+    MinMoisture: 0
+    MinHeat: 0
+  stoneBiome:
+    MinHeight: 0.3
+    MinMoisture: 0.3
+    MinHeat: 0
+  coalBiome:
+    MinHeight: 0.3
+    MinMoisture: 0.2
+    MinHeat: 0
+  copperOreBiome:
+    MinHeight: 0.3
+    MinMoisture: 0
+    MinHeat: 0
+  ironOreBiome:
+    MinHeight: 0.3
+    MinMoisture: 0.1
+    MinHeat: 0
+  woodBiome:
+    MinHeight: 0.3
+    MinMoisture: 0.4
+    MinHeat: 0.9
+  sugarCaneBiome:
+    MinHeight: 0.3
+    MinMoisture: 0.4
+    MinHeat: 0
+  wheatBiome:
+    MinHeight: 0.3
+    MinMoisture: 0.4
+    MinHeat: 0.1

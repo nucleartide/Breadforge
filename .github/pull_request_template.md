@@ -9,9 +9,10 @@
 ## Development checklist
 
 > * Review `Files changed` and check off the following:
->     * **Modular**: Are you touching the scene file? If so, can you limit your changes to prefab files instead?
->     * **Editable**: Has any configuration been moved into ScriptableObjects, so that modified values persist even after exiting Play mode?
->     * **Debuggable**: Do you have debug views for the prefabs/systems that you are creating?
+
+* [ ] **Modular**: Are you touching the scene file? If so, can you limit your changes to prefab files instead?
+* [ ] **Editable**: Has any configuration been moved into ScriptableObjects, so that modified values persist even after exiting Play mode?
+* [ ] **Debuggable**: Do you have debug views for the prefabs/systems that you are creating?
 
 ## Changelog
 

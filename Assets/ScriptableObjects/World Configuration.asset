@@ -20,6 +20,8 @@ MonoBehaviour:
     type: 2}
   <CopperOrePrefab>k__BackingField: {fileID: 1237541113711758134, guid: c181ed22c77f24b93b39941e70b8a11d,
     type: 3}
+  <CoalPrefab>k__BackingField: {fileID: 5416719327660961931, guid: 5900a4605ec3a49bab555ec7ef5baa7b,
+    type: 3}
   HeightMapConfig:
   - Seed: 56
     Frequency: 0.05

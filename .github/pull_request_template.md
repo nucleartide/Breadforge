@@ -8,26 +8,10 @@
 
 ## Development checklist
 
-> First, review your `Files changed` in GitHub and clean up your code.
->
-> Then, consider Ryan Hipple's 3 engineering values:
-> 
-> * Modular
->     * Systems not dependent on each other
->     * Scenes are clean slates
->     * Prefabs work on their own
->     * Components (in Unity)
-> * Editable
->     * Focus on data
->     * Change the game without code
->     * Emergent design
->     * Change at runtime
-> * Debuggable
->     * Test in isolation (modularity)
->     * Debug views and features
->     * Never fix a bug you do not understand
-> 
-> In what ways do I need to modify this pull request to align with Ryan's 3 values?
+> * Review `Files changed` and check off the following:
+>     * **Modular**: Are you touching the scene file? If so, can you limit your changes to prefab files instead?
+>     * **Editable**: Has any configuration been moved into ScriptableObjects, so that modified values persist even after exiting Play mode?
+>     * **Debuggable**: Do you have debug views for the prefabs/systems that you are creating?
 
 ## Changelog
 

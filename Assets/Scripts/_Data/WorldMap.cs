@@ -91,6 +91,12 @@ public class WorldMap
             tile = Object.Instantiate(worldConfig.CopperOrePrefab);
         else if (biome == worldConfig.CoalBiome)
             tile = Object.Instantiate(worldConfig.CoalPrefab);
+        else if (biome == worldConfig.SugarCaneBiome)
+            tile = Object.Instantiate(worldConfig.SugarCanePrefab);
+        else if (biome == worldConfig.WheatBiome)
+            tile = Object.Instantiate(worldConfig.WheatPrefab);
+        else if (biome == worldConfig.StoneBiome)
+            tile = Object.Instantiate(worldConfig.StonePrefabs[Random.Range(0, worldConfig.StonePrefabs.Length)]);
         else
         {
             // Instantiate a tile.
@@ -104,7 +110,7 @@ public class WorldMap
 
         // Set the tile's position.
         Vector3 position;
-        if (biome == worldConfig.CopperOreBiome || biome == worldConfig.CoalBiome)
+        if (biome == worldConfig.CopperOreBiome || biome == worldConfig.CoalBiome || biome == worldConfig.SugarCaneBiome || biome == worldConfig.WheatBiome || biome == worldConfig.StoneBiome)
         {
             position = new Vector3(x - worldConfig.GridWidth / 2, 0f, y - worldConfig.GridHeight / 2);
         }
@@ -115,7 +121,7 @@ public class WorldMap
         tile.transform.position = position;
 
         // For non-placeholder tiles, give them a random rotation.
-        if (biome == worldConfig.CopperOreBiome || biome == worldConfig.CoalBiome)
+        if (biome == worldConfig.CopperOreBiome || biome == worldConfig.CoalBiome || biome == worldConfig.SugarCaneBiome || biome == worldConfig.WheatBiome || biome == worldConfig.StoneBiome)
         {
             tile.transform.GetChild(0).rotation = Quaternion.AngleAxis(Random.Range(0f, 360f), Vector3.up);
         }

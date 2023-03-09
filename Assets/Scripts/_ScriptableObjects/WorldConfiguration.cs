@@ -35,6 +35,30 @@ public class WorldConfiguration : ScriptableObject
         private set;
     }
 
+    [field: SerializeField]
+    [field: NotNull]
+    public GameObject SugarCanePrefab
+    {
+        get;
+        private set;
+    }
+
+    [field: SerializeField]
+    [field: NotNull]
+    public GameObject WheatPrefab
+    {
+        get;
+        private set;
+    }
+
+    [field: SerializeField]
+    [field: NotNull]
+    public GameObject[] StonePrefabs
+    {
+        get;
+        private set;
+    }
+
     [Header("Noise Maps")]
     public List<NoiseWave> HeightMapConfig = new List<NoiseWave>
     {

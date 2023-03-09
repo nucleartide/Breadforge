@@ -22,6 +22,17 @@ MonoBehaviour:
     type: 3}
   <CoalPrefab>k__BackingField: {fileID: 5416719327660961931, guid: 5900a4605ec3a49bab555ec7ef5baa7b,
     type: 3}
+  <SugarCanePrefab>k__BackingField: {fileID: 7991402973586639196, guid: cb74a6d496127493aa4d2a038e9d43af,
+    type: 3}
+  <WheatPrefab>k__BackingField: {fileID: 3015625458535787847, guid: 8c7cbe03cc99a4765825f2a0d376c095,
+    type: 3}
+  <StonePrefabs>k__BackingField:
+  - {fileID: 5602366182956853865, guid: 2295d9821282d4218bdc86e8923b0c77, type: 3}
+  - {fileID: 7432523358845925153, guid: 632d6d9cba365453896a4ed6b1c28889, type: 3}
+  - {fileID: 270890673942300825, guid: aaac915c584d44901997baf2f672be02, type: 3}
+  - {fileID: 7281515383505052903, guid: 248d7ce9484de455ba0b376287df044b, type: 3}
+  - {fileID: 340451446263308728, guid: 0f540b92bfed7448aa1dea2007a312a6, type: 3}
+  - {fileID: 4196072408209369410, guid: 2b271c543f01b4c44b6d35295b8160b6, type: 3}
   HeightMapConfig:
   - Seed: 56
     Frequency: 0.05

@@ -7,9 +7,11 @@ public class PlayerController : MonoBehaviour
     [NotNull]
     PlayerConfiguration playerConfiguration;
 
+#if false
     [SerializeField]
     [NotNull]
     Transform playerShoulderTarget;
+#endif
 
     [SerializeField]
     [NotNull(IgnorePrefab = true)]
@@ -45,7 +47,8 @@ public class PlayerController : MonoBehaviour
     {
         HorizontalSpeed = Mathf.SmoothDamp(HorizontalSpeed, TargetSpeed, ref horizontalSpeedDampingValue, .3f);
 
-        var yRotation = Quaternion.Euler(0f, playerShoulderTarget.eulerAngles.y, 0f);
+        // var yRotation = Quaternion.Euler(0f, playerShoulderTarget.eulerAngles.y, 0f);
+        var yRotation = Quaternion.identity;
         var movementDirection = yRotation * gameInput.GetMovement();
         FaceMovementDirection(movementDirection);
         Move(movementDirection);

@@ -1,6 +1,7 @@
 using System;
 using UnityEngine;
 
+[RequireComponent(typeof(CharacterController))]
 public class PlayerController : MonoBehaviour
 {
     [SerializeField]
@@ -16,6 +17,10 @@ public class PlayerController : MonoBehaviour
     [SerializeField]
     [NotNull(IgnorePrefab = true)]
     InputManager gameInput;
+
+    [SerializeField]
+    [NotNull]
+    CharacterController characterController;
 
     public float HorizontalSpeed
     {
@@ -56,7 +61,8 @@ public class PlayerController : MonoBehaviour
 
     private void Move(Vector3 movementDirection)
     {
-        transform.position += Time.smoothDeltaTime * HorizontalSpeed * movementDirection;
+        var delta = Time.smoothDeltaTime * HorizontalSpeed * movementDirection;
+        characterController.Move(delta);
     }
 
     private void FaceMovementDirection(Vector3 movementDirection)

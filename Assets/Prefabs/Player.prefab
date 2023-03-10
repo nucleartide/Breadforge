@@ -163,6 +163,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7448607528179769431}
   - component: {fileID: 7448607528179769425}
+  - component: {fileID: 6575251909829193500}
   m_Layer: 0
   m_Name: Player Controller
   m_TagString: Untagged
@@ -200,8 +201,26 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerConfiguration: {fileID: 11400000, guid: 0e29962fbc3e34aaea3620693e304758,
     type: 2}
-  playerShoulderTarget: {fileID: 7448607528557946679}
   gameInput: {fileID: 0}
+  characterController: {fileID: 6575251909829193500}
+--- !u!143 &6575251909829193500
+CharacterController:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7448607528179769428}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Height: 2
+  m_Radius: 0.5
+  m_SlopeLimit: 45
+  m_StepOffset: 0.3
+  m_SkinWidth: 0.08
+  m_MinMoveDistance: 0.001
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &7448607528243255392
 GameObject:
   m_ObjectHideFlags: 0

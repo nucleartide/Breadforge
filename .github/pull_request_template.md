@@ -1,6 +1,6 @@
 ## Quality Assurance
 
-> Take some screenshots as confirmation of quality assurance.
+> Take some screenshots or screen recordings to show off your game, and also as quality assurance.
 
 ...
 

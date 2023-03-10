@@ -60,7 +60,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   collider: {fileID: 6904448236642417721}
-  treeMesh: {fileID: 4605854476709031443}
+  mesh: {fileID: 4605854476709031443}
 --- !u!1 &4604631837564805851
 GameObject:
   m_ObjectHideFlags: 0

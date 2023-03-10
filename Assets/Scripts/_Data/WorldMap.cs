@@ -140,7 +140,7 @@ public class WorldMap
         if (biome == worldConfig.WoodBiome)
         {
             var scalingFactor = Random.Range(.25f, .5f);
-            tile.GetComponent<TreeColliderScaler>().SetScale(scalingFactor);
+            tile.GetComponent<TreeScaler>().SetScale(scalingFactor);
         }
 
         // Set the tile's scale if instantiating debug tiles.

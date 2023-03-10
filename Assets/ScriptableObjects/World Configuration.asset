@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   GridWidth: 100
   GridHeight: 100
-  PlaceholderPrefab: {fileID: 5872477195587567733, guid: 2e1e93f18e3d743999523fe9c601db91,
+  PlaceholderPrefab: {fileID: 1000012675124084, guid: 52ffaff1771e043e8826f80dc69e2a6f,
     type: 3}
   placeholderMaterials: {fileID: 11400000, guid: 91a32bb37741d41aea2a9eb944f759f8,
     type: 2}

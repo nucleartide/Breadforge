@@ -546,6 +546,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7106368382815954300, guid: 6115860f234e447ce96aa9aab0e78050,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 1feef57265e8a4877a6d827d12e6cef5, type: 2}
     - target: {fileID: 7106368382815954302, guid: 6115860f234e447ce96aa9aab0e78050,
         type: 3}
       propertyPath: m_Name
@@ -560,6 +565,16 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 261569090}
     m_Modifications:
+    - target: {fileID: 7448607527972973827, guid: 67cd95e882c5c481682a00197c0d9e25,
+        type: 3}
+      propertyPath: orthographic
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7448607527972973827, guid: 67cd95e882c5c481682a00197c0d9e25,
+        type: 3}
+      propertyPath: near clip plane
+      value: 0.3
+      objectReference: {fileID: 0}
     - target: {fileID: 7448607528179769425, guid: 67cd95e882c5c481682a00197c0d9e25,
         type: 3}
       propertyPath: gameInput

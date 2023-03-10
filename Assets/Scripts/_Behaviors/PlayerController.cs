@@ -1,6 +1,6 @@
-using System;
 using UnityEngine;
 
+[RequireComponent(typeof(CharacterController))]
 public class PlayerController : MonoBehaviour
 {
     [SerializeField]
@@ -8,12 +8,12 @@ public class PlayerController : MonoBehaviour
     PlayerConfiguration playerConfiguration;
 
     [SerializeField]
-    [NotNull]
-    Transform playerShoulderTarget;
-
-    [SerializeField]
     [NotNull(IgnorePrefab = true)]
     InputManager gameInput;
+
+    [SerializeField]
+    [NotNull]
+    CharacterController characterController;
 
     public float HorizontalSpeed
     {
@@ -45,15 +45,15 @@ public class PlayerController : MonoBehaviour
     {
         HorizontalSpeed = Mathf.SmoothDamp(HorizontalSpeed, TargetSpeed, ref horizontalSpeedDampingValue, .3f);
 
-        var yRotation = Quaternion.Euler(0f, playerShoulderTarget.eulerAngles.y, 0f);
-        var movementDirection = yRotation * gameInput.GetMovement();
+        var movementDirection = gameInput.GetMovement();
         FaceMovementDirection(movementDirection);
         Move(movementDirection);
     }
 
     private void Move(Vector3 movementDirection)
     {
-        transform.position += Time.smoothDeltaTime * HorizontalSpeed * movementDirection;
+        var delta = Time.smoothDeltaTime * HorizontalSpeed * movementDirection;
+        characterController.Move(delta);
     }
 
     private void FaceMovementDirection(Vector3 movementDirection)

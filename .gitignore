@@ -61,6 +61,7 @@ crashlytics-build.properties
 # Third-party stuff that is too big to commit to version control.
 Assets/Plugins/Ciathyza/
 Assets/Plugins/polyperfect/
+Assets/Plugins/ADG_Textures/
 
 # Mac stuff.
 .DS_Store

@@ -1,6 +1,6 @@
 ## Quality Assurance
 
-> Take some screenshots as confirmation of quality assurance.
+> Take some screenshots or screen recordings to show off your game, and also as quality assurance.
 
 ...
 
@@ -16,9 +16,11 @@
 
 > Review `Files changed` and check off the following:
 
+* [ ] General review to clean up your changes. Then,
 * [ ] **Modular**: Are you touching the scene file? If so, can you limit your changes to prefab files instead?
 * [ ] **Editable**: Has any configuration been moved into ScriptableObjects, so that modified values persist even after exiting Play mode?
 * [ ] **Debuggable**: Do you have debug views for the prefabs/systems that you are creating?
+* [ ] Update readme with new pull request.
 
 ## Changelog
 

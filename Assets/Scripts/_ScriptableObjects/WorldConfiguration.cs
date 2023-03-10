@@ -10,14 +10,78 @@ public class WorldConfiguration : ScriptableObject
     [SerializeField]
     public int GridHeight = 100;
 
-    [Header("Tile Prefab")]
+    [Header("Resource Prefabs")]
     [SerializeField]
     [NotNull]
-    public GameObject TilePrefab;
+    public GameObject PlaceholderPrefab;
 
     [SerializeField]
     [NotNull]
-    private TileMaterials tileMaterials;
+    private PlaceholderMaterials placeholderMaterials;
+
+    [field: SerializeField]
+    [field: NotNull]
+    public GameObject CopperOrePrefab
+    {
+        get;
+        private set;
+    }
+
+    [field: SerializeField]
+    [field: NotNull]
+    public GameObject CoalPrefab
+    {
+        get;
+        private set;
+    }
+
+    [field: SerializeField]
+    [field: NotNull]
+    public GameObject SugarCanePrefab
+    {
+        get;
+        private set;
+    }
+
+    [field: SerializeField]
+    [field: NotNull]
+    public GameObject WheatPrefab
+    {
+        get;
+        private set;
+    }
+
+    [field: SerializeField]
+    [field: NotNull]
+    public GameObject[] StonePrefabs
+    {
+        get;
+        private set;
+    }
+
+    [field: SerializeField]
+    [field: NotNull]
+    public GameObject IronOrePrefab
+    {
+        get;
+        private set;
+    }
+
+    [field: SerializeField]
+    [field: NotNull]
+    public GameObject WaterPrefab
+    {
+        get;
+        private set;
+    }
+
+    [field: SerializeField]
+    [field: NotNull]
+    public GameObject TreePrefab
+    {
+        get;
+        private set;
+    }
 
     [Header("Noise Maps")]
     public List<NoiseWave> HeightMapConfig = new List<NoiseWave>
@@ -57,35 +121,71 @@ public class WorldConfiguration : ScriptableObject
         },
     };
 
-    [Header("Biomes: Land and Water")]
-    [SerializeField]
-    private Biome landBiome;
+    [field: Header("Biomes: Land and Water")]
+    [field: SerializeField]
+    public Biome LandBiome
+    {
+        get;
+        private set;
+    }
 
-    [SerializeField]
-    private Biome waterBiome;
+    [field: SerializeField]
+    public Biome WaterBiome
+    {
+        get;
+        private set;
+    }
 
-    [Header("Biomes: Bedrock")]
-    [SerializeField]
-    private Biome stoneBiome;
+    [field: Header("Biomes: Bedrock")]
+    [field: SerializeField]
+    public Biome StoneBiome
+    {
+        get;
+        private set;
+    }
 
-    [SerializeField]
-    private Biome coalBiome;
+    [field: SerializeField]
+    public Biome CoalBiome
+    {
+        get;
+        private set;
+    }
 
-    [SerializeField]
-    private Biome copperOreBiome;
+    [field: SerializeField]
+    public Biome CopperOreBiome
+    {
+        get;
+        private set;
+    }
 
-    [SerializeField]
-    private Biome ironOreBiome;
+    [field: SerializeField]
+    public Biome IronOreBiome
+    {
+        get;
+        private set;
+    }
 
-    [Header("Biomes: Vegetation")]
-    [SerializeField]
-    private Biome woodBiome;
+    [field: Header("Biomes: Vegetation")]
+    [field: SerializeField]
+    public Biome WoodBiome
+    {
+        get;
+        private set;
+    }
 
-    [SerializeField]
-    private Biome sugarCaneBiome;
+    [field: SerializeField]
+    public Biome SugarCaneBiome
+    {
+        get;
+        private set;
+    }
 
-    [SerializeField]
-    private Biome wheatBiome;
+    [field: SerializeField]
+    public Biome WheatBiome
+    {
+        get;
+        private set;
+    }
 
     public List<Biome> AllBiomes
     {
@@ -94,19 +194,19 @@ public class WorldConfiguration : ScriptableObject
             return new List<Biome>
             {
                 // land and water
-                landBiome,
-                waterBiome,
+                LandBiome,
+                WaterBiome,
 
                 // bedrock
-                stoneBiome,
-                coalBiome,
-                copperOreBiome,
-                ironOreBiome,
+                StoneBiome,
+                CoalBiome,
+                CopperOreBiome,
+                IronOreBiome,
 
                 // vegetation
-                woodBiome,
-                sugarCaneBiome,
-                wheatBiome,
+                WoodBiome,
+                SugarCaneBiome,
+                WheatBiome,
             };
         }
     }
@@ -121,14 +221,14 @@ public class WorldConfiguration : ScriptableObject
 
             return new Dictionary<Biome, Material>
             {
-                {waterBiome, tileMaterials.Water},
-                {coalBiome, tileMaterials.Coal},
-                {copperOreBiome, tileMaterials.CopperOre},
-                {woodBiome, tileMaterials.Wood},
-                {ironOreBiome, tileMaterials.IronOre},
-                {stoneBiome, tileMaterials.Stone},
-                {sugarCaneBiome, tileMaterials.SugarCane},
-                {wheatBiome, tileMaterials.Wheat},
+                {WaterBiome, placeholderMaterials.Water},
+                {CoalBiome, placeholderMaterials.Coal},
+                {CopperOreBiome, placeholderMaterials.CopperOre},
+                {WoodBiome, placeholderMaterials.Wood},
+                {IronOreBiome, placeholderMaterials.IronOre},
+                {StoneBiome, placeholderMaterials.Stone},
+                {SugarCaneBiome, placeholderMaterials.SugarCane},
+                {WheatBiome, placeholderMaterials.Wheat},
             };
         }
     }

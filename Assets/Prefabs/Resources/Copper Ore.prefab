@@ -43,7 +43,6 @@ GameObject:
   - component: {fileID: 4467686272649888095}
   - component: {fileID: 5410550240138018983}
   - component: {fileID: 5993730471999460440}
-  - component: {fileID: 6056307211038453900}
   m_Layer: 0
   m_Name: Copper Ore Visual
   m_TagString: Untagged
@@ -116,17 +115,3 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!64 &6056307211038453900
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8067249839853008015}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 4
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 4300000, guid: 6362f2c9489c8e54e968ab44582804f9, type: 3}

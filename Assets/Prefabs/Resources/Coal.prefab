@@ -43,7 +43,6 @@ GameObject:
   - component: {fileID: 8279092365175829710}
   - component: {fileID: 8279092365172438254}
   - component: {fileID: 8279092365173536302}
-  - component: {fileID: 5648244110012977623}
   m_Layer: 0
   m_Name: Coal Visual
   m_TagString: Untagged
@@ -117,17 +116,3 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!64 &5648244110012977623
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8279092365175793902}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 4
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 4300000, guid: 3b81f97df26fa01439bfe45ba84e37a7, type: 3}

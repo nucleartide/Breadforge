@@ -105,13 +105,14 @@ public class WorldMap
             tile = Object.Instantiate(worldConfig.TreePrefab);
         else
         {
+            return null;
             // Instantiate a tile.
-            tile = Object.Instantiate(worldConfig.PlaceholderPrefab);
+            // tile = Object.Instantiate(worldConfig.PlaceholderPrefab);
 
             // Then given the biome, set the material of the tile.
-            var material = worldConfig.GetMaterial(biome);
-            if (material != null)
-                tile.GetComponentInChildren<MeshRenderer>().material = material;
+            // var material = worldConfig.GetMaterial(biome);
+            // if (material != null)
+                // tile.GetComponentInChildren<MeshRenderer>().material = material;
         }
 
         // Set the tile's position.

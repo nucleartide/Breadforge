@@ -80,9 +80,45 @@ public class WorldMap
         return closestBiome;
     }
 
+    private GameObject InstantiateDebugTile(int x, int y, WorldDisplayMode worldDisplayMode)
+    {
+        // First, instantiate a tile.
+        var tile = Object.Instantiate(worldConfig.PlaceholderPrefab);
+
+        // Then determine the closest biome.
+        var biome = ClosestBiome(x, y);
+
+        // Then given the biome, set the material of the tile.
+        var material = worldConfig.GetMaterial(biome);
+        if (material != null)
+            tile.GetComponentInChildren<MeshRenderer>().material = material;
+
+        // Set the tile's position.
+        tile.transform.position = new Vector3(x - worldConfig.GridWidth / 2, 0f, y - worldConfig.GridHeight / 2);
+
+        // Set the tile's scale if instantiating debug tiles.
+        float scale = 0f;
+        if (worldDisplayMode == WorldDisplayMode.HeightMap)
+            scale = GetHeight(x, y);
+        else if (worldDisplayMode == WorldDisplayMode.HeatMap)
+            scale = GetHeat(x, y);
+        else if (worldDisplayMode == WorldDisplayMode.MoistureMap)
+            scale = GetMoisture(x, y);
+        else
+            throw new System.Exception($"Unsupported world display mode: {worldDisplayMode}");
+        scale = Mathf.Clamp01(scale);
+        tile.transform.localScale = new Vector3(1f, scale * 20 /* Recall that the pivot is at the cube center, so scaling will extend downward as well. */, 1f);
+
+        // Return instantiated tile.
+        return tile;
+    }
+
     public GameObject InstantiateTile(int x, int y, WorldDisplayMode worldDisplayMode = WorldDisplayMode.ActualTiles)
     {
-        // First, determine the closest biome.
+        if (worldDisplayMode != WorldDisplayMode.ActualTiles)
+            return InstantiateDebugTile(x, y, worldDisplayMode);
+
+        // First, determine the biome tile to instantiate.
         var biome = ClosestBiome(x, y);
 
         // Then given the biome, instantiate the appropriate tile.
@@ -104,58 +140,23 @@ public class WorldMap
         else if (biome == worldConfig.WoodBiome)
             tile = Object.Instantiate(worldConfig.TreePrefab);
         else
-        {
             return null;
-            // Instantiate a tile.
-            // tile = Object.Instantiate(worldConfig.PlaceholderPrefab);
-
-            // Then given the biome, set the material of the tile.
-            // var material = worldConfig.GetMaterial(biome);
-            // if (material != null)
-                // tile.GetComponentInChildren<MeshRenderer>().material = material;
-        }
 
         // Set the tile's position.
-        Vector3 position;
-        if (biome == worldConfig.CopperOreBiome || biome == worldConfig.CoalBiome || biome == worldConfig.SugarCaneBiome || biome == worldConfig.WheatBiome || biome == worldConfig.StoneBiome || biome == worldConfig.IronOreBiome || biome == worldConfig.WaterBiome || biome == worldConfig.WoodBiome)
-        {
-            position = new Vector3(x - worldConfig.GridWidth / 2, 0f, y - worldConfig.GridHeight / 2);
-        }
-        else
-        {
-            position = new Vector3(x - worldConfig.GridWidth / 2, -.5f, y - worldConfig.GridHeight / 2);
-        }
+        var position = new Vector3(x - worldConfig.GridWidth / 2, 0f, y - worldConfig.GridHeight / 2);
         if (biome == worldConfig.WaterBiome)
-        {
             position += new Vector3(0f, .01f, 0f); // Water overlaps with adjacent tiles a little, so let's bump it up.
-        }
         tile.transform.position = position;
 
-        // For non-placeholder tiles, give them a random rotation.
-        if (biome == worldConfig.CopperOreBiome || biome == worldConfig.CoalBiome || biome == worldConfig.SugarCaneBiome || biome == worldConfig.WheatBiome || biome == worldConfig.StoneBiome || biome == worldConfig.IronOreBiome || biome == worldConfig.WoodBiome)
-        {
+        // Give tiles a random rotation if the tile is not the square water tile.
+        if (biome != worldConfig.WaterBiome)
             tile.transform.GetChild(0).rotation = Quaternion.AngleAxis(Random.Range(0f, 360f), Vector3.up);
-        }
 
-        // For trees, give it a random scale for some visual variety.
+        // Randomly scale trees for visual variety.
         if (biome == worldConfig.WoodBiome)
         {
             var scalingFactor = Random.Range(.25f, .5f);
             tile.GetComponent<TreeScaler>().SetScale(scalingFactor);
-        }
-
-        // Set the tile's scale if instantiating debug tiles.
-        if (worldDisplayMode != WorldDisplayMode.ActualTiles)
-        {
-            float scale = 0f;
-            if (worldDisplayMode == WorldDisplayMode.HeightMap)
-                scale = GetHeight(x, y);
-            else if (worldDisplayMode == WorldDisplayMode.HeatMap)
-                scale = GetHeat(x, y);
-            else if (worldDisplayMode == WorldDisplayMode.MoistureMap)
-                scale = GetMoisture(x, y);
-            scale = Mathf.Clamp01(scale);
-            tile.transform.localScale = new Vector3(1f, scale * 20 /* Recall that the pivot is at the cube center, so scaling will extend downward as well. */, 1f);
         }
 
         // Return instantiated tile.

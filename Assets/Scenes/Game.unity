@@ -551,6 +551,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 4428925003849802636, guid: 67cd95e882c5c481682a00197c0d9e25,
+        type: 3}
+      propertyPath: Damping.x
+      value: 0.5
+      objectReference: {fileID: 0}
     - target: {fileID: 4428925004181789631, guid: 67cd95e882c5c481682a00197c0d9e25,
         type: 3}
       propertyPath: gameInput

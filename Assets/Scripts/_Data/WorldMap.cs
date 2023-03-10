@@ -98,7 +98,11 @@ public class WorldMap
         else if (biome == worldConfig.StoneBiome)
             tile = Object.Instantiate(worldConfig.StonePrefabs[Random.Range(0, worldConfig.StonePrefabs.Length)]);
         else if (biome == worldConfig.IronOreBiome)
-            tile = Object.Instantiate(worldConfig.AluminumPrefab);
+            tile = Object.Instantiate(worldConfig.IronOrePrefab);
+        else if (biome == worldConfig.WaterBiome)
+            tile = Object.Instantiate(worldConfig.WaterPrefab);
+        else if (biome == worldConfig.WoodBiome)
+            tile = Object.Instantiate(worldConfig.TreePrefab);
         else
         {
             // Instantiate a tile.
@@ -112,7 +116,7 @@ public class WorldMap
 
         // Set the tile's position.
         Vector3 position;
-        if (biome == worldConfig.CopperOreBiome || biome == worldConfig.CoalBiome || biome == worldConfig.SugarCaneBiome || biome == worldConfig.WheatBiome || biome == worldConfig.StoneBiome || biome == worldConfig.IronOreBiome)
+        if (biome == worldConfig.CopperOreBiome || biome == worldConfig.CoalBiome || biome == worldConfig.SugarCaneBiome || biome == worldConfig.WheatBiome || biome == worldConfig.StoneBiome || biome == worldConfig.IronOreBiome || biome == worldConfig.WaterBiome || biome == worldConfig.WoodBiome)
         {
             position = new Vector3(x - worldConfig.GridWidth / 2, 0f, y - worldConfig.GridHeight / 2);
         }
@@ -120,12 +124,23 @@ public class WorldMap
         {
             position = new Vector3(x - worldConfig.GridWidth / 2, -.5f, y - worldConfig.GridHeight / 2);
         }
+        if (biome == worldConfig.WaterBiome)
+        {
+            position += new Vector3(0f, .01f, 0f); // Water overlaps with adjacent tiles a little, so let's bump it up.
+        }
         tile.transform.position = position;
 
         // For non-placeholder tiles, give them a random rotation.
-        if (biome == worldConfig.CopperOreBiome || biome == worldConfig.CoalBiome || biome == worldConfig.SugarCaneBiome || biome == worldConfig.WheatBiome || biome == worldConfig.StoneBiome || biome == worldConfig.IronOreBiome)
+        if (biome == worldConfig.CopperOreBiome || biome == worldConfig.CoalBiome || biome == worldConfig.SugarCaneBiome || biome == worldConfig.WheatBiome || biome == worldConfig.StoneBiome || biome == worldConfig.IronOreBiome || biome == worldConfig.WoodBiome)
         {
             tile.transform.GetChild(0).rotation = Quaternion.AngleAxis(Random.Range(0f, 360f), Vector3.up);
+        }
+
+        // For trees, give it a random scale for some visual variety.
+        if (biome == worldConfig.WoodBiome)
+        {
+            var scalingFactor = Random.Range(.25f, .5f);
+            tile.transform.GetChild(0).localScale = new Vector3(scalingFactor, scalingFactor, scalingFactor);
         }
 
         // Set the tile's scale if instantiating debug tiles.

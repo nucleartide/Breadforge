@@ -33,7 +33,11 @@ MonoBehaviour:
   - {fileID: 7281515383505052903, guid: 248d7ce9484de455ba0b376287df044b, type: 3}
   - {fileID: 340451446263308728, guid: 0f540b92bfed7448aa1dea2007a312a6, type: 3}
   - {fileID: 4196072408209369410, guid: 2b271c543f01b4c44b6d35295b8160b6, type: 3}
-  <AluminumPrefab>k__BackingField: {fileID: 4795040601957831555, guid: 85eabd8745b724afa82fd2d48bb493da,
+  <IronOrePrefab>k__BackingField: {fileID: 4795040601957831555, guid: 85eabd8745b724afa82fd2d48bb493da,
+    type: 3}
+  <WaterPrefab>k__BackingField: {fileID: 5483498006479620554, guid: 26049328cd7fd4dc88281a3fca4ab26e,
+    type: 3}
+  <TreePrefab>k__BackingField: {fileID: 3672625016771674000, guid: 089472cdd68884891bea4c2bf2cfff7b,
     type: 3}
   HeightMapConfig:
   - Seed: 56

@@ -61,7 +61,23 @@ public class WorldConfiguration : ScriptableObject
 
     [field: SerializeField]
     [field: NotNull]
-    public GameObject AluminumPrefab
+    public GameObject IronOrePrefab
+    {
+        get;
+        private set;
+    }
+
+    [field: SerializeField]
+    [field: NotNull]
+    public GameObject WaterPrefab
+    {
+        get;
+        private set;
+    }
+
+    [field: SerializeField]
+    [field: NotNull]
+    public GameObject TreePrefab
     {
         get;
         private set;

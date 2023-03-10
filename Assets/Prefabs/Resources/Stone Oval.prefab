@@ -43,7 +43,6 @@ GameObject:
   - component: {fileID: 1353435180982583127}
   - component: {fileID: 1353435180979669263}
   - component: {fileID: 1353435180980760801}
-  - component: {fileID: 1309904592691760321}
   m_Layer: 0
   m_Name: Stone Oval Visual
   m_TagString: Untagged
@@ -116,17 +115,3 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!64 &1309904592691760321
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1353435180982673751}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 0
-  serializedVersion: 4
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 4300002, guid: b794cfa5158947e46bc60a458dc33d5a, type: 3}

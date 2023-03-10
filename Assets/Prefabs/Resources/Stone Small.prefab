@@ -43,7 +43,6 @@ GameObject:
   - component: {fileID: 8586128167769704466}
   - component: {fileID: 8598223516740574730}
   - component: {fileID: 8608504850071947916}
-  - component: {fileID: 8629954097870979944}
   m_Layer: 0
   m_Name: Stone Small Visual
   m_TagString: Untagged
@@ -116,17 +115,3 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!64 &8629954097870979944
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8585468852694274410}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 0
-  serializedVersion: 4
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 4300002, guid: 2448b6a53d6c85a4e8c714d6bbae47f9, type: 3}

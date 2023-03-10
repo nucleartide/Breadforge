@@ -43,7 +43,6 @@ GameObject:
   - component: {fileID: 4969899926873641101}
   - component: {fileID: 4969899926877065389}
   - component: {fileID: 4969899926875935341}
-  - component: {fileID: 1451396268867729312}
   m_Layer: 0
   m_Name: Wheat Plant Visual
   m_TagString: Untagged
@@ -117,17 +116,3 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!64 &1451396268867729312
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4969899926873738413}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 0
-  serializedVersion: 4
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 4300000, guid: 350ab8da0b56d2b4b9ac89318350c1b0, type: 3}

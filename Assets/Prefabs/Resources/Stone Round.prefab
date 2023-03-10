@@ -43,7 +43,6 @@ GameObject:
   - component: {fileID: 7169320380705027487}
   - component: {fileID: 7169320380703731611}
   - component: {fileID: 7169320380703127635}
-  - component: {fileID: 7177577537138436243}
   m_Layer: 0
   m_Name: Stone Round Visual
   m_TagString: Untagged
@@ -116,17 +115,3 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!64 &7177577537138436243
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7169320380704838275}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 0
-  serializedVersion: 4
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 4300002, guid: c99be45492b44a9459edac984836ec21, type: 3}

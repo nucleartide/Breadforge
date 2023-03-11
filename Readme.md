@@ -43,6 +43,8 @@ This particular Game Codebase Tour walks you through how to create a factory bui
 
 https://user-images.githubusercontent.com/914228/224439375-11446f18-c0b2-4db9-ad00-691fa198884c.mov
 
+<br />
+
 To step through all the pull requests created up until this point, please see below:
 
 Order | Feature | Pull Request

@@ -21,6 +21,7 @@
 * [ ] **Editable**: Has any configuration been moved into ScriptableObjects, so that modified values persist even after exiting Play mode?
 * [ ] **Debuggable**: Do you have debug views for the prefabs/systems that you are creating?
 * [ ] Update readme with new pull request.
+* [ ] **Playtesting**: If you have a design hypothesis that you'd like to test, try playtesting with friends, family, Twitter, or folks on Discord.
 
 ## Changelog
 

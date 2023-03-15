@@ -22,6 +22,7 @@
 * [ ] **Debuggable**: Do you have debug views for the prefabs/systems that you are creating?
 * [ ] Update readme with new pull request.
 * [ ] **Playtesting**: If you have a design hypothesis that you'd like to test, try playtesting with friends, family, Twitter, or folks on Discord.
+* [ ] **Onboarding**: Consider how the player will learn what you implement in this pull request. What are the affordances and signifiers? What is the overall experience?
 
 ## Changelog
 

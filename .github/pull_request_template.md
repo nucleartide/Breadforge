@@ -53,6 +53,6 @@ When <code>X</code>, I want to <code>Y</code>, so that <code>Z</code>.
 
 ## Final Checklist
 
-> Some final tasks for sign-off. 
+> Perform some final tasks for sign-off. 
 
 * [ ] Update readme with new pull request

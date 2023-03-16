@@ -1,8 +1,6 @@
 ## Job Story
 
-<details>
-
-<summary>
+<details><summary>
 <blockquote>
 When <code>X</code>, I want to <code>Y</code>, so that <code>Z</code>.
 </blockquote>

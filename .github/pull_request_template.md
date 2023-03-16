@@ -1,3 +1,9 @@
+## Job Story
+
+> When `<X>`, I want to `<Y>`, so that `<Z>`.
+
+...
+
 ## Quality Assurance
 
 > Take some screenshots or screen recordings to show off your game, and also as quality assurance.

@@ -1,22 +1,16 @@
-## Job Story
+## 1️⃣ Job Story
 
 > When `<X>`, I want to `<Y>`, so that `<Z>`.
 
 ...
 
-## Quality Assurance
+## 2️⃣ JIRA Ticket
 
-> Take some screenshots or screen recordings to show off your game, and also as quality assurance.
+> Provide a link to the Notion block corresponding to this job story.
+>
+> (Sorry folks, my Kanban board is internal to my Notion workspace!)
 
-...
-
-## JIRA Ticket
-
-> Sorry folks, this is internal to my Notion workspace!
-
-```
-(link to Notion block here)
-```
+> (link goes here)
 
 ## Development checklist
 
@@ -29,6 +23,7 @@
 * [ ] Update readme with new pull request.
 * [ ] **Playtesting**: If you have a design hypothesis that you'd like to test, try playtesting with friends, family, Twitter, or folks on Discord.
 * [ ] **Onboarding**: Consider how the player will learn what you implement in this pull request. What are the affordances and signifiers? What is the overall experience?
+* [ ] **quality assurance and screen recording** once everything is wrapped up, to lead off the pull request
 
 ## Changelog
 

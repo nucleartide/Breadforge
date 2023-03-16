@@ -11,7 +11,7 @@ When <code>X</code>, I want to <code>Y</code>, so that <code>Z</code>.
 >
 > (Sorry folks, these blocks are internal to my Notion workspace!)
 
-> (link goes here)
+> *(link goes here)*
 
 ## Development Checklist
 

@@ -1,11 +1,6 @@
-## Job Story
+# Job Story
 
 Player: When <code>X</code>, I want to <code>Y</code>, so that <code>Z</code>.
-
-<details>
-<summary>
-The work
-</summary>
 
 ### Notion
 
@@ -33,19 +28,19 @@ The work
 
 </details>
 
-## Screen Recording
+# Screen Recording
 
 > Record a quick 5 to 10 second clip of your feature in action.
 
 ...
 
-## Changelog
+# Changelog
 
 > Provide a bulleted list of changes that were made in this pull request.
 
 * ...
 
-## How it works
+# How it works
 
 > Explain what you did, how you did it, and why you did it. Discuss any lessons that might be useful to others.
 >
@@ -53,7 +48,7 @@ The work
 
 ...
 
-## Final Checklist
+# Final Checklist
 
 > Perform some final tasks for sign-off. 
 

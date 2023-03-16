@@ -5,16 +5,21 @@ public class PlayerCollectableRadius : MonoBehaviour
     // take the position of the transform
     // use Physics.CapsuleCast
 
+    void Awake()
+    {
+        Debug.Log(LayerHelpers.CollectibleResource);
+    }
+
     void Update()
     {
         var position = transform.position;
         var p1 = position - transform.right;
         var p2 = position + transform.right;
         var radius = .5f;
-        var castLength = 3f;
+        var castLength = 1f;
 
         // Cast a capsule by `castLength` meters forward to see if any colliders were hit.
-        var hits = Physics.CapsuleCastAll(p1, p2, radius, transform.forward, castLength);
+        var hits = Physics.CapsuleCastAll(p1, p2, radius, transform.forward, castLength, LayerHelpers.CollectibleResource);
         Debug.DrawRay(p1, transform.forward * castLength, Color.green);
         Debug.DrawRay(p2, transform.forward * castLength, Color.green);
 

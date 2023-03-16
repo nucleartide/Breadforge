@@ -1,7 +1,7 @@
 ## Job Story
 
 <details>
-<summary>When <code>X</code>, I want to `Y`, so that `Z`.</summary>
+<summary>When <code><X></code>, I want to <code><Y></code>, so that <code><Z></code>.</summary>
 
 ## Notion
 

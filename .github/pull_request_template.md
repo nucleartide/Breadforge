@@ -1,13 +1,9 @@
-## 1️⃣ Job Story
-
-> When `<X>`, I want to `<Y>`, so that `<Z>`.
-
-...
+## Job Story
 
 <details>
-<summary>test</summary>
+<summary>When `<X>`, I want to `<Y>`, so that `<Z>`.</summary>
 
-## 2️⃣ Notion
+## Notion
 
 > Provide a link to the Notion block corresponding to this job story.
 >
@@ -15,14 +11,14 @@
 
 > (link goes here)
 
-## 3️⃣ Development Checklist
+## Development Checklist
 
 > Run through the following steps to complete your work.
 
 * [ ] Implement a rough first draft.
 * [ ] Once done, perform a general review of `Files changed` and revise anything that needs to be cleaned up.
 
-## 4️⃣ Quality Assurance Checklist
+## Quality Assurance Checklist
 
 > Ensure that your work adheres to the following principles.
 

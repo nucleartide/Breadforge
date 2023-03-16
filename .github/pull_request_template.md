@@ -1,6 +1,6 @@
 ## Job Story
 
-Player: When <code>X</code>, I want to <code>Y</code>, so that <code>Z</code>.
+> **Player**: When <code>X</code>, I want to <code>Y</code>, so that <code>Z</code>.
 
 ### Notion
 

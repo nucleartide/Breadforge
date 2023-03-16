@@ -1,9 +1,8 @@
 ## Job Story
 
-<details><summary>
-<blockquote>
+<details>
+<summary>
 When <code>X</code>, I want to <code>Y</code>, so that <code>Z</code>.
-</blockquote>
 </summary>
 
 ## Notion

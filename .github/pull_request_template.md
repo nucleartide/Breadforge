@@ -5,7 +5,7 @@
 When <code>X</code>, I want to <code>Y</code>, so that <code>Z</code>.
 </summary>
 
-## Notion
+### Notion
 
 > Provide a link to the Notion block corresponding to this job story.
 >
@@ -13,14 +13,14 @@ When <code>X</code>, I want to <code>Y</code>, so that <code>Z</code>.
 
 > *(link goes here)*
 
-## Development Checklist
+### Development Checklist
 
 > Run through the following steps to complete your work.
 
-* [ ] Implement a rough first draft.
-* [ ] Once done, perform a general review of `Files changed` and revise anything that needs to be cleaned up.
+* [ ] **First draft**. Implement a working first pass at the problem.
+* [ ] **Final draft**. Once done, perform a general review of `Files changed` and revise anything that needs to be cleaned up.
 
-## Quality Assurance Checklist
+### Quality Assurance Checklist
 
 > Ensure that your work adheres to the following principles.
 
@@ -31,21 +31,28 @@ When <code>X</code>, I want to <code>Y</code>, so that <code>Z</code>.
 
 </details>
 
----
+## Screen Recording
 
-* [ ] **quality assurance and screen recording** once everything is wrapped up, to lead off the pull request
-* [ ] Update readme with new pull request.
+> Record a quick 5 to 10 second clip of your feature in action.
 
-## (summarize) Changelog
+...
+
+## Changelog
 
 > Provide a bulleted list of changes that were made in this pull request.
 
 * ...
 
-## (writeup) How it works
+## How it works
 
-> Explain what you did, how you did it, and why you did it. Also any lessons that might be useful to others.
+> Explain what you did, how you did it, and why you did it. Discuss any lessons that might be useful to others.
 >
-> (Note to self: it's easiest to do a stream-of-consciousness writeup of what you did.)
+> (Note to self: it's easiest to do a stream-of-consciousness write-up of what you did.)
 
 ...
+
+## Final Checklist
+
+> Some final tasks for sign-off. 
+
+* [ ] Update readme with new pull request

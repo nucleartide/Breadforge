@@ -1,8 +1,10 @@
 ## Job Story
 
+Player: When <code>X</code>, I want to <code>Y</code>, so that <code>Z</code>.
+
 <details>
 <summary>
-When <code>X</code>, I want to <code>Y</code>, so that <code>Z</code>.
+The work
 </summary>
 
 ### Notion

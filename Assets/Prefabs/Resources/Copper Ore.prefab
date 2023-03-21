@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2874532847587464847}
   - component: {fileID: 6494989115314764654}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Copper Ore
   m_TagString: Untagged
   m_Icon: {fileID: 0}

@@ -93,7 +93,7 @@ GameObject:
   m_Component:
   - component: {fileID: 9135529179162325716}
   - component: {fileID: 3150828859779169781}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Iron Ore
   m_TagString: Untagged
   m_Icon: {fileID: 0}

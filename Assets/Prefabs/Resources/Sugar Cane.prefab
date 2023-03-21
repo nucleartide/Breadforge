@@ -94,7 +94,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2329714406984391494}
   - component: {fileID: 2886457937258621445}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Sugar Cane
   m_TagString: Untagged
   m_Icon: {fileID: 0}

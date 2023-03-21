@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5416719327660961930}
   - component: {fileID: 5402687048525707391}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Coal
   m_TagString: Untagged
   m_Icon: {fileID: 0}

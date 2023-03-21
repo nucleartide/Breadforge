@@ -2,11 +2,7 @@ using UnityEngine;
 
 public static class LayerHelpers
 {
-    public static int CollectibleResource
-    {
-        get
-        {
-            return LayerMask.GetMask("Collectible Resource");
-        }
-    }
+    public static string COLLECTIBLE_RESOURCE = "Collectible Resource";
+    public static string COLLECTIBLE_RESOURCE_VISUAL = "Collectible Resource Visual";
+    public static string DEFAULT = "Default";
 }

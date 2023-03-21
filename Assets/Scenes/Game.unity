@@ -171,7 +171,7 @@ Transform:
   m_Children:
   - {fileID: 1007255599}
   m_Father: {fileID: 0}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &680627540 stripped
 Transform:
@@ -224,7 +224,7 @@ Transform:
   - {fileID: 1573598181}
   - {fileID: 2122262585}
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &1007255599 stripped
 Transform:
@@ -289,6 +289,80 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 7671288344991885606}
   m_PrefabAsset: {fileID: 0}
+--- !u!1001 &2066292472
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 3332684485611852224, guid: 85eabd8745b724afa82fd2d48bb493da,
+        type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4795040601957831555, guid: 85eabd8745b724afa82fd2d48bb493da,
+        type: 3}
+      propertyPath: m_Name
+      value: Iron Ore
+      objectReference: {fileID: 0}
+    - target: {fileID: 9135529179162325716, guid: 85eabd8745b724afa82fd2d48bb493da,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9135529179162325716, guid: 85eabd8745b724afa82fd2d48bb493da,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0.91314626
+      objectReference: {fileID: 0}
+    - target: {fileID: 9135529179162325716, guid: 85eabd8745b724afa82fd2d48bb493da,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.010000229
+      objectReference: {fileID: 0}
+    - target: {fileID: 9135529179162325716, guid: 85eabd8745b724afa82fd2d48bb493da,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -7.583582
+      objectReference: {fileID: 0}
+    - target: {fileID: 9135529179162325716, guid: 85eabd8745b724afa82fd2d48bb493da,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9135529179162325716, guid: 85eabd8745b724afa82fd2d48bb493da,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9135529179162325716, guid: 85eabd8745b724afa82fd2d48bb493da,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9135529179162325716, guid: 85eabd8745b724afa82fd2d48bb493da,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9135529179162325716, guid: 85eabd8745b724afa82fd2d48bb493da,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9135529179162325716, guid: 85eabd8745b724afa82fd2d48bb493da,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9135529179162325716, guid: 85eabd8745b724afa82fd2d48bb493da,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 85eabd8745b724afa82fd2d48bb493da, type: 3}
 --- !u!4 &2122262585 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1665879257971001100, guid: 11767922cb4f54a65ad0cbeedde55ddd,
@@ -568,6 +642,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 4428925004117989101, guid: 67cd95e882c5c481682a00197c0d9e25,
+        type: 3}
+      propertyPath: orthographic
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4428925004181789626, guid: 67cd95e882c5c481682a00197c0d9e25,
+        type: 3}
+      propertyPath: m_Layer
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4428925004181789631, guid: 67cd95e882c5c481682a00197c0d9e25,
         type: 3}

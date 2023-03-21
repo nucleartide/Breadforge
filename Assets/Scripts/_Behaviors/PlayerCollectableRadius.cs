@@ -12,8 +12,8 @@ public class PlayerCollectableRadius : MonoBehaviour
     void Update()
     {
         var position = transform.position;
-        var p1 = position - transform.right;
-        var p2 = position + transform.right;
+        var p1 = position - transform.right * .5f;
+        var p2 = position + transform.right * .5f;
         var radius = .5f;
         var castLength = 1f;
 

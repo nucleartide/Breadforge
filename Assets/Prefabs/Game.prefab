@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &3783693752770508211
+--- !u!1 &4606794177300171595
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,22 +8,22 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 3783693752770508212}
-  - component: {fileID: 3783693752770508213}
+  - component: {fileID: 4606794177300171593}
+  - component: {fileID: 4606794177300171592}
   m_Layer: 0
-  m_Name: Input Manager
+  m_Name: Game
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &3783693752770508212
+--- !u!4 &4606794177300171593
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3783693752770508211}
+  m_GameObject: {fileID: 4606794177300171595}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
@@ -32,15 +32,21 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &3783693752770508213
+--- !u!114 &4606794177300171592
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3783693752770508211}
+  m_GameObject: {fileID: 4606794177300171595}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bded502519dc440569d76f4453e3eea3, type: 3}
+  m_Script: {fileID: 11500000, guid: 5828c63dc3d344d8883ded4d0325919d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  managers:
+  - {fileID: 11400000, guid: 0bd65ba75817b46e1ab2c124f7d5947f, type: 2}
+  - {fileID: 11400000, guid: 592b3142591524cce9c477b5f97500ce, type: 2}
+  - {fileID: 11400000, guid: 05f76693889e84d5cbc6e15633ea37ee, type: 2}
+  - {fileID: 11400000, guid: 875e4d781e9634ef4a6348e0c5018e51, type: 2}
+  - {fileID: 11400000, guid: 5e59b60915321429aa7a46e45c7df93d, type: 2}

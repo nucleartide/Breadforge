@@ -158,7 +158,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerConfiguration: {fileID: 11400000, guid: 0e29962fbc3e34aaea3620693e304758,
     type: 2}
-  gameInput: {fileID: 0}
+  gameInput: {fileID: 11400000, guid: 05f76693889e84d5cbc6e15633ea37ee, type: 2}
   characterController: {fileID: 8307579310230868247}
 --- !u!143 &8307579310230868247
 CharacterController:

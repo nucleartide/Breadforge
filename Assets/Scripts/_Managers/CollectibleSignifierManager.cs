@@ -1,7 +1,7 @@
 using UnityEngine;
 
 [CreateAssetMenu]
-public class CollectibleSignifierConfiguration : ScriptableObject
+public class CollectibleSignifierManager : Manager
 {
     /// <summary>
     /// The "E" text that should be shown above the immediately-collectible resource.
@@ -14,8 +14,6 @@ public class CollectibleSignifierConfiguration : ScriptableObject
     private Vector3 offset;
 
     private GameObject instantiatedPrefab;
-
-    private void OnDisable() => instantiatedPrefab = null;
 
     /// <summary>
     /// Set the position of the collectible signifier.

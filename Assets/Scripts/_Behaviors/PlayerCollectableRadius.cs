@@ -6,7 +6,7 @@ public class PlayerCollectableRadius : MonoBehaviour
 {
     [NotNull]
     [SerializeField]
-    CollectibleSignifierConfiguration canCollectSignifier;
+    CollectibleSignifierManager canCollectSignifier;
 
     HashSet<GameObject> lastFrameCollectibles = new HashSet<GameObject>();
 
@@ -62,7 +62,7 @@ public class PlayerCollectableRadius : MonoBehaviour
     ///
     /// That was a mouthful. Basically, "show an E on the closest resource".
     /// </summary>
-    private static void SetCollectibleSignifierPosition(List<RaycastHit> hits, CollectibleSignifierConfiguration signifier)
+    private static void SetCollectibleSignifierPosition(List<RaycastHit> hits, CollectibleSignifierManager signifier)
     {
         signifier.SetActive(hits.Count > 0);
         if (hits.Count == 0)

@@ -14,7 +14,7 @@
 
 > Run through the following steps to complete your work.
 
-* [ ] **First draft**. Implement a working first pass at the problem.
+* [ ] **First draft**. Implement a working first pass at the problem. Try to think modularly, and think of which prefab piece you will modify versus the entire scene.
 * [ ] **Final draft**. Once done, perform a general review of `Files changed` and revise anything that needs to be cleaned up.
 
 ### Quality Assurance Checklist

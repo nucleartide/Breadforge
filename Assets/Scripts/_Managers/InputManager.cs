@@ -8,14 +8,14 @@ public class InputManager : MonoBehaviour
 
     public event EventHandler<float> OnPauseAction;
 
-    private void Awake()
+    private void OnEnable()
     {
         playerInputActions = new PlayerInputActions();
         playerInputActions.Player.Enable();
         playerInputActions.Player.Pause.performed += Pause_performed;
     }
 
-    private void OnDestroy()
+    private void OnDisable()
     {
         playerInputActions.Player.Pause.performed -= Pause_performed;
         playerInputActions.Dispose();

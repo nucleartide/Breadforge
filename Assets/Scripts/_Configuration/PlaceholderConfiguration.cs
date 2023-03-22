@@ -1,7 +1,7 @@
 using UnityEngine;
 
 [CreateAssetMenu]
-public class PlaceholderMaterials : ScriptableObject
+public class PlaceholderConfiguration : ScriptableObject
 {
     public Material Coal;
     public Material CopperOre;

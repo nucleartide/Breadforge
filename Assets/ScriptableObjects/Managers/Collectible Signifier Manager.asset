@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 73cf13b3777d14754a309abecc385ecf, type: 3}
   m_Name: Collectible Signifier Manager
   m_EditorClassIdentifier: 
-  prefab: {fileID: 3359908733674159036, guid: c22f17633a3114b1bacd9bfebbd01e2e, type: 3}
+  prefab: {fileID: 5149433096189146715, guid: fb64f147c59e146acaf0a0d6ac6bb2d2, type: 3}
   offset: {x: 0, y: 0.25, z: 0}

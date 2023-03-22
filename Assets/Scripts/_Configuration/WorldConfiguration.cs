@@ -17,7 +17,7 @@ public class WorldConfiguration : ScriptableObject
 
     [SerializeField]
     [NotNull]
-    private PlaceholderMaterials placeholderMaterials;
+    private PlaceholderConfiguration placeholderMaterials;
 
     [field: SerializeField]
     [field: NotNull]

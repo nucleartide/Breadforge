@@ -4,9 +4,9 @@ using System.Linq;
 
 public class PlayerCollectableRadius : MonoBehaviour
 {
-    // take the position of the transform
-    // use Physics.CapsuleCast
-
+    /// <summary>
+    /// The "E" text that should be shown above the immediately-collectible resource.
+    /// </summary>
     [SerializeField]
     [NotNull]
     GameObject collectibleSignifier;
@@ -14,9 +14,9 @@ public class PlayerCollectableRadius : MonoBehaviour
     [SerializeField]
     Vector3 collectibleSignifierOffset = new Vector3(0f, 1f, 0f);
 
-    HashSet<GameObject> nearbyCollectibleResources = new HashSet<GameObject>();
+    HashSet<GameObject> lastFrameCollectibles = new HashSet<GameObject>();
 
-    void Update()
+    private static List<RaycastHit> Raycast(Transform transform)
     {
         var position = transform.position;
         var p1 = position - transform.right * .1f;
@@ -24,19 +24,23 @@ public class PlayerCollectableRadius : MonoBehaviour
         var radius = .25f;
         var castLength = 1f;
 
-        // Cast a capsule by `castLength` meters forward to see if any colliders were hit.
-        var hits = Physics.CapsuleCastAll(p1, p2, radius, transform.forward, castLength, LayerMask.GetMask(LayerHelpers.COLLECTIBLE_RESOURCE))
-            .Where(hit => hit.distance > 0)
-            .ToList();
+#if UNITY_EDITOR
         Debug.DrawRay(p1, transform.forward * castLength, Color.green);
         Debug.DrawRay(p2, transform.forward * castLength, Color.green);
+#endif
 
-        // Compute hit game objects.
-        var previousFrame = nearbyCollectibleResources;
+        // Cast a capsule by `castLength` meters forward to see if any colliders were hit.
+        return Physics.CapsuleCastAll(p1, p2, radius, transform.forward, castLength, LayerMask.GetMask(LayerHelpers.COLLECTIBLE_RESOURCE))
+            .Where(hit => hit.distance > 0)
+            .ToList();
+    }
+
+    private static HashSet<GameObject> UpdateLayers(HashSet<GameObject> previouslyHitObjects, List<RaycastHit> hits)
+    {
+        var previousFrame = previouslyHitObjects;
         var currentFrame = new HashSet<GameObject>(hits.Select(hit => hit.collider.gameObject));
 
-        // Log the hits, and set appropriate layers for newly added and newly removed GameObjects.
-        Debug.Log("Hits:");
+        // Set appropriate layers for newly added and newly removed GameObjects.
         if (hits.Count == 0)
         {
             foreach (var obj in previousFrame)
@@ -46,8 +50,6 @@ public class PlayerCollectableRadius : MonoBehaviour
         {
             foreach (var hit in hits)
             {
-                Debug.Log(hit.collider.gameObject.name);
-
                 var newlyAdded = currentFrame.Except(previousFrame);
                 foreach (var obj in newlyAdded)
                     SetLayer(obj, LayerMask.NameToLayer(LayerHelpers.COLLECTIBLE_RESOURCE_VISUAL));
@@ -58,12 +60,7 @@ public class PlayerCollectableRadius : MonoBehaviour
             }
         }
 
-        Debug.Log(previousFrame.Count + " " + currentFrame.Count);
-
-        // Finally, update nearbyCollectibleResources so that we can perform the same check next frame.
-        nearbyCollectibleResources = currentFrame;
-
-        SetCollectibleSignifierPosition(hits, collectibleSignifier, collectibleSignifierOffset);
+        return currentFrame;
     }
 
     /// <summary>
@@ -86,24 +83,10 @@ public class PlayerCollectableRadius : MonoBehaviour
         resourceGameObject.GetComponent<ResourceVisual>().Visual.layer = layer;
     }
 
-#if false
     void Update()
     {
-        // Change the material of all hit colliders
-        // to use a transparent Shader
-        for (int i = 0; i < hits.Length; i++)
-        {
-            RaycastHit hit = hits[i];
-            Renderer rend = hit.transform.GetComponent<Renderer>();
-
-            if (rend)
-            {
-                rend.material.shader = Shader.Find("Transparent/Diffuse");
-                Color tempColor = rend.material.color;
-                tempColor.a = 0.3F;
-                rend.material.color = tempColor;
-            }
-        }
+        var hits = Raycast(transform);
+        lastFrameCollectibles = UpdateLayers(lastFrameCollectibles, hits);
+        SetCollectibleSignifierPosition(hits, collectibleSignifier, collectibleSignifierOffset);
     }
-#endif
 }

@@ -12,7 +12,6 @@ public class InputManager : Manager
 
     public override void OnManualEnable()
     {
-        Debug.Log("initialize");
         playerInputActions = new PlayerInputActions();
         playerInputActions.Player.Enable();
         playerInputActions.Player.Pause.performed += Pause_performed;
@@ -20,7 +19,6 @@ public class InputManager : Manager
 
     public override void OnManualDisable()
     {
-        Debug.Log("on destroy");
         playerInputActions.Player.Pause.performed -= Pause_performed;
         playerInputActions.Dispose();
         playerInputActions = null;

@@ -4,15 +4,9 @@ using System.Linq;
 
 public class PlayerCollectableRadius : MonoBehaviour
 {
-    /// <summary>
-    /// The "E" text that should be shown above the immediately-collectible resource.
-    /// </summary>
-    [SerializeField]
     [NotNull]
-    GameObject collectibleSignifier;
-
     [SerializeField]
-    Vector3 collectibleSignifierOffset = new Vector3(0f, 1f, 0f);
+    CollectibleSignifierConfiguration canCollectSignifier;
 
     HashSet<GameObject> lastFrameCollectibles = new HashSet<GameObject>();
 
@@ -68,14 +62,14 @@ public class PlayerCollectableRadius : MonoBehaviour
     ///
     /// That was a mouthful. Basically, "show an E on the closest resource".
     /// </summary>
-    private static void SetCollectibleSignifierPosition(List<RaycastHit> hits, GameObject collectibleSignifier, Vector3 collectibleSignifierOffset)
+    private static void SetCollectibleSignifierPosition(List<RaycastHit> hits, CollectibleSignifierConfiguration signifier)
     {
-        collectibleSignifier.SetActive(hits.Count > 0);
+        signifier.SetActive(hits.Count > 0);
         if (hits.Count == 0)
             return;
 
         var minHit = ListHelpers.MinBy(hits, (a, b) => a.distance < b.distance);
-        collectibleSignifier.transform.position = minHit.collider.transform.position + collectibleSignifierOffset;
+        signifier.SetPosition(minHit.collider.transform.position);
     }
 
     private static void SetLayer(GameObject resourceGameObject, int layer)
@@ -87,6 +81,6 @@ public class PlayerCollectableRadius : MonoBehaviour
     {
         var hits = Raycast(transform);
         lastFrameCollectibles = UpdateLayers(lastFrameCollectibles, hits);
-        SetCollectibleSignifierPosition(hits, collectibleSignifier, collectibleSignifierOffset);
+        SetCollectibleSignifierPosition(hits, canCollectSignifier);
     }
 }

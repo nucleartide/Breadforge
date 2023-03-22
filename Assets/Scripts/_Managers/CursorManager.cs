@@ -1,9 +1,7 @@
 using UnityEngine;
 
-public class CursorManager : MonoBehaviour
+[CreateAssetMenu]
+public class CursorManager : Manager
 {
-    void Awake()
-    {
-        Cursor.lockState = CursorLockMode.Locked;
-    }
+    public override void OnManualEnable() => Cursor.lockState = CursorLockMode.Locked;
 }

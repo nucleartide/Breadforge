@@ -56,7 +56,8 @@ Order | Feature | Pull Request
 5 | Add Pause button as a reference point for C# events usage | https://github.com/nucleartide/Baguettorio/pull/29
 6 | Populate game world with procedurally-generated resources | https://github.com/nucleartide/Baguettorio/pull/30
 7 | Add actual resource assets and change to ortho cam | https://github.com/nucleartide/Baguettorio/pull/32
-8 | *(more to come soon)* | *(more to come soon)*
+8 | Highlight collectible resources | https://github.com/nucleartide/Breadforge/pull/37
+9 | *(more to come soon)* | *(more to come soon)*
 
 ---
 

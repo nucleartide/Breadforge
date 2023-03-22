@@ -1,9 +1,6 @@
 ## Job Story
 
-<details>
-<summary>
-When <code>X</code>, I want to <code>Y</code>, so that <code>Z</code>.
-</summary>
+> **Player**: When <code>X</code>, I want to <code>Y</code>, so that <code>Z</code>.
 
 ### Notion
 
@@ -17,7 +14,7 @@ When <code>X</code>, I want to <code>Y</code>, so that <code>Z</code>.
 
 > Run through the following steps to complete your work.
 
-* [ ] **First draft**. Implement a working first pass at the problem.
+* [ ] **First draft**. Implement a working first pass at the problem. Try to think modularly, and think of which prefab piece you will modify versus the entire scene.
 * [ ] **Final draft**. Once done, perform a general review of `Files changed` and revise anything that needs to be cleaned up.
 
 ### Quality Assurance Checklist
@@ -28,8 +25,6 @@ When <code>X</code>, I want to <code>Y</code>, so that <code>Z</code>.
 * [ ] **Editable**. Has any configuration been moved into ScriptableObjects, so that modified values persist even after exiting Play mode?
 * [ ] **Debuggable**. Do you have debug views for the prefabs/systems that you are creating?
 * [ ] **Learnable**. Consider how the player will learn what you implement in this pull request. Are the affordances appropriately communicated with signifiers?
-
-</details>
 
 ## Screen Recording
 

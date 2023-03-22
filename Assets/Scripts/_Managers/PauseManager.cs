@@ -1,22 +1,13 @@
 using UnityEngine;
 
-public class PauseManager : MonoBehaviour
+[CreateAssetMenu]
+public class PauseManager : Manager
 {
     [SerializeField]
-    [NotNull(IgnorePrefab = true)]
+    [NotNull]
     InputManager gameInput;
 
     private bool isPaused = false;
-
-    private void Awake()
-    {
-        gameInput.OnPauseAction += GameInput_OnPauseAction;
-    }
-
-    private void OnDestroy()
-    {
-        gameInput.OnPauseAction -= GameInput_OnPauseAction;
-    }
 
     private void GameInput_OnPauseAction(object sender, float timeOfPause)
     {
@@ -27,5 +18,15 @@ public class PauseManager : MonoBehaviour
     private void TogglePause()
     {
         isPaused = !isPaused;
+    }
+
+    public override void OnManualEnable()
+    {
+        gameInput.OnPauseAction += GameInput_OnPauseAction;
+    }
+
+    public override void OnManualDisable()
+    {
+        gameInput.OnPauseAction -= GameInput_OnPauseAction;
     }
 }

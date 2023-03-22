@@ -1,7 +1,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class WorldManager : MonoBehaviour
+[CreateAssetMenu]
+public class WorldManager : Manager
 {
     [SerializeField]
     [NotNull]
@@ -46,8 +47,5 @@ public class WorldManager : MonoBehaviour
         tiles = InstantiateTiles();
     }
 
-    private void Start()
-    {
-        RegenerateResources();
-    }
+    public override void OnManualEnable() => RegenerateResources();
 }

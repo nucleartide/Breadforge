@@ -97,4 +97,6 @@ public class TempPlayerCollect
     {
         // playerState = PlayerState.NotCollecting;
     }
+
+    // there might be a script that will destroy the Resource if depleted
 }

@@ -41,7 +41,10 @@ public class Resource : MonoBehaviour
         OnCollectCompleted?.Invoke(this, new OnCollectCompletedArgs { AmountCollected = resourceConfiguration.CollectedQuantity });
 
         if (quantity <= 0)
+        {
             OnDepleted?.Invoke(this, EventArgs.Empty);
+            Destroy(gameObject);
+        }
 
         remainingTime -= dt;
         if (remainingTime <= 0f)

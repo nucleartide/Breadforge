@@ -107,6 +107,6 @@ public class TempPlayerCollect
 
     private void Release()
     {
-        playerState = PlayerState.NotCollecting;
+        // playerState = PlayerState.NotCollecting;
     }
 }

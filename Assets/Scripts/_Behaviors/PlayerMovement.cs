@@ -12,7 +12,7 @@ public class PlayerMovement : MonoBehaviour
 
     [SerializeField]
     [NotNull(IgnorePrefab = true)]
-    InputManager gameInput;
+    GameInputManager gameInput;
 
     [SerializeField]
     [NotNull]

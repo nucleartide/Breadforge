@@ -8,7 +8,7 @@ public class PlayerShoulderTarget : MonoBehaviour
 
     [SerializeField]
     [NotNull(IgnorePrefab = true)]
-    InputManager gameInput;
+    GameInputManager gameInput;
 
     void Update()
     {

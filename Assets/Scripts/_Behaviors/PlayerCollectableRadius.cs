@@ -8,6 +8,17 @@ public class PlayerCollectableRadius : MonoBehaviour
     [SerializeField]
     CollectibleSignifierManager canCollectSignifier;
 
+    /// <summary>
+    /// A Resource that can be actively collected by the player.
+    ///
+    /// If the player is moved out of range, this will return null.
+    /// </summary>
+    public Resource CanCollectResource
+    {
+        get;
+        private set;
+    }
+
     HashSet<GameObject> lastFrameCollectibles = new HashSet<GameObject>();
 
     private static List<RaycastHit> Raycast(Transform transform)
@@ -62,14 +73,13 @@ public class PlayerCollectableRadius : MonoBehaviour
     ///
     /// That was a mouthful. Basically, "show an E on the closest resource".
     /// </summary>
-    private static void SetCollectibleSignifierPosition(List<RaycastHit> hits, CollectibleSignifierManager signifier)
+    private static void SetCollectibleSignifierPosition(List<RaycastHit> hits, CollectibleSignifierManager signifier, Resource canCollectResource)
     {
-        signifier.SetActive(hits.Count > 0);
-        if (hits.Count == 0)
+        signifier.SetActive(canCollectResource != null);
+        if (canCollectResource == null)
             return;
-
-        var minHit = ListHelpers.MinBy(hits, (a, b) => a.distance < b.distance);
-        signifier.SetPosition(minHit.collider.transform.position);
+        else
+            signifier.SetPosition(canCollectResource.transform.position);
     }
 
     private static void SetLayer(GameObject resourceGameObject, int layer)
@@ -77,10 +87,20 @@ public class PlayerCollectableRadius : MonoBehaviour
         resourceGameObject.GetComponent<ResourceVisual>().Visual.layer = layer;
     }
 
-    void Update()
+    private static Resource UpdateCanCollectResource(List<RaycastHit> hits)
+    {
+        var minHit = ListHelpers.MinBy(hits, (a, b) => a.distance < b.distance);
+        if (minHit.collider == null)
+            return null;
+
+        return minHit.collider.GetComponent<Resource>();
+    }
+
+    private void Update()
     {
         var hits = Raycast(transform);
         lastFrameCollectibles = UpdateLayers(lastFrameCollectibles, hits);
-        SetCollectibleSignifierPosition(hits, canCollectSignifier);
+        CanCollectResource = UpdateCanCollectResource(hits);
+        SetCollectibleSignifierPosition(hits, canCollectSignifier, CanCollectResource);
     }
 }

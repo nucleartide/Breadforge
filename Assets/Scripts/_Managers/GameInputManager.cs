@@ -4,13 +4,20 @@ using System;
 using UnityEngine.InputSystem;
 
 [CreateAssetMenu]
-public class InputManager : Manager
+public class GameInputManager : Manager
 {
     private PlayerInputActions playerInputActions;
 
-    public event EventHandler<float> OnPause;
-    public event EventHandler<float> OnCollectStarted;
-    public event EventHandler<float> OnCollectPerformed;
+    public class GameInputArgs : EventArgs
+    {
+        public float CurrentTime;
+    }
+
+    public event EventHandler<GameInputArgs> OnPause;
+
+    public event EventHandler<GameInputArgs> OnCollectStarted;
+
+    public event EventHandler<GameInputArgs> OnCollectPerformed;
 
     public override void OnManualEnable()
     {
@@ -32,17 +39,17 @@ public class InputManager : Manager
 
     private void Pause_performed(InputAction.CallbackContext context)
     {
-        OnPause?.Invoke(this, Time.time);
+        OnPause?.Invoke(this, new GameInputArgs { CurrentTime = Time.time });
     }
 
     private void Collect_started(InputAction.CallbackContext context)
     {
-        // TODO.
+        OnCollectStarted?.Invoke(this, new GameInputArgs { CurrentTime = Time.time });
     }
 
     private void Collect_performed(InputAction.CallbackContext context)
     {
-        // TODO.
+        OnCollectPerformed?.Invoke(this, new GameInputArgs { CurrentTime = Time.time });
     }
 
     public Vector3 GetMovement()
@@ -60,10 +67,5 @@ public class InputManager : Manager
     public bool GetRun()
     {
         return playerInputActions.Player.Run.IsPressed();
-    }
-
-    public bool GetCollect()
-    {
-        return playerInputActions.Player.Collect.IsPressed();
     }
 }

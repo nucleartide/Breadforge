@@ -1140,7 +1140,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3457429510689344551}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -1162,6 +1162,7 @@ GameObject:
   - component: {fileID: 3457429511103761877}
   - component: {fileID: 3457429511103761876}
   - component: {fileID: 1336990750843944455}
+  - component: {fileID: 4469386649985762489}
   m_Layer: 0
   m_Name: Player Controller
   m_TagString: Untagged
@@ -1233,3 +1234,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   canCollectSignifier: {fileID: 11400000, guid: 0bd65ba75817b46e1ab2c124f7d5947f,
     type: 2}
+--- !u!114 &4469386649985762489
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3457429511103761872}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 67d6e93cad7d542818001902551b7fd4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerCollectableRadius: {fileID: 1336990750843944455}
+  gameInput: {fileID: 11400000, guid: 05f76693889e84d5cbc6e15633ea37ee, type: 2}

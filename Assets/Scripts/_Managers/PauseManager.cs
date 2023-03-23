@@ -5,11 +5,11 @@ public class PauseManager : Manager
 {
     [SerializeField]
     [NotNull]
-    InputManager gameInput;
+    GameInputManager gameInput;
 
     private bool isPaused = false;
 
-    private void GameInput_OnPauseAction(object sender, float timeOfPause)
+    private void GameInput_OnPauseAction(object sender, GameInputManager.GameInputArgs args)
     {
         TogglePause();
         Debug.Log(isPaused ? "Game is paused." : "Game is active.");

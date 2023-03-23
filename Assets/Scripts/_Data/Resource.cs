@@ -75,6 +75,7 @@ public class TempPlayerCollect
         // play a "null" sound.
         // else, if we are near a collectible,
         // change state to collecting
+        // character should face resource
     }
 
     private void Update()

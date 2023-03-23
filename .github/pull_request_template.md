@@ -22,6 +22,7 @@ I want to focus on efficiency. Getting this done in (ideally) 1 day, so that I h
 
 > Run through the following steps to complete your work.
 
+* [ ] **flesh out product reqs and design**. you can do this in the Notion block
 * [ ] **First draft**. Implement a working first pass at the problem. Try to think modularly, and think of which prefab piece you will modify versus the entire scene.
 * [ ] **Final draft**. Once done, perform a general review of `Files changed` and revise anything that needs to be cleaned up.
 

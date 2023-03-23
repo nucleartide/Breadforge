@@ -1,3 +1,9 @@
+## Deliberate Practice
+
+> Write down one thing you'd like to improve about your game development skills in this pull request.
+
+...
+
 ## Job Story
 
 > **Player**: When <code>X</code>, I want to <code>Y</code>, so that <code>Z</code>.

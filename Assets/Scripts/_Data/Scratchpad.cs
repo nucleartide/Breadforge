@@ -1,26 +1,13 @@
 using System;
 using UnityEngine;
 
-public class Resource
-{
-    public float Quantity;
-    public CollectionRate CollectionRate;
-    public event EventHandler<PlaceholderArgs> OnDepleted;
-    public event EventHandler<PlaceholderArgs> OnCollectCompleted;
+// [ ] split these classes into separate files
 
-    // Count this down to zero.
-    public float RemainingTime;
-
-    public void ElapseCollectTime()
-    {
-        // TODO.
-    }
-}
-
-public class CollectionRate
+public class CollectionRate // rename this to ResourceConfiguration
 {
     public float TimeInterval;
     public float Quantity;
+    public float InitialQuantity;
 }
 
 public class PlaceholderArgs

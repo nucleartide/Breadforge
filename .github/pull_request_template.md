@@ -2,7 +2,7 @@
 
 > Write down one thing you'd like to improve about your game development skills in this pull request.
 >
-> Is it **knowledge** of a package? A **sub-skill**, such as particle effects? Or working more efficiently (**efficiency**)? Or putting in more hours (**effort**)?
+> Is it **knowledge** of a package? A **sub-skill**, such as particle effects? Or working more efficiently (**efficiency**)? Or putting in more hours (**effort**)? Or is it time estimation?
 
 I want to focus on efficiency. Getting this done in (ideally) 1 day, so that I have a working velocity of 1 user story a day.
 

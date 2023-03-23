@@ -8,25 +8,41 @@ public class InputManager : Manager
 {
     private PlayerInputActions playerInputActions;
 
-    public event EventHandler<float> OnPauseAction;
+    public event EventHandler<float> OnPause;
+    public event EventHandler<float> OnCollectStarted;
+    public event EventHandler<float> OnCollectPerformed;
 
     public override void OnManualEnable()
     {
         playerInputActions = new PlayerInputActions();
         playerInputActions.Player.Enable();
         playerInputActions.Player.Pause.performed += Pause_performed;
+        playerInputActions.Player.Collect.started += Collect_started;
+        playerInputActions.Player.Collect.performed += Collect_performed;
     }
 
     public override void OnManualDisable()
     {
         playerInputActions.Player.Pause.performed -= Pause_performed;
+        playerInputActions.Player.Collect.started -= Collect_started;
+        playerInputActions.Player.Collect.performed -= Collect_performed;
         playerInputActions.Dispose();
         playerInputActions = null;
     }
 
     private void Pause_performed(InputAction.CallbackContext context)
     {
-        OnPauseAction?.Invoke(this, Time.time);
+        OnPause?.Invoke(this, Time.time);
+    }
+
+    private void Collect_started(InputAction.CallbackContext context)
+    {
+        // TODO.
+    }
+
+    private void Collect_performed(InputAction.CallbackContext context)
+    {
+        // TODO.
     }
 
     public Vector3 GetMovement()

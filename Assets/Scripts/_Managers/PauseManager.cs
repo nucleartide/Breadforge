@@ -22,11 +22,11 @@ public class PauseManager : Manager
 
     public override void OnManualEnable()
     {
-        gameInput.OnPauseAction += GameInput_OnPauseAction;
+        gameInput.OnPause += GameInput_OnPauseAction;
     }
 
     public override void OnManualDisable()
     {
-        gameInput.OnPauseAction -= GameInput_OnPauseAction;
+        gameInput.OnPause -= GameInput_OnPauseAction;
     }
 }

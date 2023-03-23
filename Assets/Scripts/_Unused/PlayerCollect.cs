@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerCollect : MonoBehaviour
+public class PlayerCollectOld : MonoBehaviour
 {
     float collectionRate = 3.0f; // 1 collection every 3 seconds, let's try it out
 

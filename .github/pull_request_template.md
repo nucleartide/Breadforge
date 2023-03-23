@@ -1,8 +1,10 @@
 ## Deliberate Practice
 
 > Write down one thing you'd like to improve about your game development skills in this pull request.
+>
+> Is it **knowledge** of a package? A **sub-skill**, such as particle effects? Or working more efficiently (**efficiency**)? Or putting in more hours (**effort**)?
 
-...
+I want to focus on efficiency. Getting this done in (ideally) 1 day, so that I have a working velocity of 1 user story a day.
 
 ## Job Story
 
@@ -48,7 +50,7 @@
 
 > Explain what you did, how you did it, and why you did it. Discuss any lessons that might be useful to others.
 >
-> (Note to self: it's easiest to do a stream-of-consciousness write-up of what you did.)
+> (Note to self: it's easiest to do a stream-of-consciousness write-up of what you did. Remember to write for the Game Codebase Tour audience.)
 
 ...
 

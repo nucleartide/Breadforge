@@ -39,8 +39,7 @@ public class PlayerCollect : MonoBehaviour
             throw new System.Exception("TODO: Jason add in a 'null' sound here.");
 
         currentState = new PlayerCollectingState(nearest);
-
-        // TODO: character should face resource
+        // TODO: can you move while mining?
     }
 
 #if false

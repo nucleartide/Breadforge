@@ -9,7 +9,7 @@ public class PlayerAnimator : MonoBehaviour
 
     [SerializeField]
     [NotNull]
-    private PlayerController playerController;
+    private PlayerMovement playerController;
 
     private const string ANIMATOR_MOVEMENT_SPEED = "MovementSpeed";
     private int movementSpeedHash = -1;

@@ -1,7 +1,10 @@
 using UnityEngine;
 
+/// <summary>
+/// PlayerController controls player movement.
+/// </summary>
 [RequireComponent(typeof(CharacterController))]
-public class PlayerController : MonoBehaviour
+public class PlayerMovement : MonoBehaviour
 {
     [SerializeField]
     [NotNull]

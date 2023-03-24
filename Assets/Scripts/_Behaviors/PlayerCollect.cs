@@ -91,10 +91,17 @@ public class PlayerCollect : StateMachineBehaviour
 
     private void Update()
     {
-        var isCollecting = gameInput.GetCollect();
-        var isMoving = gameInput.GetMovement() != Vector3.zero;
-        if (!isCollecting && isMoving && CurrentState != playerNotCollectingState)
-            TransitionTo(playerNotCollectingState);
+        if (CurrentState != playerNotCollectingState)
+        {
+            var isCollecting = gameInput.GetCollect();
+            var isMoving = gameInput.GetMovement() != Vector3.zero;
+
+            if (!isCollecting && isMoving)
+                TransitionTo(playerNotCollectingState);
+
+            if (playerCollectableRadius.CanCollectResource == null)
+                TransitionTo(playerNotCollectingState);
+        }
     }
 
     public bool IsCollecting
@@ -107,25 +114,17 @@ public class PlayerCollect : StateMachineBehaviour
 
 #if false
     // TODO: add this to list of event handlers
-    private void Resource_OnDepleted()
-    {
-        // ...
-        // TODO: play some signifier feedback? maybe floating disappearing text?
-    }
-
-    // TODO: add this to list of event handlers
     private void Resource_OnCollectCompleted()
     {
         // ...
         // TODO: play some signifier feedback? maybe floating disappearing text?
     }
 
-    private void update()
+    // TODO: add this to list of event handlers
+    private void Resource_OnDepleted()
     {
-        // playerState = PlayerState.NotCollecting;
-
-        // if playercollectableradius is null, setstate accordingly
-        // check if object is destroyed, and set state accordingly
+        // ...
+        // TODO: play some signifier feedback? maybe floating disappearing text?
     }
 #endif
 }

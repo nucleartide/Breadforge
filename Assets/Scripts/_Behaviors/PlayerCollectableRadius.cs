@@ -84,7 +84,8 @@ public class PlayerCollectableRadius : MonoBehaviour
 
     private static void SetLayer(GameObject resourceGameObject, int layer)
     {
-        resourceGameObject.GetComponent<ResourceVisual>().Visual.layer = layer;
+        if (resourceGameObject != null)
+            resourceGameObject.GetComponent<ResourceVisual>().Visual.layer = layer;
     }
 
     private static Resource UpdateCanCollectResource(List<RaycastHit> hits)

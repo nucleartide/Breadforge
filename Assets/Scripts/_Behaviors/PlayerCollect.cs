@@ -79,9 +79,6 @@ public class PlayerCollect : StateMachineBehaviour
 
         playerCollectingState.Initialize(nearest.transform);
         TransitionTo(playerCollectingState);
-
-        // [ ]
-        // TODO: can you move while mining? the answer is no.
     }
 
     private void Update()

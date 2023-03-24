@@ -39,7 +39,13 @@ public class PlayerCollect : MonoBehaviour
             throw new System.Exception("TODO: Jason add in a 'null' sound here.");
 
         currentState = new PlayerCollectingState(nearest);
-        // TODO: can you move while mining?
+
+        // Face the resource being collected.
+        var toCollect = nearest.transform.position - gameObject.transform.position;
+        var angle = Vector3.SignedAngle(Vector3.forward, toCollect, Vector3.up);
+        transform.rotation = Quaternion.AngleAxis(angle, Vector3.up);
+
+        // TODO: can you move while mining? the answer is no.
     }
 
 #if false

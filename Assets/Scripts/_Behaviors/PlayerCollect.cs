@@ -1,18 +1,52 @@
 using UnityEngine;
 
-[RequireComponent(typeof(PlayerCollectableRadius))]
-public class PlayerCollect : MonoBehaviour
+public abstract class StateMachineBehaviour : MonoBehaviour
 {
-    /// <summary>
-    /// The current state of the player's Collect action.
-    ///
-    /// I use explicit states to visualize these states as animation states in Mecanim.
-    /// </summary>
-    IState currentState = new PlayerNotCollectingState();
+    private void DisableAllStates()
+    {
+        var states = GetComponents<State>();
+        foreach (var state in states)
+            state.enabled = false;
+    }
 
+    public void TransitionTo(State newState)
+    {
+        DisableAllStates();
+        newState.enabled = true;
+    }
+
+    public State CurrentState
+    {
+        get
+        {
+            var states = GetComponents<State>();
+            foreach (var state in states)
+                if (state.enabled)
+                    return state;
+
+            return null;
+        }
+    }
+}
+
+[RequireComponent(typeof(PlayerCollectableRadius))]
+public class PlayerCollect : StateMachineBehaviour
+{
     [SerializeField]
     [NotNull]
     PlayerCollectableRadius playerCollectableRadius;
+
+    [SerializeField]
+    [NotNull]
+    State initialState;
+
+    [SerializeField]
+    [NotNull]
+    PlayerCollectingState playerCollectingState;
+
+    [SerializeField]
+    [NotNull]
+    PlayerNotCollectingState playerNotCollectingState;
 
     [SerializeField]
     [NotNull]
@@ -25,6 +59,7 @@ public class PlayerCollect : MonoBehaviour
     private void OnEnable()
     {
         Debug.Log("attaching collect handlers");
+        TransitionTo(initialState);
         gameInput.OnCollectStarted += GameInput_OnCollectStarted;
     }
 
@@ -42,15 +77,27 @@ public class PlayerCollect : MonoBehaviour
         if (nearest == null)
             throw new System.Exception("TODO: Jason add in a 'null' sound here.");
 
-        currentState = new PlayerCollectingState(nearest.transform, gameObject.transform, playerConfiguration);
+        playerCollectingState.Initialize(nearest.transform);
+        TransitionTo(playerCollectingState);
 
-        // TODO: fix rotation speed when facing desired rotation
+        // [ ]
         // TODO: can you move while mining? the answer is no.
     }
 
     private void Update()
     {
-        currentState.Update();
+        var isCollecting = gameInput.GetCollect();
+        var isMoving = gameInput.GetMovement() != Vector3.zero;
+        if (!isCollecting && isMoving && CurrentState != playerNotCollectingState)
+            TransitionTo(playerNotCollectingState);
+    }
+
+    public bool IsCollecting
+    {
+        get
+        {
+            return CurrentState == playerCollectingState;
+        }
     }
 
 #if false

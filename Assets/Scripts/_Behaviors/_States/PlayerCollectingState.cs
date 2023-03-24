@@ -1,15 +1,14 @@
 using UnityEngine;
 
-[System.Serializable]
-public class PlayerCollectingState : IState
+public class PlayerCollectingState : State
 {
+    [SerializeField]
+    [NotNull]
+    private PlayerConfiguration playerConfiguration;
+
     private Transform resourceBeingCollected;
 
-    private Transform player;
-
     private Quaternion desiredRotation;
-
-    private PlayerConfiguration playerConfiguration;
 
     private static Quaternion GetDesiredRotation(Transform resourceBeingCollected, Transform gameObject)
     {
@@ -18,22 +17,21 @@ public class PlayerCollectingState : IState
         return Quaternion.AngleAxis(angle, Vector3.up);
     }
 
-    public PlayerCollectingState(Transform resourceBeingCollected, Transform player, PlayerConfiguration playerConfiguration)
+    public void Initialize(Transform resourceBeingCollected)
     {
         this.resourceBeingCollected = resourceBeingCollected;
-        this.playerConfiguration = playerConfiguration;
-        this.player = player;
-        desiredRotation = GetDesiredRotation(resourceBeingCollected, player);
-    }
-
-    void IState.Update()
-    {
-        FaceDesiredOrientation(desiredRotation, player, Time.smoothDeltaTime, playerConfiguration);
+        desiredRotation = GetDesiredRotation(resourceBeingCollected, transform);
     }
 
     private static void FaceDesiredOrientation(Quaternion desired, Transform player, float deltaTime, PlayerConfiguration playerConfiguration)
     {
         float singleStep = playerConfiguration.RotationSpeedDegrees * deltaTime;
         player.rotation = Quaternion.RotateTowards(player.rotation, desired, singleStep);
+    }
+
+    private void Update()
+    {
+        FaceDesiredOrientation(desiredRotation, transform, Time.smoothDeltaTime, playerConfiguration);
+        // TODO: how to transition away from state?
     }
 }

@@ -1,7 +1,5 @@
-public class PlayerNotCollectingState : IState
+using UnityEngine;
+
+public class PlayerNotCollectingState : State
 {
-    void IState.Update()
-    {
-        // TODO.
-    }
 }

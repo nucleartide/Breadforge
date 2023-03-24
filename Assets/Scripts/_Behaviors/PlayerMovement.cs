@@ -18,6 +18,10 @@ public class PlayerMovement : MonoBehaviour
     [NotNull]
     CharacterController characterController;
 
+    [SerializeField]
+    [NotNull]
+    PlayerCollect playerCollect;
+
     public float HorizontalSpeed
     {
         get;
@@ -46,6 +50,9 @@ public class PlayerMovement : MonoBehaviour
 
     private void Update()
     {
+        if (playerCollect.IsCollecting)
+            return;
+
         HorizontalSpeed = Mathf.SmoothDamp(HorizontalSpeed, TargetSpeed, ref horizontalSpeedDampingValue, .3f);
 
         var movementDirection = gameInput.GetMovement();

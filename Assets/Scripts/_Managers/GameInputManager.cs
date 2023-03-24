@@ -68,4 +68,9 @@ public class GameInputManager : Manager
     {
         return playerInputActions.Player.Run.IsPressed();
     }
+
+    public bool GetCollect()
+    {
+        return playerInputActions.Player.Collect.IsPressed();
+    }
 }

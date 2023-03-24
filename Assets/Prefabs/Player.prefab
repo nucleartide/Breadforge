@@ -1163,6 +1163,8 @@ GameObject:
   - component: {fileID: 3457429511103761876}
   - component: {fileID: 1336990750843944455}
   - component: {fileID: 4469386649985762489}
+  - component: {fileID: 978854860}
+  - component: {fileID: 978854861}
   m_Layer: 0
   m_Name: Player Controller
   m_TagString: Untagged
@@ -1202,6 +1204,7 @@ MonoBehaviour:
     type: 2}
   gameInput: {fileID: 11400000, guid: 05f76693889e84d5cbc6e15633ea37ee, type: 2}
   characterController: {fileID: 3457429511103761876}
+  playerCollect: {fileID: 4469386649985762489}
 --- !u!143 &3457429511103761876
 CharacterController:
   m_ObjectHideFlags: 0
@@ -1247,6 +1250,35 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerCollectableRadius: {fileID: 1336990750843944455}
+  initialState: {fileID: 978854860}
+  playerCollectingState: {fileID: 978854861}
+  playerNotCollectingState: {fileID: 978854860}
   gameInput: {fileID: 11400000, guid: 05f76693889e84d5cbc6e15633ea37ee, type: 2}
+  playerConfiguration: {fileID: 11400000, guid: 0e29962fbc3e34aaea3620693e304758,
+    type: 2}
+--- !u!114 &978854860
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3457429511103761872}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e6f9c141ac9a140b383543fa52dab3a1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &978854861
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3457429511103761872}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 90bc325dd27f64c8cb88414a89b95b66, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
   playerConfiguration: {fileID: 11400000, guid: 0e29962fbc3e34aaea3620693e304758,
     type: 2}

@@ -34,12 +34,6 @@ public class PlayerCollect : MonoBehaviour
         gameInput.OnCollectStarted -= GameInput_OnCollectStarted;
     }
 
-    private void FaceDesiredOrientation(Quaternion desired)
-    {
-        float singleStep = playerConfiguration.RotationSpeed * Time.smoothDeltaTime;
-        transform.rotation = Quaternion.RotateTowards(transform.rotation, desired, singleStep);
-    }
-
     private void GameInput_OnCollectStarted(object sender, GameInputManager.GameInputArgs args)
     {
         Debug.Log("hello");
@@ -48,7 +42,7 @@ public class PlayerCollect : MonoBehaviour
         if (nearest == null)
             throw new System.Exception("TODO: Jason add in a 'null' sound here.");
 
-        currentState = new PlayerCollectingState(nearest, gameObject);
+        currentState = new PlayerCollectingState(nearest.transform, gameObject.transform, playerConfiguration);
 
         // TODO: fix rotation speed when facing desired rotation
         // TODO: can you move while mining? the answer is no.
@@ -56,10 +50,7 @@ public class PlayerCollect : MonoBehaviour
 
     private void Update()
     {
-        if (currentState is PlayerCollectingState state)
-        {
-            FaceDesiredOrientation(state.DesiredRotation);
-        }
+        currentState.Update();
     }
 
 #if false

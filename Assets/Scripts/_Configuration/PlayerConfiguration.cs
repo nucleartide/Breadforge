@@ -16,4 +16,12 @@ public class PlayerConfiguration : ScriptableObject
     /// In radians per second.
     /// </summary>
     public float RotationSpeed;
+
+    /// <summary>
+    /// Rotation speed, but in degrees
+    /// </summary>
+    public float RotationSpeedDegrees
+    {
+        get => RotationSpeed * Mathf.Rad2Deg;
+    }
 }

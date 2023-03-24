@@ -1248,3 +1248,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerCollectableRadius: {fileID: 1336990750843944455}
   gameInput: {fileID: 11400000, guid: 05f76693889e84d5cbc6e15633ea37ee, type: 2}
+  playerConfiguration: {fileID: 11400000, guid: 0e29962fbc3e34aaea3620693e304758,
+    type: 2}

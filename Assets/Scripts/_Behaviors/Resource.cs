@@ -33,21 +33,32 @@ public class Resource : MonoBehaviour
     /// </summary>
     public void Elapse(float dt)
     {
+        // No-op if there's nothing to collect.
         if (quantity <= 0)
-            // No-op.
             return;
 
-        quantity -= resourceConfiguration.CollectedQuantity;
-        OnCollectCompleted?.Invoke(this, new OnCollectCompletedArgs { AmountCollected = resourceConfiguration.CollectedQuantity });
-
-        if (quantity <= 0)
-        {
-            OnDepleted?.Invoke(this, EventArgs.Empty);
-            Destroy(gameObject);
-        }
-
+        // Decrement time.
         remainingTime -= dt;
+        Debug.Log($"Elapsed. Remaining time to next collection is {remainingTime} seconds.");
+
+        // When countdown is complete,
         if (remainingTime <= 0f)
+        {
+            // Player has collected a batch.
+            OnCollectCompleted?.Invoke(this, new OnCollectCompletedArgs { AmountCollected = resourceConfiguration.CollectedQuantity });
+
+            // Reset timer.
             ResetRemainingTime();
+
+            // Decrement quantity.
+            quantity -= resourceConfiguration.CollectedQuantity * dt;
+
+            // Do stuff when quantity is depleted.
+            if (quantity <= 0)
+            {
+                OnDepleted?.Invoke(this, EventArgs.Empty);
+                Destroy(gameObject);
+            }
+        }
     }
 }

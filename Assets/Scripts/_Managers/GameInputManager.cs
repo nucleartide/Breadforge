@@ -19,6 +19,8 @@ public class GameInputManager : Manager
 
     public event EventHandler<GameInputArgs> OnCollectPerformed;
 
+    public event EventHandler<GameInputArgs> OnCollectCanceled;
+
     public override void OnManualEnable()
     {
         playerInputActions = new PlayerInputActions();
@@ -26,6 +28,7 @@ public class GameInputManager : Manager
         playerInputActions.Player.Pause.performed += Pause_performed;
         playerInputActions.Player.Collect.started += Collect_started;
         playerInputActions.Player.Collect.performed += Collect_performed;
+        playerInputActions.Player.Collect.canceled += Collect_canceled;
     }
 
     public override void OnManualDisable()
@@ -33,6 +36,7 @@ public class GameInputManager : Manager
         playerInputActions.Player.Pause.performed -= Pause_performed;
         playerInputActions.Player.Collect.started -= Collect_started;
         playerInputActions.Player.Collect.performed -= Collect_performed;
+        playerInputActions.Player.Collect.canceled -= Collect_canceled;
         playerInputActions.Dispose();
         playerInputActions = null;
     }
@@ -50,6 +54,11 @@ public class GameInputManager : Manager
     private void Collect_performed(InputAction.CallbackContext context)
     {
         OnCollectPerformed?.Invoke(this, new GameInputArgs { CurrentTime = Time.time });
+    }
+
+    private void Collect_canceled(InputAction.CallbackContext context)
+    {
+        OnCollectCanceled?.Invoke(this, new GameInputArgs { CurrentTime = Time.time });
     }
 
     public Vector3 GetMovement()

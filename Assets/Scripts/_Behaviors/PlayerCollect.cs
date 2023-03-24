@@ -58,15 +58,15 @@ public class PlayerCollect : StateMachineBehaviour
 
     private void OnEnable()
     {
-        Debug.Log("attaching collect handlers");
         TransitionTo(initialState);
         gameInput.OnCollectStarted += GameInput_OnCollectStarted;
+        gameInput.OnCollectCanceled += GameInput_OnCollectCanceled;
     }
 
     private void OnDisable()
     {
-        Debug.Log("detaching collect handlers");
         gameInput.OnCollectStarted -= GameInput_OnCollectStarted;
+        gameInput.OnCollectCanceled -= GameInput_OnCollectCanceled;
     }
 
     private void GameInput_OnCollectStarted(object sender, GameInputManager.GameInputArgs args)
@@ -77,8 +77,16 @@ public class PlayerCollect : StateMachineBehaviour
         if (nearest == null)
             throw new System.Exception("TODO: Jason add in a 'null' sound here.");
 
-        playerCollectingState.Initialize(nearest.transform);
+        playerCollectingState.Initialize(nearest);
         TransitionTo(playerCollectingState);
+    }
+
+    private void GameInput_OnCollectCanceled(object sender, GameInputManager.GameInputArgs args)
+    {
+        Debug.Log("canceled");
+
+        if (CurrentState == playerCollectingState)
+            TransitionTo(playerNotCollectingState);
     }
 
     private void Update()
@@ -98,24 +106,6 @@ public class PlayerCollect : StateMachineBehaviour
     }
 
 #if false
-    private void InputManager_OnCollectStarted()
-    {
-    }
-
-    private void Update()
-    {
-        // if we are in the collecting state,
-        // call ElapseCollectTime() on the connecteed resource
-        // todo: use the state pattern, since in the collecting state you need an item to collect
-    }
-
-    // TODO: add this to list of event handlers
-    private void InputManager_OnCollectPerformed()
-    {
-        // if we are not in the collecting state, do nothing
-        // else, change state to not collecting
-    }
-
     // TODO: add this to list of event handlers
     private void Resource_OnDepleted()
     {
@@ -130,11 +120,12 @@ public class PlayerCollect : StateMachineBehaviour
         // TODO: play some signifier feedback? maybe floating disappearing text?
     }
 
-    private void Release()
+    private void update()
     {
         // playerState = PlayerState.NotCollecting;
-    }
 
-    // TODO: test out the character's movement. it shouldn't interfere with mining.
+        // if playercollectableradius is null, setstate accordingly
+        // check if object is destroyed, and set state accordingly
+    }
 #endif
 }

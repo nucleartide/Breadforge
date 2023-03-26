@@ -1,14 +1,9 @@
-## Deliberate Practice
+## The Job Story
 
-> Write down one thing you'd like to improve about your game development skills in this pull request.
->
-> Is it **knowledge** of a package? A **sub-skill**, such as particle effects? Or working more efficiently (**efficiency**)? Or putting in more hours (**effort**)? Or is it time estimation?
-
-I want to focus on efficiency. Getting this done in (ideally) 1 day, so that I have a working velocity of 1 user story a day.
-
-## Job Story
-
-> **Player**: When <code>X</code>, I want to <code>Y</code>, so that <code>Z</code>.
+<details>
+<summary>
+<strong>Player</strong>: When <code>X</code>, I want to <code>Y</code>, so that <code>Z</code>.
+</summary>
 
 ### Notion
 
@@ -18,12 +13,24 @@ I want to focus on efficiency. Getting this done in (ideally) 1 day, so that I h
 
 > *(link goes here)*
 
+### Deliberate Practice
+
+> Write down one skill that you'd like to improve in this pull request.
+>
+> **Examples**: Knowledge of a package. A sub-skill, such as creating particle effects. Putting in more hours (effort). Working more efficiently. Time estimation.
+
+> *I want to...*
+
 ### Development Checklist
 
 > Run through the following steps to complete your work.
 
-* [ ] **flesh out product reqs and design**. you can do this in the Notion block
-* [ ] **First draft**. Implement a working first pass at the problem. Try to think modularly, and think of which prefab piece you will modify versus the entire scene.
+* [ ] **Product requirements and game design**. Flesh these out in the corresponding Notion block. Make sure to consider:
+    * [ ] **Model**. What is the user story? (See above.)
+    * [ ] **Action**. How does the player perform actions? What inputs are needed?
+    * [ ] **Rules**. The underlying mechanics.
+    * [ ] **Feedback**. The sensory feedback presented to the player.
+* [ ] **First draft**. Implement a working first pass at the problem. Try to think in modules: modify prefabs instead of the entire scene.
 * [ ] **Final draft**. Once done, perform a general review of `Files changed` and revise anything that needs to be cleaned up.
 
 ### Quality Assurance Checklist
@@ -34,6 +41,8 @@ I want to focus on efficiency. Getting this done in (ideally) 1 day, so that I h
 * [ ] **Editable**. Has any configuration been moved into ScriptableObjects, so that modified values persist even after exiting Play mode?
 * [ ] **Debuggable**. Do you have debug views for the prefabs/systems that you are creating?
 * [ ] **Learnable**. Consider how the player will learn what you implement in this pull request. Are the affordances appropriately communicated with signifiers?
+
+</details>
 
 ## Screen Recording
 
@@ -51,7 +60,7 @@ I want to focus on efficiency. Getting this done in (ideally) 1 day, so that I h
 
 > Explain what you did, how you did it, and why you did it. Discuss any lessons that might be useful to others.
 >
-> (Note to self: it's easiest to do a stream-of-consciousness write-up of what you did. Remember to write for the Game Codebase Tour audience.)
+> (Note to self: it's easiest to do a stream-of-consciousness write-up of what you did. Remember to write for the *Game Codebase Tour* audience!)
 
 ...
 

@@ -50,10 +50,11 @@ public class PlayerMovement : MonoBehaviour
 
     private void Update()
     {
+        HorizontalSpeed = Mathf.SmoothDamp(HorizontalSpeed, TargetSpeed, ref horizontalSpeedDampingValue, .3f);
+
+        // Must be after updating horizontal speed, otherwise player looks like they are moving.
         if (playerCollect.IsCollecting)
             return;
-
-        HorizontalSpeed = Mathf.SmoothDamp(HorizontalSpeed, TargetSpeed, ref horizontalSpeedDampingValue, .3f);
 
         var movementDirection = gameInput.GetMovement();
         FaceMovementDirection(movementDirection);

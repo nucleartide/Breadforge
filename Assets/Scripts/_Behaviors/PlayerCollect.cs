@@ -125,6 +125,7 @@ public class PlayerCollect : StateMachineBehaviour
     {
         // ...
         // TODO: play some signifier feedback? maybe floating disappearing text?
+	// in this case the Resource gets Destroyed by the Resource script. you can probably just delete this.
     }
 #endif
 }

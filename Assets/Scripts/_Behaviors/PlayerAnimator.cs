@@ -27,25 +27,24 @@ public class PlayerAnimator : MonoBehaviour
     [SerializeField]
     List<AnimationEnum> playerStateEnums;
 
-    private void Start()
+    private void Awake()
     {
         movementSpeedHash = Animator.StringToHash(ANIMATOR_MOVEMENT_SPEED);
         playerStateHash = Animator.StringToHash(ANIMATOR_PLAYER_STATE);
     }
 
-    private int GetPlayerStateIndex()
-    {
-        var state = playerStateMachine.CurrentState;
-        foreach (var animEnum in playerStateEnums)
-            if (state.GetType().Name == animEnum.State.name)
-                return animEnum.Index;
+    private void OnEnable() => playerStateMachine.OnChanged += PlayerStateMachine_OnChanged;
 
-        throw new System.Exception($"Current state {state.GetType().Name} does not have a PlayerState animation index. Please configure a new AnimationEnum, and add it to the PlayerAnimator.");
+    private void OnDisable() => playerStateMachine.OnChanged -= PlayerStateMachine_OnChanged;
+
+    private void PlayerStateMachine_OnChanged(object sender, StateMachineBehaviour.StateMachineChangedArgs args)
+    {
+        var playerState = AnimationEnum.GetIndex(args.NewState, playerStateEnums);
+        animator.SetInteger(playerStateHash, playerState);
     }
 
     private void Update()
     {
         animator.SetFloat(movementSpeedHash, playerMovingState.HorizontalSpeed);
-        animator.SetInteger(playerStateHash, GetPlayerStateIndex());
     }
 }

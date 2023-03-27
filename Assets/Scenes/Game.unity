@@ -992,6 +992,7 @@ GameObject:
   - component: {fileID: 1855632166081295619}
   - component: {fileID: 1855632166089038591}
   - component: {fileID: 1855632166089038592}
+  - component: {fileID: 1855632166089038593}
   m_Layer: 0
   m_Name: Man Astronaut Rig
   m_TagString: Untagged
@@ -1486,6 +1487,21 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 04392809cd55d44eab8c9fec192c1774, type: 2}
   - {fileID: 11400000, guid: 88ee0ca519b81418ca14f313581b81da, type: 2}
   - {fileID: 11400000, guid: 67271bcd40fbf46aca0b9e2af9aca1a2, type: 2}
+--- !u!114 &1855632166089038593
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1855632166081784099}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8d6d4a50f7dcd4be68d79131184dbf46, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerStateMachine: {fileID: 3102984711005192728}
+  Pickaxe: {fileID: 1498889041}
+  PlayerCollectingState: {fileID: 3102984711005192730}
 --- !u!137 &1855632166093284415
 SkinnedMeshRenderer:
   m_ObjectHideFlags: 0
@@ -1588,6 +1604,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   initialState: {fileID: 3102984711005192729}
+  gameInput: {fileID: 11400000, guid: 05f76693889e84d5cbc6e15633ea37ee, type: 2}
+  playerCollectableRadius: {fileID: 3102984711005192725}
+  playerCollectingState: {fileID: 3102984711005192730}
+  playerMovingState: {fileID: 3102984711005192729}
 --- !u!114 &3102984711005192729
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1613,9 +1633,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 1614179778878583234}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 90bc325dd27f64c8cb88414a89b95b66, type: 3}
+  m_Script: {fileID: 11500000, guid: 8a62e7ff529994312b3db1bdd87c0d1b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerConfiguration: {fileID: 11400000, guid: 0e29962fbc3e34aaea3620693e304758,
+    type: 2}
 --- !u!136 &3378107782957194885
 CapsuleCollider:
   m_ObjectHideFlags: 0

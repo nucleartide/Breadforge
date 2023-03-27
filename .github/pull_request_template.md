@@ -1,5 +1,8 @@
 ## The Job Story
 
+* TODO: consider doing a Loom presentation, and uploading to YouTube?
+* do the "Mom Dad game dev" titling
+
 <details>
 <summary>
 <strong>Player</strong>: When <code>X</code>, I want to <code>Y</code>, so that <code>Z</code>.

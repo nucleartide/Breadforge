@@ -13,7 +13,7 @@ public class GameInputManager : Manager
         public float CurrentTime;
     }
 
-    public event EventHandler<GameInputArgs> OnPause;
+    public event EventHandler<GameInputArgs> OnPaused;
 
     public event EventHandler<GameInputArgs> OnCollectStarted;
 
@@ -43,7 +43,7 @@ public class GameInputManager : Manager
 
     private void Pause_performed(InputAction.CallbackContext context)
     {
-        OnPause?.Invoke(this, new GameInputArgs { CurrentTime = Time.time });
+        OnPaused?.Invoke(this, new GameInputArgs { CurrentTime = Time.time });
     }
 
     private void Collect_started(InputAction.CallbackContext context)

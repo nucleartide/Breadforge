@@ -32,6 +32,5 @@ public abstract class StateMachineBehaviour : MonoBehaviour
         newState.enabled = true;
         OnChanged?.Invoke(this, new StateMachineChangedArgs { OldState = CurrentState, NewState = newState });
         CurrentState = newState;
-        throw new System.Exception("leave off for tomorrow: add remaining animations in Notion");
     }
 }

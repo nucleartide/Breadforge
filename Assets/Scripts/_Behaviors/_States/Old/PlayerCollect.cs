@@ -1,34 +1,5 @@
 using UnityEngine;
 
-public abstract class StateMachineBehaviour : MonoBehaviour
-{
-    private void DisableAllStates()
-    {
-        var states = GetComponents<State>();
-        foreach (var state in states)
-            state.enabled = false;
-    }
-
-    public void TransitionTo(State newState)
-    {
-        DisableAllStates();
-        newState.enabled = true;
-    }
-
-    public State CurrentState
-    {
-        get
-        {
-            var states = GetComponents<State>();
-            foreach (var state in states)
-                if (state.enabled)
-                    return state;
-
-            return null;
-        }
-    }
-}
-
 [RequireComponent(typeof(PlayerCollectableRadius))]
 public class PlayerCollect : StateMachineBehaviour
 {
@@ -38,11 +9,7 @@ public class PlayerCollect : StateMachineBehaviour
 
     [SerializeField]
     [NotNull]
-    State initialState;
-
-    [SerializeField]
-    [NotNull]
-    PlayerCollectingState playerCollectingState;
+    OldPlayerCollectingState playerCollectingState;
 
     [SerializeField]
     [NotNull]

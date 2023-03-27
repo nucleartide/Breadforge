@@ -11,6 +11,7 @@ public class StateMachineBehaviourEditor : Editor
     {
         var currentState = (target as StateMachineBehaviour).CurrentState;
         GUILayout.Label($"Current State: {currentState}");
+        GUILayout.Space(10);
         DrawDefaultInspector();
     }
 }

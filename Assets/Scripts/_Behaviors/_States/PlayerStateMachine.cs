@@ -53,8 +53,6 @@ public class PlayerStateMachine : StateMachineBehaviour
         else
             throw new System.Exception($"State name {stateName} does not have a corresponding PlayerCollectingState. Please inspect the source code to figure out what's going on.");
 
-        throw new System.Exception("update player TOol script to show player axe when chopping");
-
         // Perform state transition.
         collectingState.Initialize(resource);
         TransitionTo(collectingState);

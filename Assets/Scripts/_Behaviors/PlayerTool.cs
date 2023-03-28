@@ -15,17 +15,26 @@ public class PlayerTool : MonoBehaviour
 
     [SerializeField]
     [NotNull]
-    private GameObject Pickaxe;
+    private GameObject pickaxe;
 
     [SerializeField]
     [NotNull]
-    private PlayerMiningState PlayerCollectingState;
+    private GameObject axe;
+
+    [SerializeField]
+    [NotNull]
+    private PlayerMiningState playerMiningState;
+
+    [SerializeField]
+    [NotNull]
+    private PlayerChoppingState playerChoppingState;
 
     private void PlayerStateMachine_OnChanged(object sender, StateMachineBehaviour.StateMachineChangedArgs args)
     {
         Debug.Log("PlayerTool : OnChanged");
         Debug.Log(args.NewState);
-        Debug.Log(PlayerCollectingState);
-        Pickaxe.SetActive(args.NewState == PlayerCollectingState);
+
+        pickaxe.SetActive(args.NewState == playerMiningState);
+        axe.SetActive(args.NewState == playerChoppingState);
     }
 }

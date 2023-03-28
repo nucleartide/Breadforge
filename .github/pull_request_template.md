@@ -16,6 +16,9 @@
     * update player tool script to add tool
 * what other workflows need documenting? document them, and consider how you might get faster within each workflow
 * revise marketing step: make a Loom video only if there's a pain point that's worth discussing
+* make a list of checklist docs
+    * incompetech audio
+    * asset packs
 
 <details>
 <summary>

@@ -23,11 +23,19 @@ public class PlayerTool : MonoBehaviour
 
     [SerializeField]
     [NotNull]
+    private GameObject bottle;
+
+    [SerializeField]
+    [NotNull]
     private PlayerMiningState playerMiningState;
 
     [SerializeField]
     [NotNull]
     private PlayerChoppingState playerChoppingState;
+
+    [SerializeField]
+    [NotNull]
+    private PlayerScoopingState playerScoopingState;
 
     private void PlayerStateMachine_OnChanged(object sender, StateMachineBehaviour.StateMachineChangedArgs args)
     {
@@ -36,5 +44,6 @@ public class PlayerTool : MonoBehaviour
 
         pickaxe.SetActive(args.NewState == playerMiningState);
         axe.SetActive(args.NewState == playerChoppingState);
+        bottle.SetActive(args.NewState == playerScoopingState);
     }
 }

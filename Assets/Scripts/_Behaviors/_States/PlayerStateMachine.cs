@@ -22,6 +22,10 @@ public class PlayerStateMachine : StateMachineBehaviour
     [NotNull]
     private PlayerMovingState playerMovingState;
 
+    [SerializeField]
+    [NotNull]
+    private PlayerScoopingState playerScoopingState;
+
     private void OnEnable()
     {
         gameInput.OnCollectStarted += GameInput_OnCollectStarted;
@@ -50,6 +54,8 @@ public class PlayerStateMachine : StateMachineBehaviour
             collectingState = playerMiningState;
         else if (stateName == playerChoppingState.GetType().Name)
             collectingState = playerChoppingState;
+        else if (stateName == playerScoopingState.GetType().Name)
+            collectingState = playerScoopingState;
         else
             throw new System.Exception($"State name {stateName} does not have a corresponding PlayerCollectingState. Please inspect the source code to figure out what's going on.");
 

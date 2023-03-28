@@ -4,6 +4,7 @@
 * do the "Mom Dad game dev" titling
 * consider pulling out shared utils into separate repo, and use git submodules
 * sketch out data model
+* zoom in on player for a GIF
 
 <details>
 <summary>

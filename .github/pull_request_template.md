@@ -14,6 +14,8 @@
     * assign to resource config
     * update player animator's list of animation enums
     * update player tool script to add tool
+* what other workflows need documenting? document them, and consider how you might get faster within each workflow
+* revise marketing step: make a Loom video only if there's a pain point that's worth discussing
 
 <details>
 <summary>

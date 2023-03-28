@@ -36,13 +36,28 @@ public class PlayerStateMachine : StateMachineBehaviour
 
     private void GameInput_OnCollectStarted(object sender, GameInputManager.GameInputArgs args)
     {
-        var nearest = playerCollectableRadius.CanCollectResource;
-        if (nearest == null)
+        var resource = playerCollectableRadius.CanCollectResource;
+        if (resource == null)
             throw new System.Exception("TODO: Jason add in a 'null' sound here.");
 
-        throw new System.Exception("switch to state depending on Resource's resource configuration");
-        playerMiningState.Initialize(nearest);
-        TransitionTo(playerMiningState);
+        // Grab some data.
+        var config = resource.ResourceConfiguration;
+        var stateName = config.PlayerStateEnum.State.name;
+
+        // Given a Resource, fetch the corresponding player state.
+        PlayerCollectingState collectingState;
+        if (stateName == playerMiningState.GetType().Name)
+            collectingState = playerMiningState;
+        else if (stateName == playerChoppingState.GetType().Name)
+            collectingState = playerChoppingState;
+        else
+            throw new System.Exception($"State name {stateName} does not have a corresponding PlayerCollectingState. Please inspect the source code to figure out what's going on.");
+
+        throw new System.Exception("update player TOol script to show player axe when chopping");
+
+        // Perform state transition.
+        collectingState.Initialize(resource);
+        TransitionTo(collectingState);
     }
 
     private void GameInput_OnCollectCanceled(object sender, GameInputManager.GameInputArgs args)

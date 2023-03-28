@@ -12,9 +12,13 @@ public class Resource : MonoBehaviour
 
     public event EventHandler<OnCollectCompletedArgs> OnCollectCompleted;
 
-    [NotNull]
-    [SerializeField]
-    private ResourceConfiguration resourceConfiguration;
+    [field: NotNull]
+    [field: SerializeField]
+    public ResourceConfiguration ResourceConfiguration
+    {
+        get;
+        private set;
+    }
 
     private float quantity;
 
@@ -22,11 +26,11 @@ public class Resource : MonoBehaviour
 
     private void Awake()
     {
-        quantity = resourceConfiguration.InitialQuantity;
+        quantity = ResourceConfiguration.InitialQuantity;
         ResetRemainingTime();
     }
 
-    private void ResetRemainingTime() => remainingTime = resourceConfiguration.TimeToCollect;
+    private void ResetRemainingTime() => remainingTime = ResourceConfiguration.TimeToCollect;
 
     /// <summary>
     /// Elapse some collection time.
@@ -45,13 +49,13 @@ public class Resource : MonoBehaviour
         if (remainingTime <= 0f)
         {
             // Player has collected a batch.
-            OnCollectCompleted?.Invoke(this, new OnCollectCompletedArgs { AmountCollected = resourceConfiguration.CollectedQuantity });
+            OnCollectCompleted?.Invoke(this, new OnCollectCompletedArgs { AmountCollected = ResourceConfiguration.CollectedQuantity });
 
             // Reset timer.
             ResetRemainingTime();
 
             // Decrement quantity.
-            quantity -= resourceConfiguration.CollectedQuantity * dt;
+            quantity -= ResourceConfiguration.CollectedQuantity * dt;
 
             // Do stuff when quantity is depleted.
             if (quantity <= 0)

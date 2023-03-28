@@ -155,5 +155,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d16da3a70f0914fcca5ae8f9b181fc44, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  resourceConfiguration: {fileID: 11400000, guid: b4e50e9f84d9141dda2a26cb5610eab5,
+  <ResourceConfiguration>k__BackingField: {fileID: 11400000, guid: 81dc859c5d7b44626b7bd8e1c44fb3d4,
     type: 2}

@@ -19,7 +19,7 @@ public class PlayerTool : MonoBehaviour
 
     [SerializeField]
     [NotNull]
-    private PlayerCollectingState PlayerCollectingState;
+    private PlayerMiningState PlayerCollectingState;
 
     private void PlayerStateMachine_OnChanged(object sender, StateMachineBehaviour.StateMachineChangedArgs args)
     {

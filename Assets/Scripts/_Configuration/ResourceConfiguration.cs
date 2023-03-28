@@ -1,8 +1,15 @@
 using UnityEngine;
 
+/// <summary>
+/// Configuration for a specific resource type.
+/// </summary>
 [CreateAssetMenu]
 public class ResourceConfiguration : ScriptableObject
 {
+    /// <summary>
+    /// The number of seconds that must elapse before CollectedQuantity is awarded to the player.
+    /// </summary>
+
     /// <summary>
     /// The number of seconds that must elapse before CollectedQuantity is awarded to the player.
     /// </summary>
@@ -31,6 +38,17 @@ public class ResourceConfiguration : ScriptableObject
     {
         get;
         private set;
+    }
+
+    /// <summary>
+    /// The animation that should be played when the player interacts with this resource.
+    /// </summary>
+    [field: SerializeField]
+    [field: NotNull]
+    public AnimationEnum PlayerStateEnum
+    {
+        get;
+        set;
     }
 
     public float InitialQuantity

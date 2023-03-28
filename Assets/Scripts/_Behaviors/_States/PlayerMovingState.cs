@@ -47,8 +47,6 @@ public class PlayerMovingState : StateBehaviour
         var movementDirection = gameInput.GetMovement();
         FaceMovementDirection(movementDirection);
         Move(movementDirection);
-
-        throw new System.Exception("leave off for tomorrow: add remaining animations in Notion");
     }
 
     private void Move(Vector3 movementDirection)

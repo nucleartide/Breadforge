@@ -10,8 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 422eba2e6becd4a22a0695010ffb680d, type: 3}
-  m_Name: Dummy Resource Configuration
+  m_Name: Sugar Cane
   m_EditorClassIdentifier: 
   <TimeToCollect>k__BackingField: 2
   <CollectedQuantity>k__BackingField: 10
   <NumCollections>k__BackingField: 1000
+  <PlayerStateEnum>k__BackingField: {fileID: 11400000, guid: 054c8ee9aac9642cc9e7924b4fac7fda,
+    type: 2}

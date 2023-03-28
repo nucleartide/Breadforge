@@ -62,7 +62,7 @@ crashlytics-build.properties
 Assets/Plugins/Ciathyza/
 Assets/Plugins/polyperfect/
 Assets/Plugins/ADG_Textures/
-Assets/Plugins/Kevin Iglesias/
+Assets/Plugins/Kevin Iglesias*
 
 # Mac stuff.
 .DS_Store

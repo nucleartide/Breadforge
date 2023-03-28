@@ -12,7 +12,11 @@ public class PlayerStateMachine : StateMachineBehaviour
 
     [SerializeField]
     [NotNull]
-    private PlayerCollectingState playerCollectingState;
+    private PlayerMiningState playerMiningState;
+
+    [SerializeField]
+    [NotNull]
+    private PlayerChoppingState playerChoppingState;
 
     [SerializeField]
     [NotNull]
@@ -36,8 +40,9 @@ public class PlayerStateMachine : StateMachineBehaviour
         if (nearest == null)
             throw new System.Exception("TODO: Jason add in a 'null' sound here.");
 
-        playerCollectingState.Initialize(nearest);
-        TransitionTo(playerCollectingState);
+        throw new System.Exception("switch to state depending on Resource's resource configuration");
+        playerMiningState.Initialize(nearest);
+        TransitionTo(playerMiningState);
     }
 
     private void GameInput_OnCollectCanceled(object sender, GameInputManager.GameInputArgs args)

@@ -1,23 +1,23 @@
 using UnityEngine;
 
-public class PlayerCollectingState : StateBehaviour
+public abstract class PlayerCollectingState : StateBehaviour
 {
     [SerializeField]
     [NotNull]
-    private PlayerConfiguration playerConfiguration;
+    protected PlayerConfiguration playerConfiguration;
 
-    private Resource resourceBeingCollected;
+    protected Resource resourceBeingCollected;
 
-    private Quaternion desiredRotation;
+    protected Quaternion desiredRotation;
 
-    private static Quaternion GetDesiredRotation(Resource resourceBeingCollected, Transform gameObject)
+    protected static Quaternion GetDesiredRotation(Resource resourceBeingCollected, Transform gameObject)
     {
         var toCollect = resourceBeingCollected.transform.position - gameObject.position;
         var angle = Vector3.SignedAngle(Vector3.forward, toCollect, Vector3.up);
         return Quaternion.AngleAxis(angle, Vector3.up);
     }
 
-    private static void FaceDesiredOrientation(Quaternion desired, Transform player, float deltaTime, PlayerConfiguration playerConfiguration)
+    protected static void FaceDesiredOrientation(Quaternion desired, Transform player, float deltaTime, PlayerConfiguration playerConfiguration)
     {
         float singleStep = playerConfiguration.RotationSpeedDegrees * deltaTime;
         player.rotation = Quaternion.RotateTowards(player.rotation, desired, singleStep);
@@ -29,7 +29,7 @@ public class PlayerCollectingState : StateBehaviour
         desiredRotation = GetDesiredRotation(resourceBeingCollected, transform);
     }
 
-    private void Update()
+    protected void Update()
     {
         FaceDesiredOrientation(desiredRotation, transform, Time.smoothDeltaTime, playerConfiguration);
 

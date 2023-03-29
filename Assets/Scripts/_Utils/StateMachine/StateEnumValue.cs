@@ -1,6 +1,8 @@
 using UnityEngine;
-using System.Collections.Generic;
 
+/// <summary>
+/// An enum value represented as a ScriptableObject, where the enum is a StateBehaviour.
+/// </summary>
 [CreateAssetMenu]
 public class StateEnumValue : ScriptableObject
 {

@@ -1,9 +1,19 @@
 using UnityEngine;
 using System;
 
+/// <summary>
+/// A simple state machine implementation that performs state transitions by enabling/disabling MonoBehaviours.
+/// </summary>
 public abstract class StateMachineBehaviour : MonoBehaviour
 {
+    public class StateMachineChangedArgs : EventArgs
+    {
+        public StateBehaviour OldState;
+        public StateBehaviour NewState;
+    }
+
     [SerializeField]
+    [NotNull]
     protected StateBehaviour initialState;
 
     public StateBehaviour CurrentState
@@ -12,19 +22,13 @@ public abstract class StateMachineBehaviour : MonoBehaviour
         private set;
     }
 
+    public event EventHandler<StateMachineChangedArgs> OnChanged;
+
     private void Awake()
     {
         CurrentState = initialState;
         OnChanged?.Invoke(this, new StateMachineChangedArgs { OldState = null, NewState = initialState });
     }
-
-    public class StateMachineChangedArgs : EventArgs
-    {
-        public StateBehaviour OldState;
-        public StateBehaviour NewState;
-    }
-
-    public event EventHandler<StateMachineChangedArgs> OnChanged;
 
     public void TransitionTo(StateBehaviour newState)
     {

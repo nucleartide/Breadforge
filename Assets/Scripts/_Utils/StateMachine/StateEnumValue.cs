@@ -1,7 +1,7 @@
 using UnityEngine;
 
 /// <summary>
-/// An enum value represented as a ScriptableObject, where the enum is a StateBehaviour.
+/// An enum value represented as a ScriptableObject, where the enum is a set of StateBehaviours.
 /// </summary>
 [CreateAssetMenu]
 public class StateEnumValue : ScriptableObject

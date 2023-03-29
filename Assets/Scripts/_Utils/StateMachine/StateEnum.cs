@@ -1,6 +1,9 @@
 using UnityEngine;
 using System.Collections.Generic;
 
+/// <summary>
+/// An enum implemented as a ScriptableObject, where the enum represents a set of StateBehaviours.
+/// </summary>
 [CreateAssetMenu]
 public class StateEnum : ScriptableObject
 {

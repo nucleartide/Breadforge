@@ -1,7 +1,5 @@
 using UnityEngine;
-using System.Collections.Generic;
 
-[RequireComponent(typeof(Animator))]
 public class PlayerAnimator : MonoBehaviour
 {
     [SerializeField]
@@ -25,7 +23,6 @@ public class PlayerAnimator : MonoBehaviour
     private int playerStateHash = -1;
 
     [SerializeField]
-    [NotNull]
     private StateEnum playerStateEnum;
 
     private void Awake()

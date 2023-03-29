@@ -887,6 +887,8 @@ GameObject:
   - component: {fileID: 1614179778878583233}
   - component: {fileID: 1614179778878583238}
   - component: {fileID: 3102984711005192728}
+  - component: {fileID: 3102984711005192734}
+  - component: {fileID: 3102984711005192733}
   - component: {fileID: 3102984711005192729}
   - component: {fileID: 3102984711005192730}
   - component: {fileID: 3102984711005192731}
@@ -1425,7 +1427,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1855632166081295619}
   - component: {fileID: 1855632166089038591}
-  - component: {fileID: 1855632166089038592}
   - component: {fileID: 1855632166089038593}
   m_Layer: 0
   m_Name: Man Astronaut Rig
@@ -1902,22 +1903,6 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
---- !u!114 &1855632166089038592
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1855632166081784099}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 93db74f9fc9914a32aa8fa9b978197c3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  animator: {fileID: 1855632166089038591}
-  playerStateMachine: {fileID: 3102984711005192728}
-  playerMovingState: {fileID: 3102984711005192729}
-  playerStateEnum: {fileID: 11400000, guid: c5c97e45244ef4665be8f4ac9cc292dc, type: 2}
 --- !u!114 &1855632166089038593
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2027,10 +2012,24 @@ MonoBehaviour:
   initialState: {fileID: 3102984711005192729}
   gameInput: {fileID: 63202250}
   immediateCollectable: {fileID: 1405936094}
-  playerMiningState: {fileID: 3102984711005192730}
-  playerChoppingState: {fileID: 3102984711005192731}
   playerMovingState: {fileID: 3102984711005192729}
-  playerScoopingState: {fileID: 3102984711005192732}
+  resourcesToPlayerStates:
+  - Resource: {fileID: 11400000, guid: 5bf978f04ec0645269baf3773d40b945, type: 2}
+    PlayerState: {fileID: 3102984711005192730}
+  - Resource: {fileID: 11400000, guid: 28ee5f9af7fd14544aa06d38ecc36156, type: 2}
+    PlayerState: {fileID: 3102984711005192730}
+  - Resource: {fileID: 11400000, guid: 81dc859c5d7b44626b7bd8e1c44fb3d4, type: 2}
+    PlayerState: {fileID: 3102984711005192730}
+  - Resource: {fileID: 11400000, guid: 81598932e4db54228a7a337819081e25, type: 2}
+    PlayerState: {fileID: 3102984711005192731}
+  - Resource: {fileID: 11400000, guid: 1aafccd216c264fca99e6173bc56509a, type: 2}
+    PlayerState: {fileID: 3102984711005192730}
+  - Resource: {fileID: 11400000, guid: ab991df1cad3646fd8cd6777719bbdcc, type: 2}
+    PlayerState: {fileID: 3102984711005192731}
+  - Resource: {fileID: 11400000, guid: 5d29806310cac48aab62148d6ae13bf1, type: 2}
+    PlayerState: {fileID: 3102984711005192732}
+  - Resource: {fileID: 11400000, guid: b4e50e9f84d9141dda2a26cb5610eab5, type: 2}
+    PlayerState: {fileID: 3102984711005192731}
 --- !u!114 &3102984711005192729
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2089,6 +2088,45 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerConfiguration: {fileID: 11400000, guid: 0e29962fbc3e34aaea3620693e304758,
     type: 2}
+--- !u!114 &3102984711005192733
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1614179778878583234}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fb2d35aa4a6744bf9b7b51ef39068f18, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &3102984711005192734
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1614179778878583234}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 93db74f9fc9914a32aa8fa9b978197c3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  animator: {fileID: 1855632166089038591}
+  playerStateMachine: {fileID: 3102984711005192728}
+  playerMovingState: {fileID: 3102984711005192729}
+  playerStateEnum:
+    enumValues:
+    - <State>k__BackingField: {fileID: 3102984711005192733}
+      <Index>k__BackingField: 0
+    - <State>k__BackingField: {fileID: 3102984711005192729}
+      <Index>k__BackingField: 1
+    - <State>k__BackingField: {fileID: 3102984711005192730}
+      <Index>k__BackingField: 2
+    - <State>k__BackingField: {fileID: 3102984711005192731}
+      <Index>k__BackingField: 3
+    - <State>k__BackingField: {fileID: 3102984711005192732}
+      <Index>k__BackingField: 4
 --- !u!1001 &4996571555868802377
 PrefabInstance:
   m_ObjectHideFlags: 0

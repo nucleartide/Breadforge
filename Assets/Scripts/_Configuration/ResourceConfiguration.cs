@@ -9,10 +9,6 @@ public class ResourceConfiguration : ScriptableObject
     /// <summary>
     /// The number of seconds that must elapse before CollectedQuantity is awarded to the player.
     /// </summary>
-
-    /// <summary>
-    /// The number of seconds that must elapse before CollectedQuantity is awarded to the player.
-    /// </summary>
     [field: SerializeField]
     public float TimeToCollect
     {
@@ -31,7 +27,7 @@ public class ResourceConfiguration : ScriptableObject
     }
 
     /// <summary>
-    /// The initial quantity of the resource, specified as a multiple of CollectedQuantity.
+    /// NumCollections * CollectedQuantity == InitialQuantity.
     /// </summary>
     [field: SerializeField]
     public int NumCollections
@@ -41,16 +37,8 @@ public class ResourceConfiguration : ScriptableObject
     }
 
     /// <summary>
-    /// The animation that should be played when the player interacts with this resource.
+    /// The initial quantity of the resource, specified as a multiple of CollectedQuantity.
     /// </summary>
-    [field: SerializeField]
-    [field: NotNull]
-    public StateEnumValue PlayerStateEnum
-    {
-        get;
-        set;
-    }
-
     public float InitialQuantity
     {
         get

@@ -2,24 +2,20 @@ using UnityEngine;
 using System.Collections.Generic;
 
 /// <summary>
-/// An enum implemented as a ScriptableObject, where the enum represents a set of StateBehaviours.
+/// An enum implemented as data, where the enum represents a set of StateBehaviours.
 /// </summary>
-[CreateAssetMenu]
-public class StateEnum : ScriptableObject
+[System.Serializable]
+public class StateEnum
 {
     [SerializeField]
-    List<StateEnumValue> enumValues = new List<StateEnumValue>();
+    private List<StateEnumValue> enumValues;
 
     public int GetIndex(StateBehaviour state)
     {
-        var stateClassName = state.GetType().Name;
         foreach (var value in enumValues)
-        {
-            var scriptName = value.State.name;
-            if (stateClassName == value.State.name)
+            if (value.State == state)
                 return value.Index;
-        }
 
-        throw new System.Exception($"State {stateClassName} does not have a corresponding StateEnumValue. Please configure a new StateEnumValue, add it to list of enumValues, and try again.");
+        throw new System.Exception($"State {state.name} does not have a corresponding StateEnumValue. Please configure a new StateEnumValue, add it to list of EnumValues, and try again.");
     }
 }

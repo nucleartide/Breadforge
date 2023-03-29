@@ -1,4 +1,5 @@
 using UnityEngine;
+using System.Collections.Generic;
 
 public class PlayerStateMachine : StateMachineBehaviour
 {
@@ -12,19 +13,7 @@ public class PlayerStateMachine : StateMachineBehaviour
 
     [SerializeField]
     [NotNull]
-    private PlayerMiningState playerMiningState;
-
-    [SerializeField]
-    [NotNull]
-    private PlayerChoppingState playerChoppingState;
-
-    [SerializeField]
-    [NotNull]
     private PlayerMovingState playerMovingState;
-
-    [SerializeField]
-    [NotNull]
-    private PlayerScoopingState playerScoopingState;
 
     private void OnEnable()
     {
@@ -38,26 +27,36 @@ public class PlayerStateMachine : StateMachineBehaviour
         gameInput.OnCollectCanceled -= GameInput_OnCollectCanceled;
     }
 
+    [System.Serializable]
+    public class ResourceToPlayerState
+    {
+        [NotNull]
+        public ResourceConfiguration Resource;
+
+        [NotNull]
+        public PlayerCollectingState PlayerState;
+    }
+
+    [SerializeField]
+    private List<ResourceToPlayerState> resourcesToPlayerStates = new List<ResourceToPlayerState>();
+
+    private PlayerCollectingState GetPlayerState(ResourceConfiguration resource)
+    {
+        foreach (var mapping in resourcesToPlayerStates)
+            if (mapping.Resource == resource)
+                return mapping.PlayerState;
+
+        throw new System.Exception($"Resource {resource.name} does not have a corresponding PlayerCollectingState. Please double-check the resourcesToPlayerStates mapping, then try again.");
+    }
+
     private void GameInput_OnCollectStarted(object sender, GameInputManager.GameInputArgs args)
     {
         var resource = immediateCollectable.ImmediateCollectable;
         if (resource == null)
-            throw new System.Exception("TODO: Jason add in a 'null' sound here.");
-
-        // Grab some data.
-        var config = resource.ResourceConfiguration;
-        var stateName = config.PlayerStateEnum.State.name;
+            throw new System.Exception("TODO(jason): Add in a 'null' sound here.");
 
         // Given a Resource, fetch the corresponding player state.
-        PlayerCollectingState collectingState;
-        if (stateName == playerMiningState.GetType().Name)
-            collectingState = playerMiningState;
-        else if (stateName == playerChoppingState.GetType().Name)
-            collectingState = playerChoppingState;
-        else if (stateName == playerScoopingState.GetType().Name)
-            collectingState = playerScoopingState;
-        else
-            throw new System.Exception($"State name {stateName} does not have a corresponding PlayerCollectingState. Please inspect the source code to figure out what's going on.");
+        var collectingState = GetPlayerState(resource.Configuration);
 
         // Perform state transition.
         collectingState.Initialize(resource);

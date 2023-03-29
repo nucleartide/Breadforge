@@ -6,13 +6,13 @@ public class NearbyResourcesManager : MonoBehaviour
 {
     [NotNull]
     [SerializeField]
-    ImmediateCollectableManager immediateCollectable;
+    private ImmediateCollectableManager immediateCollectable;
 
     [NotNull]
     [SerializeField]
-    PlayerStateMachine playerController;
+    private PlayerStateMachine playerController;
 
-    HashSet<GameObject> lastFrameCollectibles = new HashSet<GameObject>();
+    private HashSet<GameObject> lastFrameCollectibles = new HashSet<GameObject>();
 
     private static List<RaycastHit> Raycast(Transform transform)
     {
@@ -70,8 +70,6 @@ public class NearbyResourcesManager : MonoBehaviour
         var hits = Raycast(playerController.transform);
         var isCollecting = playerController.CurrentState is PlayerCollectingState;
         lastFrameCollectibles = UpdateLayers(lastFrameCollectibles, hits, isCollecting);
-        Debug.Log($"Setting immediate collectable (hits: {hits.Count}):");
-        Debug.Log(GetImmediateCollectable(hits));
         immediateCollectable.SetImmediateCollectable(GetImmediateCollectable(hits));
     }
 }

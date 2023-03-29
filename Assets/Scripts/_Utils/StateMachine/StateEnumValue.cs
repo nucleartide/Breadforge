@@ -1,14 +1,14 @@
 using UnityEngine;
 
 /// <summary>
-/// An enum value implemented as a ScriptableObject, where the enum represents a set of StateBehaviours.
+/// An enum value implemented as data, where the enum represents a set of StateBehaviours.
 /// </summary>
-[CreateAssetMenu]
-public class StateEnumValue : ScriptableObject
+[System.Serializable]
+public class StateEnumValue
 {
     [field: Tooltip("Drag a StateBehaviour script file into this slot.")]
     [field: SerializeField]
-    public UnityEditor.MonoScript State
+    public StateBehaviour State
     {
         get;
         private set;

@@ -20,7 +20,7 @@ public class GameInputManager : MonoBehaviour
 
     public event EventHandler<GameInputArgs> OnCollectCanceled;
 
-    public void OnEnable()
+    private void OnEnable()
     {
         playerInputActions = new PlayerInputActions();
         playerInputActions.Player.Enable();
@@ -30,7 +30,7 @@ public class GameInputManager : MonoBehaviour
         playerInputActions.Player.Collect.canceled += Collect_canceled;
     }
 
-    public void OnDisable()
+    private void OnDisable()
     {
         playerInputActions.Player.Pause.performed -= Pause_performed;
         playerInputActions.Player.Collect.started -= Collect_started;
@@ -75,10 +75,5 @@ public class GameInputManager : MonoBehaviour
     public bool GetRun()
     {
         return playerInputActions.Player.Run.IsPressed();
-    }
-
-    public bool GetCollect()
-    {
-        return playerInputActions.Player.Collect.IsPressed();
     }
 }

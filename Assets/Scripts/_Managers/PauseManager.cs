@@ -1,7 +1,6 @@
 using UnityEngine;
 
-[CreateAssetMenu]
-public class PauseManager : Manager
+public class PauseManager : MonoBehaviour
 {
     [SerializeField]
     [NotNull]
@@ -20,12 +19,12 @@ public class PauseManager : Manager
         isPaused = !isPaused;
     }
 
-    public override void OnManualEnable()
+    public void OnEnable()
     {
         gameInput.OnPaused += GameInput_OnPauseAction;
     }
 
-    public override void OnManualDisable()
+    public void OnDisable()
     {
         gameInput.OnPaused -= GameInput_OnPauseAction;
     }

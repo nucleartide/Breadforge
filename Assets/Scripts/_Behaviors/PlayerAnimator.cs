@@ -45,7 +45,6 @@ public class PlayerAnimator : MonoBehaviour
 
     private void Update()
     {
-        throw new System.Exception("hide the E and outline");
         animator.SetFloat(movementSpeedHash, playerMovingState.HorizontalSpeed);
     }
 }

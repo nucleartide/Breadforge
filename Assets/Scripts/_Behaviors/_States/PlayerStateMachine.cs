@@ -8,7 +8,7 @@ public class PlayerStateMachine : StateMachineBehaviour
 
     [SerializeField]
     [NotNull]
-    private PlayerCollectableRadius playerCollectableRadius;
+    private ImmediateCollectableManager immediateCollectable;
 
     [SerializeField]
     [NotNull]
@@ -40,7 +40,7 @@ public class PlayerStateMachine : StateMachineBehaviour
 
     private void GameInput_OnCollectStarted(object sender, GameInputManager.GameInputArgs args)
     {
-        var resource = playerCollectableRadius.CanCollectResource;
+        var resource = immediateCollectable.ImmediateCollectable;
         if (resource == null)
             throw new System.Exception("TODO: Jason add in a 'null' sound here.");
 

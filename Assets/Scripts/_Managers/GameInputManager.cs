@@ -3,8 +3,7 @@ using UnityEngine.Assertions;
 using System;
 using UnityEngine.InputSystem;
 
-[CreateAssetMenu]
-public class GameInputManager : Manager
+public class GameInputManager : MonoBehaviour
 {
     private PlayerInputActions playerInputActions;
 
@@ -21,7 +20,7 @@ public class GameInputManager : Manager
 
     public event EventHandler<GameInputArgs> OnCollectCanceled;
 
-    public override void OnManualEnable()
+    public void OnEnable()
     {
         playerInputActions = new PlayerInputActions();
         playerInputActions.Player.Enable();
@@ -31,7 +30,7 @@ public class GameInputManager : Manager
         playerInputActions.Player.Collect.canceled += Collect_canceled;
     }
 
-    public override void OnManualDisable()
+    public void OnDisable()
     {
         playerInputActions.Player.Pause.performed -= Pause_performed;
         playerInputActions.Player.Collect.started -= Collect_started;

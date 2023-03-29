@@ -45,7 +45,7 @@ public class ResourceConfiguration : ScriptableObject
     /// </summary>
     [field: SerializeField]
     [field: NotNull]
-    public AnimationEnum PlayerStateEnum
+    public StateEnumValue PlayerStateEnum
     {
         get;
         set;

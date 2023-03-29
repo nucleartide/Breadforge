@@ -1917,12 +1917,7 @@ MonoBehaviour:
   animator: {fileID: 1855632166089038591}
   playerStateMachine: {fileID: 3102984711005192728}
   playerMovingState: {fileID: 3102984711005192729}
-  playerStateEnums:
-  - {fileID: 11400000, guid: 88ee0ca519b81418ca14f313581b81da, type: 2}
-  - {fileID: 11400000, guid: 67271bcd40fbf46aca0b9e2af9aca1a2, type: 2}
-  - {fileID: 11400000, guid: 04392809cd55d44eab8c9fec192c1774, type: 2}
-  - {fileID: 11400000, guid: 054c8ee9aac9642cc9e7924b4fac7fda, type: 2}
-  - {fileID: 11400000, guid: 8d53288a7f2644f3689d0df8beba0e1e, type: 2}
+  playerStateEnum: {fileID: 11400000, guid: c5c97e45244ef4665be8f4ac9cc292dc, type: 2}
 --- !u!114 &1855632166089038593
 MonoBehaviour:
   m_ObjectHideFlags: 0

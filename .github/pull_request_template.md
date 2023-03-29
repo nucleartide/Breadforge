@@ -19,6 +19,7 @@
 * make a list of checklist docs
     * incompetech audio
     * asset packs
+* writing here should serve portfolio
 
 <details>
 <summary>

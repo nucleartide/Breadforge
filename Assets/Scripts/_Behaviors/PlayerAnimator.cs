@@ -25,7 +25,8 @@ public class PlayerAnimator : MonoBehaviour
     private int playerStateHash = -1;
 
     [SerializeField]
-    List<AnimationEnum> playerStateEnums;
+    [NotNull]
+    private StateEnum playerStateEnum;
 
     private void Awake()
     {
@@ -39,7 +40,7 @@ public class PlayerAnimator : MonoBehaviour
 
     private void PlayerStateMachine_OnChanged(object sender, StateMachineBehaviour.StateMachineChangedArgs args)
     {
-        var playerState = AnimationEnum.GetIndex(args.NewState, playerStateEnums);
+        var playerState = playerStateEnum.GetIndex(args.NewState);
         animator.SetInteger(playerStateHash, playerState);
     }
 

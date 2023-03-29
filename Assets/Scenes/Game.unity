@@ -269,6 +269,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   immediateCollectable: {fileID: 1405936094}
+  playerController: {fileID: 3102984711005192728}
 --- !u!1 &218231519 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 113808, guid: 41f5af45291254582b48f414dce6a76f,
@@ -590,7 +591,7 @@ MonoBehaviour:
   signifierPrefab: {fileID: 5149433096189146715, guid: fb64f147c59e146acaf0a0d6ac6bb2d2,
     type: 3}
   offset: {x: 0, y: 0.25, z: 0}
-  IsCollecting: 0
+  playerStateMachine: {fileID: 3102984711005192728}
 --- !u!1 &1498889041
 GameObject:
   m_ObjectHideFlags: 0
@@ -2029,9 +2030,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   initialState: {fileID: 3102984711005192729}
-  gameInput: {fileID: 11400000, guid: 05f76693889e84d5cbc6e15633ea37ee, type: 2}
-  immediateCollectable: {fileID: 11400000, guid: 0bd65ba75817b46e1ab2c124f7d5947f,
-    type: 2}
+  gameInput: {fileID: 63202250}
+  immediateCollectable: {fileID: 1405936094}
   playerMiningState: {fileID: 3102984711005192730}
   playerChoppingState: {fileID: 3102984711005192731}
   playerMovingState: {fileID: 3102984711005192729}
@@ -2050,7 +2050,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerConfiguration: {fileID: 11400000, guid: 0e29962fbc3e34aaea3620693e304758,
     type: 2}
-  gameInput: {fileID: 11400000, guid: 05f76693889e84d5cbc6e15633ea37ee, type: 2}
+  gameInput: {fileID: 63202250}
   characterController: {fileID: 1614179778878583238}
 --- !u!114 &3102984711005192730
 MonoBehaviour:

@@ -2,7 +2,7 @@ using UnityEngine;
 using UnityEngine.Assertions;
 using System.Collections.Generic;
 
-public class UtilsTests : MonoBehaviour
+public class ListHelpersTests : MonoBehaviour
 {
     public class TestClass
     {

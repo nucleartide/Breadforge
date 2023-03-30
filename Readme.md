@@ -41,7 +41,7 @@ A Game Codebase Tour is exactly that. It's a guided codebase that:
 
 This particular Game Codebase Tour walks you through how to create a factory builder game like Factorio:
 
-https://user-images.githubusercontent.com/914228/224439375-11446f18-c0b2-4db9-ad00-691fa198884c.mov
+https://user-images.githubusercontent.com/914228/228888133-bc01741a-b64f-40d4-b258-242408742669.mov
 
 <br />
 
@@ -57,7 +57,8 @@ Order | Feature | Pull Request
 6 | Populate game world with procedurally-generated resources | https://github.com/nucleartide/Baguettorio/pull/30
 7 | Add actual resource assets and change to ortho cam | https://github.com/nucleartide/Baguettorio/pull/32
 8 | Highlight collectible resources | https://github.com/nucleartide/Breadforge/pull/37
-9 | *(more to come soon)* | *(more to come soon)*
+9 | Add ability to collect resources | https://github.com/nucleartide/Breadforge/pull/38
+10 | *(more to come soon)* | *(more to come soon)*
 
 ---
 

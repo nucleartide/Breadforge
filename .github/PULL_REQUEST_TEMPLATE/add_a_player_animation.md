@@ -2,6 +2,7 @@
 
 Roughly...
 
+- [ ] procuring animations (find on asset store)
 - [ ] update mecanim state machine
 - [ ] create new StateBehaviour and add to Player
 - [ ] update player state machine

@@ -4,11 +4,11 @@ using System.Linq;
 
 public class NearbyResourcesManager : MonoBehaviour
 {
-    [NotNull]
+    [NotNull(IgnorePrefab = true)]
     [SerializeField]
     private ImmediateCollectableManager immediateCollectable;
 
-    [NotNull]
+    [NotNull(IgnorePrefab = true)]
     [SerializeField]
     private PlayerStateMachine playerController;
 

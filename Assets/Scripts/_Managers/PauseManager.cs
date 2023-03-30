@@ -3,7 +3,7 @@ using UnityEngine;
 public class PauseManager : MonoBehaviour
 {
     [SerializeField]
-    [NotNull]
+    [NotNull(IgnorePrefab = true)]
     GameInputManager gameInput;
 
     private bool isPaused = false;

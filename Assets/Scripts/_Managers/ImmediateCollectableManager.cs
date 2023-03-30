@@ -18,7 +18,7 @@ public class ImmediateCollectableManager : MonoBehaviour
     private Vector3 offset;
 
     [SerializeField]
-    [NotNull]
+    [NotNull(IgnorePrefab = true)]
     private PlayerStateMachine playerStateMachine;
 
     private GameObject signifier;

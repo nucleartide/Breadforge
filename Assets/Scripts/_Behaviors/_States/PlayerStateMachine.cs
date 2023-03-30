@@ -4,11 +4,11 @@ using System.Collections.Generic;
 public class PlayerStateMachine : StateMachineBehaviour
 {
     [SerializeField]
-    [NotNull]
+    [NotNull(IgnorePrefab = true)]
     private GameInputManager gameInput;
 
     [SerializeField]
-    [NotNull]
+    [NotNull(IgnorePrefab = true)]
     private ImmediateCollectableManager immediateCollectable;
 
     [SerializeField]

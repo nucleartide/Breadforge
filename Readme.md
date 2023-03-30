@@ -58,6 +58,7 @@ Order | Feature | Pull Request
 7 | Add actual resource assets and change to ortho cam | https://github.com/nucleartide/Baguettorio/pull/32
 8 | Highlight collectible resources | https://github.com/nucleartide/Breadforge/pull/37
 9 | Add ability to collect resources | https://github.com/nucleartide/Breadforge/pull/38
+10 | Add backing soundtrack | https://github.com/nucleartide/Breadforge/pull/39
 10 | *(more to come soon)* | *(more to come soon)*
 
 ---

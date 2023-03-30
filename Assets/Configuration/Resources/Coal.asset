@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 422eba2e6becd4a22a0695010ffb680d, type: 3}
+  m_Name: Coal
+  m_EditorClassIdentifier: 
+  <TimeToCollect>k__BackingField: 2
+  <CollectedQuantity>k__BackingField: 10
+  <NumCollections>k__BackingField: 1000
+  <PlayerStateEnum>k__BackingField: {fileID: 11400000, guid: 04392809cd55d44eab8c9fec192c1774,
+    type: 2}

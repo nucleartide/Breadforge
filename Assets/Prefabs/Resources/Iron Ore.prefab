@@ -94,6 +94,7 @@ GameObject:
   - component: {fileID: 9135529179162325716}
   - component: {fileID: 3150828859779169781}
   - component: {fileID: 3796341795005077799}
+  - component: {fileID: 8447561899844742891}
   m_Layer: 3
   m_Name: Iron Ore
   m_TagString: Untagged
@@ -142,3 +143,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 34208ba97113c4b47b6719dead693814, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &8447561899844742891
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4795040601957831555}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d16da3a70f0914fcca5ae8f9b181fc44, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  <Configuration>k__BackingField: {fileID: 11400000, guid: 81dc859c5d7b44626b7bd8e1c44fb3d4,
+    type: 2}

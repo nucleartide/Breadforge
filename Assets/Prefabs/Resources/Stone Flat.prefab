@@ -94,6 +94,7 @@ GameObject:
   - component: {fileID: 8174128826292862126}
   - component: {fileID: 5299946912725363341}
   - component: {fileID: 1168370175159635879}
+  - component: {fileID: 7736216071222708684}
   m_Layer: 3
   m_Name: Stone Flat
   m_TagString: Untagged
@@ -142,3 +143,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 34208ba97113c4b47b6719dead693814, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &7736216071222708684
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7432523358845925153}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d16da3a70f0914fcca5ae8f9b181fc44, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  <Configuration>k__BackingField: {fileID: 11400000, guid: 1aafccd216c264fca99e6173bc56509a,
+    type: 2}

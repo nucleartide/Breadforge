@@ -1,7 +1,5 @@
 ## The Job Story
 
-...
-
 <details>
 <summary>
 <strong>Player</strong>: When <code>X</code>, I want to <code>Y</code>, so that <code>Z</code>.

@@ -7,7 +7,7 @@ using System.Collections.Generic;
 /// Use this to fill in game assets when checking out a fresh copy of the project from version control.
 /// </summary>
 [CreateAssetMenu]
-public class ThirdPartyAssets : ScriptableObject
+public class ThirdPartyConfiguration : ScriptableObject
 {
     public enum Model
     {

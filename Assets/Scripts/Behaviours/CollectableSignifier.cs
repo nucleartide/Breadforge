@@ -4,7 +4,7 @@ using UnityEngine.EventSystems;
 using UnityEngine.Assertions;
 #endif
 
-public class CollectibleSignifier : MonoBehaviour
+public class CollectableSignifier : MonoBehaviour
 {
 #if UNITY_EDITOR
     private void Start()

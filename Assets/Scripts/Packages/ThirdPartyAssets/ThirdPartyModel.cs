@@ -4,10 +4,10 @@ public class ThirdPartyModel : MonoBehaviour
 {
     [SerializeField]
     [NotNull]
-    private ThirdPartyAssets thirdPartyAssets;
+    private ThirdPartyConfiguration thirdPartyAssets;
 
     [SerializeField]
-    private ThirdPartyAssets.Model model;
+    private ThirdPartyConfiguration.Model model;
 
     private void Awake()
     {

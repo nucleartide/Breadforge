@@ -3,7 +3,7 @@ using UnityEngine;
 /// <summary>
 /// Track the position of a target GameObject, with an optional offset.
 /// </summary>
-public class TrackTarget : MonoBehaviour
+public class PositionTracker : MonoBehaviour
 {
     [SerializeField]
     [NotNull]

@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 28838c6557f504857a14b4deba97c776, type: 3}
-  m_Name: Third Party Assets
+  m_Name: Third Party Configuration
   m_EditorClassIdentifier: 
   Pickaxe:
     Model: 1

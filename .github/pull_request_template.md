@@ -1,25 +1,6 @@
 ## The Job Story
 
-* TODO: consider doing a Loom presentation, and uploading to YouTube?
-* do the "Mom Dad game dev" titling
-* consider pulling out shared utils into separate repo, and use git submodules
-* sketch out data model
-* zoom in on player for a GIF
-* animation workflow
-    * update mecanim state machine
-    * create new StateBehaviour and add to Player
-    * update player state machine
-    * update resource config
-    * make a new PlayerState enum
-    * assign to resource config
-    * update player animator's list of animation enums
-    * update player tool script to add tool
-* what other workflows need documenting? document them, and consider how you might get faster within each workflow
-* revise marketing step: make a Loom video only if there's a pain point that's worth discussing
-* make a list of checklist docs
-    * incompetech audio
-    * asset packs
-* writing here should serve portfolio
+...
 
 <details>
 <summary>

@@ -39,9 +39,6 @@ public class PlayerTool : MonoBehaviour
 
     private void PlayerStateMachine_OnChanged(object sender, StateMachineBehaviour.StateMachineChangedArgs args)
     {
-        Debug.Log("PlayerTool : OnChanged");
-        Debug.Log(args.NewState);
-
         pickaxe.SetActive(args.NewState == playerMiningState);
         axe.SetActive(args.NewState == playerChoppingState);
         bottle.SetActive(args.NewState == playerScoopingState);

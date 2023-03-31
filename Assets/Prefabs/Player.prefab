@@ -709,6 +709,7 @@ GameObject:
   - component: {fileID: 4021359803779808056}
   - component: {fileID: 4021359803787023556}
   - component: {fileID: 4021359803787023674}
+  - component: {fileID: 634476755}
   m_Layer: 0
   m_Name: Man Astronaut Rig
   m_TagString: Untagged
@@ -772,6 +773,18 @@ MonoBehaviour:
   playerMiningState: {fileID: 368801314335542305}
   playerChoppingState: {fileID: 368801314335542304}
   playerScoopingState: {fileID: 368801314335542311}
+--- !u!114 &634476755
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4021359803779770136}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2f862dc1f3c4a4027900564866cada63, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &4021359803779770138
 GameObject:
   m_ObjectHideFlags: 0

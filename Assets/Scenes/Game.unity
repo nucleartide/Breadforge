@@ -135,19 +135,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bded502519dc440569d76f4453e3eea3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!1 &634476751 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 4021359803779770136, guid: b7150f0c756f841548259da7df1bee5e,
+--- !u!114 &634476755 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 634476755, guid: b7150f0c756f841548259da7df1bee5e,
     type: 3}
   m_PrefabInstance: {fileID: 3318654781765193275}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &634476755
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 634476751}
+  m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 2f862dc1f3c4a4027900564866cada63, type: 3}
@@ -645,12 +639,6 @@ PrefabInstance:
       propertyPath: player
       value: 
       objectReference: {fileID: 3102984711005192736}
-    - target: {fileID: 1060453973320401705, guid: ad6044324a60f4ec69b7d37fbbb69253,
-        type: 3}
-      propertyPath: allTheSounds
-      value: 
-      objectReference: {fileID: 11400000, guid: 7e5b8a410b35e46d29063206c5999a5b,
-        type: 2}
     - target: {fileID: 1060453973320401705, guid: ad6044324a60f4ec69b7d37fbbb69253,
         type: 3}
       propertyPath: playerAnimationEvents

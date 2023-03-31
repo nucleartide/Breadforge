@@ -59,7 +59,7 @@ Order | Feature | Pull Request
 8 | Highlight collectible resources | https://github.com/nucleartide/Breadforge/pull/37
 9 | Add ability to collect resources | https://github.com/nucleartide/Breadforge/pull/38
 10 | Add backing soundtrack | https://github.com/nucleartide/Breadforge/pull/39
-10 | *(more to come soon)* | *(more to come soon)*
+11 | *(more to come soon)* | *(more to come soon)*
 
 ---
 

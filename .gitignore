@@ -75,3 +75,6 @@ UserSettings/
 
 # Test builds.
 test_build*
+
+# Hot Reload for Unity license. Seems like sensitive data, so don't commit.
+LicenseSpring/

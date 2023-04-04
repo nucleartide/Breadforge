@@ -84,6 +84,10 @@ public class PlayerFootsteps : MonoBehaviour
 
     private void PlayerAnimationEvents_OnWalkFootstep(object sender, EventArgs args)
     {
+        throw new System.Exception("jason look here");
+        // TODO: fetch the player, and check whether the player is over a resource tile or not.
+        // easy. just perform a Physics.Raycast down.
+        // grab the Resource compomnent, add a property "IsRock", and call that property to determine the GroundType
         if (playerMovingState.MovingState == PlayerMovingState.MovementState.Walking)
             PlayWalkSound(GroundType.Rock);
         else if (playerMovingState.MovingState == PlayerMovingState.MovementState.Running)

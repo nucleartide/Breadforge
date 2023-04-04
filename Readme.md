@@ -59,7 +59,8 @@ Order | Feature | Pull Request
 8 | Highlight collectible resources | https://github.com/nucleartide/Breadforge/pull/37
 9 | Add ability to collect resources | https://github.com/nucleartide/Breadforge/pull/38
 10 | Add backing soundtrack | https://github.com/nucleartide/Breadforge/pull/39
-11 | *(more to come soon)* | *(more to come soon)*
+11 | Add mine sound effect + sound effect process | https://github.com/nucleartide/Breadforge/pull/40
+... | *(more to come soon)* | *(more to come soon)*
 
 ---
 

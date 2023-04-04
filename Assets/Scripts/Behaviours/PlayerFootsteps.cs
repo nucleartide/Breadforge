@@ -6,7 +6,11 @@ public class PlayerFootsteps : MonoBehaviour
 {
     [SerializeField]
     [NotNull]
-    private AudioSource audioSource;
+    private AudioSource footstepAudioSource;
+
+    [SerializeField]
+    [NotNull]
+    private AudioSource footstepStoneAudioSource;
 
     [SerializeField]
     [NotNull]
@@ -34,24 +38,56 @@ public class PlayerFootsteps : MonoBehaviour
         new AudioSourceHelpers.Section { Start = 10.36f, End = 11.14f },
     };
 
-    private void PlayWalkSound()
+    private List<AudioSourceHelpers.Section> stoneFootsteps = new List<AudioSourceHelpers.Section>
     {
-        var section = walkFootsteps[UnityEngine.Random.Range(0, walkFootsteps.Count)];
-        AudioSourceHelpers.PlaySoundInterval(audioSource, section);
+        new AudioSourceHelpers.Section { Start = .1f, End = .38f },
+        new AudioSourceHelpers.Section { Start = .7f, End = .96f },
+        new AudioSourceHelpers.Section { Start = 1.26f, End = 1.5f },
+        new AudioSourceHelpers.Section { Start = 1.81f, End = 2.11f },
+        new AudioSourceHelpers.Section { Start = 2.40f, End = 2.75f },
+        new AudioSourceHelpers.Section { Start = 3.02f, End = 3.34f },
+    };
+
+    private enum GroundType
+    {
+        Gravel,
+        Rock,
     }
 
-    private void PlayRunSound()
+    private void PlayWalkSound(GroundType groundType)
     {
-        var section = runFootsteps[UnityEngine.Random.Range(0, runFootsteps.Count)];
-        AudioSourceHelpers.PlaySoundInterval(audioSource, section);
+        if (groundType == GroundType.Gravel)
+        {
+            var section = walkFootsteps[UnityEngine.Random.Range(0, walkFootsteps.Count)];
+            AudioSourceHelpers.PlaySoundInterval(footstepAudioSource, section);
+        }
+        else if (groundType == GroundType.Rock)
+        {
+            var section = stoneFootsteps[UnityEngine.Random.Range(0, stoneFootsteps.Count)];
+            AudioSourceHelpers.PlaySoundInterval(footstepStoneAudioSource, section);
+        }
+    }
+
+    private void PlayRunSound(GroundType groundType)
+    {
+        if (groundType == GroundType.Gravel)
+        {
+            var section = runFootsteps[UnityEngine.Random.Range(0, runFootsteps.Count)];
+            AudioSourceHelpers.PlaySoundInterval(footstepAudioSource, section);
+        }
+        else if (groundType == GroundType.Rock)
+        {
+            var section = stoneFootsteps[UnityEngine.Random.Range(0, stoneFootsteps.Count)];
+            AudioSourceHelpers.PlaySoundInterval(footstepStoneAudioSource, section, 1.2f);
+        }
     }
 
     private void PlayerAnimationEvents_OnWalkFootstep(object sender, EventArgs args)
     {
         if (playerMovingState.MovingState == PlayerMovingState.MovementState.Walking)
-            PlayWalkSound();
+            PlayWalkSound(GroundType.Rock);
         else if (playerMovingState.MovingState == PlayerMovingState.MovementState.Running)
-            PlayRunSound();
+            PlayRunSound(GroundType.Rock);
     }
 
     private void OnEnable()

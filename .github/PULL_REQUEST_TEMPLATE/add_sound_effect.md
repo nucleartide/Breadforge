@@ -1,4 +1,4 @@
-## Pipeline
+## Process
 
 1. [ ] Find a sound effect from freesound.org.
 2. [ ] Check the sound's license to ensure that I can use it.
@@ -10,7 +10,7 @@
 8. [ ] Make `SoundManager` (or your separate script) listen to the new game event, and call the corresponding play-sound method when the event occurs.
 9. [ ] Update readme with pull request link.
 
-## Future alternatives to consider
+## Future alternative SFX production methods
 
 * bfxr.net
 * Purchase a reputable (not stolen, like Sidearm Studios') sound effect pack on the Asset Store

@@ -14,6 +14,11 @@ public class PlayerMovingState : StateBehaviour
     [NotNull]
     CharacterController characterController;
 
+    /// <summary>
+    /// Used to compute HorizontalSpeed. Do not use otherwise.
+    /// </summary>
+    float horizontalSpeedDampingValue;
+
     public float HorizontalSpeed
     {
         get;
@@ -41,11 +46,6 @@ public class PlayerMovingState : StateBehaviour
             return MovementState.Walking;
         }
     }
-
-    /// <summary>
-    /// Used to compute HorizontalSpeed. Do not use otherwise.
-    /// </summary>
-    float horizontalSpeedDampingValue;
 
     private float TargetSpeed
     {

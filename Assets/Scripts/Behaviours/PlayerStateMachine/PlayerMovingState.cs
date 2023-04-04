@@ -14,29 +14,50 @@ public class PlayerMovingState : StateBehaviour
     [NotNull]
     CharacterController characterController;
 
+    /// <summary>
+    /// Used to compute HorizontalSpeed. Do not use otherwise.
+    /// </summary>
+    float horizontalSpeedDampingValue;
+
     public float HorizontalSpeed
     {
         get;
         private set;
     }
 
-    /// <summary>
-    /// Used to compute HorizontalSpeed. Do not use otherwise.
-    /// </summary>
-    float horizontalSpeedDampingValue;
+    public enum MovementState
+    {
+        Idle,
+        Walking,
+        Running,
+    }
 
-    private float TargetSpeed
+    public MovementState MovingState
     {
         get
         {
             var isIdle = gameInput.GetMovement() == Vector3.zero;
             if (isIdle)
-                return 0f;
+                return MovementState.Idle;
 
             if (gameInput.GetRun())
-                return playerConfiguration.PlayerRunSpeed;
+                return MovementState.Running;
 
-            return playerConfiguration.PlayerWalkSpeed;
+            return MovementState.Walking;
+        }
+    }
+
+    private float TargetSpeed
+    {
+        get
+        {
+            return MovingState switch
+            {
+                MovementState.Idle => 0f,
+                MovementState.Walking => playerConfiguration.PlayerWalkSpeed,
+                MovementState.Running => playerConfiguration.PlayerRunSpeed,
+                _ => throw new System.Exception($"MovementState {MovingState} is not handled.")
+            };
         }
     }
 

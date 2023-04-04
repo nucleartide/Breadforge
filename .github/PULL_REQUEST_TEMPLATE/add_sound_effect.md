@@ -1,7 +1,5 @@
 ## Pipeline
 
-Copy and paste the list below:
-
 1. [ ] Find a sound effect from freesound.org.
 2. [ ] Check the sound's license to ensure that I can use it.
 3. [ ] Import sound into `Sounds/` folder.

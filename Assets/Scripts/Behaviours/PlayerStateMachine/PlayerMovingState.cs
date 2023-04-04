@@ -20,6 +20,28 @@ public class PlayerMovingState : StateBehaviour
         private set;
     }
 
+    public enum MovementState
+    {
+        Idle,
+        Walking,
+        Running,
+    }
+
+    public MovementState MovingState
+    {
+        get
+        {
+            var isIdle = gameInput.GetMovement() == Vector3.zero;
+            if (isIdle)
+                return MovementState.Idle;
+
+            if (gameInput.GetRun())
+                return MovementState.Running;
+
+            return MovementState.Walking;
+        }
+    }
+
     /// <summary>
     /// Used to compute HorizontalSpeed. Do not use otherwise.
     /// </summary>
@@ -29,14 +51,13 @@ public class PlayerMovingState : StateBehaviour
     {
         get
         {
-            var isIdle = gameInput.GetMovement() == Vector3.zero;
-            if (isIdle)
-                return 0f;
-
-            if (gameInput.GetRun())
-                return playerConfiguration.PlayerRunSpeed;
-
-            return playerConfiguration.PlayerWalkSpeed;
+            return MovingState switch
+            {
+                MovementState.Idle => 0f,
+                MovementState.Walking => playerConfiguration.PlayerWalkSpeed,
+                MovementState.Running => playerConfiguration.PlayerRunSpeed,
+                _ => throw new System.Exception($"MovementState {MovingState} is not handled.")
+            };
         }
     }
 

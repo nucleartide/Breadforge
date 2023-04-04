@@ -13,3 +13,4 @@ MonoBehaviour:
   m_Name: All The Sounds
   m_EditorClassIdentifier: 
   PickaxeHit: {fileID: 8300000, guid: 3bb678fadaa484df0af458f9f168324d, type: 3}
+  Footstep: {fileID: 8300000, guid: bcef07125ed42490a80603c5a57e5add, type: 3}

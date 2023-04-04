@@ -4,4 +4,5 @@ using UnityEngine;
 public class AllTheSounds : ScriptableObject
 {
     public AudioClip PickaxeHit;
+    public AudioClip Footstep;
 }

@@ -2,11 +2,22 @@ using UnityEngine;
 
 public static class AudioSourceHelpers
 {
-    public static void PlaySoundInterval(AudioSource audioSource, float fromSeconds, float toSeconds)
+    public class Section
+    {
+        public float Start;
+        public float End;
+
+        public float Duration
+        {
+            get => End - Start;
+        }
+    }
+
+    public static void PlaySoundInterval(AudioSource audioSource, Section section)
     {
         audioSource.Stop();
-        audioSource.time = fromSeconds;
+        audioSource.time = section.Start;
         audioSource.Play();
-        audioSource.SetScheduledEndTime(AudioSettings.dspTime + (toSeconds - fromSeconds));
+        audioSource.SetScheduledEndTime(AudioSettings.dspTime + section.Duration);
     }
 }

@@ -24,7 +24,7 @@ public static class AudioSourceHelpers
 
     public static void PlayClipAtPoint(AudioClip audioClip, Vector3 position, float volume = 1.0f, float pitch = 1.0f)
     {
-        var gameObject = new GameObject();
+        var gameObject = new GameObject(); // TODO(jason): There is no object pool here. Consider using the MMSoundManager from Feel framework.
         var audioSource = gameObject.AddComponent<AudioSource>();
         audioSource.clip = audioClip;
         gameObject.transform.position = position;

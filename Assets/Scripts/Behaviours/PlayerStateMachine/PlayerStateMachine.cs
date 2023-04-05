@@ -15,6 +15,10 @@ public class PlayerStateMachine : StateMachineBehaviour
     [NotNull]
     private PlayerMovingState playerMovingState;
 
+    [SerializeField]
+    [NotNull]
+    private CharacterController characterController;
+
     private void OnEnable()
     {
         gameInput.OnCollectStarted += GameInput_OnCollectStarted;
@@ -66,5 +70,33 @@ public class PlayerStateMachine : StateMachineBehaviour
     private void GameInput_OnCollectCanceled(object sender, GameInputManager.GameInputArgs args)
     {
         TransitionTo(playerMovingState);
+    }
+
+    public bool IsOverRock
+    {
+        get;
+        private set;
+    }
+
+    private static bool UpdateIsOverRock(Transform transform, CharacterController characterController)
+    {
+        var characterControllerCenter = transform.position + characterController.center;
+        var hits = Physics.RaycastAll(characterControllerCenter, -transform.up, 5f);
+
+        foreach (var hit in hits)
+        {
+            var resource = hit.collider.gameObject.GetComponent<Resource>();
+            if (resource != null && resource.Type == ResourceConfiguration.ResourceType.Rock)
+            {
+                return true;
+            }
+        }
+
+        return false;
+    }
+
+    private void Update()
+    {
+        IsOverRock = UpdateIsOverRock(transform, characterController);
     }
 }

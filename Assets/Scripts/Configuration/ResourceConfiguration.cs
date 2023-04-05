@@ -46,4 +46,17 @@ public class ResourceConfiguration : ScriptableObject
             return NumCollections * CollectedQuantity;
         }
     }
+
+    public enum ResourceType
+    {
+        Unspecified,
+        Rock,
+    }
+
+    [field: SerializeField]
+    public ResourceType Type
+    {
+        get;
+        private set;
+    }
 }

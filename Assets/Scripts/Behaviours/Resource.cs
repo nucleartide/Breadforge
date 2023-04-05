@@ -24,6 +24,14 @@ public class Resource : MonoBehaviour
 
     private float remainingTime = 0f;
 
+    public ResourceConfiguration.ResourceType ResourceType
+    {
+        get
+        {
+            return Configuration.Type;
+        }
+    }
+
     private void Awake()
     {
         quantity = Configuration.InitialQuantity;

@@ -21,4 +21,15 @@ public static class AudioSourceHelpers
         audioSource.Play();
         audioSource.SetScheduledEndTime(AudioSettings.dspTime + section.Duration);
     }
+
+    public static void PlayClipAtPoint(AudioClip audioClip, Vector3 position, float volume = 1.0f, float pitch = 1.0f)
+    {
+        var gameObject = new GameObject();
+        var audioSource = gameObject.AddComponent<AudioSource>();
+        audioSource.clip = audioClip;
+        gameObject.transform.position = position;
+        audioSource.volume = volume;
+        audioSource.pitch = pitch;
+        audioSource.Play();
+    }
 }

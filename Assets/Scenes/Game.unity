@@ -641,6 +641,11 @@ PrefabInstance:
       objectReference: {fileID: 3102984711005192736}
     - target: {fileID: 1060453973320401705, guid: ad6044324a60f4ec69b7d37fbbb69253,
         type: 3}
+      propertyPath: playerStateMachine
+      value: 
+      objectReference: {fileID: 3102984711005192728}
+    - target: {fileID: 1060453973320401705, guid: ad6044324a60f4ec69b7d37fbbb69253,
+        type: 3}
       propertyPath: playerAnimationEvents
       value: 
       objectReference: {fileID: 634476755}

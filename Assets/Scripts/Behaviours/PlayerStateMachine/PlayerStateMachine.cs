@@ -1,6 +1,8 @@
 using UnityEngine;
 using System.Collections.Generic;
+using System;
 
+[RequireComponent(typeof(CharacterController))]
 public class PlayerStateMachine : StateMachineBehaviour
 {
     [SerializeField]
@@ -18,6 +20,14 @@ public class PlayerStateMachine : StateMachineBehaviour
     [SerializeField]
     [NotNull]
     private CharacterController characterController;
+
+    private bool isCollidingWithResource = false;
+
+    private bool didCollideWithResource = false;
+
+    public event EventHandler OnResourceCollisionEnter;
+
+    public event EventHandler OnResourceCollisionExit;
 
     private void OnEnable()
     {
@@ -98,5 +108,30 @@ public class PlayerStateMachine : StateMachineBehaviour
     private void Update()
     {
         IsOverRock = UpdateIsOverRock(transform, characterController);
+
+        // Process isCollidingWithResource.
+        if (!didCollideWithResource && isCollidingWithResource)
+        {
+            // Emit event.
+            OnResourceCollisionEnter?.Invoke(this, EventArgs.Empty);
+        }
+        else if (didCollideWithResource && !isCollidingWithResource)
+        {
+            // Emit event.
+            OnResourceCollisionExit?.Invoke(this, EventArgs.Empty);
+        }
+
+        // Update state.
+        didCollideWithResource = isCollidingWithResource;
+        isCollidingWithResource = false;
+    }
+
+    private void OnControllerColliderHit(ControllerColliderHit hit)
+    {
+        var resource = hit.collider.gameObject.GetComponent<Resource>();
+        if (resource == null)
+            return;
+
+        isCollidingWithResource = true;
     }
 }

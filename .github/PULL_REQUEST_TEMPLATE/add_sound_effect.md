@@ -1,5 +1,6 @@
-## Process
+## Workflow
 
+0. [ ] Update readme with pull request link so that the diff enables opening a pull request.
 1. [ ] Find a sound effect from freesound.org.
 2. [ ] Check the sound's license to ensure that I can use it.
 3. [ ] Import sound into `Sounds/` folder.
@@ -8,7 +9,6 @@
 6. [ ] Add test methods to `SoundManager` (or a separate script) that play the sound. If the audio clip is split into many sections, identify sections within the audio clip to play with the `AudioClipSection` class, then use `AudioSourceHelpers.PlaySoundInterval`.
 7. [ ] Expose game event for when you want the sound to be played. For example, the `PlayerAnimationEvents` script exposes player animation events to C#. You may need to also impose certain conditions for playing the sound.
 8. [ ] Make `SoundManager` (or your separate script) listen to the new game event, and call the corresponding play-sound method when the event occurs.
-9. [ ] Update readme with pull request link.
 
 ## Future alternative SFX production methods
 

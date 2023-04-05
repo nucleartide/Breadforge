@@ -30,4 +30,15 @@ public class SoundManager : MonoBehaviour
     {
         AudioSource.PlayClipAtPoint(allTheSounds.PickaxeHit, player.position, 1.0f);
     }
+
+    private void PlayBumpIntoColliderSound()
+    {
+        AudioSource.PlayClipAtPoint(allTheSounds.BumpIntoCollider, player.position, 1.0f);
+    }
+
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.W))
+            PlayBumpIntoColliderSound();
+    }
 }

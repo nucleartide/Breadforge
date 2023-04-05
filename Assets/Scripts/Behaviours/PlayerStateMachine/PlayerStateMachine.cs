@@ -129,7 +129,9 @@ public class PlayerStateMachine : StateMachineBehaviour
     private void OnControllerColliderHit(ControllerColliderHit hit)
     {
         var resource = hit.collider.gameObject.GetComponent<Resource>();
-        if (resource == null)
+        var wallCollider = hit.collider.gameObject.GetComponent<WallCollider>();
+
+        if (resource == null && wallCollider == null)
             return;
 
         isCollidingWithResource = true;

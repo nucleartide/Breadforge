@@ -41,14 +41,12 @@ public class SoundManager : MonoBehaviour
         AudioSourceHelpers.PlayClipAtPoint(allTheSounds.BumpIntoCollider, player.position, .7f, 1.2f);
     }
 
+#if false
     private void Update()
     {
-        throw new System.Exception("TODO(jason): Add collider to edges of world so you hear the bump sound there too");
-
-#if false
         // TODO: This will be easier with the Sound MMFeedback, which has a test button that you can use without writing more code.
         if (Input.GetKeyDown(KeyCode.W))
             PlayBumpIntoColliderSound();
-#endif
     }
+#endif
 }

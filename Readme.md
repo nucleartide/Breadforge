@@ -61,6 +61,7 @@ Order | Feature | Pull Request
 10 | Add backing soundtrack | https://github.com/nucleartide/Breadforge/pull/39
 11 | Add mine sound effect + sound effect process | https://github.com/nucleartide/Breadforge/pull/40
 12 | Add footstep sounds for walking and running | https://github.com/nucleartide/Breadforge/pull/41
+13 | Add footstep sounds for walking and running... on rocks | https://github.com/nucleartide/Breadforge/pull/42
 ... | *(more to come soon)* | *(more to come soon)*
 
 ---

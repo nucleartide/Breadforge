@@ -86,7 +86,7 @@ public class PlayerStateMachine : StateMachineBehaviour
         foreach (var hit in hits)
         {
             var resource = hit.collider.gameObject.GetComponent<Resource>();
-            if (resource != null && resource.ResourceType == ResourceConfiguration.ResourceType.Rock)
+            if (resource != null && resource.Type == ResourceConfiguration.ResourceType.Rock)
             {
                 return true;
             }

@@ -86,7 +86,7 @@ public class PlayerFootsteps : MonoBehaviour
         }
     }
 
-    private GroundType UnderneathPlayer
+    private GroundType GroundUnderPlayer
     {
         get
         {
@@ -97,9 +97,9 @@ public class PlayerFootsteps : MonoBehaviour
     private void PlayerAnimationEvents_OnWalkFootstep(object sender, EventArgs args)
     {
         if (playerMovingState.MovingState == PlayerMovingState.MovementState.Walking)
-            PlayWalkSound(UnderneathPlayer);
+            PlayWalkSound(GroundUnderPlayer);
         else if (playerMovingState.MovingState == PlayerMovingState.MovementState.Running)
-            PlayRunSound(UnderneathPlayer);
+            PlayRunSound(GroundUnderPlayer);
     }
 
     private void OnEnable()

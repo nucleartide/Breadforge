@@ -44,7 +44,7 @@ public class SoundManager : MonoBehaviour
 #if false
     private void Update()
     {
-        // TODO: This will be easier with the Sound MMFeedback, which has a test button that you can use without writing more code.
+        // TODO(jason): Testing sounds is easier with MMFeedback, which features a test sound button without you having to write code.
         if (Input.GetKeyDown(KeyCode.W))
             PlayBumpIntoColliderSound();
     }

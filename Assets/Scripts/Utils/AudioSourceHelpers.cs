@@ -31,5 +31,6 @@ public static class AudioSourceHelpers
         audioSource.volume = volume;
         audioSource.pitch = pitch;
         audioSource.Play();
+        Object.Destroy(gameObject, audioClip.length);
     }
 }

@@ -22,6 +22,20 @@ public static class AudioSourceHelpers
         audioSource.SetScheduledEndTime(AudioSettings.dspTime + section.Duration);
     }
 
+    public static void PlayIntervalAtPoint(AudioClip audioClip, Section section, Vector3 position, float volume = 1.0f, float pitch = 1.0f)
+    {
+        var gameObject = new GameObject(); // TODO(jason): There is no object pool here. Consider using the MMSoundManager from Feel framework.
+        var audioSource = gameObject.AddComponent<AudioSource>();
+        audioSource.clip = audioClip;
+        gameObject.transform.position = position;
+        audioSource.volume = volume;
+        audioSource.pitch = pitch;
+        audioSource.time = section.Start;
+        audioSource.Play();
+        audioSource.SetScheduledEndTime(AudioSettings.dspTime + section.Duration);
+        Object.Destroy(gameObject, audioClip.length);
+    }
+
     /// <summary>
     /// A better version of AudioSource.PlayClipAtPoint. I don't know why, but the pitch on the built-in Unity method is weird.
     /// </summary>

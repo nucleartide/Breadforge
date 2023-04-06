@@ -56,14 +56,14 @@ public class SoundManager : MonoBehaviour
         AudioSourceHelpers.PlayClipAtPoint(allTheSounds.NothingToMine, player.position, 1f);
     }
 
-#if false
     private void Update()
     {
         // TODO(jason): Testing sounds is easier with the Feel framework, which has a "test sound" button for Sound feedbacks.
         if (Input.GetKeyDown(KeyCode.Q))
-        {
-            AudioSourceHelpers.PlayClipAtPoint(allTheSounds.CollectWater, player.position, .25f, .7f);
-        }
+            AudioSourceHelpers.PlayIntervalAtPoint(allTheSounds.ChopMedium, allTheSounds.ChopMediumRandomSection, player.position);
+        else if (Input.GetKeyDown(KeyCode.R))
+            AudioSourceHelpers.PlayClipAtPoint(allTheSounds.ChopThicc, player.position, 1f, UnityEngine.Random.Range(.8f, 1.2f));
+        else if (Input.GetKeyDown(KeyCode.T))
+            AudioSourceHelpers.PlayIntervalAtPoint(allTheSounds.ChopThin, allTheSounds.ChopThinRandomSection, player.position);
     }
-#endif
 }

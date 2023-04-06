@@ -5,7 +5,7 @@
 2. [ ] Check the sound's license to ensure that I can use it.
 3. [ ] Import sound into `Sounds/` folder.
 4. [ ] Update `Sounds/Attribution.md` doc.
-5. [ ] Expose new reference in the `AllTheSounds` ScriptableObject, and hook up the `AudioClip`. Alternatively, if you want to play the sound as its own AudioSource, then create the AudioSource and hook up the `AudioClip`.
+5. [ ] Expose new reference in the `AllTheSounds` ScriptableObject, and hook up the `AudioClip`. Alternatively, if you want to play the sound as its own AudioSource, then create the AudioSource and hook up the `AudioClip`. This decision is made based on how frequently the sound is played, though eventually we may just refactor to use a more robust third-party SoundManager.
 6. [ ] Add test methods to `SoundManager` (or a separate script) that play the sound. If the audio clip is split into many sections, identify sections within the audio clip to play with the `AudioClipSection` class, then use `AudioSourceHelpers.PlaySoundInterval`.
 7. [ ] Expose game event for when you want the sound to be played. For example, the `PlayerAnimationEvents` script exposes player animation events to C#. You may need to also impose certain conditions for playing the sound.
 8. [ ] Make `SoundManager` (or your separate script) listen to the new game event, and call the corresponding play-sound method when the event occurs.

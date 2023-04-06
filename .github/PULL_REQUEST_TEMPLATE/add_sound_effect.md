@@ -1,7 +1,7 @@
 ## Workflow
 
 0. [ ] Update readme with pull request link so that the diff enables opening a pull request.
-1. [ ] Find a sound effect from freesound.org.
+1. [ ] Find a sound effect from freesound.org, or combine sound effects into one using Audacity.
 2. [ ] Check the sound's license to ensure that I can use it.
 3. [ ] Import sound into `Sounds/` folder.
 4. [ ] Update `Sounds/Attribution.md` doc.

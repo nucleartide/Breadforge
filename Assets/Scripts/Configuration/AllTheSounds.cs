@@ -8,4 +8,6 @@ public class AllTheSounds : ScriptableObject
     public AudioClip BumpIntoCollider;
 
     public AudioClip NothingToMine;
+
+    public AudioClip CollectWater;
 }

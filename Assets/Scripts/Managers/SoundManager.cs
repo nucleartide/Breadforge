@@ -23,6 +23,7 @@ public class SoundManager : MonoBehaviour
     private void OnEnable()
     {
         playerAnimationEvents.OnPickaxeHit += PlayerAnimationEvents_OnPickaxeHit;
+        playerAnimationEvents.OnPickUp += PlayerAnimationEvents_OnPickUp;
         playerStateMachine.OnResourceCollisionEnter += PlayerStateMachine_OnResourceCollisionEnter;
         playerStateMachine.OnNothingToMine += PlayerStateMachine_OnNothingToMine;
     }
@@ -30,6 +31,7 @@ public class SoundManager : MonoBehaviour
     private void OnDisable()
     {
         playerAnimationEvents.OnPickaxeHit -= PlayerAnimationEvents_OnPickaxeHit;
+        playerAnimationEvents.OnPickUp -= PlayerAnimationEvents_OnPickUp;
         playerStateMachine.OnResourceCollisionEnter -= PlayerStateMachine_OnResourceCollisionEnter;
         playerStateMachine.OnNothingToMine -= PlayerStateMachine_OnNothingToMine;
     }
@@ -37,6 +39,11 @@ public class SoundManager : MonoBehaviour
     private void PlayerAnimationEvents_OnPickaxeHit(object sender, EventArgs eventArgs)
     {
         AudioSourceHelpers.PlayClipAtPoint(allTheSounds.PickaxeHit, player.position, 1f);
+    }
+
+    private void PlayerAnimationEvents_OnPickUp(object sender, EventArgs eventArgs)
+    {
+        AudioSourceHelpers.PlayClipAtPoint(allTheSounds.CollectWater, player.position, .25f, .7f);
     }
 
     private void PlayerStateMachine_OnResourceCollisionEnter(object sender, EventArgs eventArgs)
@@ -49,12 +56,12 @@ public class SoundManager : MonoBehaviour
         AudioSourceHelpers.PlayClipAtPoint(allTheSounds.NothingToMine, player.position, 1f);
     }
 
-#if false
     private void Update()
     {
         // TODO(jason): Testing sounds is easier with the Feel framework, which has a "test sound" button for Sound feedbacks.
         if (Input.GetKeyDown(KeyCode.Q))
-            AudioSourceHelpers.PlayClipAtPoint(allTheSounds.NothingToMine, player.position, 1f);
+        {
+            AudioSourceHelpers.PlayClipAtPoint(allTheSounds.CollectWater, player.position, .25f, .7f);
+        }
     }
-#endif
 }

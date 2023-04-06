@@ -65,6 +65,7 @@ Order | Feature | Pull Request
 14 | Add guardrail sounds | https://github.com/nucleartide/Breadforge/pull/43
 15 | Add "null" (nothing to mine) mining sound | https://github.com/nucleartide/Breadforge/pull/44
 16 | Add collect water sound | https://github.com/nucleartide/Breadforge/pull/45
+17 | Add chopping sounds | https://github.com/nucleartide/Breadforge/pull/46
 ... | *(more to come soon)* | *(more to come soon)*
 
 ---

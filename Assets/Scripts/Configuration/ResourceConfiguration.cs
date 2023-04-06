@@ -51,6 +51,9 @@ public class ResourceConfiguration : ScriptableObject
     {
         Unspecified,
         Rock,
+        ThinWood,
+        MediumWood,
+        ThickWood,
     }
 
     [field: SerializeField]

@@ -8,6 +8,11 @@ public abstract class PlayerCollectingState : StateBehaviour
 
     protected Resource resourceBeingCollected;
 
+    public ResourceConfiguration.ResourceType ResourceType
+    {
+        get => resourceBeingCollected.Configuration.Type;
+    }
+
     protected Quaternion desiredRotation;
 
     protected static Quaternion GetDesiredRotation(Resource resourceBeingCollected, Transform gameObject)

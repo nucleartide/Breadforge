@@ -64,7 +64,7 @@ Order | Feature | Pull Request
 13 | Add footstep sounds for walking and running... on rocks | https://github.com/nucleartide/Breadforge/pull/42
 14 | Add guardrail sounds | https://github.com/nucleartide/Breadforge/pull/43
 15 | Add "null" (nothing to mine) mining sound | https://github.com/nucleartide/Breadforge/pull/44
-15 | Add collect water sound | https://github.com/nucleartide/Breadforge/pull/45
+16 | Add collect water sound | https://github.com/nucleartide/Breadforge/pull/45
 ... | *(more to come soon)* | *(more to come soon)*
 
 ---

@@ -29,6 +29,8 @@ public class PlayerStateMachine : StateMachineBehaviour
 
     public event EventHandler OnResourceCollisionExit;
 
+    public event EventHandler OnNothingToMine;
+
     private void OnEnable()
     {
         gameInput.OnCollectStarted += GameInput_OnCollectStarted;
@@ -67,7 +69,10 @@ public class PlayerStateMachine : StateMachineBehaviour
     {
         var resource = immediateCollectable.ImmediateCollectable;
         if (resource == null)
-            throw new System.Exception("TODO(jason): Add in a 'null' sound here.");
+        {
+            OnNothingToMine?.Invoke(this, EventArgs.Empty);
+            return;
+        }
 
         // Given a Resource, fetch the corresponding player state.
         var collectingState = GetPlayerState(resource.Configuration);

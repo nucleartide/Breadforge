@@ -15,5 +15,4 @@ MonoBehaviour:
   <TimeToCollect>k__BackingField: 2
   <CollectedQuantity>k__BackingField: 10
   <NumCollections>k__BackingField: 1000
-  <PlayerStateEnum>k__BackingField: {fileID: 11400000, guid: 054c8ee9aac9642cc9e7924b4fac7fda,
-    type: 2}
+  <Type>k__BackingField: 2

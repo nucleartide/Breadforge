@@ -14,3 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   PickaxeHit: {fileID: 8300000, guid: 3bb678fadaa484df0af458f9f168324d, type: 3}
   BumpIntoCollider: {fileID: 8300000, guid: 5099ae372ad7645d0960cbac64cb7901, type: 3}
+  NothingToMine: {fileID: 8300000, guid: 1aab2acf231e54444b1bb541171550b1, type: 3}

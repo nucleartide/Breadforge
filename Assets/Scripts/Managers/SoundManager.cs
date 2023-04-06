@@ -56,6 +56,7 @@ public class SoundManager : MonoBehaviour
         AudioSourceHelpers.PlayClipAtPoint(allTheSounds.NothingToMine, player.position, 1f);
     }
 
+#if false
     private void Update()
     {
         // TODO(jason): Testing sounds is easier with the Feel framework, which has a "test sound" button for Sound feedbacks.
@@ -64,4 +65,5 @@ public class SoundManager : MonoBehaviour
             AudioSourceHelpers.PlayClipAtPoint(allTheSounds.CollectWater, player.position, .25f, .7f);
         }
     }
+#endif
 }

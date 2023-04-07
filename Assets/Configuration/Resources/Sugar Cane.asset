@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 422eba2e6becd4a22a0695010ffb680d, type: 3}
   m_Name: Sugar Cane
   m_EditorClassIdentifier: 
-  <TimeToCollect>k__BackingField: 2
+  <TimeToCollect>k__BackingField: 1
   <CollectedQuantity>k__BackingField: 10
   <NumCollections>k__BackingField: 1000
   <Type>k__BackingField: 3

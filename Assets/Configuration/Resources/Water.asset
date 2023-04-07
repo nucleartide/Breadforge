@@ -12,8 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 422eba2e6becd4a22a0695010ffb680d, type: 3}
   m_Name: Water
   m_EditorClassIdentifier: 
-  <TimeToCollect>k__BackingField: 2
+  <TimeToCollect>k__BackingField: 0.5
   <CollectedQuantity>k__BackingField: 10
   <NumCollections>k__BackingField: 1000
-  <PlayerStateEnum>k__BackingField: {fileID: 11400000, guid: 8d53288a7f2644f3689d0df8beba0e1e,
-    type: 2}
+  <Type>k__BackingField: 0

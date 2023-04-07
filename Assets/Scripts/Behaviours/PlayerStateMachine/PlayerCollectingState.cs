@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 public abstract class PlayerCollectingState : StateBehaviour
@@ -28,9 +29,17 @@ public abstract class PlayerCollectingState : StateBehaviour
         player.rotation = Quaternion.RotateTowards(player.rotation, desired, singleStep);
     }
 
+    private void OnDisable()
+    {
+        resourceBeingCollected.OnCollectCompleted -= ResourceBeingCollected_OnCollectCompleted;
+    }
+
+    private void ResourceBeingCollected_OnCollectCompleted(object sender, EventArgs eventArgs) => OnCollectCompleted();
+
     public void Initialize(Resource resourceBeingCollected)
     {
         this.resourceBeingCollected = resourceBeingCollected;
+        resourceBeingCollected.OnCollectCompleted += ResourceBeingCollected_OnCollectCompleted;
         desiredRotation = GetDesiredRotation(resourceBeingCollected, transform);
     }
 
@@ -41,4 +50,6 @@ public abstract class PlayerCollectingState : StateBehaviour
     }
 
     protected abstract void UpdateResourceCollection();
+
+    protected abstract void OnCollectCompleted();
 }

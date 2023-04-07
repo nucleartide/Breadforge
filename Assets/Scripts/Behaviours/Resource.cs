@@ -51,7 +51,6 @@ public class Resource : MonoBehaviour
 
         // Decrement time.
         remainingTime -= dt;
-        Debug.Log($"Elapsed. Remaining time to next collection is {remainingTime} seconds.");
 
         // When countdown is complete,
         if (remainingTime <= 0f)

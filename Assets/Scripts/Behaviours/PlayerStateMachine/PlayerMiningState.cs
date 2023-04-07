@@ -30,12 +30,14 @@ public class PlayerMiningState : PlayerCollectingState
 
     protected override void UpdateResourceCollection()
     {
-        throw new System.Exception("update debug log feedback.");
-        throw new System.Exception("fill in UpdateResourceCollection implementation for other player states.");
-
         if (resourceBeingCollected != null)
             resourceCollectTime += Time.deltaTime;
         else
             resourceCollectTime = 0f;
+    }
+
+    protected override void OnCollectCompleted()
+    {
+        Debug.Log("Mined thing.");
     }
 }

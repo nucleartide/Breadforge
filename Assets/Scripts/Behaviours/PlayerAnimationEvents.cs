@@ -3,19 +3,40 @@ using System;
 
 public class PlayerAnimationEvents : MonoBehaviour
 {
+    public event EventHandler OnWalkFootstep;
+
     public event EventHandler OnPickaxeHit;
 
-    public event EventHandler OnWalkFootstep;
+    /// <summary>
+    /// Different from OnPickaxeHit, in that this event indicates the last frame of the animation.
+    /// </summary>
+    public event EventHandler OnPickaxeHitComplete;
 
     public event EventHandler OnPickUp;
 
+    /// <summary>
+    /// Different from OnPickUp, in that this event indicates the last frame of the animation.
+    /// </summary>
+    public event EventHandler OnPickUpComplete;
+
     public event EventHandler OnChopImpact;
 
-    private void PickaxeHit() => OnPickaxeHit?.Invoke(this, EventArgs.Empty);
+    /// <summary>
+    /// Different from OnChopImpact, in that this event indicates the last frame of the animation.
+    /// </summary>
+    public event EventHandler OnChopImpactComplete;
 
     private void WalkFootstep() => OnWalkFootstep?.Invoke(this, EventArgs.Empty);
 
+    private void PickaxeHit() => OnPickaxeHit?.Invoke(this, EventArgs.Empty);
+
+    private void PickaxeHitComplete() => OnPickaxeHitComplete?.Invoke(this, EventArgs.Empty);
+
     private void PickUp() => OnPickUp?.Invoke(this, EventArgs.Empty);
 
+    private void PickUpComplete() => OnPickUpComplete?.Invoke(this, EventArgs.Empty);
+
     private void ChopImpact() => OnChopImpact?.Invoke(this, EventArgs.Empty);
+
+    private void ChopImpactComplete() => OnChopImpactComplete?.Invoke(this, EventArgs.Empty);
 }

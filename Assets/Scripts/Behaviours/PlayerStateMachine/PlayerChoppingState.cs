@@ -9,13 +9,13 @@ public class PlayerChoppingState : PlayerCollectingState
 
     private void OnEnable()
     {
-        playerAnimationEvents.OnChopImpact += PlayerAnimationEvents_OnChopImpact;
+        playerAnimationEvents.OnChopImpactComplete += PlayerAnimationEvents_OnChopImpact;
     }
 
     protected override void OnDisable()
     {
         base.OnDisable();
-        playerAnimationEvents.OnChopImpact -= PlayerAnimationEvents_OnChopImpact;
+        playerAnimationEvents.OnChopImpactComplete -= PlayerAnimationEvents_OnChopImpact;
     }
 
     private void PlayerAnimationEvents_OnChopImpact(object sender, EventArgs eventArgs)
@@ -26,5 +26,10 @@ public class PlayerChoppingState : PlayerCollectingState
     protected override void OnCollectCompleted()
     {
         Debug.Log("Chopped thing.");
+    }
+
+    protected override float GetAmountCollectedPerAction()
+    {
+        return playerConfiguration.AmountChoppedPerSwing;
     }
 }

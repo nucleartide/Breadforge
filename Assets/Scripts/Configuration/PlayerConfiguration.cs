@@ -24,4 +24,10 @@ public class PlayerConfiguration : ScriptableObject
     {
         get => RotationSpeed * Mathf.Rad2Deg;
     }
+
+    public float AmountMinedPerSwing = .5f;
+
+    public float AmountChoppedPerSwing = .5f;
+
+    public float AmountScoopedPerScoop = .5f;
 }

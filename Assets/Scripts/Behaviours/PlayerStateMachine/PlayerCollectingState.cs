@@ -16,8 +16,6 @@ public abstract class PlayerCollectingState : StateBehaviour
 
     protected Quaternion desiredRotation;
 
-    protected float resourceCollectTime = 0f;
-
     protected static Quaternion GetDesiredRotation(Resource resourceBeingCollected, Transform gameObject)
     {
         var toCollect = resourceBeingCollected.transform.position - gameObject.position;
@@ -31,11 +29,6 @@ public abstract class PlayerCollectingState : StateBehaviour
         player.rotation = Quaternion.RotateTowards(player.rotation, desired, singleStep);
     }
 
-    protected virtual void OnDisable()
-    {
-        resourceBeingCollected.OnCollectCompleted -= ResourceBeingCollected_OnCollectCompleted;
-    }
-
     private void ResourceBeingCollected_OnCollectCompleted(object sender, EventArgs eventArgs) => OnCollectCompleted();
 
     public void Initialize(Resource resourceBeingCollected)
@@ -45,18 +38,15 @@ public abstract class PlayerCollectingState : StateBehaviour
         desiredRotation = GetDesiredRotation(resourceBeingCollected, transform);
     }
 
+    protected virtual void OnDisable()
+    {
+        if (resourceBeingCollected != null)
+            resourceBeingCollected.OnCollectCompleted -= ResourceBeingCollected_OnCollectCompleted;
+    }
+
     private void Update()
     {
         FaceDesiredOrientation(desiredRotation, transform, Time.smoothDeltaTime, playerConfiguration);
-        UpdateResourceCollection();
-    }
-
-    protected virtual void UpdateResourceCollection()
-    {
-        if (resourceBeingCollected != null)
-            resourceCollectTime += Time.deltaTime;
-        else
-            resourceCollectTime = 0f;
     }
 
     protected abstract void OnCollectCompleted();
@@ -64,9 +54,9 @@ public abstract class PlayerCollectingState : StateBehaviour
     protected void Collect()
     {
         if (resourceBeingCollected != null)
-        {
-            resourceBeingCollected.Elapse(resourceCollectTime);
-            resourceCollectTime = 0f;
-        }
+            resourceBeingCollected.Elapse(GetAmountCollectedPerAction());
     }
+
+    // Hardcode this for now. Testing this out, we can expose config later.
+    protected abstract float GetAmountCollectedPerAction();
 }

@@ -22,6 +22,7 @@ public class Resource : MonoBehaviour
 
     private float quantity;
 
+    [SerializeField]
     private float remainingTime = 0f;
 
     public ResourceConfiguration.ResourceType Type

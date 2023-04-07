@@ -9,13 +9,13 @@ public class PlayerMiningState : PlayerCollectingState
 
     private void OnEnable()
     {
-        playerAnimationEvents.OnPickaxeHit += PlayerAnimationEvents_OnPickaxeHit;
+        playerAnimationEvents.OnPickaxeHitComplete += PlayerAnimationEvents_OnPickaxeHit;
     }
 
     protected override void OnDisable()
     {
         base.OnDisable();
-        playerAnimationEvents.OnPickaxeHit -= PlayerAnimationEvents_OnPickaxeHit;
+        playerAnimationEvents.OnPickaxeHitComplete -= PlayerAnimationEvents_OnPickaxeHit;
     }
 
     private void PlayerAnimationEvents_OnPickaxeHit(object sender, EventArgs eventArgs)
@@ -26,5 +26,10 @@ public class PlayerMiningState : PlayerCollectingState
     protected override void OnCollectCompleted()
     {
         Debug.Log("Mined thing.");
+    }
+
+    protected override float GetAmountCollectedPerAction()
+    {
+        return playerConfiguration.AmountMinedPerSwing;
     }
 }

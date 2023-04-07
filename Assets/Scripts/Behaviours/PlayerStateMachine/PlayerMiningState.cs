@@ -7,8 +7,6 @@ public class PlayerMiningState : PlayerCollectingState
     [NotNull]
     private PlayerAnimationEvents playerAnimationEvents;
 
-    private float resourceCollectTime = 0f;
-
     private void OnEnable()
     {
         playerAnimationEvents.OnPickaxeHit += PlayerAnimationEvents_OnPickaxeHit;
@@ -21,19 +19,7 @@ public class PlayerMiningState : PlayerCollectingState
 
     private void PlayerAnimationEvents_OnPickaxeHit(object sender, EventArgs eventArgs)
     {
-        if (resourceBeingCollected != null)
-        {
-            resourceBeingCollected.Elapse(resourceCollectTime);
-            resourceCollectTime = 0f;
-        }
-    }
-
-    protected override void UpdateResourceCollection()
-    {
-        if (resourceBeingCollected != null)
-            resourceCollectTime += Time.deltaTime;
-        else
-            resourceCollectTime = 0f;
+        Collect();
     }
 
     protected override void OnCollectCompleted()

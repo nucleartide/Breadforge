@@ -16,6 +16,8 @@ public abstract class PlayerCollectingState : StateBehaviour
 
     protected Quaternion desiredRotation;
 
+    protected float resourceCollectTime = 0f;
+
     protected static Quaternion GetDesiredRotation(Resource resourceBeingCollected, Transform gameObject)
     {
         var toCollect = resourceBeingCollected.transform.position - gameObject.position;
@@ -29,7 +31,7 @@ public abstract class PlayerCollectingState : StateBehaviour
         player.rotation = Quaternion.RotateTowards(player.rotation, desired, singleStep);
     }
 
-    private void OnDisable()
+    protected virtual void OnDisable()
     {
         resourceBeingCollected.OnCollectCompleted -= ResourceBeingCollected_OnCollectCompleted;
     }
@@ -49,7 +51,22 @@ public abstract class PlayerCollectingState : StateBehaviour
         UpdateResourceCollection();
     }
 
-    protected abstract void UpdateResourceCollection();
+    protected virtual void UpdateResourceCollection()
+    {
+        if (resourceBeingCollected != null)
+            resourceCollectTime += Time.deltaTime;
+        else
+            resourceCollectTime = 0f;
+    }
 
     protected abstract void OnCollectCompleted();
+
+    protected void Collect()
+    {
+        if (resourceBeingCollected != null)
+        {
+            resourceBeingCollected.Elapse(resourceCollectTime);
+            resourceCollectTime = 0f;
+        }
+    }
 }

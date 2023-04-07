@@ -1,10 +1,29 @@
+using System;
+using UnityEngine;
+
 public class PlayerChoppingState : PlayerCollectingState
 {
-    protected override void OnCollectCompleted()
+    [SerializeField]
+    [NotNull]
+    private PlayerAnimationEvents playerAnimationEvents;
+
+    private void OnEnable()
     {
+        playerAnimationEvents.OnChopImpact += PlayerAnimationEvents_OnChopImpact;
     }
 
-    protected override void UpdateResourceCollection()
+    private void OnDisable()
     {
+        playerAnimationEvents.OnChopImpact -= PlayerAnimationEvents_OnChopImpact;
+    }
+
+    private void PlayerAnimationEvents_OnChopImpact(object sender, EventArgs eventArgs)
+    {
+        Collect();
+    }
+
+    protected override void OnCollectCompleted()
+    {
+        Debug.Log("Chopped thing.");
     }
 }

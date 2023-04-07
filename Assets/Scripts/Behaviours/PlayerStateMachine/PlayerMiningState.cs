@@ -12,8 +12,9 @@ public class PlayerMiningState : PlayerCollectingState
         playerAnimationEvents.OnPickaxeHit += PlayerAnimationEvents_OnPickaxeHit;
     }
 
-    private void OnDisable()
+    protected override void OnDisable()
     {
+        base.OnDisable();
         playerAnimationEvents.OnPickaxeHit -= PlayerAnimationEvents_OnPickaxeHit;
     }
 

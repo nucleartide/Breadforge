@@ -9,13 +9,11 @@ public class PlayerScoopingState : PlayerCollectingState
 
     private void OnEnable()
     {
-        Debug.Log("on enable");
         playerAnimationEvents.OnPickUp += PlayerAnimationEvents_OnPickUp;
     }
 
     protected override void OnDisable()
     {
-        Debug.Log("on disable");
         base.OnDisable();
         playerAnimationEvents.OnPickUp -= PlayerAnimationEvents_OnPickUp;
     }

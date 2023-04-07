@@ -12,8 +12,9 @@ public class PlayerChoppingState : PlayerCollectingState
         playerAnimationEvents.OnChopImpact += PlayerAnimationEvents_OnChopImpact;
     }
 
-    private void OnDisable()
+    protected override void OnDisable()
     {
+        base.OnDisable();
         playerAnimationEvents.OnChopImpact -= PlayerAnimationEvents_OnChopImpact;
     }
 

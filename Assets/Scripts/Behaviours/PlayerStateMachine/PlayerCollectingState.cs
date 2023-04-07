@@ -34,11 +34,11 @@ public abstract class PlayerCollectingState : StateBehaviour
         desiredRotation = GetDesiredRotation(resourceBeingCollected, transform);
     }
 
-    protected void Update()
+    private void Update()
     {
         FaceDesiredOrientation(desiredRotation, transform, Time.smoothDeltaTime, playerConfiguration);
-
-        if (resourceBeingCollected != null)
-            resourceBeingCollected.Elapse(Time.deltaTime);
+        UpdateResourceCollection();
     }
+
+    protected abstract void UpdateResourceCollection();
 }

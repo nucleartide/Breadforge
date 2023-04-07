@@ -41,7 +41,10 @@ public abstract class PlayerCollectingState : StateBehaviour
     protected virtual void OnDisable()
     {
         if (resourceBeingCollected != null)
+        {
             resourceBeingCollected.OnCollectCompleted -= ResourceBeingCollected_OnCollectCompleted;
+            resourceBeingCollected.ResetRemainingTime();
+        }
     }
 
     private void Update()

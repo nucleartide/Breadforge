@@ -39,7 +39,7 @@ public class Resource : MonoBehaviour
         ResetRemainingTime();
     }
 
-    private void ResetRemainingTime() => remainingTime = Configuration.TimeToCollect;
+    public void ResetRemainingTime() => remainingTime = Configuration.TimeToCollect;
 
     /// <summary>
     /// Elapse some collection time.

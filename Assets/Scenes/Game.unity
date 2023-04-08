@@ -596,11 +596,6 @@ PrefabInstance:
       propertyPath: immediateCollectable
       value: 
       objectReference: {fileID: 1405936094}
-    - target: {fileID: 4064653712103653373, guid: b7150f0c756f841548259da7df1bee5e,
-        type: 3}
-      propertyPath: m_Radius
-      value: 0.3
-      objectReference: {fileID: 0}
     - target: {fileID: 4064653712779689486, guid: b7150f0c756f841548259da7df1bee5e,
         type: 3}
       propertyPath: m_Name

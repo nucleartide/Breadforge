@@ -9,13 +9,13 @@ public class PlayerMiningState : PlayerCollectingState
 
     private void OnEnable()
     {
-        playerAnimationEvents.OnPickaxeHitComplete += PlayerAnimationEvents_OnPickaxeHit;
+        playerAnimationEvents.OnPickaxeHit += PlayerAnimationEvents_OnPickaxeHit;
     }
 
     protected override void OnDisable()
     {
         base.OnDisable();
-        playerAnimationEvents.OnPickaxeHitComplete -= PlayerAnimationEvents_OnPickaxeHit;
+        playerAnimationEvents.OnPickaxeHit -= PlayerAnimationEvents_OnPickaxeHit;
     }
 
     private void PlayerAnimationEvents_OnPickaxeHit(object sender, EventArgs eventArgs)

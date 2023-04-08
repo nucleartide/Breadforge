@@ -9,12 +9,12 @@ public abstract class PlayerCollectingState : StateBehaviour
 
     protected Resource resourceBeingCollected;
 
+    protected Quaternion desiredRotation;
+
     public ResourceConfiguration.ResourceType ResourceType
     {
         get => resourceBeingCollected.Configuration.Type;
     }
-
-    protected Quaternion desiredRotation;
 
     protected static Quaternion GetDesiredRotation(Resource resourceBeingCollected, Transform gameObject)
     {
@@ -29,7 +29,10 @@ public abstract class PlayerCollectingState : StateBehaviour
         player.rotation = Quaternion.RotateTowards(player.rotation, desired, singleStep);
     }
 
-    private void ResourceBeingCollected_OnCollectCompleted(object sender, EventArgs eventArgs) => OnCollectCompleted();
+    private void ResourceBeingCollected_OnCollectCompleted(object sender, EventArgs eventArgs)
+    {
+        OnCollectCompleted();
+    }
 
     public void Initialize(Resource resourceBeingCollected)
     {
@@ -52,14 +55,13 @@ public abstract class PlayerCollectingState : StateBehaviour
         FaceDesiredOrientation(desiredRotation, transform, Time.smoothDeltaTime, playerConfiguration);
     }
 
-    protected abstract void OnCollectCompleted();
-
     protected void Collect()
     {
         if (resourceBeingCollected != null)
             resourceBeingCollected.Elapse(GetAmountCollectedPerAction());
     }
 
-    // Hardcode this for now. Testing this out, we can expose config later.
     protected abstract float GetAmountCollectedPerAction();
+
+    protected abstract void OnCollectCompleted();
 }

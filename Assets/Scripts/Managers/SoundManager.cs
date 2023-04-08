@@ -24,6 +24,7 @@ public class SoundManager : MonoBehaviour
     {
         playerAnimationEvents.OnPickaxeHit += PlayerAnimationEvents_OnPickaxeHit;
         playerAnimationEvents.OnPickUp += PlayerAnimationEvents_OnPickUp;
+        playerAnimationEvents.OnPickUpComplete += PlayerAnimationEvents_OnPickUpComplete;
         playerAnimationEvents.OnChopImpact += PlayerAnimationEvents_OnChopImpact;
         playerStateMachine.OnResourceCollisionEnter += PlayerStateMachine_OnResourceCollisionEnter;
         playerStateMachine.OnNothingToMine += PlayerStateMachine_OnNothingToMine;
@@ -33,6 +34,7 @@ public class SoundManager : MonoBehaviour
     {
         playerAnimationEvents.OnPickaxeHit -= PlayerAnimationEvents_OnPickaxeHit;
         playerAnimationEvents.OnPickUp -= PlayerAnimationEvents_OnPickUp;
+        playerAnimationEvents.OnPickUpComplete -= PlayerAnimationEvents_OnPickUpComplete;
         playerAnimationEvents.OnChopImpact -= PlayerAnimationEvents_OnChopImpact;
         playerStateMachine.OnResourceCollisionEnter -= PlayerStateMachine_OnResourceCollisionEnter;
         playerStateMachine.OnNothingToMine -= PlayerStateMachine_OnNothingToMine;
@@ -45,7 +47,12 @@ public class SoundManager : MonoBehaviour
 
     private void PlayerAnimationEvents_OnPickUp(object sender, EventArgs eventArgs)
     {
-        AudioSourceHelpers.PlayClipAtPoint(allTheSounds.CollectWater, player.position, .25f, .7f);
+        AudioSourceHelpers.PlayClipAtPoint(allTheSounds.WaterSplash, player.position, .25f, .7f);
+    }
+
+    private void PlayerAnimationEvents_OnPickUpComplete(object sender, EventArgs eventArgs)
+    {
+        AudioSourceHelpers.PlayClipAtPoint(allTheSounds.MagicSparkle, player.position, .25f, .7f);
     }
 
     private void PlayerAnimationEvents_OnChopImpact(object sender, EventArgs eventArgs)

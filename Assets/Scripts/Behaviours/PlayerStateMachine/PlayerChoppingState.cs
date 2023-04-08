@@ -10,26 +10,17 @@ public class PlayerChoppingState : PlayerCollectingState
     private void OnEnable()
     {
         playerAnimationEvents.OnChopImpact += PlayerAnimationEvents_OnChopImpact;
-        playerAnimationEvents.OnChopImpactComplete += PlayerAnimationEvents_OnChopImpactComplete;
     }
 
     protected override void OnDisable()
     {
         base.OnDisable();
         playerAnimationEvents.OnChopImpact -= PlayerAnimationEvents_OnChopImpact;
-        playerAnimationEvents.OnChopImpactComplete -= PlayerAnimationEvents_OnChopImpactComplete;
     }
 
     private void PlayerAnimationEvents_OnChopImpact(object sender, EventArgs eventArgs)
     {
-        if (resourceBeingCollected.Type == ResourceConfiguration.ResourceType.ThinWood) 
-            Collect();
-    }
-
-    private void PlayerAnimationEvents_OnChopImpactComplete(object sender, EventArgs eventArgs)
-    {
-        if (resourceBeingCollected.Type != ResourceConfiguration.ResourceType.ThinWood)
-            Collect();
+        Collect();
     }
 
     protected override void OnCollectCompleted()

@@ -63,7 +63,7 @@ public class Resource : MonoBehaviour
             ResetRemainingTime();
 
             // Decrement quantity.
-            quantity -= Configuration.CollectedQuantity * dt;
+            quantity -= Configuration.CollectedQuantity;
 
             // Do stuff when quantity is depleted.
             if (quantity <= 0)

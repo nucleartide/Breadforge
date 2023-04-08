@@ -67,6 +67,7 @@ Order | Feature | Pull Request
 16 | Add collect water sound | https://github.com/nucleartide/Breadforge/pull/45
 17 | Add chop sounds for thin, medium, and thicc wood | https://github.com/nucleartide/Breadforge/pull/46
 18 | Bugfixes: make resource collection not continuous + add polish for sound feedback | https://github.com/nucleartide/Breadforge/pull/47
+19 | Bugfix: shift ground by .5 so that all tiles appear on ground platform | https://github.com/nucleartide/Breadforge/pull/48
 ... | *(more to come soon)* | *(more to come soon)*
 
 ---

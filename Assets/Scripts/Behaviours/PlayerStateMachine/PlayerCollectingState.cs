@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 public abstract class PlayerCollectingState : StateBehaviour
@@ -8,12 +9,12 @@ public abstract class PlayerCollectingState : StateBehaviour
 
     protected Resource resourceBeingCollected;
 
+    protected Quaternion desiredRotation;
+
     public ResourceConfiguration.ResourceType ResourceType
     {
         get => resourceBeingCollected.Configuration.Type;
     }
-
-    protected Quaternion desiredRotation;
 
     protected static Quaternion GetDesiredRotation(Resource resourceBeingCollected, Transform gameObject)
     {
@@ -28,17 +29,39 @@ public abstract class PlayerCollectingState : StateBehaviour
         player.rotation = Quaternion.RotateTowards(player.rotation, desired, singleStep);
     }
 
+    private void ResourceBeingCollected_OnCollectCompleted(object sender, EventArgs eventArgs)
+    {
+        OnCollectCompleted();
+    }
+
     public void Initialize(Resource resourceBeingCollected)
     {
         this.resourceBeingCollected = resourceBeingCollected;
+        resourceBeingCollected.OnCollectCompleted += ResourceBeingCollected_OnCollectCompleted;
         desiredRotation = GetDesiredRotation(resourceBeingCollected, transform);
     }
 
-    protected void Update()
+    protected virtual void OnDisable()
+    {
+        if (resourceBeingCollected != null)
+        {
+            resourceBeingCollected.OnCollectCompleted -= ResourceBeingCollected_OnCollectCompleted;
+            resourceBeingCollected.ResetRemainingTime();
+        }
+    }
+
+    private void Update()
     {
         FaceDesiredOrientation(desiredRotation, transform, Time.smoothDeltaTime, playerConfiguration);
-
-        if (resourceBeingCollected != null)
-            resourceBeingCollected.Elapse(Time.deltaTime);
     }
+
+    protected void Collect()
+    {
+        if (resourceBeingCollected != null)
+            resourceBeingCollected.Elapse(GetAmountCollectedPerAction());
+    }
+
+    protected abstract float GetAmountCollectedPerAction();
+
+    protected abstract void OnCollectCompleted();
 }

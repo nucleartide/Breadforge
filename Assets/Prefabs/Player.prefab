@@ -1702,7 +1702,7 @@ CharacterController:
   m_Enabled: 1
   serializedVersion: 2
   m_Height: 2
-  m_Radius: 0.5
+  m_Radius: 0.3
   m_SlopeLimit: 45
   m_StepOffset: 0.3
   m_SkinWidth: 0.08
@@ -1811,6 +1811,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerConfiguration: {fileID: 11400000, guid: 0e29962fbc3e34aaea3620693e304758,
     type: 2}
+  playerAnimationEvents: {fileID: 634476755}
 --- !u!114 &368801314335542304
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1825,6 +1826,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerConfiguration: {fileID: 11400000, guid: 0e29962fbc3e34aaea3620693e304758,
     type: 2}
+  playerAnimationEvents: {fileID: 634476755}
 --- !u!114 &368801314335542311
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1839,6 +1841,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerConfiguration: {fileID: 11400000, guid: 0e29962fbc3e34aaea3620693e304758,
     type: 2}
+  playerAnimationEvents: {fileID: 634476755}
 --- !u!1 &4064653712732371097
 GameObject:
   m_ObjectHideFlags: 0

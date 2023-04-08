@@ -22,6 +22,7 @@ public class Resource : MonoBehaviour
 
     private float quantity;
 
+    [SerializeField]
     private float remainingTime = 0f;
 
     public ResourceConfiguration.ResourceType Type
@@ -38,7 +39,7 @@ public class Resource : MonoBehaviour
         ResetRemainingTime();
     }
 
-    private void ResetRemainingTime() => remainingTime = Configuration.TimeToCollect;
+    public void ResetRemainingTime() => remainingTime = Configuration.TimeToCollect;
 
     /// <summary>
     /// Elapse some collection time.
@@ -51,7 +52,6 @@ public class Resource : MonoBehaviour
 
         // Decrement time.
         remainingTime -= dt;
-        Debug.Log($"Elapsed. Remaining time to next collection is {remainingTime} seconds.");
 
         // When countdown is complete,
         if (remainingTime <= 0f)
@@ -63,7 +63,7 @@ public class Resource : MonoBehaviour
             ResetRemainingTime();
 
             // Decrement quantity.
-            quantity -= Configuration.CollectedQuantity * dt;
+            quantity -= Configuration.CollectedQuantity;
 
             // Do stuff when quantity is depleted.
             if (quantity <= 0)

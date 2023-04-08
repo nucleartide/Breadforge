@@ -14,5 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   <TimeToCollect>k__BackingField: 2
   <CollectedQuantity>k__BackingField: 10
-  <NumCollections>k__BackingField: 1000
+  <NumCollections>k__BackingField: 1
   <Type>k__BackingField: 4

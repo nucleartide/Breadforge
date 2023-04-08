@@ -4,14 +4,22 @@ using System.Collections.Generic;
 [CreateAssetMenu]
 public class AllTheSounds : ScriptableObject
 {
+    [NotNull]
     public AudioClip PickaxeHit;
 
+    [NotNull]
     public AudioClip BumpIntoCollider;
 
+    [NotNull]
     public AudioClip NothingToMine;
 
-    public AudioClip CollectWater;
+    [NotNull]
+    public AudioClip WaterSplash;
 
+    [NotNull]
+    public AudioClip MagicSparkle;
+
+    [NotNull]
     public AudioClip ChopMedium;
 
     [SerializeField]
@@ -27,8 +35,10 @@ public class AllTheSounds : ScriptableObject
         get => chopMediumSections[Random.Range(0, chopMediumSections.Count)];
     }
 
+    [NotNull]
     public AudioClip ChopThicc;
 
+    [NotNull]
     public AudioClip ChopThin;
 
     [SerializeField]

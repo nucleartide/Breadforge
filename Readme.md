@@ -66,6 +66,7 @@ Order | Feature | Pull Request
 15 | Add "null" (nothing to mine) mining sound | https://github.com/nucleartide/Breadforge/pull/44
 16 | Add collect water sound | https://github.com/nucleartide/Breadforge/pull/45
 17 | Add chop sounds for thin, medium, and thicc wood | https://github.com/nucleartide/Breadforge/pull/46
+18 | Bugfixes: make resource collection not continuous + add polish for sound feedback | https://github.com/nucleartide/Breadforge/pull/47
 ... | *(more to come soon)* | *(more to come soon)*
 
 ---

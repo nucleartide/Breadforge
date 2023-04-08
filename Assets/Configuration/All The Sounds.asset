@@ -15,7 +15,8 @@ MonoBehaviour:
   PickaxeHit: {fileID: 8300000, guid: 3bb678fadaa484df0af458f9f168324d, type: 3}
   BumpIntoCollider: {fileID: 8300000, guid: 5099ae372ad7645d0960cbac64cb7901, type: 3}
   NothingToMine: {fileID: 8300000, guid: 12484537fada045d2804a7d1db54a3fb, type: 3}
-  CollectWater: {fileID: 8300000, guid: 15c87dda748a94a2980aab610e9b96aa, type: 3}
+  WaterSplash: {fileID: 8300000, guid: 0b692560e52c24d5d9b65835054a94ae, type: 3}
+  MagicSparkle: {fileID: 8300000, guid: 96c566e00fe974afb91c240ef0972583, type: 3}
   ChopMedium: {fileID: 8300000, guid: 6e3ac8d57ade742b4b452fa68c38987d, type: 3}
   ChopThicc: {fileID: 8300000, guid: 1bddc441159e94b24aa3815c648cea7f, type: 3}
   ChopThin: {fileID: 8300000, guid: 29d22ee5fd60a4634a97796aa34a02f8, type: 3}

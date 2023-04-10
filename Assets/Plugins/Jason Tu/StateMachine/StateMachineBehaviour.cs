@@ -30,37 +30,38 @@ public abstract class StateMachineBehaviour : MonoBehaviour
     private void Start()
     {
         TransitionTo(initialState);
-        CurrentState.TransitionTo += StateBehaviour_OnTransitionTo;
     }
 
     private void OnDisable()
     {
-        CurrentState.TransitionTo -= StateBehaviour_OnTransitionTo;
+        if (CurrentState != null)
+            CurrentState.OnTransitionTo -= StateBehaviour_OnTransitionTo;
     }
 
     protected void TransitionTo(StateBehaviour newState)
     {
         // Disable current state, if there is any.
         if (CurrentState != null)
+        {
             CurrentState.enabled = false;
+            CurrentState.OnTransitionTo -= StateBehaviour_OnTransitionTo;
+        }
 
         // Enable new state.
         newState.enabled = true;
+        newState.OnTransitionTo += StateBehaviour_OnTransitionTo;
 
         // Emit change event.
         OnChanged?.Invoke(this, new StateMachineChangedArgs { OldState = CurrentState, NewState = newState });
 
         // Update current state reference.
         CurrentState = newState;
+
+        Debug.Log("Changed state:" + newState);
     }
 
     private void StateBehaviour_OnTransitionTo(object sender, StateBehaviour.TransitionToArgs args)
     {
-        CurrentState.TransitionTo -= StateBehaviour_OnTransitionTo;
-
-        var newState = args.NewState.State;
-        newState.TransitionTo += StateBehaviour_OnTransitionTo;
-
-        TransitionTo(newState);
+        TransitionTo(args.NewState);
     }
 }

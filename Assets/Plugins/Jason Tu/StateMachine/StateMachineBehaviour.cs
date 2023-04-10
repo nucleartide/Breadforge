@@ -6,12 +6,6 @@ using System;
 /// </summary>
 public abstract class StateMachineBehaviour : MonoBehaviour
 {
-    public class StateMachineChangedArgs : EventArgs
-    {
-        public StateBehaviour OldState;
-        public StateBehaviour NewState;
-    }
-
     [SerializeField]
     [NotNull]
     protected StateBehaviour initialState;
@@ -22,6 +16,12 @@ public abstract class StateMachineBehaviour : MonoBehaviour
         private set;
     }
 
+    public class StateMachineChangedArgs : EventArgs
+    {
+        public StateBehaviour OldState;
+        public StateBehaviour NewState;
+    }
+
     public event EventHandler<StateMachineChangedArgs> OnChanged;
 
     /// <summary>
@@ -29,15 +29,38 @@ public abstract class StateMachineBehaviour : MonoBehaviour
     /// </summary>
     private void Start()
     {
-        CurrentState = initialState;
-        OnChanged?.Invoke(this, new StateMachineChangedArgs { OldState = null, NewState = initialState });
+        TransitionTo(initialState);
+        CurrentState.TransitionTo += StateBehaviour_OnTransitionTo;
     }
 
-    public void TransitionTo(StateBehaviour newState)
+    private void OnDisable()
     {
-        CurrentState.enabled = false;
+        CurrentState.TransitionTo -= StateBehaviour_OnTransitionTo;
+    }
+
+    protected void TransitionTo(StateBehaviour newState)
+    {
+        // Disable current state, if there is any.
+        if (CurrentState != null)
+            CurrentState.enabled = false;
+
+        // Enable new state.
         newState.enabled = true;
+
+        // Emit change event.
         OnChanged?.Invoke(this, new StateMachineChangedArgs { OldState = CurrentState, NewState = newState });
+
+        // Update current state reference.
         CurrentState = newState;
+    }
+
+    private void StateBehaviour_OnTransitionTo(object sender, StateBehaviour.TransitionToArgs args)
+    {
+        CurrentState.TransitionTo -= StateBehaviour_OnTransitionTo;
+
+        var newState = args.NewState.State;
+        newState.TransitionTo += StateBehaviour_OnTransitionTo;
+
+        TransitionTo(newState);
     }
 }

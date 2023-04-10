@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 /// <summary>
@@ -5,4 +6,10 @@ using UnityEngine;
 /// </summary>
 public abstract class StateBehaviour : MonoBehaviour
 {
+    public class TransitionToArgs : EventArgs
+    {
+        public StateEnumValue NewState;
+    }
+
+    public event EventHandler<TransitionToArgs> TransitionTo;
 }

@@ -72,7 +72,7 @@ public class PlayerMovingState : StateBehaviour
 
     private void Move(Vector3 movementDirection)
     {
-        var delta = Time.smoothDeltaTime * HorizontalSpeed * movementDirection;
+        var delta = Time.deltaTime * HorizontalSpeed * movementDirection;
         characterController.Move(delta);
     }
 
@@ -80,7 +80,7 @@ public class PlayerMovingState : StateBehaviour
     {
         if (gameInput.GetMovement() != Vector3.zero)
         {
-            float singleStep = playerConfiguration.RotationSpeed * Time.smoothDeltaTime;
+            float singleStep = playerConfiguration.RotationSpeed * Time.deltaTime;
             transform.forward = Vector3.RotateTowards(transform.forward, movementDirection.normalized, singleStep, 0f);
         }
     }

@@ -16,11 +16,11 @@ public class PlayerShoulderTarget : MonoBehaviour
 
         // Apply horizontal rotation.
         var horizontalInput = lookAround.x;
-        transform.rotation *= Quaternion.AngleAxis(horizontalInput * config.RotationSpeed * Time.smoothDeltaTime, Vector3.up);
+        transform.rotation *= Quaternion.AngleAxis(horizontalInput * config.RotationSpeed * Time.deltaTime, Vector3.up);
 
         // Apply vertical rotation.
         var verticalInput = lookAround.y;
-        transform.rotation *= Quaternion.AngleAxis(-1f * verticalInput * config.RotationSpeed * Time.smoothDeltaTime, Vector3.right);
+        transform.rotation *= Quaternion.AngleAxis(-1f * verticalInput * config.RotationSpeed * Time.deltaTime, Vector3.right);
 
         // Constrain rotations about the x and y axes.
         var x = MathHelpers.RotationClamp(transform.localEulerAngles.x, config.MinXAngle, config.MaxXAngle);

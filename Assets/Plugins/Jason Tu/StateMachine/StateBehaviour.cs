@@ -8,8 +8,13 @@ public abstract class StateBehaviour : MonoBehaviour
 {
     public class TransitionToArgs : EventArgs
     {
-        public StateEnumValue NewState;
+        public StateBehaviour NewState;
     }
 
-    public event EventHandler<TransitionToArgs> TransitionTo;
+    public event EventHandler<TransitionToArgs> OnTransitionTo;
+
+    protected void TransitionTo(StateBehaviour newState)
+    {
+        OnTransitionTo?.Invoke(this, new TransitionToArgs { NewState = newState });
+    }
 }

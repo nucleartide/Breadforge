@@ -7,6 +7,10 @@ public abstract class PlayerCollectingState : StateBehaviour
     [NotNull]
     protected PlayerConfiguration playerConfiguration;
 
+    [SerializeField]
+    [NotNull(IgnorePrefab = true)]
+    protected PlayerMovingState playerMovingState;
+
     protected Resource resourceBeingCollected;
 
     protected Quaternion desiredRotation;
@@ -34,10 +38,16 @@ public abstract class PlayerCollectingState : StateBehaviour
         OnCollectCompleted();
     }
 
+    private void ResourceBeingCollected_OnDepleted(object sender, EventArgs eventArgs)
+    {
+        TransitionTo(playerMovingState);
+    }
+
     public void Initialize(Resource resourceBeingCollected)
     {
         this.resourceBeingCollected = resourceBeingCollected;
         resourceBeingCollected.OnCollectCompleted += ResourceBeingCollected_OnCollectCompleted;
+        resourceBeingCollected.OnDepleted += ResourceBeingCollected_OnDepleted;
         desiredRotation = GetDesiredRotation(resourceBeingCollected, transform);
     }
 
@@ -46,6 +56,7 @@ public abstract class PlayerCollectingState : StateBehaviour
         if (resourceBeingCollected != null)
         {
             resourceBeingCollected.OnCollectCompleted -= ResourceBeingCollected_OnCollectCompleted;
+            resourceBeingCollected.OnDepleted -= ResourceBeingCollected_OnDepleted;
             resourceBeingCollected.ResetRemainingTime();
         }
     }

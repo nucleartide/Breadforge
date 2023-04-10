@@ -24,7 +24,10 @@ public abstract class StateMachineBehaviour : MonoBehaviour
 
     public event EventHandler<StateMachineChangedArgs> OnChanged;
 
-    private void Awake()
+    /// <summary>
+    /// Must occur after OnEnable, since OnEnable is where the OnChanged listeners are attached.
+    /// </summary>
+    private void Start()
     {
         CurrentState = initialState;
         OnChanged?.Invoke(this, new StateMachineChangedArgs { OldState = null, NewState = initialState });

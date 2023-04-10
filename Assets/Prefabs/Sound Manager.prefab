@@ -47,3 +47,4 @@ MonoBehaviour:
   playerAnimationEvents: {fileID: 0}
   allTheSounds: {fileID: 11400000, guid: 7e5b8a410b35e46d29063206c5999a5b, type: 2}
   player: {fileID: 0}
+  playerStateMachine: {fileID: 0}

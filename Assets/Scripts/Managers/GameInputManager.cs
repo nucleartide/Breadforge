@@ -64,7 +64,7 @@ public class GameInputManager : MonoBehaviour
     {
         Assert.IsNotNull(playerInputActions);
         var move = playerInputActions.Player.Move.ReadValue<Vector2>();
-        return Vector3.ClampMagnitude(new Vector3(move.x, 0f, move.y), 1f);
+        return new Vector3(move.x, 0f, move.y);
     }
 
     public Vector2 GetLookAround()

@@ -52,7 +52,7 @@ public abstract class PlayerCollectingState : StateBehaviour
 
     private void Update()
     {
-        FaceDesiredOrientation(desiredRotation, transform, Time.smoothDeltaTime, playerConfiguration);
+        FaceDesiredOrientation(desiredRotation, transform, Time.deltaTime, playerConfiguration);
     }
 
     protected void Collect()

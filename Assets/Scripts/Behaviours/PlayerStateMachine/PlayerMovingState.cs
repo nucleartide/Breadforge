@@ -63,7 +63,7 @@ public class PlayerMovingState : StateBehaviour
 
     private void Update()
     {
-        HorizontalSpeed = Mathf.SmoothDamp(HorizontalSpeed, TargetSpeed, ref horizontalSpeedDampingValue, .3f);
+        HorizontalSpeed = Mathf.SmoothDamp(HorizontalSpeed, TargetSpeed, ref horizontalSpeedDampingValue, .15f);
 
         var movementDirection = gameInput.GetMovement();
         FaceMovementDirection(movementDirection);

@@ -409,6 +409,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerConfiguration: {fileID: 11400000, guid: 0e29962fbc3e34aaea3620693e304758,
     type: 2}
+  playerMovingState: {fileID: 7520308135305952835}
   playerAnimationEvents: {fileID: 7873346240423897778}
 --- !u!114 &7520308135305952833
 MonoBehaviour:
@@ -424,6 +425,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerConfiguration: {fileID: 11400000, guid: 0e29962fbc3e34aaea3620693e304758,
     type: 2}
+  playerMovingState: {fileID: 7520308135305952835}
   playerAnimationEvents: {fileID: 7873346240423897778}
 --- !u!114 &7520308135305952838
 MonoBehaviour:
@@ -439,6 +441,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerConfiguration: {fileID: 11400000, guid: 0e29962fbc3e34aaea3620693e304758,
     type: 2}
+  playerMovingState: {fileID: 7520308135305952835}
   playerAnimationEvents: {fileID: 7873346240423897778}
 --- !u!1 &6524875693616862465
 GameObject:

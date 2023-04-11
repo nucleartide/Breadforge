@@ -70,6 +70,7 @@ Order | Feature | Pull Request
 19 | Bugfix: shift ground by .5 so that all tiles appear on ground platform | https://github.com/nucleartide/Breadforge/pull/48
 20 | Fix showstopper bugs for last release | https://github.com/nucleartide/Breadforge/pull/49
 21 | Fix animation bugs for last release | https://github.com/nucleartide/Breadforge/pull/50
+22 | Add ability to zoom in and out | https://github.com/nucleartide/Breadforge/pull/52
 ... | *(more to come soon)* | *(more to come soon)*
 
 ---

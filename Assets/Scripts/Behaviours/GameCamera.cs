@@ -30,6 +30,10 @@ public class GameCamera : MonoBehaviour
     private void Awake()
     {
         cinemachineCamera.Follow = followedObject;
+    }
+
+    private void Start()
+    {
         cinemachineCamera.m_Lens.OrthographicSize = initialOrthoSize;
     }
 
@@ -39,7 +43,7 @@ public class GameCamera : MonoBehaviour
         if (zoomDelta != 0f)
             cinemachineCamera.m_Lens.OrthographicSize += zoomDelta * Time.deltaTime * -zoomScaleFactor;
 
-        // Prevent ortho size from becoming too small.
+        // Prevent ortho size from becoming too small or large.
         cinemachineCamera.m_Lens.OrthographicSize = Mathf.Clamp(cinemachineCamera.m_Lens.OrthographicSize, minOrthoSize, maxOrthoSize);
     }
 }

@@ -8,11 +8,6 @@ public class PlayerAnimationEvents : MonoBehaviour
     public event EventHandler OnPickaxeHit;
 
     /// <summary>
-    /// Different from OnPickaxeHit, in that this is 1 animation frame after OnPickaxeHit.
-    /// </summary>
-    public event EventHandler OnLatePickaxeHit;
-
-    /// <summary>
     /// Different from OnPickaxeHit, in that this event indicates the last frame of the animation.
     /// </summary>
     public event EventHandler OnPickaxeHitComplete;
@@ -39,8 +34,6 @@ public class PlayerAnimationEvents : MonoBehaviour
     private void WalkFootstep() => OnWalkFootstep?.Invoke(this, EventArgs.Empty);
 
     private void PickaxeHit() => OnPickaxeHit?.Invoke(this, EventArgs.Empty);
-
-    private void LatePickaxeHit() => OnLatePickaxeHit?.Invoke(this, EventArgs.Empty);
 
     private void PickaxeHitComplete() => OnPickaxeHitComplete?.Invoke(this, EventArgs.Empty);
 

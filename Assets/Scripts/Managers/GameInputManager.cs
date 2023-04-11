@@ -76,4 +76,9 @@ public class GameInputManager : MonoBehaviour
     {
         return playerInputActions.Player.Run.IsPressed();
     }
+
+    public float GetZoom()
+    {
+        return playerInputActions.Player.Zoom.ReadValue<Vector2>().y;
+    }
 }

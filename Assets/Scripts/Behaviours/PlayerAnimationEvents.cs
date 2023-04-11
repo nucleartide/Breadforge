@@ -20,11 +20,6 @@ public class PlayerAnimationEvents : MonoBehaviour
     public event EventHandler OnPickUp;
 
     /// <summary>
-    /// Different from OnPickUp, in that this is 1 animation frame after OnPickUp.
-    /// </summary>
-    public event EventHandler OnLatePickUp;
-
-    /// <summary>
     /// Different from OnPickUp, in that this event indicates the last frame of the animation.
     /// </summary>
     public event EventHandler OnPickUpComplete;
@@ -50,8 +45,6 @@ public class PlayerAnimationEvents : MonoBehaviour
     private void PickaxeHitComplete() => OnPickaxeHitComplete?.Invoke(this, EventArgs.Empty);
 
     private void PickUp() => OnPickUp?.Invoke(this, EventArgs.Empty);
-
-    private void LatePickUp() => OnLatePickUp?.Invoke(this, EventArgs.Empty);
 
     private void PickUpComplete() => OnPickUpComplete?.Invoke(this, EventArgs.Empty);
 

@@ -230,16 +230,6 @@ PrefabInstance:
       propertyPath: followedObject
       value: 
       objectReference: {fileID: 1238949281}
-    - target: {fileID: 8746842707825717524, guid: 594144324abd847ada9e69575d7d3295,
-        type: 3}
-      propertyPath: orthographic size
-      value: 1.320031
-      objectReference: {fileID: 0}
-    - target: {fileID: 8746842708071168790, guid: 594144324abd847ada9e69575d7d3295,
-        type: 3}
-      propertyPath: m_Lens.OrthographicSize
-      value: 1.320031
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 594144324abd847ada9e69575d7d3295, type: 3}
 --- !u!114 &1595643721 stripped

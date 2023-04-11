@@ -1909,3 +1909,4 @@ MonoBehaviour:
   playerAnimationEvents: {fileID: 7873346240423897778}
   playerMovingState: {fileID: 7520308135305952835}
   playerStateMachine: {fileID: 7520308135305952834}
+  gameCamera: {fileID: 0}

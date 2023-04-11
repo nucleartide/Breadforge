@@ -20,6 +20,10 @@ public class SoundManager : MonoBehaviour
     [NotNull(IgnorePrefab = true)]
     private PlayerStateMachine playerStateMachine;
 
+    [SerializeField]
+    [NotNull(IgnorePrefab = true)]
+    private GameCamera gameCamera;
+
     private void OnEnable()
     {
         playerAnimationEvents.OnPickaxeHit += PlayerAnimationEvents_OnPickaxeHit;
@@ -42,17 +46,17 @@ public class SoundManager : MonoBehaviour
 
     private void PlayerAnimationEvents_OnPickaxeHit(object sender, EventArgs eventArgs)
     {
-        AudioSourceHelpers.PlayClipAtPoint(allTheSounds.PickaxeHit, player.position, 1f);
+        AudioSourceHelpers.PlayClipAtPoint(allTheSounds.PickaxeHit, player.position, gameCamera.OrthoSizeInverseLerp, 1f);
     }
 
     private void PlayerAnimationEvents_OnPickUp(object sender, EventArgs eventArgs)
     {
-        AudioSourceHelpers.PlayClipAtPoint(allTheSounds.WaterSplash, player.position, .25f, .7f);
+        AudioSourceHelpers.PlayClipAtPoint(allTheSounds.WaterSplash, player.position, gameCamera.OrthoSizeInverseLerp, .25f, .7f);
     }
 
     private void PlayerAnimationEvents_OnPickUpComplete(object sender, EventArgs eventArgs)
     {
-        AudioSourceHelpers.PlayClipAtPoint(allTheSounds.MagicSparkle, player.position, .25f, .7f);
+        AudioSourceHelpers.PlayClipAtPoint(allTheSounds.MagicSparkle, player.position, gameCamera.OrthoSizeInverseLerp, .25f, .7f);
     }
 
     private void PlayerAnimationEvents_OnChopImpact(object sender, EventArgs eventArgs)
@@ -64,13 +68,13 @@ public class SoundManager : MonoBehaviour
             switch (resourceType)
             {
                 case ResourceConfiguration.ResourceType.MediumWood:
-                    AudioSourceHelpers.PlayIntervalAtPoint(allTheSounds.ChopMedium, allTheSounds.ChopMediumRandomSection, player.position);
+                    AudioSourceHelpers.PlayIntervalAtPoint(allTheSounds.ChopMedium, allTheSounds.ChopMediumRandomSection, player.position, gameCamera.OrthoSizeInverseLerp);
                     break;
                 case ResourceConfiguration.ResourceType.ThinWood:
-                    AudioSourceHelpers.PlayIntervalAtPoint(allTheSounds.ChopThin, allTheSounds.ChopThinRandomSection, player.position);
+                    AudioSourceHelpers.PlayIntervalAtPoint(allTheSounds.ChopThin, allTheSounds.ChopThinRandomSection, player.position, gameCamera.OrthoSizeInverseLerp);
                     break;
                 case ResourceConfiguration.ResourceType.ThickWood:
-                    AudioSourceHelpers.PlayClipAtPoint(allTheSounds.ChopThicc, player.position, 1f, UnityEngine.Random.Range(.8f, 1.2f));
+                    AudioSourceHelpers.PlayClipAtPoint(allTheSounds.ChopThicc, player.position, gameCamera.OrthoSizeInverseLerp, 1f, UnityEngine.Random.Range(.8f, 1.2f));
                     break;
                 default:
                     throw new System.Exception($"Resource type {resourceType} is unsupported.");
@@ -80,12 +84,12 @@ public class SoundManager : MonoBehaviour
 
     private void PlayerStateMachine_OnResourceCollisionEnter(object sender, EventArgs eventArgs)
     {
-        AudioSourceHelpers.PlayClipAtPoint(allTheSounds.BumpIntoCollider, player.position, .7f, 1.2f);
+        AudioSourceHelpers.PlayClipAtPoint(allTheSounds.BumpIntoCollider, player.position, gameCamera.OrthoSizeInverseLerp, .7f, 1.2f);
     }
 
     private void PlayerStateMachine_OnNothingToMine(object sender, EventArgs eventArgs)
     {
-        AudioSourceHelpers.PlayClipAtPoint(allTheSounds.NothingToMine, player.position, 1f);
+        AudioSourceHelpers.PlayClipAtPoint(allTheSounds.NothingToMine, player.position, gameCamera.OrthoSizeInverseLerp, 1f);
     }
 
 #if false

@@ -8,6 +8,10 @@ public class GameCamera : MonoBehaviour
 
     [SerializeField]
     [NotNull]
+    private Camera mainCamera;
+
+    [SerializeField]
+    [NotNull]
     private Camera uiCamera;
 
     [SerializeField]
@@ -30,6 +34,11 @@ public class GameCamera : MonoBehaviour
 
     [SerializeField]
     private float initialOrthoSize = 3f;
+
+    public float OrthoSizeInverseLerp
+    {
+        get => Mathf.InverseLerp(minOrthoSize, maxOrthoSize, mainCamera.orthographicSize);
+    }
 
     private void Awake()
     {

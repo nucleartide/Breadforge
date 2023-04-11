@@ -22,6 +22,11 @@ public class PlayerAnimationEvents : MonoBehaviour
     public event EventHandler OnChopImpact;
 
     /// <summary>
+    /// Different from OnChopImpact, in that this is 1 animation frame after OnChopImpact.
+    /// </summary>
+    public event EventHandler OnLateChopImpact;
+
+    /// <summary>
     /// Different from OnChopImpact, in that this event indicates the last frame of the animation.
     /// </summary>
     public event EventHandler OnChopImpactComplete;
@@ -37,6 +42,8 @@ public class PlayerAnimationEvents : MonoBehaviour
     private void PickUpComplete() => OnPickUpComplete?.Invoke(this, EventArgs.Empty);
 
     private void ChopImpact() => OnChopImpact?.Invoke(this, EventArgs.Empty);
+
+    private void LateChopImpact() => OnLateChopImpact?.Invoke(this, EventArgs.Empty);
 
     private void ChopImpactComplete() => OnChopImpactComplete?.Invoke(this, EventArgs.Empty);
 }

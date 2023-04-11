@@ -35,11 +35,14 @@ public abstract class PlayerCollectingState : StateBehaviour
 
     private void ResourceBeingCollected_OnCollectCompleted(object sender, EventArgs eventArgs)
     {
+        Debug.Log("Completed collection of resource: " + resourceBeingCollected.gameObject.name);
         OnCollectCompleted();
     }
 
+    // problem: OnDepleted is called first, and thus the animation event doesn't occur
     private void ResourceBeingCollected_OnDepleted(object sender, EventArgs eventArgs)
     {
+        Debug.Log("Depleted resource: " + resourceBeingCollected.gameObject.name);
         TransitionTo(playerMovingState);
     }
 

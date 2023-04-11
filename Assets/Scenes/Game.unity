@@ -135,6 +135,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bded502519dc440569d76f4453e3eea3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!4 &1238949281 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 1238949281, guid: b7150f0c756f841548259da7df1bee5e,
+    type: 3}
+  m_PrefabInstance: {fileID: 4849677784639536218}
+  m_PrefabAsset: {fileID: 0}
 --- !u!114 &1405936094 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 916260496202684719, guid: 3238d76c384ea4f0d92acb88737f0fe4,
@@ -223,7 +229,7 @@ PrefabInstance:
         type: 3}
       propertyPath: followedObject
       value: 
-      objectReference: {fileID: 1614179778878583233}
+      objectReference: {fileID: 1238949281}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 594144324abd847ada9e69575d7d3295, type: 3}
 --- !u!1001 &448395041739114491

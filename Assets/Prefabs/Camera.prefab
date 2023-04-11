@@ -49,7 +49,10 @@ MonoBehaviour:
   cinemachineCamera: {fileID: 8746842708071168790}
   followedObject: {fileID: 0}
   gameInput: {fileID: 0}
-  cameraZoomScaleFactor: 5
+  zoomScaleFactor: 5
+  minOrthoSize: 1
+  maxOrthoSize: 10
+  initialOrthoSize: 3.5
 --- !u!1 &4906026151096002527
 GameObject:
   m_ObjectHideFlags: 0
@@ -222,7 +225,7 @@ Camera:
   far clip plane: 1000
   field of view: 75
   orthographic: 1
-  orthographic size: 2.92023
+  orthographic size: 3.5
   m_Depth: 0
   m_CullingMask:
     serializedVersion: 2
@@ -369,7 +372,7 @@ MonoBehaviour:
   m_Follow: {fileID: 0}
   m_Lens:
     FieldOfView: 75
-    OrthographicSize: 2.92023
+    OrthographicSize: 3.5
     NearClipPlane: 0.3
     FarClipPlane: 1000
     Dutch: 0

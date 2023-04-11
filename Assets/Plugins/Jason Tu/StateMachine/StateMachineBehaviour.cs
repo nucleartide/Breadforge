@@ -56,8 +56,6 @@ public abstract class StateMachineBehaviour : MonoBehaviour
 
         // Update current state reference.
         CurrentState = newState;
-
-        Debug.Log("Changed state:" + newState);
     }
 
     private void StateBehaviour_OnTransitionTo(object sender, StateBehaviour.TransitionToArgs args)

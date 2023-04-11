@@ -7,6 +7,14 @@ public class GameCamera : MonoBehaviour
     private Cinemachine.CinemachineVirtualCamera cinemachineCamera;
 
     [SerializeField]
+    [NotNull]
+    private Camera mainCamera;
+
+    [SerializeField]
+    [NotNull]
+    private Camera uiCamera;
+
+    [SerializeField]
     [NotNull(IgnorePrefab = true)]
     private Transform followedObject;
 
@@ -27,6 +35,11 @@ public class GameCamera : MonoBehaviour
     [SerializeField]
     private float initialOrthoSize = 3f;
 
+    public float OrthoSizeInverseLerp
+    {
+        get => Mathf.InverseLerp(minOrthoSize, maxOrthoSize, mainCamera.orthographicSize);
+    }
+
     private void Awake()
     {
         cinemachineCamera.Follow = followedObject;
@@ -35,15 +48,22 @@ public class GameCamera : MonoBehaviour
     private void Start()
     {
         cinemachineCamera.m_Lens.OrthographicSize = initialOrthoSize;
+        uiCamera.orthographicSize = initialOrthoSize;
     }
 
     private void Update()
     {
         var zoomDelta = gameInput.GetZoom();
         if (zoomDelta != 0f)
-            cinemachineCamera.m_Lens.OrthographicSize += zoomDelta * Time.deltaTime * -zoomScaleFactor;
+        {
+            var delta = zoomDelta * Time.deltaTime * -zoomScaleFactor;
+            cinemachineCamera.m_Lens.OrthographicSize += delta;
+            uiCamera.orthographicSize += delta;
+        }
 
         // Prevent ortho size from becoming too small or large.
-        cinemachineCamera.m_Lens.OrthographicSize = Mathf.Clamp(cinemachineCamera.m_Lens.OrthographicSize, minOrthoSize, maxOrthoSize);
+        var orthoSizeClamped = Mathf.Clamp(cinemachineCamera.m_Lens.OrthographicSize, minOrthoSize, maxOrthoSize);
+        cinemachineCamera.m_Lens.OrthographicSize = orthoSizeClamped;
+        uiCamera.orthographicSize = orthoSizeClamped;
     }
 }

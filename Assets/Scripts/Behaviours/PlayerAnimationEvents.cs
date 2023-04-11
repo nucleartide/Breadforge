@@ -3,6 +3,9 @@ using System;
 
 public class PlayerAnimationEvents : MonoBehaviour
 {
+    [SerializeField]
+    private bool debug = true;
+
     public event EventHandler OnWalkFootstep;
 
     public event EventHandler OnPickaxeHit;
@@ -34,7 +37,7 @@ public class PlayerAnimationEvents : MonoBehaviour
     private void WalkFootstep()
     {
 #if UNITY_EDITOR
-        Debug.Log("[PlayerAnimationEvents] Walk Footstep");
+        if (debug) Debug.Log("[PlayerAnimationEvents] Walk Footstep");
 #endif
         OnWalkFootstep?.Invoke(this, EventArgs.Empty);
     }
@@ -42,7 +45,7 @@ public class PlayerAnimationEvents : MonoBehaviour
     private void PickaxeHit()
     {
 #if UNITY_EDITOR
-        Debug.Log("[PlayerAnimationEvents] Pickaxe Hit");
+        if (debug) Debug.Log("[PlayerAnimationEvents] Pickaxe Hit");
 #endif
         OnPickaxeHit?.Invoke(this, EventArgs.Empty);
     }
@@ -50,7 +53,7 @@ public class PlayerAnimationEvents : MonoBehaviour
     private void PickaxeHitComplete()
     {
 #if UNITY_EDITOR
-        Debug.Log("[PlayerAnimationEvents] Pickaxe Hit Complete");
+        if (debug) Debug.Log("[PlayerAnimationEvents] Pickaxe Hit Complete");
 #endif
         OnPickaxeHitComplete?.Invoke(this, EventArgs.Empty);
     }
@@ -58,7 +61,7 @@ public class PlayerAnimationEvents : MonoBehaviour
     private void PickUp()
     {
 #if UNITY_EDITOR
-        Debug.Log("[PlayerAnimationEvents] Pick Up");
+        if (debug) Debug.Log("[PlayerAnimationEvents] Pick Up");
 #endif
         OnPickUp?.Invoke(this, EventArgs.Empty);
     }
@@ -66,7 +69,7 @@ public class PlayerAnimationEvents : MonoBehaviour
     private void PickUpComplete()
     {
 #if UNITY_EDITOR
-        Debug.Log("[PlayerAnimationEvents] Pick Up Complete");
+        if (debug) Debug.Log("[PlayerAnimationEvents] Pick Up Complete");
 #endif
         OnPickUpComplete?.Invoke(this, EventArgs.Empty);
     }
@@ -74,7 +77,7 @@ public class PlayerAnimationEvents : MonoBehaviour
     private void ChopImpact()
     {
 #if UNITY_EDITOR
-        Debug.Log("[PlayerAnimationEvents] Chop Impact");
+        if (debug) Debug.Log("[PlayerAnimationEvents] Chop Impact");
 #endif
         OnChopImpact?.Invoke(this, EventArgs.Empty);
     }
@@ -82,7 +85,7 @@ public class PlayerAnimationEvents : MonoBehaviour
     private void LateChopImpact()
     {
 #if UNITY_EDITOR
-        Debug.Log("[PlayerAnimationEvents] Late Chop Impact");
+        if (debug) Debug.Log("[PlayerAnimationEvents] Late Chop Impact");
 #endif
         OnLateChopImpact?.Invoke(this, EventArgs.Empty);
     }
@@ -90,7 +93,7 @@ public class PlayerAnimationEvents : MonoBehaviour
     private void ChopImpactComplete()
     {
 #if UNITY_EDITOR
-        Debug.Log("[PlayerAnimationEvents] Chop Impact Complete");
+        if (debug) Debug.Log("[PlayerAnimationEvents] Chop Impact Complete");
 #endif
         OnChopImpactComplete?.Invoke(this, EventArgs.Empty);
     }

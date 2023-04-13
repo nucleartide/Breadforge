@@ -72,6 +72,7 @@ Order | Feature | Pull Request
 21 | Fix animation bugs for last release | https://github.com/nucleartide/Breadforge/pull/50
 22 | Add ability to zoom in and out | https://github.com/nucleartide/Breadforge/pull/52
 23 | Fix UI camera ortho size not updating; make sounds 3D via spatialBlend param | https://github.com/nucleartide/Breadforge/pull/53
+24 | Add a ton of animation polish | https://github.com/nucleartide/Breadforge/pull/54
 ... | *(more to come soon)* | *(more to come soon)*
 
 ---

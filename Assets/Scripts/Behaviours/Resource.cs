@@ -56,20 +56,21 @@ public class Resource : MonoBehaviour
         // When countdown is complete,
         if (remainingTime <= 0f)
         {
-            // Player has collected a batch.
-            OnCollectCompleted?.Invoke(this, new OnCollectCompletedArgs { AmountCollected = Configuration.CollectedQuantity });
-
             // Reset timer.
             ResetRemainingTime();
 
             // Decrement quantity.
             quantity -= Configuration.CollectedQuantity;
 
-            // Do stuff when quantity is depleted.
+            // Emit events when quantity is deducted.
             if (quantity <= 0)
             {
                 OnDepleted?.Invoke(this, EventArgs.Empty);
                 Destroy(gameObject);
+            }
+            else
+            {
+                OnCollectCompleted?.Invoke(this, new OnCollectCompletedArgs { AmountCollected = Configuration.CollectedQuantity });
             }
         }
     }

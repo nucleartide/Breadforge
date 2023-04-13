@@ -9,16 +9,16 @@ public class PlayerChoppingState : PlayerCollectingState
 
     private void OnEnable()
     {
-        playerAnimationEvents.OnChopImpact += PlayerAnimationEvents_OnChopImpact;
+        playerAnimationEvents.OnLateChopImpact += PlayerAnimationEvents_OnLateChopImpact;
     }
 
     protected override void OnDisable()
     {
         base.OnDisable();
-        playerAnimationEvents.OnChopImpact -= PlayerAnimationEvents_OnChopImpact;
+        playerAnimationEvents.OnLateChopImpact -= PlayerAnimationEvents_OnLateChopImpact;
     }
 
-    private void PlayerAnimationEvents_OnChopImpact(object sender, EventArgs eventArgs)
+    private void PlayerAnimationEvents_OnLateChopImpact(object sender, EventArgs eventArgs)
     {
         Collect();
     }

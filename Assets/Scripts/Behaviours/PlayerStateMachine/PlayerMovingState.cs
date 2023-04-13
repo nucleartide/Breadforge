@@ -73,7 +73,6 @@ public class PlayerMovingState : StateBehaviour
     private void Move(Vector3 movementDirection)
     {
         var delta = Time.deltaTime * HorizontalSpeed * movementDirection;
-        delta.y = 0f;
         characterController.Move(delta);
     }
 

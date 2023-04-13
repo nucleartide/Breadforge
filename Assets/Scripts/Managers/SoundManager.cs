@@ -62,12 +62,9 @@ public class SoundManager : MonoBehaviour
     private void PlayerAnimationEvents_OnChopImpact(object sender, EventArgs eventArgs)
     {
         var currentState = playerStateMachine.CurrentState;
-        Debug.Log("chop impact. current state:" + currentState);
         if (currentState is PlayerChoppingState choppingState)
         {
             var resourceType = choppingState.ResourceType;
-            Debug.Log("Resource type is: " + resourceType);
-            Debug.Log("Playing sound effect.");
             switch (resourceType)
             {
                 case ResourceConfiguration.ResourceType.MediumWood:

@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 89852f2ee66b74efdb8e3f777476b7f9, type: 3}
   m_Name: Player Configuration
   m_EditorClassIdentifier: 
-  PlayerWalkSpeed: 2.5
+  PlayerWalkSpeed: 2
   PlayerRunSpeed: 7.5
   GravityValue: 9.81
   RotationSpeed: 10

@@ -468,6 +468,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 175477187, guid: 594144324abd847ada9e69575d7d3295, type: 3}
+      propertyPath: m_XDamping
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 175477187, guid: 594144324abd847ada9e69575d7d3295, type: 3}
+      propertyPath: m_LookaheadTime
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 133509681492882817, guid: 594144324abd847ada9e69575d7d3295,
         type: 3}
       propertyPath: m_RootOrder
@@ -541,12 +549,12 @@ PrefabInstance:
     - target: {fileID: 8746842707825717524, guid: 594144324abd847ada9e69575d7d3295,
         type: 3}
       propertyPath: orthographic size
-      value: 1
+      value: 3.5
       objectReference: {fileID: 0}
     - target: {fileID: 8746842708071168790, guid: 594144324abd847ada9e69575d7d3295,
         type: 3}
       propertyPath: m_Lens.OrthographicSize
-      value: 1
+      value: 3.5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 594144324abd847ada9e69575d7d3295, type: 3}

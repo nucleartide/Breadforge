@@ -38,7 +38,6 @@ public abstract class PlayerCollectingState : StateBehaviour
         OnCollectCompleted();
     }
 
-    // problem: OnDepleted is called first, and thus the animation event doesn't occur
     private void ResourceBeingCollected_OnDepleted(object sender, EventArgs eventArgs)
     {
         TransitionTo(playerMovingState);

@@ -1,0 +1,5 @@
+- free brainstorm of signifier ideas
+- review implemented mechanics
+- create and categorize a list of signifier ideas
+- prioritize the list from critical to flair
+- playtesting to ensure that mechanics are appropriately communicated

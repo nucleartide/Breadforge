@@ -66,6 +66,8 @@ In the book *Playful Production Process* by Richard Lemarchand, Lemarchand break
 
 A full production pipeline for producing any kind of game. And the "narrative frame" for showing you (by way of polished, professional-quality pull requests) how a game is made from idea to launch.
 
+you can think of it as a devlog of sorts. but i view this as more of a painlog.
+
 ## I. Pre-production
 
 ### 1. The 3 C's: How to implement the 3 C's

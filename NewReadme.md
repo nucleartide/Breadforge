@@ -72,11 +72,15 @@ you can think of it as a devlog of sorts. but i view this as more of a painlog.
 
 ### 1. The 3 C's: How to implement the 3 C's
 
+(the presentation)
+
 | Feature | Pull Request |
 | --- | --- |
 | | |
 
 ### 2. Procedural generation
+
+(the presentation)
 
 | Feature | Pull Request |
 | --- | --- |
@@ -84,11 +88,15 @@ you can think of it as a devlog of sorts. but i view this as more of a painlog.
 
 ### 3. On implementing mechanics and basic feedback
 
+(the presentation)
+
 | Feature | Pull Request |
 | --- | --- |
 | | |
 
 ### 4. The importance of sound
+
+(the presentation)
 
 | Feature | Pull Request |
 | --- | --- |

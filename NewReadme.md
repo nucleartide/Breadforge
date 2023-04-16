@@ -178,7 +178,9 @@ I hope that Breadforge offers something for everyone:
 * **For fellow game programmers**:
 	* This project inspires you through documentation and hard work. 🙂
 
-Although I occasionally [give presentations](https://www.meetup.com/unity3d/events/291639476/), [write LinkedIn posts](https://www.linkedin.com/pulse/why-you-should-care-sops-game-development-devlog-jason-tu/), or [send an email newsletter](https://jasont.co/blog), the best way to follow along is to star and watch this GitHub repo.
+Although I occasionally [give presentations](https://www.meetup.com/unity3d/events/291639476/), [write LinkedIn posts](https://www.linkedin.com/pulse/why-you-should-care-sops-game-development-devlog-jason-tu/), or [send an email newsletter](https://jasont.co/blog), I'm not the most consistent.
+
+So the best way to follow along is to star and watch this GitHub repo.
 
 <br />
 

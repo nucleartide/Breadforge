@@ -1,82 +1,94 @@
 # 🥖 Breadforge
 
-> *(trailer / GIF goes here soon)*
+> *(trailer / GIF goes here soon...)*
 
-An open source factory builder game about building a bread factory. Made in Unity 2021.
+A factory builder game about building a bread factory. Made in Unity 2021.
 
-Simultaneously, the project demonstrates all the skills needed to ship a game from idea to Steam launch.
+Simultaneously, this open source project demonstrates the complete skillset needed to ship a game: from idea to Steam launch. 🚀
 
-a fully open source codebase that demonstrates (by way of polished, professional-quality pull requests and presentations) the skillset of a professional game programmer.
+<br />
 
 ## Motivation
 
-So you want to break into the game industry.
+Making games is hard.
 
-And your goal is to work as a game programmer at a game studio.
+Because when it comes time to make your idea come to life, you run into all sorts of roadblocks:
 
-But all these jobs ask for shipped games, and you don't have that.
+1. **Scope**. You're unsure how to scope your idea down into something manageable.
+2. **Work breakdown**. You're unsure how to break your idea down into bite-sized development tasks.
+3. **Progress**. Your codebase becomes tangled as you add features, so you struggle to make progress.
 
-You might have 1 or 2 game jam projects lying around, but nothing substantial enough to showcase your game programming skills.
+The result? You never ship your game, and all that time you spent was for naught.
 
-The result? You find it hard to land game programming jobs. You might send out application after application, but to no avail.
+But what if you knew exactly how to scope your idea down, while keeping the spirit of your original inspiration?
 
-That's expected; breaking into games is supposed to be hard.
+What if you knew exactly how to break your idea down into bite-sized tasks, so that you can start tackling them today?
 
-But is there a better way?
+And what if adding features to your game was a **joy**, not a chore?
 
-## In an ideal world
-
-In an ideal world, finding work would be easy.
-
-You'd have a portfolio of shipped games that **demonstrate** and **speak to** your game programming skills.
-
-Game studios would respond to your job applications immediately, because it's very clear that you have what it takes.
-
-You'd be making games, and *getting paid for it*.
+You'd be eager to work on your game every day. And you’d ship your game with confidence and momentum.
 
 But... how?
 
-Yes, yes, "just make games" is good advice. But you want something more specific than vague platitudes.
+---
 
-- make games that people love. but to see the reality of the hard work needed to make that vision come to life.
+You need a role model.
 
-## You need an example
+A codebase that **demonstrates** and **speaks to** every skill of a professional game programmer — skills such as code quality, playtesting, production pipelines, and scope management.
 
-You need an example.
+And in doing so, the codebase would showcase every aspect of the game production process, so that you can apply its learnings to your own work.
 
-A role model of how to build a game from idea to Steam launch.
+That's what this project Breadforge provides.
 
-And not only an example of how to code the game, but also all the *professional* skills around it, such as code quality, production pipelines, and scope management.
+Curious? Read below to learn more 👇
 
-- [ ]  you need more polish. more professionalism and excellence at certain skills.
+<br />
 
-* demonstrate my own ability as a professional game programmer, while also teaching others on the same journey through demonstration
+## Playful Production Process: a story told through pull requests
 
-That's what this game project (Breadforge) addresses.
+In the book *A Playful Production Process*, the author Richard Lemarchand breaks the process of game development into four stages: ideation, pre-production, production, and post-production.
 
-Breadforge is a factory builder game, but this project documents my journey from senior full-stack engineer to professional Unity gameplay programmer.
+Much like the chapters of a novel, I tell the story of Breadforge's development through its cumulative pull requests. Occasionally, I also narrate batches of pull requests in the form of a "painlog".
 
-* calculated bet on myself that I could make the switch to working on games full-time, and that I have what it takes to become a professional game programmer
+Devlogs are about *me*; painlogs are about *you*. Instead of describing what I've done, a painlog describes the general *pain point* behind a batch of pull requests, and what you can take away from my struggles.
 
-How specifically do I demonstrate the ability of a professional game programmer? Read on to learn more 👇
+You can view those chapters below:
 
-## The Playful Production Process: a personal and fully documented journey
-
-In the book *Playful Production Process* by Richard Lemarchand, Lemarchand breaks the process of game development into ideation, pre-production, production, post-production.
-
-A full production pipeline for producing any kind of game. And the "narrative frame" for showing you (by way of polished, professional-quality pull requests) how a game is made from idea to launch.
-
-you can think of it as a devlog of sorts. but i view this as more of a painlog.
+<br />
 
 ## I. Pre-production
 
-### 1. The 3 C's: How to implement the 3 C's
+*Note that an ideation section is skipped to focus on the latter 3 stages of development.*
 
-(the presentation)
+<br />
+
+### Chapter 1. The 3 Cs Toolkit in Unity (2023)
+
+> Make your character come to life with Mecanim, Cinemachine, and Input System.
+
+The 3 Cs are the basic building blocks of any game with a 3D character avatar.
+
+In March 2023, I gave a presentation at the [Unity NYC meetup](https://www.meetup.com/unity3d/events/291639476/) about how to implement the 3 Cs in Unity.
+
+You can read the blog post behind the presentation here: [jasont.co/character-creation-toolkit](https://jasont.co/character-creation-toolkit/)
 
 | Feature | Pull Request |
 | --- | --- |
-| | |
+| Implement basic character animation | https://github.com/nucleartide/Baguettorio/pull/25 |
+| Implement Cinemachine third-person camera | https://github.com/nucleartide/Baguettorio/pull/26 |
+| Refactor game input to use Unity's new Input System package | https://github.com/nucleartide/Baguettorio/pull/27 |
+| Refactor to get rid of CharacterController | https://github.com/nucleartide/Baguettorio/pull/28 |
+| Add Pause button as a reference point for C# events usage | https://github.com/nucleartide/Baguettorio/pull/29 |
+
+<br />
+
+## II. Production
+
+<br />
+
+## III. Post-production
+
+<br />
 
 ### 2. Procedural generation
 
@@ -110,11 +122,6 @@ you can think of it as a devlog of sorts. but i view this as more of a painlog.
 
 | Feature | Pull Request |
 | --- | --- |
-| Implement basic character animation | https://github.com/nucleartide/Baguettorio/pull/25 |
-| Implement Cinemachine third-person camera | https://github.com/nucleartide/Baguettorio/pull/26 |
-| Refactor game input to use Unity's new Input System package | https://github.com/nucleartide/Baguettorio/pull/27 |
-| Refactor to get rid of CharacterController | https://github.com/nucleartide/Baguettorio/pull/28 |
-| Add Pause button as a reference point for C# events usage | https://github.com/nucleartide/Baguettorio/pull/29 |
 | Populate game world with procedurally-generated resources | https://github.com/nucleartide/Baguettorio/pull/30 |
 | Add actual resource assets and change to ortho cam | https://github.com/nucleartide/Baguettorio/pull/32 |
 | Highlight collectible resources | https://github.com/nucleartide/Breadforge/pull/37 |
@@ -146,7 +153,17 @@ you can think of it as a devlog of sorts. but i view this as more of a painlog.
 
 ## Follow along
 
+something for everyone
+
+- hiring managers
+- peers → learn how to, but less so than newbies
+- newbies → learn how to
+- customers → the game
+
 The best way to follow along progress is to watch and star this project, and learn as the project progresses toward completion.
+every saturday: add a presentation to your painlog
+
+
 
 ---
 

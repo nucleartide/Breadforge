@@ -48,7 +48,7 @@ Curious? Read below to learn more 👇
 
 In the book *A Playful Production Process*, the author Richard Lemarchand breaks the process of game development into four stages: ideation, pre-production, production, and post-production.
 
-Much like the chapters of a novel, I tell the story of Breadforge's development through its cumulative pull requests. For some of the batches, I also narrate their development in the form of a "painlog".
+Much like the chapters of a novel, I tell the story of Breadforge's development through its cumulative pull requests. For some of the pull requests, I also narrate their development in the form of a "painlog".
 
 Devlogs are about *me*; painlogs are about *you*. Instead of describing what I've done, a painlog describes the general *pain point* behind a batch of pull requests, and what you can take away from my struggles.
 

@@ -88,7 +88,6 @@ LicenseSpring/
 # Vim temporary files.
 .*.swp
 
-# Third-party stuff that is too big to commit to version control,
-# or shouldn't be exposed publicly because of license clauses.
+# Purchased assets that shouldn't be exposed in version control.
 Assets/Plugins/Kevin Iglesias/
 Assets/Plugins/polyperfect/

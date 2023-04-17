@@ -2,11 +2,11 @@ using UnityEngine;
 
 public class ResourceVisual : MonoBehaviour
 {
+    [field: NotNull]
+    [field: SerializeField]
     public GameObject Visual
     {
-        get
-        {
-            return gameObject.transform.GetChild(0).gameObject;
-        }
+        get;
+        private set;
     }
 }

@@ -75,6 +75,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 34208ba97113c4b47b6719dead693814, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  <Visual>k__BackingField: {fileID: 4604631837564805851}
 --- !u!114 &4636871359634422539
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -89,6 +90,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   <Configuration>k__BackingField: {fileID: 11400000, guid: 81598932e4db54228a7a337819081e25,
     type: 2}
+  remainingTime: 0
 --- !u!1 &4604631837564805851
 GameObject:
   m_ObjectHideFlags: 0

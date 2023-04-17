@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 144150914394010000}
   - component: {fileID: 5995147122813269331}
   m_Layer: 3
-  m_Name: transparent measuring cube
+  m_Name: Transparent Measuring Cube
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

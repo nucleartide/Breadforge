@@ -35,9 +35,24 @@ public class GameCamera : MonoBehaviour
     [SerializeField]
     private float initialOrthoSize = 3f;
 
+    /// <summary>
+    /// Keep the original ortho size of the camera, so that upon stopping the game we can restore the original ortho size.
+    /// </summary>
+    private float originalOrthoSize;
+
     public float OrthoSizeInverseLerp
     {
         get => Mathf.InverseLerp(minOrthoSize, maxOrthoSize, mainCamera.orthographicSize);
+    }
+
+    private void OnEnable()
+    {
+        originalOrthoSize = mainCamera.orthographicSize;
+    }
+
+    private void OnDisable()
+    {
+        mainCamera.orthographicSize = originalOrthoSize;
     }
 
     private void Awake()

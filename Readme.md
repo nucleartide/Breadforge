@@ -143,7 +143,10 @@ I wrote a [blog post on LinkedIn](https://www.linkedin.com/pulse/why-you-should-
 
 > And the importance of finding your game's visual "hook"
 
-*This is currently being worked on. Check back next week for updates!*
+| Feature | Pull Request |
+| --- | --- |
+| Make everything unlit + copy assets over from Polyperfect asset pack | https://github.com/nucleartide/Breadforge/pull/58 |
+| *This is currently being worked on. Check back soon for updates!* | |
 
 <br />
 

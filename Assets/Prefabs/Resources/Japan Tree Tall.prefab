@@ -75,6 +75,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 34208ba97113c4b47b6719dead693814, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  <Visual>k__BackingField: {fileID: 4604631837564805851}
 --- !u!114 &4636871359634422539
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -89,6 +90,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   <Configuration>k__BackingField: {fileID: 11400000, guid: 81598932e4db54228a7a337819081e25,
     type: 2}
+  remainingTime: 0
 --- !u!1 &4604631837564805851
 GameObject:
   m_ObjectHideFlags: 0
@@ -129,7 +131,7 @@ MeshFilter:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4604631837564805851}
-  m_Mesh: {fileID: 4300000, guid: 1a8eda648a25746ce85351b98604aed5, type: 3}
+  m_Mesh: {fileID: 4300000, guid: e1c82b18d0c7949f2b4fb6c1b6a59216, type: 3}
 --- !u!23 &4590517809339937059
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -150,8 +152,8 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 6e3ac6e47b4d7a44685dfef9bf209413, type: 2}
-  - {fileID: 2100000, guid: 48b31daa83ddb854fadd9402702394e4, type: 2}
+  - {fileID: 2100000, guid: 4be83584201bb43efbeebea3fc6f69d7, type: 2}
+  - {fileID: 2100000, guid: 5acc1aaecc2f1465499f0ded67174603, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

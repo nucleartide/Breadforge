@@ -40,7 +40,7 @@ MeshFilter:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4580106514267839263}
-  m_Mesh: {fileID: 4300000, guid: 4c7b484f6aab94a45be2c47b5f94da08, type: 3}
+  m_Mesh: {fileID: 4300000, guid: c9baaa3d029e7467b8ca2aad67f79fe4, type: 3}
 --- !u!23 &7793839894232451183
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -61,8 +61,8 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: d41a8bca790345f49b3ae205465ff2f8, type: 2}
-  - {fileID: 2100000, guid: fb045539f4b18a242aca8e57e88c5cd7, type: 2}
+  - {fileID: 2100000, guid: 2517e180cf454406c932ecb2247e49d2, type: 2}
+  - {fileID: 2100000, guid: c133b46ced07341e0acd71522033d2cb, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -145,6 +145,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 34208ba97113c4b47b6719dead693814, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  <Visual>k__BackingField: {fileID: 4580106514267839263}
 --- !u!114 &4908236944910843058
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -159,3 +160,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   <Configuration>k__BackingField: {fileID: 11400000, guid: ab991df1cad3646fd8cd6777719bbdcc,
     type: 2}
+  remainingTime: 0

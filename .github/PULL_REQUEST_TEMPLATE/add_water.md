@@ -4,21 +4,22 @@
 
 - Included d scripts
 - Water volume game object
-    - Position in the bottom left of the area where you want water
-    - Add a mesh renderer
-    - Add a water volume (transforms) component
-    - Apply a material using the stylized water shader to the renderer
-    - Adjust the water volume’s tile size to define the resolution of the generated mesh
-    - A smaller tile size will result in a higher resolution
-    - Create empty child game objects within the water volume to define the volume covered
-    - Position and scale the transforms accordingly, and their volumes will be snapped to the tile grid and a mesh generated to encapsulate them
-    - While the wave animation is handled in the shader, and affected by the water volume’s transform and mesh, helper methods are available to determine the height of the water at a given world-space coordinate (use this for player animation)
-    - This can be useful for placing objects floating on the water’s surface, or implementing gameplay logic.
-    - As an example, create a sphere and place it within the water volume with a Water Volume Floater component attached
+    - x Position in the bottom left of the area where you want water
+    - x Add a mesh renderer
+    - x Add a water volume (transforms) component
+    - x Apply a material using the stylized water shader to the renderer
+    - x Adjust the water volume’s tile size to define the resolution of the generated mesh
+    - x check realtime updates checkbox
+    - x A smaller tile size will result in a higher resolution
+    - x Create empty child game objects within the water volume to define the volume covered
+    - x Position and scale the transforms accordingly, and their volumes will be snapped to the tile grid and a mesh generated to encapsulate them
+    - x While the wave animation is handled in the shader, and affected by the water volume’s transform and mesh, helper methods are available to determine the height of the water at a given world-space coordinate (use this for player animation)
+    - x his can be useful for placing objects floating on the water’s surface, or implementing gameplay logic.
+    - x As an example, create a sphere and place it within the water volume with a Water Volume Floater component attached
         - There’s a rim light around the sphere object in the water
-    - You will also need to add a water volume helper component to your scene, and provide it a reference to the water volume you wish to interact with
-    - The object will now adhere to the water volume’s surface.
-    - Try opening the component’s script to see how to utilize this functionality in your own scripts.
+    - x You will also need to add a water volume helper component to your scene, and provide it a reference to the water volume you wish to interact with
+    - x The object will now adhere to the water volume’s surface.
+    - x Try opening the component’s script to see how to utilize this functionality in your own scripts.
 - **Water styles**
     - **3 sample materials are included, and can be tried out by dragging them onto your water volume. Original, realistic, and surreal**
     - **You can, of course, also make your own custom variations. Create a new material and select the WaterVolume-URP shader. While the shader is technically opaque, you must set its render queue to Transparent to allow for the refraction effect.**

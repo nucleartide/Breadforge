@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 541306147181673613}
   - component: {fileID: 541306147181673602}
   m_Layer: 0
-  m_Name: Full Cube
+  m_Name: _Reference Tile
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

@@ -1,0 +1,3 @@
+[submodule "Assets/Plugins/ThirdPartyAssets"]
+	path = Assets/Plugins/ThirdPartyAssets
+	url = git@github.com:nucleartide/Breadforge-ThirdPartyAssets.git

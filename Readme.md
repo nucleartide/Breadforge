@@ -149,6 +149,7 @@ I wrote a [blog post on LinkedIn](https://www.linkedin.com/pulse/why-you-should-
 | Add `ThirdPartyAssets/` as git submodule | https://github.com/nucleartide/Breadforge/pull/60 |
 | Add `Stylized Water 2` to dependencies | https://github.com/nucleartide/Breadforge/pull/61 |
 | Add `Stylized Water 2` test scene | https://github.com/nucleartide/Breadforge/pull/62 |
+| Replace water tiles with Stylized Water 2 | https://github.com/nucleartide/Breadforge/pull/63 |
 | *This is currently being worked on. Check back soon for updates!* | |
 
 <br />

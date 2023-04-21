@@ -146,6 +146,7 @@ I wrote a [blog post on LinkedIn](https://www.linkedin.com/pulse/why-you-should-
 | Feature | Pull Request |
 | --- | --- |
 | Make everything unlit + copy assets over from Polyperfect asset pack | https://github.com/nucleartide/Breadforge/pull/58 |
+| Add `ThirdPartyAssets/` as git submodule | https://github.com/nucleartide/Breadforge/pull/60 |
 | *This is currently being worked on. Check back soon for updates!* | |
 
 <br />

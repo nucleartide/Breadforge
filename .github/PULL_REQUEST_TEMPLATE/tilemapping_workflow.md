@@ -1,0 +1,11 @@
+- [x]  2️⃣ Create a Tile Palette (Window > 2D > Tile Palette). → Done.
+- [x]  Drag tile rule into palette → Done.
+- [x]  3️⃣ Create a new tile map, and change the swizzle to X, Z, Y. → Done.
+- [x]  4️⃣ Test it out: select your rule tile in your palette, and paint. → Done.
+- [x]  create a new rule tile. → Done.
+- [x]  Define the tile rules. Remember: red arrow means no hit, green arrow means hit. → Done.
+- [x]  Add a default sprite to make the rule tile visible in your Tile Palette. → Done.
+- [ ]  (Jason) ⭐ this is good enough. there are probably edge cases, but let’s move onto integration.
+- [x]  one block jutting out doesn’t work
+- [x]  one block alone doesn’t work either
+- [x]  designs for single cell and single row. make it cylindrical and such.

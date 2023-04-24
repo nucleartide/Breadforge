@@ -18,6 +18,10 @@ public class WorldManager : MonoBehaviour
     [NotNull]
     private UnityEngine.Tilemaps.TileBase groundRuleTile;
 
+    [SerializeField]
+    [NotNull]
+    private UnityEngine.Tilemaps.TileBase waterRuleTile;
+
     private WorldMap worldMap;
 
     private List<GameObject> tiles;
@@ -32,8 +36,12 @@ public class WorldManager : MonoBehaviour
         {
             for (var x = 0; x < gridWidth; x++)
             {
-                var tile = worldMap.InstantiateTile(x, y, worldDisplayMode);
-                tiles.Add(tile);
+                var isWaterBiome = worldConfig.IsWaterBiome(worldMap.ClosestBiome(x, y));
+                if (!isWaterBiome)
+                {
+                    var tile = worldMap.InstantiateTile(x, y, worldDisplayMode);
+                    tiles.Add(tile);
+                }
             }
         }
 
@@ -67,10 +75,8 @@ public class WorldManager : MonoBehaviour
         {
             for (var x = 0; x < gridWidth; x++)
             {
-                if (ShouldSetGroundTile(x, y))
-                {
-                    tilemap.SetTile(new Vector3Int((int)(x - worldConfig.GridWidth * .5f), (int)(y - worldConfig.GridHeight * .5f), 0), groundRuleTile);
-                }
+                var tile = ShouldSetGroundTile(x, y) ? groundRuleTile : waterRuleTile;
+                tilemap.SetTile(new Vector3Int((int)(x - worldConfig.GridWidth * .5f), (int)(y - worldConfig.GridHeight * .5f), 0), tile);
             }
         }
     }

@@ -48,3 +48,4 @@ MonoBehaviour:
   worldDisplayMode: 0
   tilemap: {fileID: 0}
   groundRuleTile: {fileID: 11400000, guid: 4baf3e9566c9d4c3aa58267b57261acf, type: 2}
+  waterRuleTile: {fileID: 11400000, guid: fce8a00923885407894116823d477a82, type: 2}

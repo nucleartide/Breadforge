@@ -40,6 +40,24 @@ public class WorldManager : MonoBehaviour
         return tiles;
     }
 
+    private bool ShouldSetGroundTile(int x, int y)
+    {
+        var isWaterBiome = worldConfig.IsWaterBiome(worldMap.ClosestBiome(x, y));
+        if (!isWaterBiome)
+            return true;
+
+        for (var i = -1; i <= 1; i++)
+        {
+            for (var j = -1; j <= 1; j++)
+            {
+                if (!worldConfig.IsWaterBiome(worldMap.ClosestBiome(x+i, y+j)))
+                    return true;
+            }
+        }
+
+        return false;
+    }
+
     private void InstantiateTilemap()
     {
         var gridHeight = worldConfig.GridHeight;
@@ -49,8 +67,7 @@ public class WorldManager : MonoBehaviour
         {
             for (var x = 0; x < gridWidth; x++)
             {
-                var closestBiome = worldMap.ClosestBiome(x, y);
-                if (!worldConfig.IsWaterBiome(closestBiome))
+                if (ShouldSetGroundTile(x, y))
                 {
                     tilemap.SetTile(new Vector3Int((int)(x - worldConfig.GridWidth * .5f), (int)(y - worldConfig.GridHeight * .5f), 0), groundRuleTile);
                 }

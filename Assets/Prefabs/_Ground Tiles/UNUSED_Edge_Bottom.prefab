@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 8488269719562949202}
   - component: {fileID: 8488269719562949213}
   m_Layer: 0
-  m_Name: Edge_Bottom
+  m_Name: UNUSED_Edge_Bottom
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

@@ -71,9 +71,9 @@ public class WorldManager : MonoBehaviour
         var gridHeight = worldConfig.GridHeight;
         var gridWidth = worldConfig.GridWidth;
 
-        for (var y = 0; y < gridHeight; y++)
+        for (var y = -1; y < gridHeight + 1; y++)
         {
-            for (var x = 0; x < gridWidth; x++)
+            for (var x = -1; x < gridWidth + 1; x++)
             {
                 var tile = ShouldSetGroundTile(x, y) ? groundRuleTile : waterRuleTile;
                 tilemap.SetTile(new Vector3Int((int)(x - worldConfig.GridWidth * .5f), (int)(y - worldConfig.GridHeight * .5f), 0), tile);

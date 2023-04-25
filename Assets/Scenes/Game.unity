@@ -307,6 +307,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 73cf13b3777d14754a309abecc385ecf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1839735485 &2085634374 stripped
+Tilemap:
+  m_CorrespondingSourceObject: {fileID: 2085634374, guid: e0b4bce1b80184186a1ff8c727909eea,
+    type: 3}
+  m_PrefabInstance: {fileID: 1381165719}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &448395041739114491
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1036,6 +1042,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: World Manager
       objectReference: {fileID: 0}
+    - target: {fileID: 9160773117708652564, guid: 832e240404171417c96d1adb49a0bda3,
+        type: 3}
+      propertyPath: tilemap
+      value: 
+      objectReference: {fileID: 2085634374}
     - target: {fileID: 9160773117708652565, guid: 832e240404171417c96d1adb49a0bda3,
         type: 3}
       propertyPath: m_RootOrder

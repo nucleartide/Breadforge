@@ -56,6 +56,12 @@ public class WorldMap
     /// </summary>
     public Biome ClosestBiome(int x, int y)
     {
+        if (y < heightMap.Map.GetLowerBound(0) || y > heightMap.Map.GetUpperBound(0))
+            return null;
+
+        if (x < heightMap.Map.GetLowerBound(1) || x > heightMap.Map.GetUpperBound(1))
+            return null;
+
         // Get noise map values.
         float height = GetHeight(x, y);
         float moisture = GetMoisture(x, y);

@@ -24,7 +24,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 9160773117708652562}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -46,3 +46,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   worldConfig: {fileID: 11400000, guid: 6596f3b0efd134f49a5a6c2738ce21b9, type: 2}
   worldDisplayMode: 0
+  tilemap: {fileID: 0}
+  groundRuleTile: {fileID: 11400000, guid: 4baf3e9566c9d4c3aa58267b57261acf, type: 2}
+  waterRuleTile: {fileID: 11400000, guid: fce8a00923885407894116823d477a82, type: 2}

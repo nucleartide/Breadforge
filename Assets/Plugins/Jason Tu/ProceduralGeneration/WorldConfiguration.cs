@@ -248,4 +248,9 @@ public class WorldConfiguration : ScriptableObject
     {
         return AllBiomes.FindAll(biome => query.Satisfies(biome));
     }
+
+    public bool IsWaterBiome(Biome biome)
+    {
+        return biome == WaterBiome;
+    }
 }

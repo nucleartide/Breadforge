@@ -223,7 +223,7 @@ Camera:
     y: 0
     width: 1
     height: 1
-  near clip plane: 0.3
+  near clip plane: 1.01
   far clip plane: 1000
   field of view: 75
   orthographic: 1
@@ -375,7 +375,7 @@ MonoBehaviour:
   m_Lens:
     FieldOfView: 75
     OrthographicSize: 7.615366
-    NearClipPlane: 0.3
+    NearClipPlane: 1.01
     FarClipPlane: 1000
     Dutch: 0
     ModeOverride: 0
@@ -450,14 +450,14 @@ MonoBehaviour:
   m_TrackedObjectOffset: {x: 0, y: 0, z: 0}
   m_LookaheadTime: 1
   m_LookaheadSmoothing: 0
-  m_LookaheadIgnoreY: 0
+  m_LookaheadIgnoreY: 1
   m_XDamping: 4
-  m_YDamping: 1
+  m_YDamping: 0
   m_ZDamping: 1
   m_TargetMovementOnly: 1
   m_ScreenX: 0.5
   m_ScreenY: 0.5
-  m_CameraDistance: 10
+  m_CameraDistance: 50
   m_DeadZoneWidth: 0
   m_DeadZoneHeight: 0
   m_DeadZoneDepth: 0

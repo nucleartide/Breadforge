@@ -22,10 +22,6 @@ public class WorldManager : MonoBehaviour
     [NotNull]
     private UnityEngine.Tilemaps.TileBase waterRuleTile;
 
-    [SerializeField]
-    [NotNull]
-    private UnityEngine.Tilemaps.TileBase groundBoundaryTile;
-
     private WorldMap worldMap;
 
     private List<GameObject> tiles;

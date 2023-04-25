@@ -94,7 +94,8 @@ GameObject:
   - component: {fileID: 356548348950007648}
   - component: {fileID: 326687533455701948}
   - component: {fileID: 337734913187210372}
-  m_Layer: 0
+  - component: {fileID: 9004842367574738094}
+  m_Layer: 7
   m_Name: Water Visual
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -145,7 +146,6 @@ MeshRenderer:
   m_RendererPriority: 0
   m_Materials:
   - {fileID: 2100000, guid: a3c8487e92e7948ed975fd9cd13a8f17, type: 2}
-  - {fileID: 2100000, guid: a3c8487e92e7948ed975fd9cd13a8f17, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -167,6 +167,22 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!114 &9004842367574738094
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 358118006199169380}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0341302c66b954cff86c5baab9c84bfa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  meshRenderer: {fileID: 337734913187210372}
+  waterHighlightColor:
+    serializedVersion: 2
+    rgba: 687865855
 --- !u!1 &5483498006479620554
 GameObject:
   m_ObjectHideFlags: 0

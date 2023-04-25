@@ -46,3 +46,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   immediateCollectable: {fileID: 0}
   playerController: {fileID: 0}
+  waterResourceConfig: {fileID: 11400000, guid: 5d29806310cac48aab62148d6ae13bf1,
+    type: 2}

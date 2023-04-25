@@ -66,17 +66,6 @@ public class WorldManager : MonoBehaviour
         return false;
     }
 
-    private bool IsBoundary(int x, int y)
-    {
-        if (x == 0 || x == worldConfig.GridWidth - 1)
-            return true;
-
-        if (y == 0 || y == worldConfig.GridHeight - 1)
-            return true;
-
-        return false;
-    }
-
     private void InstantiateTilemap()
     {
         var gridHeight = worldConfig.GridHeight;
@@ -87,21 +76,7 @@ public class WorldManager : MonoBehaviour
             for (var x = -1; x < gridWidth + 1; x++)
             {
                 // Select tile.
-                UnityEngine.Tilemaps.TileBase tile;
-                /*
-                if (IsBoundary(x, y))
-                {
-                    var isWaterBiome = worldConfig.IsWaterBiome(worldMap.ClosestBiome(x, y));
-                    if (isWaterBiome)
-                        tile = waterRuleTile;
-                    else
-                        tile = groundBoundaryTile;
-                }
-                */
-                if (ShouldSetGroundTile(x, y))
-                    tile = groundRuleTile;
-                else
-                    tile = waterRuleTile;
+                var tile = ShouldSetGroundTile(x, y) ? groundRuleTile : waterRuleTile;
 
                 // Set tite.
                 tilemap.SetTile(new Vector3Int((int)(x - worldConfig.GridWidth * .5f), (int)(y - worldConfig.GridHeight * .5f), 0), tile);

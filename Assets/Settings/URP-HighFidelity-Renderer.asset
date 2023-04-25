@@ -100,7 +100,7 @@ MonoBehaviour:
   _outlineSettings:
     _outlineSettings: {fileID: 0}
     _outlineColor: {r: 0.22623722, g: 0.7735849, b: 0.21529014, a: 1}
-    _outlineWidth: 4
+    _outlineWidth: 5
     _outlineIntensity: 2
     _outlineAlphaCutoff: 0.9
     _outlineMode: 0

@@ -167,12 +167,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 578444661}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: -0.5, y: 0, z: -0.5}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 457002457}
-  m_RootOrder: 2
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!483693784 &578444663
 TilemapRenderer:
@@ -361,7 +361,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 2085634371, guid: e0b4bce1b80184186a1ff8c727909eea, type: 3}
       propertyPath: m_Name
-      value: Sand Tilemap
+      value: Base Tilemap
       objectReference: {fileID: 0}
     - target: {fileID: 4273842841511023850, guid: e0b4bce1b80184186a1ff8c727909eea,
         type: 3}
@@ -463,12 +463,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1918293693}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: -0.5, y: 0, z: -0.5}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 457002457}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!483693784 &1918293695
 TilemapRenderer:
@@ -1304,20 +1304,20 @@ PrefabInstance:
       objectReference: {fileID: 578444664}
     - target: {fileID: 9160773117708652564, guid: 832e240404171417c96d1adb49a0bda3,
         type: 3}
-      propertyPath: grassRuleTile
-      value: 
-      objectReference: {fileID: 11400000, guid: cb81ed7b9be7648559d00e5d649f875e,
-        type: 2}
-    - target: {fileID: 9160773117708652564, guid: 832e240404171417c96d1adb49a0bda3,
-        type: 3}
       propertyPath: groundTilemap
       value: 
       objectReference: {fileID: 1918293696}
     - target: {fileID: 9160773117708652564, guid: 832e240404171417c96d1adb49a0bda3,
         type: 3}
+      propertyPath: groundRuleTile
+      value: 
+      objectReference: {fileID: 11400000, guid: 4baf3e9566c9d4c3aa58267b57261acf,
+        type: 2}
+    - target: {fileID: 9160773117708652564, guid: 832e240404171417c96d1adb49a0bda3,
+        type: 3}
       propertyPath: moistGroundRuleTile
       value: 
-      objectReference: {fileID: 11400000, guid: cb81ed7b9be7648559d00e5d649f875e,
+      objectReference: {fileID: 11400000, guid: 9fbd99df177e042ea9d76a6f7ab48787,
         type: 2}
     - target: {fileID: 9160773117708652565, guid: 832e240404171417c96d1adb49a0bda3,
         type: 3}

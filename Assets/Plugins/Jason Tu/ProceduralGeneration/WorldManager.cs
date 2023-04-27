@@ -66,7 +66,7 @@ public class WorldManager : MonoBehaviour
 
     private bool ShouldSetGroundTile(int x, int y)
     {
-        var isWaterBiome = worldConfig.IsWaterBiome(worldMap.ClosestBiome(x, y));
+        var isWaterBiome = worldConfig.IsWaterBiome(worldMap.ClosestBiome(x, y, Query.QueryType.GroundBiomesOnly));
         if (!isWaterBiome)
             return true;
 
@@ -74,7 +74,7 @@ public class WorldManager : MonoBehaviour
         {
             for (var j = -1; j <= 1; j++)
             {
-                if (!worldConfig.IsWaterBiome(worldMap.ClosestBiome(x + i, y + j)))
+                if (!worldConfig.IsWaterBiome(worldMap.ClosestBiome(x + i, y + j, Query.QueryType.GroundBiomesOnly)))
                     return true;
             }
         }
@@ -97,15 +97,29 @@ public class WorldManager : MonoBehaviour
                 // Set tite.
                 tilemap.SetTile(new Vector3Int((int)(x - worldConfig.GridWidth * .5f), (int)(y - worldConfig.GridHeight * .5f), 0), tile);
 
-                // Update grass and moist-ground tilemaps.
-                var closestBiome = worldMap.ClosestBiome(x, y, Query.QueryType.GroundBiomesOnly);
-                if (worldConfig.IsGrassBiome(closestBiome))
-                    grassTilemap.SetTile(new Vector3Int((int)(x - worldConfig.GridWidth * .5f), (int)(y - worldConfig.GridHeight * .5f), 0), grassRuleTile);
-                else if (worldConfig.IsGroundBiome(closestBiome))
-                    groundTilemap.SetTile(new Vector3Int((int)(x - worldConfig.GridWidth * .5f), (int)(y - worldConfig.GridHeight * .5f), 0), moistGroundRuleTile);
+                // Update grass and sand tilemaps separately.
+                if (0 <= x && x <= (gridWidth - 1) && 0 <= y & y <= (gridHeight - 1))
+                {
+                    var closestBiome = worldMap.ClosestBiome(x, y, Query.QueryType.GroundBiomesGrassOnly);
+                    if (closestBiome == worldConfig.GrassBiome)
+                        grassTilemap.SetTile(new Vector3Int((int)(x - worldConfig.GridWidth * .5f), (int)(y - worldConfig.GridHeight * .5f), 0), grassRuleTile);
+
+                    closestBiome = worldMap.ClosestBiome(x, y, Query.QueryType.GroundBiomesSandOnly);
+                    if (closestBiome == worldConfig.GroundBiome)
+                        groundTilemap.SetTile(new Vector3Int((int)(x - worldConfig.GridWidth * .5f), (int)(y - worldConfig.GridHeight * .5f), 0), moistGroundRuleTile);
+                }
             }
         }
 
+    }
+
+    private void DestroyTilemap(UnityEngine.Tilemaps.Tilemap tilemap)
+    {
+        var childCount = tilemap.transform.childCount;
+        for (var i = 0; i < childCount; i++)
+            Destroy(tilemap.transform.GetChild(i).gameObject);
+
+        tilemap.ClearAllTiles();
     }
 
     public void RegenerateResources()
@@ -115,11 +129,16 @@ public class WorldManager : MonoBehaviour
             foreach (var tile in tiles)
                 Destroy(tile);
 
+        // Clear tilemaps.
+        DestroyTilemap(tilemap);
+        DestroyTilemap(groundTilemap);
+        DestroyTilemap(grassTilemap);
+
         // Construct a world map.
         worldMap = new WorldMap(worldConfig);
 
         // Instantiate the world map.
-        tiles = InstantiateTiles();
+        // tiles = InstantiateTiles();
 
         // Instantiate the tilemap as well.
         InstantiateTilemap();

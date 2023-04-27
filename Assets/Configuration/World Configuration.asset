@@ -63,16 +63,16 @@ MonoBehaviour:
     MinHeat: 0
   <LandBiome>k__BackingField:
     MinHeight: 0.3
-    MinMoisture: 0.4
-    MinHeat: 0.2
+    MinMoisture: 0
+    MinHeat: 0
   <GroundBiome>k__BackingField:
-    MinHeight: 0.3
-    MinMoisture: 0.5
-    MinHeat: 0.35
+    MinHeight: 0
+    MinMoisture: 0
+    MinHeat: 0.65
   <GrassBiome>k__BackingField:
-    MinHeight: 0.3
-    MinMoisture: 0.6
-    MinHeat: 0.5
+    MinHeight: 0
+    MinMoisture: 0.5
+    MinHeat: 0
   <StoneBiome>k__BackingField:
     MinHeight: 0.3
     MinMoisture: 0.3

@@ -210,8 +210,8 @@ public class WorldConfiguration : ScriptableObject
             return new List<Biome>
             {
                 // land and water
-                LandBiome,
-                WaterBiome,
+                // LandBiome,
+                // WaterBiome,
 
                 // bedrock
                 StoneBiome,
@@ -236,6 +236,33 @@ public class WorldConfiguration : ScriptableObject
                 LandBiome,
                 GroundBiome,
                 GrassBiome,
+                WaterBiome,
+            };
+        }
+    }
+
+    public List<Biome> GroundBiomesGrassOnly
+    {
+        get
+        {
+            return new List<Biome>
+            {
+                LandBiome,
+                GrassBiome,
+                WaterBiome,
+            };
+        }
+    }
+
+    public List<Biome> GroundBiomesSandOnly
+    {
+        get
+        {
+            return new List<Biome>
+            {
+                LandBiome,
+                GroundBiome,
+                WaterBiome,
             };
         }
     }
@@ -279,6 +306,10 @@ public class WorldConfiguration : ScriptableObject
             return AllBiomes.FindAll(biome => query.Satisfies(biome));
         else if (query.Type == Query.QueryType.GroundBiomesOnly)
             return GroundBiomes.FindAll(biome => query.Satisfies(biome));
+        else if (query.Type == Query.QueryType.GroundBiomesSandOnly)
+            return GroundBiomesSandOnly.FindAll(biome => query.Satisfies(biome));
+        else if (query.Type == Query.QueryType.GroundBiomesGrassOnly)
+            return GroundBiomesGrassOnly.FindAll(biome => query.Satisfies(biome));
         else
             return new List<Biome>();
     }

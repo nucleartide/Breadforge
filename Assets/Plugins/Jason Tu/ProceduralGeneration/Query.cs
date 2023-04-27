@@ -4,6 +4,8 @@ public class Query
     {
         AllBiomes,
         GroundBiomesOnly,
+        GroundBiomesGrassOnly,
+        GroundBiomesSandOnly,
     }
 
     private WorldMap worldMap;

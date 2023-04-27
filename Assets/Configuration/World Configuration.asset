@@ -57,14 +57,22 @@ MonoBehaviour:
   - Seed: 329.7
     Frequency: 0.02
     Amplitude: 0.5
-  <LandBiome>k__BackingField:
-    MinHeight: 0.3
-    MinMoisture: 0.4
-    MinHeat: 0.2
   <WaterBiome>k__BackingField:
     MinHeight: 0
     MinMoisture: 0
     MinHeat: 0
+  <LandBiome>k__BackingField:
+    MinHeight: 0.3
+    MinMoisture: 0.4
+    MinHeat: 0.2
+  <GroundBiome>k__BackingField:
+    MinHeight: 0.3
+    MinMoisture: 0.5
+    MinHeat: 0.35
+  <GrassBiome>k__BackingField:
+    MinHeight: 0.3
+    MinMoisture: 0.6
+    MinHeat: 0.5
   <StoneBiome>k__BackingField:
     MinHeight: 0.3
     MinMoisture: 0.3

@@ -47,5 +47,10 @@ MonoBehaviour:
   worldConfig: {fileID: 11400000, guid: 6596f3b0efd134f49a5a6c2738ce21b9, type: 2}
   worldDisplayMode: 0
   tilemap: {fileID: 0}
+  grassTilemap: {fileID: 0}
+  groundTilemap: {fileID: 0}
   groundRuleTile: {fileID: 11400000, guid: 4baf3e9566c9d4c3aa58267b57261acf, type: 2}
   waterRuleTile: {fileID: 11400000, guid: fce8a00923885407894116823d477a82, type: 2}
+  grassRuleTile: {fileID: 11400000, guid: cb81ed7b9be7648559d00e5d649f875e, type: 2}
+  moistGroundRuleTile: {fileID: 11400000, guid: cb81ed7b9be7648559d00e5d649f875e,
+    type: 2}

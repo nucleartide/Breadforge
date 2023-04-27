@@ -54,7 +54,7 @@ public class WorldMap
     /// <summary>
     /// Find the closest biome given a set of (x, y) coordinates.
     /// </summary>
-    public Biome ClosestBiome(int x, int y)
+    public Biome ClosestBiome(int x, int y, Query.QueryType queryType = Query.QueryType.AllBiomes)
     {
         if (y < heightMap.Map.GetLowerBound(0) || y > heightMap.Map.GetUpperBound(0))
             return null;
@@ -68,7 +68,7 @@ public class WorldMap
         float heat = GetHeat(x, y);
 
         // Construct query.
-        var query = new Query(this, height, moisture, heat);
+        var query = new Query(this, height, moisture, heat, queryType);
 
         // Execute query to determine closest biome.
         var matchingBiomes = worldConfig.FindMatchingBiomes(query);
@@ -81,7 +81,8 @@ public class WorldMap
 
         // Sanity check and return.
 #if UNITY_EDITOR
-        Assert.IsNotNull(closestBiome, "There should always be at least one matching biome. Please review the logic here.");
+        if (queryType == Query.QueryType.AllBiomes)
+            Assert.IsNotNull(closestBiome, "There should always be at least one matching biome. Please review the logic here.");
 #endif
         return closestBiome;
     }

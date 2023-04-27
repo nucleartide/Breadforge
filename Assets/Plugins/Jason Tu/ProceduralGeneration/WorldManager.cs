@@ -15,12 +15,28 @@ public class WorldManager : MonoBehaviour
     private UnityEngine.Tilemaps.Tilemap tilemap;
 
     [SerializeField]
+    [NotNull(IgnorePrefab = true)]
+    private UnityEngine.Tilemaps.Tilemap grassTilemap;
+
+    [SerializeField]
+    [NotNull(IgnorePrefab = true)]
+    private UnityEngine.Tilemaps.Tilemap groundTilemap;
+
+    [SerializeField]
     [NotNull]
     private UnityEngine.Tilemaps.TileBase groundRuleTile;
 
     [SerializeField]
     [NotNull]
     private UnityEngine.Tilemaps.TileBase waterRuleTile;
+
+    [SerializeField]
+    [NotNull]
+    private UnityEngine.Tilemaps.TileBase grassRuleTile;
+
+    [SerializeField]
+    [NotNull]
+    private UnityEngine.Tilemaps.TileBase moistGroundRuleTile;
 
     private WorldMap worldMap;
 
@@ -80,6 +96,13 @@ public class WorldManager : MonoBehaviour
 
                 // Set tite.
                 tilemap.SetTile(new Vector3Int((int)(x - worldConfig.GridWidth * .5f), (int)(y - worldConfig.GridHeight * .5f), 0), tile);
+
+                // Update grass and moist-ground tilemaps.
+                var closestBiome = worldMap.ClosestBiome(x, y, Query.QueryType.GroundBiomesOnly);
+                if (worldConfig.IsGrassBiome(closestBiome))
+                    grassTilemap.SetTile(new Vector3Int((int)(x - worldConfig.GridWidth * .5f), (int)(y - worldConfig.GridHeight * .5f), 0), grassRuleTile);
+                else if (worldConfig.IsGroundBiome(closestBiome))
+                    groundTilemap.SetTile(new Vector3Int((int)(x - worldConfig.GridWidth * .5f), (int)(y - worldConfig.GridHeight * .5f), 0), moistGroundRuleTile);
             }
         }
 

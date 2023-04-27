@@ -138,7 +138,7 @@ public class WorldManager : MonoBehaviour
         worldMap = new WorldMap(worldConfig);
 
         // Instantiate the world map.
-        // tiles = InstantiateTiles();
+        tiles = InstantiateTiles();
 
         // Instantiate the tilemap as well.
         InstantiateTilemap();

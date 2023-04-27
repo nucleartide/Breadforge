@@ -210,8 +210,8 @@ public class WorldConfiguration : ScriptableObject
             return new List<Biome>
             {
                 // land and water
-                // LandBiome,
-                // WaterBiome,
+                LandBiome,
+                WaterBiome,
 
                 // bedrock
                 StoneBiome,

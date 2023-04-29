@@ -121,7 +121,7 @@ public class WorldConfiguration : ScriptableObject
         },
     };
 
-    [field: Header("Biomes: Water")]
+    [field: Header("Biomes: Ground Biomes")]
     [field: SerializeField]
     public Biome WaterBiome
     {
@@ -129,17 +129,8 @@ public class WorldConfiguration : ScriptableObject
         private set;
     }
 
-    [field: Header("Biomes: Ground")]
     [field: SerializeField]
-    [field: Tooltip("This should be the \"sand\" biome.")]
     public Biome LandBiome
-    {
-        get;
-        private set;
-    }
-
-    [field: SerializeField]
-    public Biome GroundBiome
     {
         get;
         private set;
@@ -234,34 +225,7 @@ public class WorldConfiguration : ScriptableObject
             return new List<Biome>
             {
                 LandBiome,
-                GroundBiome,
                 GrassBiome,
-                WaterBiome,
-            };
-        }
-    }
-
-    public List<Biome> GroundBiomesGrassOnly
-    {
-        get
-        {
-            return new List<Biome>
-            {
-                LandBiome,
-                GrassBiome,
-                WaterBiome,
-            };
-        }
-    }
-
-    public List<Biome> GroundBiomesSandOnly
-    {
-        get
-        {
-            return new List<Biome>
-            {
-                LandBiome,
-                GroundBiome,
                 WaterBiome,
             };
         }
@@ -306,17 +270,13 @@ public class WorldConfiguration : ScriptableObject
             return AllBiomes.FindAll(biome => query.Satisfies(biome));
         else if (query.Type == Query.QueryType.GroundBiomesOnly)
             return GroundBiomes.FindAll(biome => query.Satisfies(biome));
-        else if (query.Type == Query.QueryType.GroundBiomesSandOnly)
-            return GroundBiomesSandOnly.FindAll(biome => query.Satisfies(biome));
-        else if (query.Type == Query.QueryType.GroundBiomesGrassOnly)
-            return GroundBiomesGrassOnly.FindAll(biome => query.Satisfies(biome));
         else
             return new List<Biome>();
     }
 
     public bool IsWaterBiome(Biome biome) => biome == WaterBiome;
 
-    public bool IsGroundBiome(Biome biome) => biome == GroundBiome;
+    public bool IsGroundBiome(Biome biome) => biome == LandBiome;
 
     public bool IsGrassBiome(Biome biome) => biome == GrassBiome;
 }

@@ -103,10 +103,6 @@ public class WorldManager : MonoBehaviour
                     var closestBiome = worldMap.ClosestBiome(x, y, Query.QueryType.GroundBiomesGrassOnly);
                     if (closestBiome == worldConfig.GrassBiome)
                         grassTilemap.SetTile(new Vector3Int((int)(x - worldConfig.GridWidth * .5f), (int)(y - worldConfig.GridHeight * .5f), 0), grassRuleTile);
-
-                    closestBiome = worldMap.ClosestBiome(x, y, Query.QueryType.GroundBiomesSandOnly);
-                    if (closestBiome == worldConfig.GroundBiome)
-                        groundTilemap.SetTile(new Vector3Int((int)(x - worldConfig.GridWidth * .5f), (int)(y - worldConfig.GridHeight * .5f), 0), moistGroundRuleTile);
                 }
             }
         }

@@ -19,10 +19,6 @@ public class WorldManager : MonoBehaviour
     private UnityEngine.Tilemaps.Tilemap grassTilemap;
 
     [SerializeField]
-    [NotNull(IgnorePrefab = true)]
-    private UnityEngine.Tilemaps.Tilemap groundTilemap;
-
-    [SerializeField]
     [NotNull]
     private UnityEngine.Tilemaps.TileBase groundRuleTile;
 
@@ -111,7 +107,7 @@ public class WorldManager : MonoBehaviour
                 // Set tite.
                 tilemap.SetTile(new Vector3Int((int)(x - worldConfig.GridWidth * .5f), (int)(y - worldConfig.GridHeight * .5f), 0), tile);
 
-                // Update grass and sand tilemaps separately.
+                // Update grass tilemap separately.
                 if (ShouldSetGrassTile(x, y))
                     grassTilemap.SetTile(new Vector3Int((int)(x - worldConfig.GridWidth * .5f), (int)(y - worldConfig.GridHeight * .5f), 0), grassRuleTile);
             }
@@ -137,7 +133,6 @@ public class WorldManager : MonoBehaviour
 
         // Clear tilemaps.
         DestroyTilemap(tilemap);
-        DestroyTilemap(groundTilemap);
         DestroyTilemap(grassTilemap);
 
         // Construct a world map.

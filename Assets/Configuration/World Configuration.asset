@@ -72,7 +72,7 @@ MonoBehaviour:
   <GrassBiome>k__BackingField:
     MinHeight: 0
     MinMoisture: 0.66
-    MinHeat: 0.33
+    MinHeat: 0
   <StoneBiome>k__BackingField:
     MinHeight: 0.65
     MinMoisture: 0.4

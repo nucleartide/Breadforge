@@ -1307,18 +1307,6 @@ PrefabInstance:
       propertyPath: groundTilemap
       value: 
       objectReference: {fileID: 1918293696}
-    - target: {fileID: 9160773117708652564, guid: 832e240404171417c96d1adb49a0bda3,
-        type: 3}
-      propertyPath: groundRuleTile
-      value: 
-      objectReference: {fileID: 11400000, guid: 4baf3e9566c9d4c3aa58267b57261acf,
-        type: 2}
-    - target: {fileID: 9160773117708652564, guid: 832e240404171417c96d1adb49a0bda3,
-        type: 3}
-      propertyPath: moistGroundRuleTile
-      value: 
-      objectReference: {fileID: 11400000, guid: 9fbd99df177e042ea9d76a6f7ab48787,
-        type: 2}
     - target: {fileID: 9160773117708652565, guid: 832e240404171417c96d1adb49a0bda3,
         type: 3}
       propertyPath: m_RootOrder

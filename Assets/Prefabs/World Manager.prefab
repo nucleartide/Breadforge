@@ -51,6 +51,6 @@ MonoBehaviour:
   groundTilemap: {fileID: 0}
   groundRuleTile: {fileID: 11400000, guid: 4baf3e9566c9d4c3aa58267b57261acf, type: 2}
   waterRuleTile: {fileID: 11400000, guid: fce8a00923885407894116823d477a82, type: 2}
-  grassRuleTile: {fileID: 11400000, guid: cb81ed7b9be7648559d00e5d649f875e, type: 2}
-  moistGroundRuleTile: {fileID: 11400000, guid: cb81ed7b9be7648559d00e5d649f875e,
+  grassRuleTile: {fileID: 11400000, guid: 34811b8bb21bc4a61921b1854209b2c1, type: 2}
+  moistGroundRuleTile: {fileID: 11400000, guid: 9fbd99df177e042ea9d76a6f7ab48787,
     type: 2}

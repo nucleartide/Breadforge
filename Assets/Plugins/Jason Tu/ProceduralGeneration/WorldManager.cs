@@ -66,15 +66,33 @@ public class WorldManager : MonoBehaviour
 
     private bool ShouldSetGroundTile(int x, int y)
     {
-        var isWaterBiome = worldConfig.IsWaterBiome(worldMap.ClosestBiome(x, y, Query.QueryType.GroundBiomesOnly));
-        if (!isWaterBiome)
+        var isGroundBiome = worldMap.ClosestBiome(x, y, Query.QueryType.GroundBiomesOnly) != worldConfig.WaterBiome;
+        if (isGroundBiome)
             return true;
 
         for (var i = -1; i <= 1; i++)
         {
             for (var j = -1; j <= 1; j++)
             {
-                if (!worldConfig.IsWaterBiome(worldMap.ClosestBiome(x + i, y + j, Query.QueryType.GroundBiomesOnly)))
+                if (worldMap.ClosestBiome(x + i, y + j, Query.QueryType.GroundBiomesOnly) != worldConfig.WaterBiome)
+                    return true;
+            }
+        }
+
+        return false;
+    }
+
+    private bool ShouldSetGrassTile(int x, int y)
+    {
+        var isGroundBiome = worldMap.ClosestBiome(x, y, Query.QueryType.GroundBiomesOnly) == worldConfig.GrassBiome;
+        if (isGroundBiome)
+            return true;
+
+        for (var i = -1; i <= 1; i++)
+        {
+            for (var j = -1; j <= 1; j++)
+            {
+                if (worldMap.ClosestBiome(x + i, y + j, Query.QueryType.GroundBiomesOnly) == worldConfig.GrassBiome)
                     return true;
             }
         }
@@ -98,12 +116,8 @@ public class WorldManager : MonoBehaviour
                 tilemap.SetTile(new Vector3Int((int)(x - worldConfig.GridWidth * .5f), (int)(y - worldConfig.GridHeight * .5f), 0), tile);
 
                 // Update grass and sand tilemaps separately.
-                if (0 <= x && x <= (gridWidth - 1) && 0 <= y & y <= (gridHeight - 1))
-                {
-                    var closestBiome = worldMap.ClosestBiome(x, y, Query.QueryType.GroundBiomesGrassOnly);
-                    if (closestBiome == worldConfig.GrassBiome)
-                        grassTilemap.SetTile(new Vector3Int((int)(x - worldConfig.GridWidth * .5f), (int)(y - worldConfig.GridHeight * .5f), 0), grassRuleTile);
-                }
+                if (ShouldSetGrassTile(x, y))
+                    grassTilemap.SetTile(new Vector3Int((int)(x - worldConfig.GridWidth * .5f), (int)(y - worldConfig.GridHeight * .5f), 0), grassRuleTile);
             }
         }
 

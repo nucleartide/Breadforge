@@ -80,7 +80,7 @@ public class WorldMap
         var closestBiome = ListHelpers.MinBy(matchingBiomesWithDifference, (a, b) => a.difference < b.difference).biome;
 
         // Sanity check and return.
-#if false
+#if UNITY_EDITOR
         if (queryType == Query.QueryType.AllBiomes)
             Assert.IsNotNull(closestBiome, "There should always be at least one matching biome. Please review the logic here.");
 #endif

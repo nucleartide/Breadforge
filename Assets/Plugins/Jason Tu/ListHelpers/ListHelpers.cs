@@ -23,4 +23,43 @@ public static class ListHelpers
 
         return minT;
     }
+
+    public static T Random<T>(List<T> things)
+    {
+        return things[UnityEngine.Random.Range(0, things.Count)];
+    }
+
+    /// <summary>
+    /// Similar to Random(), but allows you to customize the weight between choices.
+    /// </summary>
+    public static T Choose<T>(List<T> things, List<float> weights)
+    {
+        var thresholds = new List<float>();
+        var runningSum = 0f;
+
+        // Compute list of thresholds.
+        for (var i = 0; i < things.Count; i++)
+        {
+            thresholds.Add(runningSum);
+            runningSum += weights[i];
+        }
+
+        // Normalize thresholds to [0, 1].
+        for (var i = 0; i < thresholds.Count; i++)
+        {
+            thresholds[i] /= runningSum;
+        }
+
+        // Compute a random t value.
+        var t = UnityEngine.Random.Range(0f, 1f);
+
+        // If t meets or exceeds a threshold, return that threshold's corresponding thing.
+        for (var i = thresholds.Count - 1; i >= 0; i--)
+        {
+            if (t >= thresholds[i])
+                return things[i];
+        }
+
+        throw new System.Exception("Huh, this shouldn't happen.");
+    }
 }

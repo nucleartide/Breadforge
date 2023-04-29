@@ -152,6 +152,7 @@ I wrote a [blog post on LinkedIn](https://www.linkedin.com/pulse/why-you-should-
 | Replace water tiles with Stylized Water 2 | https://github.com/nucleartide/Breadforge/pull/63 |
 | Add ground rule tile + tile palette + example scene | https://github.com/nucleartide/Breadforge/pull/64 |
 | Integrate 3D tileset with stylized water into current game scene | https://github.com/nucleartide/Breadforge/pull/65 |
+| Add rock textures + grass biome | https://github.com/nucleartide/Breadforge/pull/66 |
 | *This is currently being worked on. Check back soon for updates!* | |
 
 <br />

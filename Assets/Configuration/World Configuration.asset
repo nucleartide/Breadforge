@@ -57,39 +57,47 @@ MonoBehaviour:
   - Seed: 329.7
     Frequency: 0.02
     Amplitude: 0.5
-  <LandBiome>k__BackingField:
-    MinHeight: 0.3
-    MinMoisture: 0.4
-    MinHeat: 0.2
   <WaterBiome>k__BackingField:
     MinHeight: 0
     MinMoisture: 0
     MinHeat: 0
-  <StoneBiome>k__BackingField:
-    MinHeight: 0.3
-    MinMoisture: 0.3
-    MinHeat: 0
-  <CoalBiome>k__BackingField:
-    MinHeight: 0.3
-    MinMoisture: 0.2
-    MinHeat: 0
-  <CopperOreBiome>k__BackingField:
+  <LandBiome>k__BackingField:
     MinHeight: 0.3
     MinMoisture: 0
     MinHeat: 0
-  <IronOreBiome>k__BackingField:
-    MinHeight: 0.3
-    MinMoisture: 0.1
+  <GroundBiome>k__BackingField:
+    MinHeight: 0
+    MinMoisture: 0
+    MinHeat: 0.66
+  <GrassBiome>k__BackingField:
+    MinHeight: 0
+    MinMoisture: 0.66
     MinHeat: 0
+  <StoneBiome>k__BackingField:
+    MinHeight: 0.65
+    MinMoisture: 0.4
+    MinHeat: 0
+  <CoalBiome>k__BackingField:
+    MinHeight: 0.65
+    MinMoisture: 0.8
+    MinHeat: 0
+  <CopperOreBiome>k__BackingField:
+    MinHeight: 0.65
+    MinMoisture: 0
+    MinHeat: 0.8
+  <IronOreBiome>k__BackingField:
+    MinHeight: 0.65
+    MinMoisture: 0
+    MinHeat: 0.4
   <WoodBiome>k__BackingField:
     MinHeight: 0.3
-    MinMoisture: 0.4
+    MinMoisture: 0.66
     MinHeat: 0.9
   <SugarCaneBiome>k__BackingField:
     MinHeight: 0.3
-    MinMoisture: 0.4
+    MinMoisture: 0.88
     MinHeat: 0
   <WheatBiome>k__BackingField:
     MinHeight: 0.3
-    MinMoisture: 0.4
-    MinHeat: 0.1
+    MinMoisture: 0.77
+    MinHeat: 0.5

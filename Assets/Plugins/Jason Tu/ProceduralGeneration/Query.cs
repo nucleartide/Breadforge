@@ -1,9 +1,24 @@
 public class Query
 {
+    public enum QueryType
+    {
+        AllBiomes,
+        GroundBiomesOnly,
+    }
+
     private WorldMap worldMap;
+
     private float height;
+
     private float moisture;
+
     private float heat;
+
+    public QueryType Type
+    {
+        get;
+        private set;
+    }
 
     private float GetNormalizedMinHeight(Biome biome) =>
         worldMap.MinHeight + biome.MinHeight * (worldMap.MaxHeight - worldMap.MinHeight);
@@ -14,12 +29,13 @@ public class Query
     private float GetNormalizedMinHeat(Biome biome) =>
         worldMap.MinHeat + biome.MinHeat * (worldMap.MaxHeat - worldMap.MinHeat);
 
-    public Query(WorldMap worldMap, float height, float moisture, float heat)
+    public Query(WorldMap worldMap, float height, float moisture, float heat, QueryType queryType = QueryType.AllBiomes)
     {
         this.worldMap = worldMap;
         this.height = height;
         this.moisture = moisture;
         this.heat = heat;
+        this.Type = queryType;
     }
 
     /// <summary>

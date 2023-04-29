@@ -135,6 +135,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bded502519dc440569d76f4453e3eea3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1839735485 &578444664 stripped
+Tilemap:
+  m_CorrespondingSourceObject: {fileID: 578444664, guid: e0b4bce1b80184186a1ff8c727909eea,
+    type: 3}
+  m_PrefabInstance: {fileID: 1381165719}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1190826614
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1047,6 +1053,16 @@ PrefabInstance:
       propertyPath: tilemap
       value: 
       objectReference: {fileID: 2085634374}
+    - target: {fileID: 9160773117708652564, guid: 832e240404171417c96d1adb49a0bda3,
+        type: 3}
+      propertyPath: grassTilemap
+      value: 
+      objectReference: {fileID: 578444664}
+    - target: {fileID: 9160773117708652564, guid: 832e240404171417c96d1adb49a0bda3,
+        type: 3}
+      propertyPath: groundTilemap
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 9160773117708652565, guid: 832e240404171417c96d1adb49a0bda3,
         type: 3}
       propertyPath: m_RootOrder

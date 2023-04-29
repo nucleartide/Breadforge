@@ -121,7 +121,14 @@ public class WorldConfiguration : ScriptableObject
         },
     };
 
-    [field: Header("Biomes: Land and Water")]
+    [field: Header("Biomes: Ground Biomes")]
+    [field: SerializeField]
+    public Biome WaterBiome
+    {
+        get;
+        private set;
+    }
+
     [field: SerializeField]
     public Biome LandBiome
     {
@@ -130,7 +137,7 @@ public class WorldConfiguration : ScriptableObject
     }
 
     [field: SerializeField]
-    public Biome WaterBiome
+    public Biome GrassBiome
     {
         get;
         private set;
@@ -211,6 +218,19 @@ public class WorldConfiguration : ScriptableObject
         }
     }
 
+    public List<Biome> GroundBiomes
+    {
+        get
+        {
+            return new List<Biome>
+            {
+                LandBiome,
+                GrassBiome,
+                WaterBiome,
+            };
+        }
+    }
+
     private static Dictionary<Biome, Material> materialLookupSingleton;
     private Dictionary<Biome, Material> materialLookup
     {
@@ -246,11 +266,17 @@ public class WorldConfiguration : ScriptableObject
 
     public List<Biome> FindMatchingBiomes(Query query)
     {
-        return AllBiomes.FindAll(biome => query.Satisfies(biome));
+        if (query.Type == Query.QueryType.AllBiomes)
+            return AllBiomes.FindAll(biome => query.Satisfies(biome));
+        else if (query.Type == Query.QueryType.GroundBiomesOnly)
+            return GroundBiomes.FindAll(biome => query.Satisfies(biome));
+        else
+            return new List<Biome>();
     }
 
-    public bool IsWaterBiome(Biome biome)
-    {
-        return biome == WaterBiome;
-    }
+    public bool IsWaterBiome(Biome biome) => biome == WaterBiome;
+
+    public bool IsGroundBiome(Biome biome) => biome == LandBiome;
+
+    public bool IsGrassBiome(Biome biome) => biome == GrassBiome;
 }

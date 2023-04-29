@@ -34,10 +34,6 @@ public class WorldManager : MonoBehaviour
     [NotNull]
     private UnityEngine.Tilemaps.TileBase grassRuleTile;
 
-    [SerializeField]
-    [NotNull]
-    private UnityEngine.Tilemaps.TileBase moistGroundRuleTile;
-
     private WorldMap worldMap;
 
     private List<GameObject> tiles;

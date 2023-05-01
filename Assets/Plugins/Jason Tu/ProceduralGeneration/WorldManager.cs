@@ -38,19 +38,17 @@ public class WorldManager : MonoBehaviour
     {
         var gridHeight = worldConfig.GridHeight;
         var gridWidth = worldConfig.GridWidth;
-        var r = 50f;
+        var r = gridWidth * .5f;
         var tiles = new List<GameObject>();
 
         for (var y = 0; y < gridHeight; y++)
         {
             for (var x = 0; x < gridWidth; x++)
             {
-                var xh = x - worldConfig.GridWidth * .5f;
-                var yk = y - worldConfig.GridHeight * .5f;
-
+                var xh = x - r;
+                var yk = y - r;
                 if (xh * xh + yk * yk <= r * r)
                 {
-                    Debug.Log("hello");
                     var isWaterBiome = worldConfig.IsWaterBiome(worldMap.ClosestBiome(x, y));
                     if (!isWaterBiome)
                     {
@@ -106,9 +104,10 @@ public class WorldManager : MonoBehaviour
         var gridWidth = worldConfig.GridWidth;
         var r = gridWidth * .5f;
 
-        for (var y = 0; y < gridHeight; y++)
+        // Starting at 1 to get rid of these strange pointy circle bits...
+        for (var y = 1; y < gridHeight; y++)
         {
-            for (var x = 0; x < gridWidth; x++)
+            for (var x = 1; x < gridWidth; x++)
             {
                 var xh = x - r;
                 var yk = y - r;
@@ -155,7 +154,7 @@ public class WorldManager : MonoBehaviour
         worldMap = new WorldMap(worldConfig);
 
         // Instantiate the world map.
-        // tiles = InstantiateTiles();
+        tiles = InstantiateTiles();
 
         // Instantiate the tilemap as well.
         InstantiateTilemap();

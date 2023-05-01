@@ -104,26 +104,27 @@ public class WorldManager : MonoBehaviour
     {
         var gridHeight = worldConfig.GridHeight;
         var gridWidth = worldConfig.GridWidth;
-        var r = 50f;
+        var r = gridWidth * .5f;
 
-        for (var y = -1; y < gridHeight + 1; y++)
+        for (var y = 0; y < gridHeight; y++)
         {
-            for (var x = -1; x < gridWidth + 1; x++)
+            for (var x = 0; x < gridWidth; x++)
             {
-                var xh = x - worldConfig.GridWidth * .5f;
-                var yk = y - worldConfig.GridHeight * .5f;
+                var xh = x - r;
+                var yk = y - r;
+                var sumOfSquares = xh * xh + yk * yk;
 
-                if (xh * xh + yk * yk <= r * r)
+                if (sumOfSquares <= r * r)
                 {
                     // Select tile.
                     var tile = ShouldSetGroundTile(x, y) ? groundRuleTile : waterRuleTile;
 
                     // Set tite.
-                    tilemap.SetTile(new Vector3Int((int)(x - worldConfig.GridWidth * .5f), (int)(y - worldConfig.GridHeight * .5f), 0), tile);
+                    tilemap.SetTile(new Vector3Int((int)(x - r), (int)(y - r), 0), tile);
 
                     // Update grass tilemap separately.
                     if (ShouldSetGrassTile(x, y))
-                        grassTilemap.SetTile(new Vector3Int((int)(x - worldConfig.GridWidth * .5f), (int)(y - worldConfig.GridHeight * .5f), 0), grassRuleTile);
+                        grassTilemap.SetTile(new Vector3Int((int)(x - r), (int)(y - r), 0), grassRuleTile);
                 }
             }
         }
@@ -154,7 +155,7 @@ public class WorldManager : MonoBehaviour
         worldMap = new WorldMap(worldConfig);
 
         // Instantiate the world map.
-        tiles = InstantiateTiles();
+        // tiles = InstantiateTiles();
 
         // Instantiate the tilemap as well.
         InstantiateTilemap();

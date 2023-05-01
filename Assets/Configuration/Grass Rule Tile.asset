@@ -94,6 +94,10 @@ MonoBehaviour:
       type: 3}
     m_OverrideGameObject: {fileID: 3661272423897928857, guid: c7f0723395c8a4311a8ce1c24e26d2a5,
       type: 3}
+  - m_OriginalGameObject: {fileID: 3438898853049723420, guid: d80247b6aca994c0289f1f04fb4dff0b,
+      type: 3}
+    m_OverrideGameObject: {fileID: 3438898853049723420, guid: c12497bf40e794dde9fa5d93a1be1571,
+      type: 3}
   m_InstanceTile: {fileID: 3323121932029887092}
 --- !u!114 &3323121932029887092
 MonoBehaviour:
@@ -356,6 +360,25 @@ MonoBehaviour:
     - {x: 0, y: 1, z: 0}
     - {x: 1, y: 0, z: 0}
     m_RuleTransform: 3
+  - m_Id: 19
+    m_Sprites:
+    - {fileID: 0}
+    m_GameObject: {fileID: 3438898853049723420, guid: c12497bf40e794dde9fa5d93a1be1571,
+      type: 3}
+    m_MinAnimationSpeed: 1
+    m_MaxAnimationSpeed: 1
+    m_PerlinScale: 0.5
+    m_Output: 0
+    m_ColliderType: 0
+    m_RandomTransform: 0
+    m_Neighbors: 0200000002000000020000000100000001000000
+    m_NeighborPositions:
+    - {x: -1, y: 0, z: 0}
+    - {x: 0, y: -1, z: 0}
+    - {x: 0, y: 1, z: 0}
+    - {x: 1, y: 0, z: 0}
+    - {x: 1, y: -1, z: 0}
+    m_RuleTransform: 2
   - m_Id: 17
     m_Sprites:
     - {fileID: 0}

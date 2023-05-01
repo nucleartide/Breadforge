@@ -38,17 +38,25 @@ public class WorldManager : MonoBehaviour
     {
         var gridHeight = worldConfig.GridHeight;
         var gridWidth = worldConfig.GridWidth;
+        var r = 50f;
         var tiles = new List<GameObject>();
 
         for (var y = 0; y < gridHeight; y++)
         {
             for (var x = 0; x < gridWidth; x++)
             {
-                var isWaterBiome = worldConfig.IsWaterBiome(worldMap.ClosestBiome(x, y));
-                if (!isWaterBiome)
+                var xh = x - worldConfig.GridWidth * .5f;
+                var yk = y - worldConfig.GridHeight * .5f;
+
+                if (xh * xh + yk * yk <= r * r)
                 {
-                    var tile = worldMap.InstantiateTile(x, y, worldDisplayMode);
-                    tiles.Add(tile);
+                    Debug.Log("hello");
+                    var isWaterBiome = worldConfig.IsWaterBiome(worldMap.ClosestBiome(x, y));
+                    if (!isWaterBiome)
+                    {
+                        var tile = worldMap.InstantiateTile(x, y, worldDisplayMode);
+                        tiles.Add(tile);
+                    }
                 }
             }
         }
@@ -96,20 +104,27 @@ public class WorldManager : MonoBehaviour
     {
         var gridHeight = worldConfig.GridHeight;
         var gridWidth = worldConfig.GridWidth;
+        var r = 50f;
 
         for (var y = -1; y < gridHeight + 1; y++)
         {
             for (var x = -1; x < gridWidth + 1; x++)
             {
-                // Select tile.
-                var tile = ShouldSetGroundTile(x, y) ? groundRuleTile : waterRuleTile;
+                var xh = x - worldConfig.GridWidth * .5f;
+                var yk = y - worldConfig.GridHeight * .5f;
 
-                // Set tite.
-                tilemap.SetTile(new Vector3Int((int)(x - worldConfig.GridWidth * .5f), (int)(y - worldConfig.GridHeight * .5f), 0), tile);
+                if (xh * xh + yk * yk <= r * r)
+                {
+                    // Select tile.
+                    var tile = ShouldSetGroundTile(x, y) ? groundRuleTile : waterRuleTile;
 
-                // Update grass tilemap separately.
-                if (ShouldSetGrassTile(x, y))
-                    grassTilemap.SetTile(new Vector3Int((int)(x - worldConfig.GridWidth * .5f), (int)(y - worldConfig.GridHeight * .5f), 0), grassRuleTile);
+                    // Set tite.
+                    tilemap.SetTile(new Vector3Int((int)(x - worldConfig.GridWidth * .5f), (int)(y - worldConfig.GridHeight * .5f), 0), tile);
+
+                    // Update grass tilemap separately.
+                    if (ShouldSetGrassTile(x, y))
+                        grassTilemap.SetTile(new Vector3Int((int)(x - worldConfig.GridWidth * .5f), (int)(y - worldConfig.GridHeight * .5f), 0), grassRuleTile);
+                }
             }
         }
 

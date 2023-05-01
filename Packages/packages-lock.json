@@ -1,12 +1,5 @@
 {
   "dependencies": {
-    "com.singularitygroup.hotreload": {
-      "version": "git+https://gitlab.hotreload.net/root/hot-reload-releases.git#1.9.2",
-      "depth": 0,
-      "source": "git",
-      "dependencies": {},
-      "hash": "6bfb53388b285b3f2c6c16b6665c232617b2a06b"
-    },
     "com.unity.2d.tilemap": {
       "version": "1.0.0",
       "depth": 0,

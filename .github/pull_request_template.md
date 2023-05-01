@@ -1,4 +1,4 @@
-# Workflow
+## Workflow
 
 Specify a query parameter in your pull request to choose an alternative template. The available templates are as follows:
 

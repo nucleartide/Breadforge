@@ -153,6 +153,7 @@ I wrote a [blog post on LinkedIn](https://www.linkedin.com/pulse/why-you-should-
 | Add ground rule tile + tile palette + example scene | https://github.com/nucleartide/Breadforge/pull/64 |
 | Integrate 3D tileset with stylized water into current game scene | https://github.com/nucleartide/Breadforge/pull/65 |
 | Add rock textures + grass biome | https://github.com/nucleartide/Breadforge/pull/66 |
+| Make island into a circular shape | https://github.com/nucleartide/Breadforge/pull/67 |
 | *This is currently being worked on. Check back soon for updates!* | |
 
 <br />

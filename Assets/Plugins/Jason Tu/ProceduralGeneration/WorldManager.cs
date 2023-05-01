@@ -105,6 +105,7 @@ public class WorldManager : MonoBehaviour
         var gridHeight = worldConfig.GridHeight;
         var gridWidth = worldConfig.GridWidth;
         var r = gridWidth * .5f;
+        var rSquared = r * r;
 
         // Starting at 1 to get rid of strange pointy bits at the bottom and left edges of the circle.
         for (var y = 1; y < gridHeight; y++)
@@ -115,7 +116,7 @@ public class WorldManager : MonoBehaviour
                 var yk = y - r;
                 var sumOfSquares = xh * xh + yk * yk;
 
-                if (sumOfSquares <= r * r)
+                if (sumOfSquares <= rSquared)
                 {
                     // Select tile.
                     var tile = ShouldSetGroundTile(x, y) ? groundRuleTile : waterRuleTile;

@@ -1,8 +1,0 @@
-newmtl Ground_Light
-Kd 0.6509434 0.3489916 0.1934407
-d 1
-
-newmtl Ground
-Kd 0.254717 0.1241545 0.05887325
-d 1
-

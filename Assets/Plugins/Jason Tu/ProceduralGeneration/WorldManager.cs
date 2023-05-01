@@ -39,6 +39,7 @@ public class WorldManager : MonoBehaviour
         var gridHeight = worldConfig.GridHeight;
         var gridWidth = worldConfig.GridWidth;
         var r = gridWidth * .5f;
+        var rSquared = r * r;
         var tiles = new List<GameObject>();
 
         for (var y = 0; y < gridHeight; y++)
@@ -47,15 +48,16 @@ public class WorldManager : MonoBehaviour
             {
                 var xh = x - r;
                 var yk = y - r;
-                if (xh * xh + yk * yk <= r * r)
-                {
-                    var isWaterBiome = worldConfig.IsWaterBiome(worldMap.ClosestBiome(x, y));
-                    if (!isWaterBiome)
-                    {
-                        var tile = worldMap.InstantiateTile(x, y, worldDisplayMode);
-                        tiles.Add(tile);
-                    }
-                }
+
+                if (xh * xh + yk * yk > rSquared)
+                    continue;
+
+                var isWaterBiome = worldConfig.IsWaterBiome(worldMap.ClosestBiome(x, y));
+                if (isWaterBiome)
+                    continue;
+
+                var tile = worldMap.InstantiateTile(x, y, worldDisplayMode);
+                tiles.Add(tile);
             }
         }
 
@@ -104,7 +106,7 @@ public class WorldManager : MonoBehaviour
         var gridWidth = worldConfig.GridWidth;
         var r = gridWidth * .5f;
 
-        // Starting at 1 to get rid of these strange pointy circle bits...
+        // Starting at 1 to get rid of strange pointy bits at the bottom and left edges of the circle.
         for (var y = 1; y < gridHeight; y++)
         {
             for (var x = 1; x < gridWidth; x++)
@@ -127,7 +129,6 @@ public class WorldManager : MonoBehaviour
                 }
             }
         }
-
     }
 
     private void DestroyTilemap(UnityEngine.Tilemaps.Tilemap tilemap)

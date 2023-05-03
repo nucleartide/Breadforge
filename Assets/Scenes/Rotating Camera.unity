@@ -197,6 +197,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bded502519dc440569d76f4453e3eea3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &200881528 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 461248570605676590, guid: 594144324abd847ada9e69575d7d3295,
+    type: 3}
+  m_PrefabInstance: {fileID: 1190826614}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1839735485 &771926993 stripped
 Tilemap:
   m_CorrespondingSourceObject: {fileID: 5438016112271016815, guid: e0b4bce1b80184186a1ff8c727909eea,
@@ -277,9 +283,34 @@ PrefabInstance:
       objectReference: {fileID: 63202250}
     - target: {fileID: 2367151132960774532, guid: 594144324abd847ada9e69575d7d3295,
         type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2367151132960774532, guid: 594144324abd847ada9e69575d7d3295,
+        type: 3}
+      propertyPath: maxOrthoSize
+      value: 25
+      objectReference: {fileID: 0}
+    - target: {fileID: 2367151132960774532, guid: 594144324abd847ada9e69575d7d3295,
+        type: 3}
       propertyPath: followedObject
       value: 
       objectReference: {fileID: 4849677785592111611}
+    - target: {fileID: 8746842707825717514, guid: 594144324abd847ada9e69575d7d3295,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8746842707825717524, guid: 594144324abd847ada9e69575d7d3295,
+        type: 3}
+      propertyPath: orthographic size
+      value: 25
+      objectReference: {fileID: 0}
+    - target: {fileID: 8746842708071168785, guid: 594144324abd847ada9e69575d7d3295,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 594144324abd847ada9e69575d7d3295, type: 3}
 --- !u!114 &1356936896 stripped
@@ -288,12 +319,30 @@ MonoBehaviour:
     type: 3}
   m_PrefabInstance: {fileID: 1190826614}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 200881528}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 6b806e76dcb454ee49601d3de58a9b9c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1356936898
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 200881528}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f5d47ca169d164015970842266c65b8b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  camera: {fileID: 1467872086}
+  pivotPoint: {x: 0, y: 0, z: 0}
+  playerTransform: {fileID: 1614179778878583233}
+  radius: 150
+  yOffset: 50
+  timeScale: 0.1
 --- !u!114 &1405936094 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 916260496202684719, guid: 3238d76c384ea4f0d92acb88737f0fe4,
@@ -306,6 +355,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 73cf13b3777d14754a309abecc385ecf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!20 &1467872086 stripped
+Camera:
+  m_CorrespondingSourceObject: {fileID: 8746842707825717524, guid: 594144324abd847ada9e69575d7d3295,
+    type: 3}
+  m_PrefabInstance: {fileID: 1190826614}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1839735485 &1881716719 stripped
 Tilemap:
   m_CorrespondingSourceObject: {fileID: 5438016112843939665, guid: e0b4bce1b80184186a1ff8c727909eea,

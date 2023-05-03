@@ -39,50 +39,30 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 3438898853049723419}
     m_Modifications:
-    - target: {fileID: 1665848993067286038, guid: 1bf4e64cd70964b77af781c0a7de4c9c,
-        type: 3}
-      propertyPath: m_LocalScale.x
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 8233481800096184305, guid: 1bf4e64cd70964b77af781c0a7de4c9c,
         type: 3}
       propertyPath: m_Name
       value: Water_Endpoint_Original
-      objectReference: {fileID: 0}
-    - target: {fileID: 8233481800096184306, guid: 1bf4e64cd70964b77af781c0a7de4c9c,
-        type: 3}
-      propertyPath: m_Mesh
-      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 8233481800096184307, guid: 1bf4e64cd70964b77af781c0a7de4c9c,
         type: 3}
       propertyPath: m_Mesh
       value: 
       objectReference: {fileID: 0}
-    - target: {fileID: 8233481800096184308, guid: 1bf4e64cd70964b77af781c0a7de4c9c,
-        type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 2100000, guid: a270b3f2299b143d382b0fdd4db5bf67, type: 2}
     - target: {fileID: 8233481800096184310, guid: 1bf4e64cd70964b77af781c0a7de4c9c,
         type: 3}
       propertyPath: m_Mesh
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 8233481800096184310, guid: 1bf4e64cd70964b77af781c0a7de4c9c,
+        type: 3}
+      propertyPath: m_VersionIndex
+      value: 5067
+      objectReference: {fileID: 0}
     - target: {fileID: 8233481800096184311, guid: 1bf4e64cd70964b77af781c0a7de4c9c,
         type: 3}
       propertyPath: m_RootOrder
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8233481800096184311, guid: 1bf4e64cd70964b77af781c0a7de4c9c,
-        type: 3}
-      propertyPath: m_LocalScale.x
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8233481800096184311, guid: 1bf4e64cd70964b77af781c0a7de4c9c,
-        type: 3}
-      propertyPath: m_LocalScale.z
-      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8233481800096184311, guid: 1bf4e64cd70964b77af781c0a7de4c9c,
         type: 3}

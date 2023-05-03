@@ -57,13 +57,21 @@ public class GameCamera : MonoBehaviour
         if (zoomDelta != 0f)
         {
             var delta = zoomDelta * Time.deltaTime * -zoomScaleFactor;
-            cinemachineCamera.m_Lens.OrthographicSize += delta;
+            if (cinemachineCamera.isActiveAndEnabled)
+                cinemachineCamera.m_Lens.OrthographicSize += delta;
+            else
+                mainCamera.orthographicSize += delta;
             uiCamera.orthographicSize += delta;
         }
 
         // Prevent ortho size from becoming too small or large.
-        var orthoSizeClamped = Mathf.Clamp(cinemachineCamera.m_Lens.OrthographicSize, minOrthoSize, maxOrthoSize);
-        cinemachineCamera.m_Lens.OrthographicSize = orthoSizeClamped;
+        var orthoSizeClamped = cinemachineCamera.isActiveAndEnabled
+            ? Mathf.Clamp(cinemachineCamera.m_Lens.OrthographicSize, minOrthoSize, maxOrthoSize)
+            : Mathf.Clamp(mainCamera.orthographicSize, minOrthoSize, maxOrthoSize);
+        if (cinemachineCamera.isActiveAndEnabled)
+            cinemachineCamera.m_Lens.OrthographicSize = orthoSizeClamped;
+        else
+            mainCamera.orthographicSize = orthoSizeClamped;
         uiCamera.orthographicSize = orthoSizeClamped;
     }
 }

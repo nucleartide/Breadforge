@@ -7,6 +7,22 @@ public class PlayerMiningState : PlayerCollectingState
     [NotNull]
     private PlayerAnimationEvents playerAnimationEvents;
 
+    [SerializeField]
+    [NotNull]
+    private GameObject collectableCoal;
+
+    [SerializeField]
+    [NotNull]
+    private GameObject collectableStone;
+
+    [SerializeField]
+    [NotNull]
+    private GameObject collectableIronOre;
+
+    [SerializeField]
+    [NotNull]
+    private GameObject collectableCopperOre;
+
     private void OnEnable()
     {
         playerAnimationEvents.OnPickaxeHit += PlayerAnimationEvents_OnPickaxeHit;
@@ -25,7 +41,14 @@ public class PlayerMiningState : PlayerCollectingState
 
     protected override void OnCollectCompleted()
     {
+        // Old placeholder feedback.
         Debug.Log("Mined thing.");
+
+        // TODO: spawn collectible resource at prefab's location.
+        // ...
+
+        // TODO: spawn should have some velocity to it.
+        // ...
     }
 
     protected override float GetAmountCollectedPerAction()

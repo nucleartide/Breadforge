@@ -155,9 +155,15 @@ I wrote a [blog post on LinkedIn](https://www.linkedin.com/pulse/why-you-should-
 | Add rock textures + grass biome | https://github.com/nucleartide/Breadforge/pull/66 |
 | Make island into a circular shape | https://github.com/nucleartide/Breadforge/pull/67 |
 | Add camera rotation script for recording a TikTok | https://github.com/nucleartide/Breadforge/pull/68 |
-| *This is currently being worked on. Check back soon for updates!* | |
 
 <br />
+
+### Chapter 7. Chasing the First Playable, while also finding the game's mechanical hook
+
+| Feature | Pull Request |
+| --- | --- |
+| Add inventory system | https://github.com/nucleartide/Breadforge/pull/69 |
+| *(currently being worked on, check back for updates!)* | ... |
 
 ## II. Production
 

@@ -44,8 +44,13 @@ public class PlayerMiningState : PlayerCollectingState
         // Old placeholder feedback.
         Debug.Log("Mined thing.");
 
-        // TODO: spawn collectible resource at prefab's location.
-        // ...
+        // Spawn collectible resource at prefab's location.
+        var position = resourceBeingCollected.transform.position;
+        var newCollectable = Instantiate(collectableCopperOre, position, Quaternion.identity);
+
+        // Add a random offset for now so I see the resource.
+        var randomOffset = UnityEngine.Random.insideUnitCircle;
+        newCollectable.transform.position += new Vector3(randomOffset.x, 0f, randomOffset.y);
 
         // TODO: spawn should have some velocity to it.
         // ...

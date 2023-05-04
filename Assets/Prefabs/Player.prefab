@@ -376,6 +376,14 @@ MonoBehaviour:
     type: 2}
   playerMovingState: {fileID: 4275749252704276485}
   playerAnimationEvents: {fileID: 5225594885633275286}
+  collectableCoal: {fileID: 4295470260708429193, guid: 1bc7a303e3d5a47978aa4cf770b090d9,
+    type: 3}
+  collectableStone: {fileID: 4295470260708429193, guid: 1bc7a303e3d5a47978aa4cf770b090d9,
+    type: 3}
+  collectableIronOre: {fileID: 4295470260708429193, guid: 1bc7a303e3d5a47978aa4cf770b090d9,
+    type: 3}
+  collectableCopperOre: {fileID: 4295470260708429193, guid: 1bc7a303e3d5a47978aa4cf770b090d9,
+    type: 3}
 --- !u!114 &4275749252704276487
 MonoBehaviour:
   m_ObjectHideFlags: 0

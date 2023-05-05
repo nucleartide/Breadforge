@@ -253,7 +253,7 @@ MonoBehaviour:
   CanSpawn: 1
   UseUnscaledTime: 0
   PoolerMode: 0
-  PooledSimpleMMFloatingText: {fileID: 1418480443928390043, guid: e3bc05dce75bc334eac3d6b4cc83f92f,
+  PooledSimpleMMFloatingText: {fileID: 1418480443928390043, guid: 5bc65a62b0ba448c8afc9b2d980f6ad3,
     type: 3}
   PooledMultipleMMFloatingText: []
   PoolSize: 20

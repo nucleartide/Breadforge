@@ -124,7 +124,7 @@ MonoBehaviour:
   KeepPlayModeChanges: 0
   PerformanceMode: 0
   ForceStopFeedbacksOnDisable: 1
-  PlayCount: 0
+  PlayCount: 1
   references:
     version: 2
     RefIds:

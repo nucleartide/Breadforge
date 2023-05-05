@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System;
 
 [RequireComponent(typeof(CharacterController))]
+[RequireComponent(typeof(CapsuleCollider))]
 public class PlayerStateMachine : StateMachineBehaviour
 {
     [SerializeField]
@@ -140,5 +141,17 @@ public class PlayerStateMachine : StateMachineBehaviour
             return;
 
         isCollidingWithResource = true;
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.layer == LayerMask.NameToLayer(LayerHelpers.RESOURCE_PICKUP))
+        {
+            // Destroy collectable resource for now.
+            Destroy(other.gameObject);
+
+            // Display some floating text feedback.
+            // ...
+        }
     }
 }

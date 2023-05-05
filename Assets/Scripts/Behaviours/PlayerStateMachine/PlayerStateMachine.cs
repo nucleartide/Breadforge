@@ -147,11 +147,8 @@ public class PlayerStateMachine : StateMachineBehaviour
     {
         if (other.gameObject.layer == LayerMask.NameToLayer(LayerHelpers.RESOURCE_PICKUP))
         {
-            // Destroy collectable resource for now.
-            Destroy(other.gameObject);
-
             // Display some floating text feedback.
-            // ...
+            other.GetComponent<CollectableResource>().PickUpAndDestroy();
         }
     }
 }

@@ -7,6 +7,14 @@ public class CollectableResource : MonoBehaviour
     [SerializeField]
     private Vector3 gravity = new Vector3(0f, -9.8f, 0f);
 
+    [SerializeField]
+    [NotNull]
+    private MoreMountains.Feedbacks.MMF_Player pickUpFeedbacks;
+
+    [SerializeField]
+    [NotNull]
+    private GameObject collectableResourceVisual;
+
     public void SetRandomInitialImpulse()
     {
         var randomVelocity = Random.insideUnitSphere;
@@ -33,5 +41,20 @@ public class CollectableResource : MonoBehaviour
             // Clamp position so it stays at ground level.
             transform.position = new Vector3(transform.position.x, 0f, transform.position.z);
         }
+    }
+
+    /// <summary>
+    /// Use this instead of calling Destroy() to show some floating text when picked up.
+    /// </summary>
+    public void PickUpAndDestroy()
+    {
+        // Hide object.
+        collectableResourceVisual.SetActive(false);
+
+        // Play user feedback.
+        pickUpFeedbacks.PlayFeedbacks(transform.position);
+
+        // Mark object for destruction after feedback is over.
+        Destroy(gameObject, 2f);
     }
 }

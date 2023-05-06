@@ -253,7 +253,7 @@ MonoBehaviour:
   CanSpawn: 1
   UseUnscaledTime: 0
   PoolerMode: 0
-  PooledSimpleMMFloatingText: {fileID: 1418480443928390043, guid: 5bc65a62b0ba448c8afc9b2d980f6ad3,
+  PooledSimpleMMFloatingText: {fileID: 7284800961402381166, guid: 7d9f9bb91642848cda16c669143a9467,
     type: 3}
   PooledMultipleMMFloatingText: []
   PoolSize: 20
@@ -347,12 +347,12 @@ MonoBehaviour:
     m_RotationOrder: 4
   AlignmentMode: 0
   FixedAlignment: {x: 0, y: 1, z: 0}
-  AlwaysFaceCamera: 0
+  AlwaysFaceCamera: 1
   AutoGrabMainCameraOnStart: 1
-  TargetCamera: {fileID: 0}
-  AnimateScale: 1
+  TargetCamera: {fileID: 1537997763}
+  AnimateScale: 0
   RemapScaleZero: {x: 0, y: 0}
-  RemapScaleOne: {x: 1, y: 1}
+  RemapScaleOne: {x: 0.2, y: 0.5}
   AnimateScaleCurve:
     serializedVersion: 2
     m_Curve:
@@ -583,6 +583,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 73cf13b3777d14754a309abecc385ecf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!20 &1537997763 stripped
+Camera:
+  m_CorrespondingSourceObject: {fileID: 8746842707825717524, guid: 594144324abd847ada9e69575d7d3295,
+    type: 3}
+  m_PrefabInstance: {fileID: 1190826614}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1839735485 &1881716719 stripped
 Tilemap:
   m_CorrespondingSourceObject: {fileID: 5438016112843939665, guid: e0b4bce1b80184186a1ff8c727909eea,

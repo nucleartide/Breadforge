@@ -56,7 +56,7 @@ public class CollectableResource : MonoBehaviour
 		floatingText.Value = "+20 Copper"; // Factorio shows something like +20 Copper (40), where the parenthetical value is the current stack's value
 
         // Play user feedback.
-        pickUpFeedbacks.PlayFeedbacks(transform.position, .5f);
+        pickUpFeedbacks.PlayFeedbacks(transform.position);
 
         // Mark object for destruction after feedback is over.
         Destroy(gameObject, 2f);

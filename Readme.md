@@ -110,7 +110,9 @@ I wrote a [blog post on LinkedIn](https://www.linkedin.com/pulse/why-you-should-
 
 <br />
 
-## Chapter 7. Chasing the First Playable, while also finding the game's mechanical hook
+## Chapter 7. Chasing the first playable
+
+> And the importance of finding your game's mechanical hook
 
 | Feature | Pull Request |
 | --- | --- |

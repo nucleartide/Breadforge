@@ -14,8 +14,6 @@ You can view those chapters below:
 
 <br />
 
-<br />
-
 ## Chapter 1. The 3 Cs Toolkit in Unity (2023)
 
 > Make your character come to life with Mecanim, Cinemachine, and Input System.
@@ -109,55 +107,11 @@ I wrote a [blog post on LinkedIn](https://www.linkedin.com/pulse/why-you-should-
 | Add rock textures + grass biome | https://github.com/nucleartide/Breadforge/pull/66 |
 | Make island into a circular shape | https://github.com/nucleartide/Breadforge/pull/67 |
 | Add camera rotation script for recording a TikTok | https://github.com/nucleartide/Breadforge/pull/68 |
-| *This is currently being worked on. Check back soon for updates!* | |
 
 <br />
 
-<<<<<<< Updated upstream
-## II. Production
-
-...
-
-<br />
-
-## III. Post-production
-
-...
-
-<br />
-
-### Chapter X. How to publish a game on Steam
-
-...
-
-<br />
-
-## Follow along
-
-I hope that Breadforge offers something for everyone:
-
-* **For game players**:
-	* Once done, Breadforge will be a fun factory builder in the vein of Factorio.
-* **For hiring managers**:
-	* This project demonstrates the skillset of a professional game programmer, and serves as a good reference for required skills.
-* **For new game programmers**:
-	* This project teaches you how one might tackle each stage of the game dev process.
-* **For fellow game programmers**:
-	* This project inspires you through documentation and hard work. 🙂
-
-Although I occasionally [give presentations](https://www.meetup.com/unity3d/events/291639476/), [write LinkedIn posts](https://www.linkedin.com/pulse/why-you-should-care-sops-game-development-devlog-jason-tu/), or [send an email newsletter](https://jasont.co/blog), I'm not the most consistent.
-
-So the best way to follow along is to star and watch this GitHub repo.
-
-<br />
-
----
-
-> Jason Tu · [jasont.co](https://jasont.co/)
-=======
 ## Chapter 7. Chasing the First Playable, while also finding the game's mechanical hook
 
 | Feature | Pull Request |
 | --- | --- |
 | Add inventory system | https://github.com/nucleartide/Breadforge/pull/69 |
->>>>>>> Stashed changes

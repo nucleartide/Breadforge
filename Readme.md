@@ -1,68 +1,22 @@
 # 🥖 Breadforge
 
-> *(trailer / GIF goes here soon...)*
-
 A factory builder game about building a bread factory. Made in Unity 2021.
 
-Simultaneously, this open source project demonstrates the complete skillset needed to ship a game: from idea to Steam launch. 🚀
-
 <br />
 
-## Motivation
-
-Making games is hard.
-
-Because when it comes time to make your idea come to life, you run into all sorts of roadblocks:
-
-1. **Scope**. You're unsure how to scope your idea down into something manageable.
-2. **Work breakdown**. You're unsure how to break your idea down into bite-sized development tasks.
-3. **Progress**. Your codebase becomes tangled as you add features, so you struggle to make progress.
-
-The result? You never ship your game, and all that time you spent was for naught.
-
-But what if you knew exactly how to scope your idea down, while keeping the spirit of your original inspiration?
-
-What if you knew exactly how to break your idea down into bite-sized tasks, so that you can start tackling them today?
-
-And what if adding features to your game was a **joy**, not a chore?
-
-You'd be eager to work on your game every day. And you’d ship your game with confidence and momentum.
-
-But... how?
-
----
-
-You need a role model.
-
-A codebase that **demonstrates** and **speaks to** every skill of a professional game programmer — skills such as code quality, playtesting, production pipelines, and scope management.
-
-And in doing so, the codebase would showcase every aspect of the game production process, so that you can apply its learnings to your own work.
-
-That's what this project Breadforge provides.
-
-Curious? Read below to learn more 👇
-
-<br />
-
-## Playful Production Process: a story told through pull requests
-
-In the book *A Playful Production Process*, the author Richard Lemarchand breaks the process of game development into four stages: ideation, pre-production, production, and post-production.
+## A story told through pull requests
 
 Much like the chapters of a novel, I tell the story of Breadforge's development through its cumulative pull requests. For some of the pull requests, I also narrate their development in the form of a "painlog".
 
-Devlogs are about *me*; painlogs are about *you*. Instead of describing what I've done, a painlog describes the general *pain point* behind a batch of pull requests, and what you can take away from my struggles.
+Devlogs are about *me*; painlogs are about *you*. Instead of describing what I've done, a painlog describes the general *pain point* behind a batch of pull requests, the technical approach, as well as benefits and tradeoffs.
 
 You can view those chapters below:
 
 <br />
 
-## I. Pre-production
-
-*Note that an ideation section is skipped to focus on the latter 3 stages of development.*
-
 <br />
 
-### Chapter 1. The 3 Cs Toolkit in Unity (2023)
+## Chapter 1. The 3 Cs Toolkit in Unity (2023)
 
 > Make your character come to life with Mecanim, Cinemachine, and Input System.
 
@@ -82,7 +36,7 @@ You can read the blog post behind the presentation here: [jasont.co/character-cr
 
 <br />
 
-### Chapter 2. How to implement a procedural generation system
+## Chapter 2. How to implement a procedural generation system
 
 > On generating a world using stacks of Perlin noise waves
 
@@ -93,7 +47,7 @@ You can read the blog post behind the presentation here: [jasont.co/character-cr
 
 <br />
 
-### Chapter 3. How to implement any gameplay system
+## Chapter 3. How to implement any gameplay system
 
 > And why you should implement visual feedback first
 
@@ -104,7 +58,7 @@ You can read the blog post behind the presentation here: [jasont.co/character-cr
 
 <br />
 
-### Chapter 4. How to add sound to your Unity game
+## Chapter 4. How to add sound to your Unity game
 
 > And why it's the most important kind of game juice
 
@@ -123,7 +77,7 @@ I wrote a [blog post on LinkedIn](https://www.linkedin.com/pulse/why-you-should-
 
 <br />
 
-### Chapter 5. How to integrate QA into your game dev process
+## Chapter 5. How to integrate QA into your game dev process
 
 > And why you should always fix bugs first
 
@@ -139,7 +93,7 @@ I wrote a [blog post on LinkedIn](https://www.linkedin.com/pulse/why-you-should-
 
 <br />
 
-### Chapter 6. How to create a look and feel for your Unity game
+## Chapter 6. How to create a look and feel for your Unity game
 
 > And the importance of finding your game's visual "hook"
 
@@ -159,6 +113,7 @@ I wrote a [blog post on LinkedIn](https://www.linkedin.com/pulse/why-you-should-
 
 <br />
 
+<<<<<<< Updated upstream
 ## II. Production
 
 ...
@@ -199,3 +154,10 @@ So the best way to follow along is to star and watch this GitHub repo.
 ---
 
 > Jason Tu · [jasont.co](https://jasont.co/)
+=======
+## Chapter 7. Chasing the First Playable, while also finding the game's mechanical hook
+
+| Feature | Pull Request |
+| --- | --- |
+| Add inventory system | https://github.com/nucleartide/Breadforge/pull/69 |
+>>>>>>> Stashed changes
